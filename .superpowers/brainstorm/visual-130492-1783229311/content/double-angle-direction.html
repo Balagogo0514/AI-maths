@@ -1,0 +1,82 @@
+<h2>4.4 倍角公式幾何圖方向</h2>
+<p class="subtitle">只選一個主視角。我建議 A，因為它最直接對應 $\cos 2x$ 與 $\sin 2x$。</p>
+
+<div class="cards">
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">A. 單位圓雙角版</div>
+        <div class="mockup-body">
+          <svg viewBox="0 0 220 150" width="100%" height="140" aria-label="unit circle double angle">
+            <circle cx="85" cy="78" r="48" fill="none" stroke="#1f2937" stroke-width="2"/>
+            <line x1="20" y1="78" x2="165" y2="78" stroke="#475569" stroke-width="2"/>
+            <line x1="85" y1="132" x2="85" y2="18" stroke="#475569" stroke-width="2"/>
+            <line x1="85" y1="78" x2="124" y2="50" stroke="#2563eb" stroke-width="3"/>
+            <line x1="85" y1="78" x2="97" y2="31" stroke="#dc2626" stroke-width="3"/>
+            <path d="M116 78 A31 31 0 0 0 110 60" fill="none" stroke="#2563eb" stroke-width="2"/>
+            <path d="M114 66 A24 24 0 0 0 98 48" fill="none" stroke="#dc2626" stroke-width="2"/>
+            <text x="112" y="73" font-size="12" fill="#2563eb">x</text>
+            <text x="103" y="56" font-size="12" fill="#dc2626">2x</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>A. 單位圓雙角版</h3>
+      <p>同一個單位圓上同時標出角 <code>x</code> 與 <code>2x</code>，直接把倍角看成角度翻倍。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">B. 兩次旋轉版</div>
+        <div class="mockup-body">
+          <svg viewBox="0 0 220 150" width="100%" height="140" aria-label="two step rotation">
+            <circle cx="85" cy="78" r="48" fill="none" stroke="#1f2937" stroke-width="2"/>
+            <line x1="20" y1="78" x2="165" y2="78" stroke="#475569" stroke-width="2"/>
+            <line x1="85" y1="132" x2="85" y2="18" stroke="#475569" stroke-width="2"/>
+            <line x1="85" y1="78" x2="124" y2="50" stroke="#2563eb" stroke-width="3"/>
+            <line x1="85" y1="78" x2="132" y2="74" stroke="#0f766e" stroke-width="3"/>
+            <line x1="85" y1="78" x2="97" y2="31" stroke="#dc2626" stroke-width="3"/>
+            <path d="M113 78 A28 28 0 0 0 109 62" fill="none" stroke="#2563eb" stroke-width="2"/>
+            <path d="M116 64 A30 30 0 0 0 99 47" fill="none" stroke="#0f766e" stroke-width="2"/>
+            <text x="110" y="73" font-size="12" fill="#2563eb">x</text>
+            <text x="108" y="57" font-size="12" fill="#0f766e">x</text>
+            <text x="101" y="34" font-size="12" fill="#dc2626">2x</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B. 兩次旋轉版</h3>
+      <p>把 <code>2x</code> 畫成兩次連續的 <code>x</code> 旋轉，強調它來自和角公式中的 <code>x+x</code>。</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="c" onclick="toggleSelect(this)">
+    <div class="card-image">
+      <div class="mockup">
+        <div class="mockup-header">C. 投影差平方版</div>
+        <div class="mockup-body">
+          <svg viewBox="0 0 220 150" width="100%" height="140" aria-label="projection identity">
+            <circle cx="85" cy="78" r="48" fill="none" stroke="#1f2937" stroke-width="2"/>
+            <line x1="20" y1="78" x2="165" y2="78" stroke="#475569" stroke-width="2"/>
+            <line x1="85" y1="132" x2="85" y2="18" stroke="#475569" stroke-width="2"/>
+            <line x1="85" y1="78" x2="124" y2="50" stroke="#2563eb" stroke-width="3"/>
+            <line x1="124" y1="50" x2="124" y2="78" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 3"/>
+            <line x1="85" y1="78" x2="124" y2="78" stroke="#0f766e" stroke-width="3"/>
+            <line x1="124" y1="50" x2="85" y2="50" stroke="#dc2626" stroke-width="3"/>
+            <text x="98" y="92" font-size="12" fill="#0f766e">cos x</text>
+            <text x="91" y="46" font-size="12" fill="#dc2626">sin x</text>
+            <text x="150" y="54" font-size="12" fill="#1f2937">cos²x - sin²x</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C. 投影差平方版</h3>
+      <p>把重點放在 <code>\cos 2x=\cos^2 x-\sin^2 x</code>，圖上直接對應水平與垂直投影。</p>
+    </div>
+  </div>
+</div>
