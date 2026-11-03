@@ -68,6 +68,10 @@ $$
 \csc\theta=\frac{1}{\sin\theta}.
 $$
 
+![單位圓上角度 θ 對應的點 P=(cosθ, sinθ)，顯示 cos 為橫投影、sin 為縱投影](figures/unit-circle.svg)
+
+*圖：單位圓定義下，$\cos\theta$ 是點 $P$ 在 $x$ 軸的投影，$\sin\theta$ 是在 $y$ 軸的投影。四個特殊點 $(1,0)$、$(0,1)$、$(-1,0)$、$(0,-1)$ 分別對應 $\theta=0,\,\pi/2,\,\pi,\,3\pi/2$。*
+
 ```tikz {showConsole=false}
 \begin{tikzpicture}[scale=2]
   \draw[->, thick] (-0.2,0) -- (1.35,0) node[right] {$x$};

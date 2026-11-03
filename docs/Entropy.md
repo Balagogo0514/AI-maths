@@ -83,6 +83,10 @@ $$
 
 ## 3. Shannon Entropy 的定義與推導
 
+![二元熵函數 H(p) 曲線，p=0.5 時最大（H=1 bit），p=0 或 p=1 時 H=0](figures/entropy-curve.svg)
+
+*圖：二元熵 $H(p)=-p\log_2 p-(1-p)\log_2(1-p)$。均勻分布（$p=0.5$）時不確定性最大（1 bit）；接近確定事件（$p\to 0$ 或 $p\to 1$）時熵趨近 0。*
+
 公式
 
 $$
