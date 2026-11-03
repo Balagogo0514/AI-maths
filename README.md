@@ -48,7 +48,7 @@ AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、�
 
 | 筆記 | 內容 |
 |---|---|
-| [質數理論](docs/Prime-Theory.md) | 唯一分解、質數定理、判定與分解、密碼學 |
+| [質數理論](docs/Prime-Theory.md) | 唯一分解、質數定理、判定與分解、密碼學，含孿生質數與螺旋視覺化（烏拉姆／極座標螺旋） |
 | [黎曼猜想](docs/Riemann-Hypothesis.md) | zeta 函數、零點與素數分布 |
 | [NP 問題](docs/NP.md) | P/NP、NP-complete 與 AI 的關係，含逐步範例 |
 
