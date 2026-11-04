@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="320" viewBox="0 0 580 320">
+<rect width="580" height="320" fill="#fcfcfb" rx="8"/>
+<text x="290" y="28" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">囚徒困境收益矩陣</text>
+<text x="290" y="60" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2a78d6">參與者 B</text>
+<text x="128" y="180" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#eb6834" transform="rotate(-90,128,180)">參與者 A</text>
+<text x="225" y="80" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1baf7a">合作 (C)</text>
+<text x="146" y="140" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1baf7a">合作 (C)</text>
+<text x="355" y="80" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#eb6834">背叛 (D)</text>
+<text x="146" y="230" text-anchor="end" font-family="sans-serif" font-size="11" font-weight="bold" fill="#eb6834">背叛 (D)</text>
+<rect x="160" y="90" width="130" height="90" fill="#e8f7f1" stroke="#1baf7a" stroke-width="2.5"/>
+<text x="207" y="141" text-anchor="end" font-family="sans-serif" font-size="20" font-weight="bold" fill="#eb6834">3</text>
+<text x="225" y="141" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#898781">,</text>
+<text x="243" y="141" text-anchor="start" font-family="sans-serif" font-size="20" font-weight="bold" fill="#2a78d6">3</text>
+<text x="225" y="84" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1baf7a" font-weight="bold">Pareto 最優（集體最優）▲</text>
+<rect x="290" y="90" width="130" height="90" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1"/>
+<text x="337" y="141" text-anchor="end" font-family="sans-serif" font-size="20" font-weight="bold" fill="#eb6834">0</text>
+<text x="355" y="141" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#898781">,</text>
+<text x="373" y="141" text-anchor="start" font-family="sans-serif" font-size="20" font-weight="bold" fill="#2a78d6">5</text>
+<rect x="160" y="180" width="130" height="90" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1"/>
+<text x="207" y="231" text-anchor="end" font-family="sans-serif" font-size="20" font-weight="bold" fill="#eb6834">5</text>
+<text x="225" y="231" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#898781">,</text>
+<text x="243" y="231" text-anchor="start" font-family="sans-serif" font-size="20" font-weight="bold" fill="#2a78d6">0</text>
+<rect x="290" y="180" width="130" height="90" fill="#fef3ea" stroke="#eb6834" stroke-width="2.5"/>
+<text x="337" y="231" text-anchor="end" font-family="sans-serif" font-size="20" font-weight="bold" fill="#eb6834">1</text>
+<text x="355" y="231" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#898781">,</text>
+<text x="373" y="231" text-anchor="start" font-family="sans-serif" font-size="20" font-weight="bold" fill="#2a78d6">1</text>
+<text x="355" y="286" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#eb6834" font-weight="bold">◀ Nash 均衡（個體理性）</text>
+<text x="448" y="100" font-family="sans-serif" font-size="10" fill="#eb6834">A 的收益</text>
+<text x="448" y="118" font-family="sans-serif" font-size="10" fill="#2a78d6">B 的收益</text>
+<text x="448" y="154" font-family="sans-serif" font-size="10" fill="#1baf7a">背叛是嚴格優勢策略</text>
+<text x="448" y="172" font-family="sans-serif" font-size="10" fill="#898781">無論 B 怎麼選，</text>
+<text x="448" y="190" font-family="sans-serif" font-size="10" fill="#898781">A 背叛都更好</text>
+<text x="448" y="226" font-family="sans-serif" font-size="10" fill="#eb6834">Nash 均衡 (D,D)=(1,1)</text>
+<text x="448" y="244" font-family="sans-serif" font-size="10" fill="#1baf7a">Pareto 最優 (C,C)=(3,3)</text>
+<text x="448" y="262" font-family="sans-serif" font-size="10" fill="#898781">→ 個體理性≠集體最優</text>
+</svg>

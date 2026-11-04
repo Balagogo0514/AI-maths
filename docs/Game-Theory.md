@@ -35,6 +35,8 @@ $$\begin{array}{c|cc}
 
 **核心矛盾**：個體理性 ≠ 集體最優。這是市場失靈、軍備競賽、公共財問題的數學根源。
 
+![囚徒困境收益矩陣](figures/prisoner-dilemma.svg)
+
 **優勢策略消去法（IESDS）**：反覆刪除被嚴格優勢的策略，剩下的為可理性化策略。
 
 ---
@@ -48,6 +50,8 @@ $$\begin{array}{c|cc}
 **Nash 存在定理（1950）**：每個參與者有限的賽局至少存在一個混合策略 Nash 均衡。
 
 證明關鍵：Kakutani 不動點定理。最優反應對應 $BR_i(\sigma_{-i})$ 在混合策略空間是凸值映射，存在不動點。
+
+![最優反應曲線與 Nash 均衡](figures/best-response.svg)
 
 ### 例：剪刀石頭布（零和賽局）
 
@@ -97,6 +101,8 @@ $$\begin{array}{c|cc}
 **逆向歸納（Backward Induction）**：在位者若真面對進入，合作 $(3)$ 優於打價格戰 $(-1)$，威脅不可信。新進入者預見此，選擇進入。
 
 **子賽局完美均衡（SPNE）**：只保留在每個子賽局都是 Nash 均衡的策略，消除不可信威脅。
+
+![動態賽局樹與逆向歸納](figures/entry-game-tree.svg)
 
 ---
 
@@ -151,6 +157,8 @@ $$\phi_i(v) = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|!\,(n-|S|-1)!}{n!}\b
 是**唯一**滿足這四條性質的分配方式。
 
 **計算複雜度**：精確計算需 $O(2^n)$，$n$ 大時用蒙地卡羅近似。
+
+![Shapley Value 邊際貢獻計算](figures/shapley-value.svg)
 
 ---
 
