@@ -65,6 +65,9 @@ $$
 
 在 $p=0.5$ 時達到最大值 1 bit。
 
+![左：二元熵函數 H_b(p) 在 p=0.5 達到 1 bit 極大值；右：Shannon-Hartley 通道容量 C=log₂(1+SNR) 隨信噪比的對數增長](figures/info-theory-curves.svg)
+*圖左：二元熵曲線——均勻分布（$p=0.5$）不確定性最大，確定事件（$p=0$ 或 $1$）熵為零。圖右：Shannon-Hartley 定理——通道容量隨 S/N 對數增長，10 dB ≈ 3.46 bit/s/Hz，20 dB ≈ 6.66 bit/s/Hz。*
+
 ### 2.2 連續隨機變數：微分熵
 
 對連續分布，以積分取代求和，定義**微分熵（Differential Entropy）**：
