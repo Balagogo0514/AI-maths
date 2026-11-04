@@ -43,6 +43,8 @@ Hash(A) Hash(B) Hash(C) Hash(D)
 
 **Merkle Proof**：只需 $O(\log n)$ 個 hash 即可驗證某筆交易是否在區塊中，無需下載全部交易（輕節點驗證的基礎）。
 
+![Merkle Tree 結構與 Merkle Proof](figures/merkle-tree.svg)
+
 ---
 
 ## 2. 區塊結構
@@ -183,6 +185,8 @@ Vitalik 提出，三者難以同時兼顧：
 | Optimistic Rollup | 部分去中心化 | ~2000 TPS |
 | ZK Rollup | 部分去中心化 | ~100,000 TPS |
 
+![區塊鏈三難困境](figures/blockchain-trilemma.svg)
+
 ### ZK Rollup 原理
 
 將大量交易打包，在鏈下執行後生成**零知識證明**：
@@ -233,6 +237,8 @@ $$\Delta y = \frac{y \cdot \Delta x}{x + \Delta x}$$
 $$\text{IL}(r) = \frac{2\sqrt{r}}{1+r} - 1$$
 
 $r=4$（價格漲 4 倍）時 IL ≈ −20%；$r=0.25$（跌至 1/4）時 IL ≈ −20%（對稱）。
+
+![AMM 恆積曲線與無常損失](figures/amm-curve.svg)
 
 ---
 

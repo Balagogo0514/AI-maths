@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="330" viewBox="0 0 580 330">
+<rect width="580" height="330" fill="#fcfcfb" rx="8"/>
+<text x="290" y="26" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">區塊鏈三難困境（Trilemma）</text>
+<text x="290" y="44" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">去中心化、安全性、可擴展性三者難以同時兼顧</text>
+<polygon points="190.0,72.0 87.8,249.0 292.2,249.0" fill="none" stroke="#c3c2b7" stroke-width="2" stroke-dasharray="6,3"/>
+<polygon points="190.0,72.0 87.8,249.0 292.2,249.0" fill="#2a78d6" opacity="0.05"/>
+<circle cx="190.0" cy="72.0" r="7" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<text x="190.0" y="48.0" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a78d6">安全性 🔒</text>
+<circle cx="87.8" cy="249.0" r="7" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<text x="75.8" y="269.0" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a78d6">去中心化 🌐</text>
+<circle cx="292.2" cy="249.0" r="7" fill="#2a78d6" stroke="#fcfcfb" stroke-width="2"/>
+<text x="304.2" y="269.0" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a78d6">可擴展性 ⚡</text>
+<circle cx="163.4" cy="174.7" r="7" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"/>
+<circle cx="185.9" cy="181.7" r="7" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"/>
+<circle cx="225.8" cy="187.1" r="7" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"/>
+<circle cx="208.4" cy="181.7" r="7" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"/>
+<text x="350" y="64" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0b0b0b">各方案定位</text>
+<circle cx="356" cy="88" r="7" fill="#eb6834" stroke="#fcfcfb" stroke-width="1.5"/>
+<text x="368" y="92" font-family="sans-serif" font-size="11" font-weight="bold" fill="#eb6834">比特幣 PoW</text>
+<text x="368" y="106" font-family="sans-serif" font-size="10" fill="#898781">犧牲可擴展性 (~7 TPS)</text>
+<circle cx="356" cy="132" r="7" fill="#2a78d6" stroke="#fcfcfb" stroke-width="1.5"/>
+<text x="368" y="136" font-family="sans-serif" font-size="11" font-weight="bold" fill="#2a78d6">以太坊 PoS</text>
+<text x="368" y="150" font-family="sans-serif" font-size="10" fill="#898781">兼顧三者但偏安全/去中心化</text>
+<circle cx="356" cy="176" r="7" fill="#eda100" stroke="#fcfcfb" stroke-width="1.5"/>
+<text x="368" y="180" font-family="sans-serif" font-size="11" font-weight="bold" fill="#eda100">EOS</text>
+<text x="368" y="194" font-family="sans-serif" font-size="10" fill="#898781">犧牲去中心化 (21節點)</text>
+<circle cx="356" cy="220" r="7" fill="#1baf7a" stroke="#fcfcfb" stroke-width="1.5"/>
+<text x="368" y="224" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1baf7a">ZK Rollup</text>
+<text x="368" y="238" font-family="sans-serif" font-size="10" fill="#898781">高擴展性，部分去中心化</text>
+<text x="190" y="198" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781" font-style="italic">三選二</text>
+<text x="290" y="318" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">Vitalik 提出：在同一層協議中無法三者兼顧，Layer 2 方案試圖突破限制</text>
+</svg>

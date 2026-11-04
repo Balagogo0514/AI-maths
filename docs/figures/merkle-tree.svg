@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="320" viewBox="0 0 580 320">
+<rect width="580" height="320" fill="#fcfcfb" rx="8"/>
+<text x="290" y="26" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">Merkle Tree：交易完整性驗證</text>
+<text x="290" y="44" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">Merkle Proof 只需 O(log n) 個雜湊值即可驗證任意一筆交易</text>
+<line x1="100" y1="256" x2="100" y2="225" stroke="#e1e0d9" stroke-width="1.5"/>
+<line x1="196" y1="256" x2="196" y2="225" stroke="#e1e0d9" stroke-width="1.5"/>
+<line x1="326" y1="256" x2="326" y2="225" stroke="#e1e0d9" stroke-width="1.5"/>
+<line x1="422" y1="256" x2="422" y2="225" stroke="#e1e0d9" stroke-width="1.5"/>
+<line x1="100" y1="196" x2="148" y2="169" stroke="#2a78d6" stroke-width="2"/>
+<line x1="196" y1="196" x2="148" y2="169" stroke="#2a78d6" stroke-width="2"/>
+<line x1="326" y1="196" x2="374" y2="169" stroke="#eb6834" stroke-width="2"/>
+<line x1="422" y1="196" x2="374" y2="169" stroke="#2a78d6" stroke-width="2"/>
+<line x1="148" y1="141" x2="261" y2="114" stroke="#2a78d6" stroke-width="2"/>
+<line x1="374" y1="141" x2="261" y2="114" stroke="#1baf7a" stroke-width="2"/>
+<rect x="63" y="256" width="74" height="28" rx="5" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1.8"/>
+<text x="100" y="275" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#c3c2b7">Tx A</text>
+<rect x="159" y="256" width="74" height="28" rx="5" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1.8"/>
+<text x="196" y="275" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#c3c2b7">Tx B</text>
+<rect x="289" y="256" width="74" height="28" rx="5" fill="#fff3ee" stroke="#eb6834" stroke-width="1.8"/>
+<text x="326" y="275" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#eb6834">Tx C</text>
+<rect x="385" y="256" width="74" height="28" rx="5" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1.8"/>
+<text x="422" y="275" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#c3c2b7">Tx D</text>
+<rect x="63" y="196" width="74" height="28" rx="5" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1.8"/>
+<text x="100" y="215" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#c3c2b7">H(A)</text>
+<rect x="159" y="196" width="74" height="28" rx="5" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1.8"/>
+<text x="196" y="215" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#c3c2b7">H(B)</text>
+<rect x="289" y="196" width="74" height="28" rx="5" fill="#fff3ee" stroke="#eb6834" stroke-width="1.8"/>
+<text x="326" y="215" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#eb6834">H(C)</text>
+<rect x="385" y="196" width="74" height="28" rx="5" fill="#eef4fb" stroke="#2a78d6" stroke-width="1.8"/>
+<text x="422" y="215" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#2a78d6">H(D)</text>
+<rect x="111" y="141" width="74" height="28" rx="5" fill="#eef4fb" stroke="#2a78d6" stroke-width="1.8"/>
+<text x="148" y="160" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#2a78d6">H(AB)</text>
+<rect x="337" y="141" width="74" height="28" rx="5" fill="#fcfcfb" stroke="#c3c2b7" stroke-width="1.8"/>
+<text x="374" y="160" text-anchor="middle" font-family="monospace" font-size="10" font-weight="normal" fill="#c3c2b7">H(CD)</text>
+<rect x="221" y="86" width="80" height="28" rx="5" fill="#edfaf4" stroke="#1baf7a" stroke-width="1.8"/>
+<text x="261" y="105" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#1baf7a">Root Hash</text>
+<rect x="16" y="254" width="12" height="12" rx="2" fill="#eb6834" opacity="0.7"/>
+<text x="32" y="264" font-family="sans-serif" font-size="10" fill="#0b0b0b">驗證目標 Tx C</text>
+<rect x="176" y="254" width="12" height="12" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="192" y="264" font-family="sans-serif" font-size="10" fill="#0b0b0b">Proof 所需節點（O(log n)）</text>
+<rect x="336" y="254" width="12" height="12" rx="2" fill="#1baf7a" opacity="0.7"/>
+<text x="352" y="264" font-family="sans-serif" font-size="10" fill="#0b0b0b">Root Hash</text>
+<text x="290" y="308" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">Root Hash 存入區塊頭，任何交易被竄改都會導致 Root 不一致</text>
+</svg>
