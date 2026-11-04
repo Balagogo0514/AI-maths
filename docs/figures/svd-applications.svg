@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="310" viewBox="0 0 580 310">
+<rect width="580" height="310" fill="#fcfcfb" rx="8"/>
+<text x="290" y="24" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">SVD 在 AI 的應用</text>
+<rect x="24" y="60" width="172" height="107" rx="8" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="1.5"/>
+<rect x="24" y="60" width="172" height="4" rx="4" fill="#2a78d6" opacity="0.5"/>
+<text x="110" y="82" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2a78d6">PCA</text>
+<text x="110" y="96" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">主成分分析</text>
+<text x="110" y="116" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0b0b0b">X=UΣVᵀ → Vᵀ 投影</text>
+<text x="110" y="132" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">方差最大方向 = 右奇異向量</text>
+<rect x="204" y="60" width="172" height="107" rx="8" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="1.5"/>
+<rect x="204" y="60" width="172" height="4" rx="4" fill="#eb6834" opacity="0.5"/>
+<text x="290" y="82" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#eb6834">推薦系統</text>
+<text x="290" y="96" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">矩陣分解</text>
+<text x="290" y="116" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0b0b0b">R ≈ UₖΣₖVₖᵀ</text>
+<text x="290" y="132" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">用戶・物品潛在空間</text>
+<rect x="384" y="60" width="172" height="107" rx="8" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="1.5"/>
+<rect x="384" y="60" width="172" height="4" rx="4" fill="#1baf7a" opacity="0.5"/>
+<text x="470" y="82" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1baf7a">LSA</text>
+<text x="470" y="96" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">潛在語義分析</text>
+<text x="470" y="116" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0b0b0b">詞-文件矩陣 SVD</text>
+<text x="470" y="132" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">語義相近詞距離接近</text>
+<rect x="24" y="175" width="172" height="107" rx="8" fill="#eda100" opacity="0.07" stroke="#eda100" stroke-width="1.5"/>
+<rect x="24" y="175" width="172" height="4" rx="4" fill="#eda100" opacity="0.5"/>
+<text x="110" y="197" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#eda100">LoRA</text>
+<text x="110" y="211" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">低秩微調</text>
+<text x="110" y="231" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0b0b0b">ΔW = BA（r≪min(d,k)）</text>
+<text x="110" y="247" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">訓練參數量大幅下降</text>
+<rect x="204" y="175" width="172" height="107" rx="8" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="1.5"/>
+<rect x="204" y="175" width="172" height="4" rx="4" fill="#2a78d6" opacity="0.5"/>
+<text x="290" y="197" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#2a78d6">偽逆 A⁺</text>
+<text x="290" y="211" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">最小二乘</text>
+<text x="290" y="231" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0b0b0b">x*=VΣ⁺Uᵀb</text>
+<text x="290" y="247" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">數值穩定超越法方程</text>
+<rect x="384" y="175" width="172" height="107" rx="8" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="1.5"/>
+<rect x="384" y="175" width="172" height="4" rx="4" fill="#eb6834" opacity="0.5"/>
+<text x="470" y="197" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#eb6834">譜正規化</text>
+<text x="470" y="211" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">訓練穩定</text>
+<text x="470" y="231" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#0b0b0b">限制 σ₁(W)</text>
+<text x="470" y="247" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">防止梯度過度放大</text>
+<text x="290" y="300" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">共同基礎：低秩假設——真實資料的「本質維度」遠低於原始維度</text>
+</svg>

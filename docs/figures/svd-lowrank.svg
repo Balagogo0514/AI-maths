@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="300" viewBox="0 0 580 300">
+<rect width="580" height="300" fill="#fcfcfb" rx="8"/>
+<text x="290" y="24" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">低秩近似：Eckart-Young 定理</text>
+<text x="290" y="42" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">A = σ₁u₁v₁ᵀ + σ₂u₂v₂ᵀ + … → 截取前 k 項為最佳秩-k 近似</text>
+<text x="158" y="62" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0b0b0b">奇異值衰減</text>
+<rect x="28" y="80" width="18" height="160" fill="#2a78d6" opacity="0.85" rx="2"/>
+<text x="37" y="75" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">σ1</text>
+<rect x="54" y="125" width="18" height="115" fill="#2a78d6" opacity="0.85" rx="2"/>
+<text x="63" y="120" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">σ2</text>
+<rect x="80" y="164" width="18" height="76" fill="#2a78d6" opacity="0.85" rx="2"/>
+<line x1="102" y1="68" x2="102" y2="248" stroke="#eb6834" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="104" y="80" font-family="sans-serif" font-size="9" fill="#eb6834">截斷</text>
+<text x="89" y="159" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">σ3</text>
+<rect x="106" y="192" width="18" height="48" fill="#e1e0d9" opacity="0.85" rx="2"/>
+<rect x="132" y="212" width="18" height="28" fill="#e1e0d9" opacity="0.85" rx="2"/>
+<rect x="158" y="224" width="18" height="16" fill="#e1e0d9" opacity="0.85" rx="2"/>
+<rect x="184" y="231" width="18" height="9" fill="#e1e0d9" opacity="0.85" rx="2"/>
+<rect x="210" y="236" width="18" height="4" fill="#e1e0d9" opacity="0.85" rx="2"/>
+<rect x="236" y="238" width="18" height="2" fill="#e1e0d9" opacity="0.85" rx="2"/>
+<rect x="262" y="239" width="18" height="1" fill="#e1e0d9" opacity="0.85" rx="2"/>
+<line x1="24" y1="240" x2="292" y2="240" stroke="#c3c2b7" stroke-width="1.2"/>
+<text x="158" y="256" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">奇異值序號 i</text>
+<rect x="26" y="262" width="82" height="16" rx="3" fill="#2a78d6" opacity="0.12"/>
+<text x="57" y="273" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">保留 k=3</text>
+<text x="197" y="273" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">丟棄（誤差）</text>
+<text x="28" y="292" font-family="sans-serif" font-size="10" fill="#0b0b0b">解釋變異比 EVR = 92.7%</text>
+<text x="292" y="111" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">Aₖ =</text>
+<text x="338" y="111" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a78d6">σ₁</text>
+<rect x="358" y="68" width="20" height="70" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="368" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a78d6">u₁</text>
+<text x="368" y="122" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">m×1</text>
+<rect x="382" y="93" width="54" height="20" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="409" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a78d6">v₁ᵀ</text>
+<text x="409" y="122" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">1×n</text>
+<text x="446" y="111" font-family="sans-serif" font-size="14" fill="#0b0b0b">+</text>
+<text x="466" y="111" font-family="sans-serif" font-size="12" font-weight="bold" fill="#eb6834">σ₂</text>
+<rect x="486" y="68" width="20" height="70" rx="4" fill="#eb6834" opacity="0.15" stroke="#eb6834" stroke-width="1.5"/>
+<text x="496" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#eb6834">u₂</text>
+<text x="496" y="122" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">m×1</text>
+<rect x="510" y="93" width="54" height="20" rx="4" fill="#eb6834" opacity="0.15" stroke="#eb6834" stroke-width="1.5"/>
+<text x="537" y="108" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#eb6834">v₂ᵀ</text>
+<text x="537" y="122" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">1×n</text>
+<text x="574" y="111" font-family="sans-serif" font-size="13" fill="#898781">+ …</text>
+<text x="330" y="168" font-family="sans-serif" font-size="10" fill="#0b0b0b">儲存完整 A：mn 個數</text>
+<text x="330" y="184" font-family="sans-serif" font-size="10" fill="#0b0b0b">儲存 Aₖ：k(m+n+1) 個數</text>
+<rect x="326" y="194" width="224" height="38" rx="5" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="1"/>
+<text x="438" y="210" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#1baf7a">例：1000×1000 圖片，k=50</text>
+<text x="438" y="224" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#1baf7a">100 萬 → 10 萬個數（壓縮 10×）</text>
+<text x="290" y="288" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">誤差 ‖A−Aₖ‖_F = √(σₖ₊₁² + … + σᵣ²)；EVR 衡量保留了多少資訊</text>
+</svg>
