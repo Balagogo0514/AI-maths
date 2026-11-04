@@ -148,7 +148,57 @@ $$\sigma' = \Upsilon(\sigma, T) \quad \text{（以太坊狀態轉換函數）}$$
 
 ---
 
-## 6. 智能合約
+## 6. 鏈長成長與帳本更新效率
+
+> **常見疑問**：區塊鏈越來越長，更新帳本是否越來越慢？
+
+答案是**部分操作是，核心出塊流程設計上不受鏈長影響**。
+
+### 6.1 不隨鏈長變慢的操作
+
+**出塊時間**：PoW 有難度自動調整機制，每 2016 個區塊（約兩週）重新校準，確保出塊時間恆定約 10 分鐘，與鏈長無關。
+
+**交易驗證**：節點無需掃描歷史鏈，只需查當前狀態：
+
+| 模型 | 查詢目標 | 複雜度 |
+|------|---------|--------|
+| UTXO（比特幣） | UTXO 集合（記憶體 hash 表，~5–8 GB） | $O(1)$ |
+| Account（以太坊） | 狀態樹（Merkle Patricia Trie） | $O(\log n)$，$n$=帳戶數 |
+
+Merkle Tree 保證：驗證一筆交易只需 $O(\log N)$ 個雜湊值（$N$=區塊內交易數），與鏈長完全無關。
+
+**核心洞察**：不可篡改性靠 hash 鏈結歷史，驗證新交易靠當前狀態——如同銀行不需重播所有歷史才知道你的餘額。
+
+### 6.2 確實隨鏈長變慢的操作
+
+**初始同步（IBD, Initial Block Download）**：新節點加入必須下載並驗證所有歷史區塊：
+
+$$T_{\text{sync}} \propto \text{鏈總大小（線性成長）}$$
+
+| 網路 | 目前資料量 | 完整同步時間 |
+|------|-----------|------------|
+| 比特幣 | ≈ 600 GB | 數天（家用寬頻） |
+| 以太坊 Archive | ≈ 1 TB+ | 一週以上 |
+
+**狀態膨脹（State Bloat）**：以太坊狀態樹隨帳戶與合約增加而增大，Trie 深度 $\approx O(\log \text{帳戶數})$，每次讀寫略慢；長期閒置「殭屍帳戶」永久佔據儲存空間。
+
+### 6.3 解法：剪枝與輕節點
+
+現代節點普遍採用**剪枝（Pruning）**，只保留當前狀態，不保存完整歷史：
+
+```
+Full Node（預設）：最近數千區塊 + 當前狀態（~50–100 GB）
+Archive Node：全部歷史（供區塊瀏覽器，1 TB+）
+Light Node：只下載區塊頭，透過 Merkle Proof 驗證交易
+```
+
+正在研究中的長期方案：
+- **EIP-4444**：歷史資料到期，由其他網路層（如 Portal Network）分散儲存
+- **Verkle Tree**：比 Merkle Patricia Trie 更淺的樹結構，縮小見證資料（Witness）大小，支援 Stateless Client
+
+---
+
+## 8. 智能合約
 
 在區塊鏈上執行的**自動化程式**，條件滿足時自動執行，無需中介。
 
@@ -171,7 +221,7 @@ function transfer(address to, uint256 amount) public returns (bool) {
 
 ---
 
-## 7. 擴展性三難困境（Trilemma）
+## 9. 擴展性三難困境（Trilemma）
 
 Vitalik 提出，三者難以同時兼顧：
 
@@ -197,7 +247,7 @@ $$\pi = \text{ZKProve}(\text{state\_before}, \text{transactions}, \text{state\_a
 
 ---
 
-## 8. 零知識證明（Zero-Knowledge Proof）
+## 10. 零知識證明（Zero-Knowledge Proof）
 
 證明者（Prover）向驗證者（Verifier）**證明知道某個秘密，而不揭露秘密本身**。
 
@@ -218,7 +268,7 @@ $$\pi = \text{ZKProve}(\text{state\_before}, \text{transactions}, \text{state\_a
 
 ---
 
-## 9. DeFi 中的數學
+## 11. DeFi 中的數學
 
 ### 自動做市商（AMM）：Uniswap v2
 
@@ -242,7 +292,7 @@ $r=4$（價格漲 4 倍）時 IL ≈ −20%；$r=0.25$（跌至 1/4）時 IL ≈
 
 ---
 
-## 10. 區塊鏈與 AI
+## 12. 區塊鏈與 AI
 
 | 領域 | 關係 |
 |---|---|
@@ -255,7 +305,7 @@ $r=4$（價格漲 4 倍）時 IL ≈ −20%；$r=0.25$（跌至 1/4）時 IL ≈
 
 ---
 
-## 11. 小結
+## 13. 小結
 
 | 概念 | 核心要點 |
 |---|---|
@@ -265,6 +315,7 @@ $r=4$（價格漲 4 倍）時 IL ≈ −20%；$r=0.25$（跌至 1/4）時 IL ≈
 | PoS | 持倉比例選舉；Slash 機制；能耗低 |
 | BFT | $f < n/3$ 容忍惡意節點；即時最終性 |
 | CAP | AP（比特幣）vs. CP（Tendermint） |
+| 鏈長與效率 | 出塊恆定（難度調整）；驗證查當前狀態 O(1)/O(log n)；IBD 線性成長；Pruning 解決 |
 | 智能合約 | EVM Bytecode；Gas 費；重入攻擊 |
 | Trilemma | 去中心化/安全/可擴展性三選二 |
 | ZK Proof | 完整性+正確性+零知識性；zk-SNARK/STARK |
