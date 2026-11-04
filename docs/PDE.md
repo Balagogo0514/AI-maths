@@ -37,6 +37,8 @@ $$\frac{\partial u}{\partial t} = \alpha \nabla^2 u$$
 
 $u(x,t)$：溫度；$\alpha > 0$：熱擴散率。描述熱能從高溫向低溫**擴散**的過程。
 
+![熱方程演化](figures/heat-equation.svg)
+
 **解的性質**：
 - 初始溫度分布 $u(x,0) = f(x)$ 隨時間「磨平」
 - 解可用格林函數（高斯核）表示：
@@ -90,6 +92,8 @@ $\mathbf{v}$：流速；$p$：壓力；$\mu$：黏滯係數；$\rho$：密度；
 | **橢圓型** | $\Delta < 0$ | 拉普拉斯方程 | 穩態、平衡 |
 | **拋物型** | $\Delta = 0$ | 熱方程 | 擴散、平滑 |
 | **雙曲型** | $\Delta > 0$ | 波方程 | 振盪、傳播 |
+
+![三類 PDE 解的行為比較](figures/pde-types.svg)
 
 三種類型對應完全不同的初邊值條件設置與解的正則性。
 
@@ -153,6 +157,8 @@ $$\frac{\partial p}{\partial t} = -\frac{\partial}{\partial x}[f(x,t)p] + \frac{
 - 第一項（漂移項）：確定性的「推流」
 - 第二項（擴散項）：噪聲導致的概率擴散
 
+![Fokker-Planck 機率密度擴散演化](figures/fokker-planck.svg)
+
 ---
 
 ## 6. PDE 與深度學習
@@ -172,6 +178,8 @@ $$dx = -\frac{\beta(t)}{2}x\,dt + \sqrt{\beta(t)}\,dW_t$$
 $$dx = \left[-\frac{\beta(t)}{2}x - \beta(t)\nabla_x \log p_t(x)\right]dt + \sqrt{\beta(t)}\,d\bar{W}_t$$
 
 其中 $\nabla_x \log p_t(x)$ 是 **score function**，由神經網路學習近似。生成圖片 = 求解逆向 SDE。
+
+![擴散模型前向加噪與逆向去噪](figures/diffusion-model-sde.svg)
 
 | 階段 | PDE 對應 |
 |---|---|
