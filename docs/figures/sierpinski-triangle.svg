@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="500" viewBox="0 0 580 500">
+<rect width="580" height="500" fill="#fcfcfb" rx="8"/>
+<text x="290" y="30" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">謝爾賓斯基三角形（Sierpiński Triangle）迭代過程</text>
+<path d="M135.00,68.00L55.33,206.00L214.67,206.00Z" fill="#2a78d6" stroke="#fcfcfb" stroke-width="0.8"/>
+<text x="135" y="274" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#898781">第 0 次迭代（等邊三角形）</text>
+<path d="M420.00,68.00L380.16,137.00L459.84,137.00Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M380.16,137.00L340.33,206.00L420.00,206.00Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M459.84,137.00L420.00,206.00L499.67,206.00Z" fill="#eb6834" stroke="#fcfcfb" stroke-width="0.8"/>
+<text x="420" y="274" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#898781">第 1 次迭代（3 個子三角形）</text>
+<path d="M135.00,293.00L115.08,327.50L154.92,327.50Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M115.08,327.50L95.16,362.00L135.00,362.00Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M154.92,327.50L135.00,362.00L174.84,362.00Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M95.16,362.00L75.24,396.50L115.08,396.50Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M75.24,396.50L55.33,431.00L95.16,431.00Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M115.08,396.50L95.16,431.00L135.00,431.00Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M174.84,362.00L154.92,396.50L194.76,396.50Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M154.92,396.50L135.00,431.00L174.84,431.00Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M194.76,396.50L174.84,431.00L214.67,431.00Z" fill="#1baf7a" stroke="#fcfcfb" stroke-width="0.8"/>
+<text x="135" y="499" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#898781">第 2 次迭代（9 個子三角形）</text>
+<path d="M420.00,293.00L410.04,310.25L429.96,310.25Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M410.04,310.25L400.08,327.50L420.00,327.50Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M429.96,310.25L420.00,327.50L439.92,327.50Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M400.08,327.50L390.12,344.75L410.04,344.75Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M390.12,344.75L380.16,362.00L400.08,362.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M410.04,344.75L400.08,362.00L420.00,362.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M439.92,327.50L429.96,344.75L449.88,344.75Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M429.96,344.75L420.00,362.00L439.92,362.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M449.88,344.75L439.92,362.00L459.84,362.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M380.16,362.00L370.20,379.25L390.12,379.25Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M370.20,379.25L360.24,396.50L380.16,396.50Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M390.12,379.25L380.16,396.50L400.08,396.50Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M360.24,396.50L350.28,413.75L370.20,413.75Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M350.28,413.75L340.33,431.00L360.24,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M370.20,413.75L360.24,431.00L380.16,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M400.08,396.50L390.12,413.75L410.04,413.75Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M390.12,413.75L380.16,431.00L400.08,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M410.04,413.75L400.08,431.00L420.00,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M459.84,362.00L449.88,379.25L469.80,379.25Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M449.88,379.25L439.92,396.50L459.84,396.50Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M469.80,379.25L459.84,396.50L479.76,396.50Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M439.92,396.50L429.96,413.75L449.88,413.75Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M429.96,413.75L420.00,431.00L439.92,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M449.88,413.75L439.92,431.00L459.84,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M479.76,396.50L469.80,413.75L489.72,413.75Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M469.80,413.75L459.84,431.00L479.76,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<path d="M489.72,413.75L479.76,431.00L499.67,431.00Z" fill="#eda100" stroke="#fcfcfb" stroke-width="0.8"/>
+<text x="420" y="499" text-anchor="middle" font-family="sans-serif" font-size="11" fill="#898781">第 3 次迭代  d ≈ 1.585</text>
+</svg>
