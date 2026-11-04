@@ -30,6 +30,8 @@ $$x_t = \sqrt{\bar{\alpha}_t}\, x_0 + \sqrt{1 - \bar{\alpha}_t}\, \epsilon, \qua
 - $t = 0$：原始資料 $x_0$
 - $t = T$：幾乎純高斯 $x_T \approx \mathcal{N}(0, I)$
 
+![噪聲排程比較：Linear vs. Cosine](figures/noise-schedule.svg)
+
 ### 2.2 逆向過程（去噪）
 
 逆向條件分布由 Bayes 定理推導，仍是高斯分布：
@@ -118,6 +120,8 @@ $$\epsilon_{\text{guided}} = \epsilon_\theta(x_t, \emptyset) + w \cdot \bigl[\ep
 - $w$ 越大：越符合條件，多樣性降低
 - 一個模型同時學有條件/無條件，無需外部分類器
 
+![CFG 引導強度與品質/多樣性權衡](figures/cfg-guidance.svg)
+
 ---
 
 ## 6. Latent Diffusion Model（LDM）
@@ -135,6 +139,8 @@ $$\epsilon_{\text{guided}} = \epsilon_\theta(x_t, \emptyset) + w \cdot \bigl[\ep
 - Encoder/Decoder：預訓練的 VQ-VAE 或 KL-VAE，訓練後**凍結**
 - 文字條件：CLIP 編碼後透過 Cross-Attention 注入 U-Net
 - **Stable Diffusion** 即基於此架構，計算量降低約 20×
+
+![LDM 架構流程](figures/ldm-architecture.svg)
 
 ---
 

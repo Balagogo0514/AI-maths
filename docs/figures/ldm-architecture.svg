@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="280" viewBox="0 0 580 280">
+<defs><marker id="arr2a78d6" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2a78d6"/></marker><marker id="arreb6834" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#eb6834"/></marker><marker id="arr1baf7a" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1baf7a"/></marker><marker id="arreda100" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#eda100"/></marker><marker id="arr898781" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#898781"/></marker></defs>
+<marker id="arr9b59b6" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#9b59b6"/></marker>
+<rect width="580" height="280" fill="#fcfcfb" rx="8"/>
+<text x="290" y="26" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">Latent Diffusion Model（LDM）架構</text>
+<rect x="18" y="52" width="78" height="55" rx="8" fill="#e8f0fb" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="57" y="79" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0b0b0b">圖像 x</text>
+<text x="57" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">像素空間</text>
+<rect x="118" y="52" width="78" height="55" rx="8" fill="#fef3ea" stroke="#eb6834" stroke-width="1.5"/>
+<text x="157" y="79" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0b0b0b">Encoder</text>
+<text x="157" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">VAE/VQVAE</text>
+<rect x="248" y="160" width="78" height="55" rx="8" fill="#e8f7f1" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="287" y="187" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0b0b0b">z₀</text>
+<text x="287" y="203" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">潛在空間</text>
+<rect x="358" y="160" width="78" height="55" rx="8" fill="#fef9e3" stroke="#eda100" stroke-width="1.5"/>
+<text x="397" y="187" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0b0b0b">擴散模型</text>
+<text x="397" y="203" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">U-Net/DiT</text>
+<rect x="468" y="160" width="78" height="55" rx="8" fill="#e8f7f1" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="507" y="187" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0b0b0b">z̃₀</text>
+<text x="507" y="203" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">去噪後</text>
+<rect x="358" y="52" width="78" height="55" rx="8" fill="#fef3ea" stroke="#eb6834" stroke-width="1.5"/>
+<text x="397" y="79" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0b0b0b">Decoder</text>
+<text x="397" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">VAE/VQVAE</text>
+<rect x="468" y="52" width="78" height="55" rx="8" fill="#e8f0fb" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="507" y="79" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#0b0b0b">圖像 x̂</text>
+<text x="507" y="95" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">還原</text>
+<line x1="96" y1="79" x2="118" y2="79" stroke="#eb6834" stroke-width="1.8" marker-end="url(#arreb6834)"/>
+<text x="107" y="72" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#eb6834">編碼</text>
+<path d="M 157 107 L 157 150 L 287 150 L 287 160" fill="none" stroke="#1baf7a" stroke-width="1.8" marker-end="url(#arr1baf7a)" stroke-dasharray="5,3"/>
+<text x="222" y="146" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1baf7a">z = E(x)</text>
+<line x1="326" y1="187" x2="358" y2="187" stroke="#eda100" stroke-width="1.8" marker-end="url(#arreda100)"/>
+<text x="342" y="180" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#eda100">前向加噪/逆向去噪</text>
+<line x1="436" y1="187" x2="468" y2="187" stroke="#1baf7a" stroke-width="1.8" marker-end="url(#arr1baf7a)"/>
+<path d="M 507 160 L 507 150 L 397 150 L 397 107" fill="none" stroke="#eb6834" stroke-width="1.8" marker-end="url(#arreb6834)" stroke-dasharray="5,3"/>
+<text x="452" y="146" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#eb6834">x̂ = D(z̃₀)</text>
+<line x1="436" y1="79" x2="468" y2="79" stroke="#2a78d6" stroke-width="1.8" marker-end="url(#arr2a78d6)"/>
+<text x="452" y="72" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#2a78d6">解碼</text>
+<rect x="352" y="229" width="90" height="30" rx="6" fill="#f0eaf8" stroke="#9b59b6" stroke-width="1.2"/>
+<text x="397" y="248" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#6c3483">文字條件 c</text>
+<line x1="397" y1="229" x2="397" y2="217" stroke="#9b59b6" stroke-width="1.5" marker-end="url(#arr9b59b6)"/>
+<text x="445" y="243" font-family="sans-serif" font-size="9" fill="#898781" font-style="italic">CLIP + Cross-Attention</text>
+<text x="8" y="83" font-family="sans-serif" font-size="9" fill="#898781" transform="rotate(-90,8,79)">像素空間</text>
+<text x="8" y="191" font-family="sans-serif" font-size="9" fill="#898781" transform="rotate(-90,8,187)">潛在空間</text>
+<line x1="14" y1="48" x2="14" y2="219" stroke="#e1e0d9" stroke-width="1" stroke-dasharray="3,3"/>
+<text x="290" y="270" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">Encoder/Decoder 預訓練後凍結；擴散模型在低維 z 空間訓練，計算量降低 ~20×</text>
+</svg>
