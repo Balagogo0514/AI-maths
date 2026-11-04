@@ -316,7 +316,83 @@ $$
 
 其中 $Z_1, Z_2$ 是同一圖像兩個增廣版本的嵌入。
 
-## 10. 小結
+## 10. 歷史發展進程
+
+### 10.1 前夜（1920s–1940s）
+
+**1924 — Nyquist**：推導有限頻寬通道的最大傳輸速率，「Nyquist 取樣定理」前身。
+
+**1928 — Hartley**：定義資訊量 $H = n\log s$，第一次嘗試量化資訊，但未考慮機率分布。
+
+**1948 — Shannon《通訊的數學理論》**：划時代之作，一篇論文同時建立：
+- 熵的精確定義 $H = -\sum p\log p$
+- 無損壓縮定理（Source Coding Theorem）
+- 通道容量與通道編碼定理（Channel Coding Theorem）
+
+Shannon 明確表示這套理論**不處理語義**，只處理統計結構——這條邊界後來被 AI 刻意跨越。
+
+**1951 — Huffman 編碼**：Robert Huffman 在課程作業中提交，擊敗指導教授，成為第一個達到 Shannon 下界的實用壓縮算法。
+
+### 10.2 擴張（1960s–1980s）
+
+**1963 — Gallager**：提出 LDPC 碼（低密度奇偶校驗碼），理論上接近 Shannon 極限，但因計算量太大被擱置 35 年，1990 年代重新發現後成為 5G 標準。
+
+**1968 — Kolmogorov 複雜度**：用「描述長度」重新定義複雜性——一個物件的 Kolmogorov 複雜度是描述它的**最短程式長度**，連結資訊論與可計算理論。
+
+**1982 — Amari 資訊幾何**：用黎曼幾何重新詮釋資訊論，Fisher 資訊矩陣成為參數空間的度量張量，後來影響神經網路優化理論（Natural Gradient）。
+
+### 10.3 與機器學習的融合（1990s–2010s）
+
+**1991 — MDL 原則（Minimum Description Length）**：最好的模型 = 壓縮資料最短的模型，統一了奧卡姆剃刀與統計學習理論：
+
+$$
+\text{MDL} = L(\text{model}) + L(\text{data} \mid \text{model})
+$$
+
+**1997 — Turbo 碼、LDPC 復活**：首次在實際系統中逼近 Shannon 極限（相差 < 0.5 dB），掀起編碼理論革命。
+
+**1999 — ICA**：Bell & Sejnowski 以互資訊最小化做盲源分離，直接連結統計獨立性與資訊論。
+
+### 10.4 資訊論進入深度學習核心（2013–今）
+
+**2013 — VAE（Variational Autoencoder）**：整個生成框架就是資訊論的變分不等式：
+
+$$
+\mathcal{L} = \underbrace{\mathbb{E}[\log p(x|z)]}_{\text{重建（交叉熵）}} - \underbrace{D_{\text{KL}}(q(z|x)\|p(z))}_{\text{後驗與先驗的 KL 散度}}
+$$
+
+**2017 — Information Bottleneck（IB）假說**（Tishby & Schwartz-Ziv）：用資訊論解釋深度學習訓練的兩個階段：
+
+$$
+\min_{p(T|X)} \quad -I(T;Y) + \beta \cdot I(T;X)
+$$
+
+先記憶（$I(T;X)$ 增加），後壓縮（$I(T;X)$ 減少，保留對 $Y$ 有用的部分）。
+
+**2018 — CPC（Contrastive Predictive Coding）**：明確以互資訊為目標做自監督學習：最大化當前表示與未來觀測的 $I(X;Y)$。
+
+**2019–2020 — SimCLR / MoCo**：對比學習框架以互資訊最大化為理論基礎；InfoNCE loss 是互資訊下界的直接優化：
+
+$$
+\mathcal{L}_{\text{InfoNCE}} = -\mathbb{E}\left[\log\frac{e^{f(x)^\top f(x^+)/\tau}}{\sum_{j} e^{f(x)^\top f(x_j)/\tau}}\right]
+$$
+
+**2020 — 規模律（Scaling Laws）**：Power law $L \propto N^{-\beta}$ 在資訊論視角下是壓縮尺度律——更大的模型以更短的「描述」逼近語言分布（Kolmogorov 視角）。
+
+**2022 — 擴散模型的 ELBO**：DDPM 的損失函數等價於對 KL 散度梯度的**分數匹配（Score Matching）**——資訊論的另一種面貌。
+
+### 10.5 對深度學習的四大影響
+
+| 影響 | 具體體現 |
+|---|---|
+| **損失函數語言** | 交叉熵 = 最大化似然 = 最小化 KL 散度；所有分類/生成損失都是資訊論量 |
+| **表示學習目標** | 互資訊最大化（CPC、SimCLR）成為自監督學習的統一框架 |
+| **模型壓縮理論** | 知識蒸餾 = 最小化師生分布的 KL；剪枝 = MDL 原則 |
+| **生成模型架構** | VAE（ELBO）、Flow（精確 log-likelihood）、DDPM（score matching）都源自貝氏推斷 + 資訊論 |
+
+Shannon 的原意是解決工程問題（電報、電話）；七十年後，他的熵公式出現在每一個深度學習訓練循環的核心。這是數學歷史上最深遠的「意外應用」之一。
+
+## 11. 小結
 
 | 概念 | 公式 | 意義 |
 |---|---|---|
