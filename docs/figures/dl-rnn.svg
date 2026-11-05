@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="290" viewBox="0 0 580 290">
+<rect width="580" height="290" fill="#fcfcfb" rx="8"/>
+<text x="290" y="22" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">RNN 展開與梯度消失</text>
+<text x="290" y="38" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">左：RNN 時間展開；右：梯度傳播對比（RNN 消失 vs LSTM 保持）</text>
+<text x="150" y="56" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#eb6834">RNN 時間展開</text>
+<circle cx="52" cy="130" r="20" fill="#eb6834" opacity="0.12" stroke="#eb6834" stroke-width="1.8"/>
+<text x="52" y="135" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eb6834">h₁</text>
+<rect x="38" y="170" width="28" height="20" rx="4" fill="#e1e0d9" stroke="#c3c2b7" stroke-width="1"/>
+<text x="52" y="184" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">x₁</text>
+<line x1="52.0" y1="170.0" x2="52.0" y2="150.0" stroke="#898781" stroke-width="1.2"/>
+<polygon points="52.0,150.0 48.0,157.0 56.0,157.0" fill="#898781"/>
+<circle cx="120" cy="130" r="20" fill="#eb6834" opacity="0.12" stroke="#eb6834" stroke-width="1.8"/>
+<text x="120" y="135" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eb6834">h₂</text>
+<rect x="106" y="170" width="28" height="20" rx="4" fill="#e1e0d9" stroke="#c3c2b7" stroke-width="1"/>
+<text x="120" y="184" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">x₂</text>
+<line x1="120.0" y1="170.0" x2="120.0" y2="150.0" stroke="#898781" stroke-width="1.2"/>
+<polygon points="120.0,150.0 116.0,157.0 124.0,157.0" fill="#898781"/>
+<circle cx="188" cy="130" r="20" fill="#eb6834" opacity="0.12" stroke="#eb6834" stroke-width="1.8"/>
+<text x="188" y="135" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eb6834">h₃</text>
+<rect x="174" y="170" width="28" height="20" rx="4" fill="#e1e0d9" stroke="#c3c2b7" stroke-width="1"/>
+<text x="188" y="184" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">x₃</text>
+<line x1="188.0" y1="170.0" x2="188.0" y2="150.0" stroke="#898781" stroke-width="1.2"/>
+<polygon points="188.0,150.0 184.0,157.0 192.0,157.0" fill="#898781"/>
+<circle cx="256" cy="130" r="20" fill="#eb6834" opacity="0.12" stroke="#eb6834" stroke-width="1.8"/>
+<text x="256" y="135" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eb6834">h₄</text>
+<rect x="242" y="170" width="28" height="20" rx="4" fill="#e1e0d9" stroke="#c3c2b7" stroke-width="1"/>
+<text x="256" y="184" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">x₄</text>
+<line x1="256.0" y1="170.0" x2="256.0" y2="150.0" stroke="#898781" stroke-width="1.2"/>
+<polygon points="256.0,150.0 252.0,157.0 260.0,157.0" fill="#898781"/>
+<line x1="72.0" y1="130.0" x2="100.0" y2="130.0" stroke="#eb6834" stroke-width="2"/>
+<polygon points="100.0,130.0 93.0,126.0 93.0,134.0" fill="#eb6834"/>
+<text x="86" y="120" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#eb6834">W_hh</text>
+<line x1="140.0" y1="130.0" x2="168.0" y2="130.0" stroke="#eb6834" stroke-width="2"/>
+<polygon points="168.0,130.0 161.0,126.0 161.0,134.0" fill="#eb6834"/>
+<text x="154" y="120" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#eb6834">W_hh</text>
+<line x1="208.0" y1="130.0" x2="236.0" y2="130.0" stroke="#eb6834" stroke-width="2"/>
+<polygon points="236.0,130.0 229.0,126.0 229.0,134.0" fill="#eb6834"/>
+<text x="222" y="120" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#eb6834">W_hh</text>
+<line x1="236" y1="138" x2="208" y2="138" stroke="#eda100" stroke-width="2" opacity="0.95" stroke-dasharray="3,2"/>
+<polygon points="208,138 216,134 216,142" fill="#eda100" opacity="0.95"/>
+<line x1="168" y1="138" x2="140" y2="138" stroke="#eda100" stroke-width="2" opacity="0.5" stroke-dasharray="3,2"/>
+<polygon points="140,138 148,134 148,142" fill="#eda100" opacity="0.5"/>
+<line x1="100" y1="138" x2="72" y2="138" stroke="#eda100" stroke-width="2" opacity="0.15" stroke-dasharray="3,2"/>
+<polygon points="72,138 80,134 80,142" fill="#eda100" opacity="0.15"/>
+<text x="104" y="152" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#eda100">∂L/∂h → 0</text>
+<text x="240" y="152" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#eda100" opacity="0.6">梯度消失</text>
+<line x1="256.0" y1="110.0" x2="256.0" y2="92.0" stroke="#898781" stroke-width="1.2"/>
+<polygon points="256.0,92.0 252.0,99.0 260.0,99.0" fill="#898781"/>
+<text x="264" y="116" font-family="sans-serif" font-size="8" fill="#898781">y₄</text>
+<text x="150" y="272" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">h_t = tanh(W_hh·h_{t-1} + W_xh·x_t)</text>
+<line x1="300" y1="48" x2="300" y2="260" stroke="#e1e0d9" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="440" y="56" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#0b0b0b">梯度傳播比較（T=5）</text>
+<line x1="316" y1="246" x2="564" y2="246" stroke="#c3c2b7" stroke-width="1.2"/>
+<line x1="316" y1="66" x2="316" y2="246" stroke="#c3c2b7" stroke-width="1.2"/>
+<text x="440" y="262" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">時間步 t（從輸出往回）</text>
+<text x="306" y="160" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781" transform="rotate(-90,306,160)">梯度大小</text>
+<rect x="326" y="88" width="16" height="158" rx="2" fill="#eb6834" opacity="0.7"/>
+<rect x="344" y="88" width="16" height="158" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="342" y="259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">t-0</text>
+<rect x="364" y="182" width="16" height="64" rx="2" fill="#eb6834" opacity="0.7"/>
+<rect x="382" y="100" width="16" height="146" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="380" y="259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">t-1</text>
+<rect x="402" y="220" width="16" height="26" rx="2" fill="#eb6834" opacity="0.7"/>
+<rect x="420" y="112" width="16" height="134" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="418" y="259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">t-2</text>
+<rect x="440" y="236" width="16" height="10" rx="2" fill="#eb6834" opacity="0.7"/>
+<rect x="458" y="122" width="16" height="124" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="456" y="259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">t-3</text>
+<rect x="478" y="242" width="16" height="4" rx="2" fill="#eb6834" opacity="0.7"/>
+<rect x="496" y="131" width="16" height="115" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="494" y="259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">t-4</text>
+<rect x="516" y="244" width="16" height="2" rx="2" fill="#eb6834" opacity="0.7"/>
+<rect x="534" y="140" width="16" height="106" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="532" y="259" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">t-5</text>
+<line x1="316" y1="206.4" x2="564" y2="206.4" stroke="#e1e0d9" stroke-width="0.7"/>
+<text x="312" y="209" text-anchor="end" font-family="sans-serif" font-size="7" fill="#898781">0.25</text>
+<line x1="316" y1="166.8" x2="564" y2="166.8" stroke="#e1e0d9" stroke-width="0.7"/>
+<text x="312" y="170" text-anchor="end" font-family="sans-serif" font-size="7" fill="#898781">0.50</text>
+<line x1="316" y1="127.2" x2="564" y2="127.2" stroke="#e1e0d9" stroke-width="0.7"/>
+<text x="312" y="130" text-anchor="end" font-family="sans-serif" font-size="7" fill="#898781">0.75</text>
+<line x1="316" y1="87.6" x2="564" y2="87.6" stroke="#e1e0d9" stroke-width="0.7"/>
+<text x="312" y="91" text-anchor="end" font-family="sans-serif" font-size="7" fill="#898781">1.00</text>
+<rect x="326" y="72" width="10" height="10" rx="2" fill="#eb6834" opacity="0.7"/>
+<text x="340" y="81" font-family="sans-serif" font-size="9" fill="#eb6834">RNN（指數衰減）</text>
+<rect x="326" y="88" width="10" height="10" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="340" y="97" font-family="sans-serif" font-size="9" fill="#2a78d6">LSTM（門控保持）</text>
+<text x="290" y="282" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">LSTM 細胞狀態線性更新讓梯度可長距離流動；RNN 乘法鏈導致指數消失</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="290" viewBox="0 0 580 290">
+<rect width="580" height="290" fill="#fcfcfb" rx="8"/>
+<text x="290" y="22" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">BERT：雙向預訓練語言模型</text>
+<text x="290" y="38" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">MLM 遮蔽語言模型 + 雙向 Transformer Encoder</text>
+<rect x="14" y="55" width="56" height="26" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="42" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1baf7a">[CLS]</text>
+<rect x="74" y="55" width="56" height="26" rx="4" fill="#2a78d6" opacity="0.1" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="102" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">The</text>
+<rect x="134" y="55" width="56" height="26" rx="4" fill="#eb6834" opacity="0.18" stroke="#eb6834" stroke-width="1.5"/>
+<text x="162" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eb6834">[MASK]</text>
+<rect x="194" y="55" width="56" height="26" rx="4" fill="#2a78d6" opacity="0.1" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="222" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">sat</text>
+<rect x="254" y="55" width="56" height="26" rx="4" fill="#2a78d6" opacity="0.1" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="282" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">on</text>
+<rect x="314" y="55" width="56" height="26" rx="4" fill="#eb6834" opacity="0.18" stroke="#eb6834" stroke-width="1.5"/>
+<text x="342" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eb6834">[MASK]</text>
+<rect x="374" y="55" width="56" height="26" rx="4" fill="#2a78d6" opacity="0.1" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="402" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">mat</text>
+<rect x="434" y="55" width="56" height="26" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="462" y="73" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1baf7a">[SEP]</text>
+<text x="254" y="90" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">輸入序列（15% token 被遮蔽）</text>
+<line x1="162" y1="83" x2="42" y2="83" stroke="#eb6834" stroke-width="0.8" opacity="0.4"/>
+<line x1="162" y1="83" x2="102" y2="83" stroke="#eb6834" stroke-width="0.8" opacity="0.4"/>
+<line x1="162" y1="83" x2="222" y2="83" stroke="#eb6834" stroke-width="0.8" opacity="0.4"/>
+<line x1="162" y1="83" x2="282" y2="83" stroke="#eb6834" stroke-width="0.8" opacity="0.4"/>
+<line x1="162" y1="83" x2="342" y2="83" stroke="#eb6834" stroke-width="0.8" opacity="0.4"/>
+<line x1="162" y1="83" x2="402" y2="83" stroke="#eb6834" stroke-width="0.8" opacity="0.4"/>
+<line x1="162" y1="83" x2="462" y2="83" stroke="#eb6834" stroke-width="0.8" opacity="0.4"/>
+<line x1="162" y1="83" x2="42" y2="83" stroke="#eb6834" stroke-width="1.5" opacity="0.7"/>
+<line x1="162" y1="83" x2="102" y2="83" stroke="#eb6834" stroke-width="1.5" opacity="0.7"/>
+<line x1="162" y1="83" x2="222" y2="83" stroke="#eb6834" stroke-width="1.5" opacity="0.7"/>
+<line x1="162" y1="83" x2="282" y2="83" stroke="#eb6834" stroke-width="1.5" opacity="0.7"/>
+<text x="162" y="97" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#eb6834">雙向注意力</text>
+<rect x="14" y="155" width="552" height="36" rx="6" fill="#2a78d6" opacity="0.08" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="290" y="169" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#2a78d6">BERT Encoder × 12 層（BERT-Base）</text>
+<text x="290" y="183" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">Multi-Head Self-Attention（雙向）→ Add&Norm → FFN → Add&Norm</text>
+<line x1="42" y1="81" x2="42" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="102" y1="81" x2="102" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="162" y1="81" x2="162" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="222" y1="81" x2="222" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="282" y1="81" x2="282" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="342" y1="81" x2="342" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="402" y1="81" x2="402" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="462" y1="81" x2="462" y2="155" stroke="#2a78d6" stroke-width="0.8" opacity="0.3"/>
+<line x1="162" y1="191" x2="162" y2="204" stroke="#eb6834" stroke-width="1.5"/>
+<rect x="138" y="204" width="48" height="22" rx="4" fill="#eb6834" opacity="0.15" stroke="#eb6834" stroke-width="1.5"/>
+<text x="162" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eb6834">"cat"</text>
+<line x1="342" y1="191" x2="342" y2="204" stroke="#eb6834" stroke-width="1.5"/>
+<rect x="318" y="204" width="48" height="22" rx="4" fill="#eb6834" opacity="0.15" stroke="#eb6834" stroke-width="1.5"/>
+<text x="342" y="220" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="#eb6834">"the"</text>
+<line x1="42" y1="191" x2="42" y2="204" stroke="#898781" stroke-width="0.7" opacity="0.3"/>
+<circle cx="42" cy="218" r="3" fill="#898781" opacity="0.3"/>
+<line x1="102" y1="191" x2="102" y2="204" stroke="#898781" stroke-width="0.7" opacity="0.3"/>
+<circle cx="102" cy="218" r="3" fill="#898781" opacity="0.3"/>
+<line x1="222" y1="191" x2="222" y2="204" stroke="#898781" stroke-width="0.7" opacity="0.3"/>
+<circle cx="222" cy="218" r="3" fill="#898781" opacity="0.3"/>
+<line x1="282" y1="191" x2="282" y2="204" stroke="#898781" stroke-width="0.7" opacity="0.3"/>
+<circle cx="282" cy="218" r="3" fill="#898781" opacity="0.3"/>
+<line x1="402" y1="191" x2="402" y2="204" stroke="#898781" stroke-width="0.7" opacity="0.3"/>
+<circle cx="402" cy="218" r="3" fill="#898781" opacity="0.3"/>
+<line x1="462" y1="191" x2="462" y2="204" stroke="#898781" stroke-width="0.7" opacity="0.3"/>
+<circle cx="462" cy="218" r="3" fill="#898781" opacity="0.3"/>
+<text x="290" y="238" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#898781">只在 [MASK] 位置計算預測損失</text>
+<rect x="14" y="254" width="260" height="22" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="1"/>
+<text x="144" y="269" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#2a78d6">✓ BERT：同時看左右（雙向上下文）</text>
+<rect x="300" y="254" width="266" height="22" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="1"/>
+<text x="433" y="269" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#eb6834">✗ GPT：只看左邊（因果，單向自回歸）</text>
+</svg>

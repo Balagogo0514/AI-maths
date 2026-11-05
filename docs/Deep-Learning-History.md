@@ -191,6 +191,8 @@ c_t &= f_t \odot c_{t-1} + i_t \odot \tilde{c}_t & \text{(細胞狀態)}
 
 細胞狀態 $c_t$ 的線性更新讓梯度可長距離流動。
 
+![RNN 展開與梯度消失：RNN 指數衰減 vs LSTM 門控保持](figures/dl-rnn.svg)
+
 ### 5.2 Seq2Seq + Attention（Bahdanau 2015）
 
 **Seq2Seq**：編碼器將整個序列壓縮為單一向量 → 解碼器展開（瓶頸問題）。
@@ -280,6 +282,8 @@ GPT 用 Transformer Decoder（只看左邊），BERT 用 **Transformer Encoder�
 分類頭 / QA頭 / NER頭（少量標註資料）
 ```
 
+![BERT MLM 遮蔽預訓練：雙向注意力看全序列](figures/dl-bert.svg)
+
 **BERT 的歷史意義**：
 - 11 個 NLP benchmark 同時刷新 SOTA
 - 確立「預訓練語言模型 + 任務微調」為 NLP 標準流程
@@ -352,6 +356,8 @@ $$L = -\sum_t \log P(x_t \mid x_1, \ldots, x_{t-1})$$
 | 語音辨識 | Whisper | 音頻 Encoder + 文字 Decoder |
 | 圖像描述 | BLIP-2 | 視覺 Encoder + 文字 Decoder |
 | 統一 NLP | T5 / mT5 | 所有任務 text-to-text |
+
+![Encoder 全局注意力 vs Decoder 因果遮罩 vs KV Cache](figures/dl-enc-dec.svg)
 
 > **一句話**：Decoder-only 把理解與生成統一為預測下一 token，訓練目標最簡、規模化最容易、KV Cache 推理最高效，這是現代大模型的共同選擇。
 
