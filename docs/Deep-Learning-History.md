@@ -783,11 +783,95 @@ LoRA 增量 B, A（保持 BF16，可訓練）
 
 ### 8.5 混合專家（MoE）
 
-**Mixtral、GPT-4（傳聞）**：每個 token 只激活部分「專家」（子網路）：
+**核心洞見**：模型參數量決定容量，但並非每個 token 都需要所有知識。MoE 把 Transformer 的 FFN 層替換為「多位專家競爭服務」機制，以少量計算代價換取巨大模型容量。
 
-$$y = \sum_{i \in \text{Top-}k} G_i(x) \cdot E_i(x)$$
+| 比較 | Dense 模型 | MoE 模型 |
+|------|-----------|---------|
+| 訓練參數 | $N$ | $N \times E$（$E$ 個專家） |
+| 每次計算（FLOPs） | $\propto N$ | $\propto N \times k/E$（僅激活 $k$ 個） |
+| 推理記憶體 | $\propto N$ | $\propto N \times E$（需載入全部） |
+| 推理延遲 | 基準 | 接近 Dense-$k/E$ 規模 |
 
-總參數大（強大能力）但推理時活躍參數少（低成本），解決大模型推理費用問題。
+#### 路由機制：Softmax + TopK
+
+每個 token $x$ 經過一個小型線性路由器，產生對 $E$ 個專家的偏好分數：
+
+$$g(x) = \text{Softmax}(W_r \cdot x) \in \mathbb{R}^E$$
+
+選出分數最高的 $k$ 個專家，對其輸出加權求和：
+
+$$\text{MoE}(x) = \sum_{i \in \text{Top-}k(g(x))} \tilde{g}_i(x) \cdot \text{Expert}_i(x)$$
+
+其中 $\tilde{g}_i$ 是只對選中 $k$ 個重新歸一化的路由權重。
+
+**數字例子**（$E=8, k=2$）：
+
+```
+g(x) = [0.05, 0.03, 0.42, 0.08, 0.31, 0.04, 0.05, 0.02]
+Top-2: Expert 2 (0.42), Expert 4 (0.31)
+歸一化: 0.575 × Expert_2(x) + 0.425 × Expert_4(x)
+```
+
+#### 負載均衡：防止 Expert 崩塌
+
+訓練時 Router 天然傾向少數「熱門」Expert，導致其他 Expert 廢棄——稱為**Expert Collapse**。
+
+**輔助損失**（Switch Transformer / ST-MoE）：
+
+$$\mathcal{L}_{\text{aux}} = \alpha \cdot E \cdot \sum_{i=1}^{E} f_i \cdot P_i$$
+
+- $f_i$ = Expert $i$ 實際處理的 token 比例（離散，不可微）
+- $P_i$ = Router 分配給 Expert $i$ 的平均機率（連續，可微）
+- 乘積鼓勵 $f_i \approx 1/E$（均勻分配），$\alpha \approx 10^{-2}$
+
+**Expert Capacity**（容量上限）：每個 Expert 設最大 token 數 $C = \frac{T}{E} \times \text{capacity\_factor}$，超過則丟棄（capacity factor 通常 1.0–1.25）。
+
+#### 代表模型對比
+
+| 模型 | 年份 | Expert 數 | $k$ | 總參數 | 激活參數 |
+|------|------|-----------|-----|--------|---------|
+| Switch Transformer | 2021 | 2048 | 1 | 1.6T | ~15B |
+| GLaM | 2022 | 64 | 2 | 1.2T | ~96B |
+| Mixtral 8×7B | 2024 | 8 | 2 | 46.7B | 12.9B |
+| Mixtral 8×22B | 2024 | 8 | 2 | 141B | 39B |
+| GPT-4（傳聞） | 2023 | 8 | 2 | ~1.8T | ~220B |
+| DeepSeek-V2 | 2024 | 160 | 6 | 236B | 21B |
+
+#### Fine-Grained MoE：DeepSeek-MoE 設計
+
+傳統 MoE 每個 Expert 很大，$k=2$ 只有 $\binom{8}{2}=28$ 種組合。DeepSeek-MoE 拆得更細：
+
+$$\text{MoE}(x) = \underbrace{\sum_{i=1}^{K_s} \text{Expert}_i^{\text{shared}}(x)}_{\text{共享 Expert（每次都激活）}} + \underbrace{\sum_{i \in \text{Top-k}(g)} \tilde{g}_i \cdot \text{Expert}_i^{\text{routing}}(x)}_{\text{路由 Expert（競爭激活）}}$$
+
+- **Shared Expert**：處理通用知識（語法、常識），每個 token 必選
+- **Routing Expert**：處理專門知識（數學、程式），競爭選 $k$ 個
+- DeepSeek-V2：160 個 Routing Expert，每次選 6 個；2 個 Shared Expert
+
+#### Expert 並行：分散式部署
+
+MoE 天然支援大規模分散式——不同 Expert 分布在不同 GPU/節點：
+
+```
+GPU 0: Expert 1–2    GPU 1: Expert 3–4
+GPU 2: Expert 5–6    GPU 3: Expert 7–8
+
+每個 token 由 Router 決定發往哪個 GPU
+需要 All-to-All 通訊（MoE 訓練的主要通訊瓶頸）
+```
+
+Expert 並行可與 Tensor 並行、Pipeline 並行組合（3D 並行 + Expert 並行 = 4D 並行）。
+
+#### Expert 自然特化（湧現現象）
+
+實驗觀察（Mixtral 論文）：Expert 在訓練後會自然分工，無需人工設計：
+
+- 程式碼語法 Expert → 傾向處理 `def`、`{}`、縮排 token
+- 數學推理 Expert → 傾向處理數字、等式、變數
+- 多語言 Expert → 傾向處理非英語 token
+
+Router 在訓練中學會把相似語境的 token 路由到同一個 Expert，Expert 則深化該方向能力。
+
+![MoE 架構與 Dense vs Sparse 比較](figures/dl-moe.svg)
 
 ---
 
