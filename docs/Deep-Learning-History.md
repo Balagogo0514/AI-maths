@@ -635,6 +635,128 @@ Mixtral 8×7B：8 個 Expert，每次激活 2 個，激活參數 ≈ 12.9B，總
 
 ![FFN 結構：標準 vs SwiGLU 門控、激活函數比較、參數量分布](figures/dl-ffn.svg)
 
+#### 6.0.12 Transformer 訓練細節
+
+---
+
+**損失函數：交叉熵**
+
+語言模型最大化正確下一個 token 的 log 機率：
+
+$$\mathcal{L} = -\frac{1}{T}\sum_{t=1}^T \log P(x_t \mid x_1,\dots,x_{t-1})$$
+
+實作上對 logits（unnormalized）直接計算，數值更穩定（`torch.nn.CrossEntropyLoss`）。
+
+---
+
+**優化器：AdamW**
+
+Adam 的一/二階動量估計：
+
+$$m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t, \quad v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2$$
+
+偏差修正後更新：$\hat{m}_t = m_t/(1-\beta_1^t)$，$\hat{v}_t = v_t/(1-\beta_2^t)$
+
+**AdamW**（Loshchilov & Hutter 2017）把 Weight Decay 從梯度中**分離**，直接作用於參數：
+
+$$\theta_t = \theta_{t-1} - \alpha\!\left(\frac{\hat{m}_t}{\sqrt{\hat{v}_t}+\epsilon} + \lambda\theta_{t-1}\right)$$
+
+原始 Adam 的 L2 正則化會被 $\hat{v}_t$ 縮放，不等價於真正的 Weight Decay；AdamW 修正了此問題。
+
+| 超參數 | 典型值 |
+|--------|--------|
+| $\beta_1$ | 0.9 |
+| $\beta_2$ | 0.95–0.999 |
+| $\epsilon$ | $10^{-8}$ |
+| $\lambda$（weight decay） | 0.1 |
+| 學習率 $\alpha$ | $3\times10^{-4}$（小模型）→ $10^{-5}$（大模型微調） |
+
+---
+
+**學習率調度：Warmup + Cosine Decay**
+
+$$\text{lr}(t) = \begin{cases} \alpha_{\max} \cdot \dfrac{t}{T_{\text{warm}}} & t \le T_{\text{warm}} \\[6pt] \alpha_{\min} + \dfrac{\alpha_{\max}-\alpha_{\min}}{2}\!\left(1+\cos\dfrac{(t-T_{\text{warm}})\pi}{T_{\text{total}}-T_{\text{warm}}}\right) & t > T_{\text{warm}} \end{cases}$$
+
+- **Warmup**：前 1–5% 步數線性升到 $\alpha_{\max}$，讓 Adam 動量估計趨穩，防止初期大梯度發散
+- **Cosine Decay**：平滑下降到 $\alpha_{\min} = 0.1 \times \alpha_{\max}$
+- LLaMA-3 70B：$T_{\text{warm}} = 2000$ 步，$T_{\text{total}} = 1\text{M}$ 步
+
+---
+
+**混合精度訓練（BF16）**
+
+| 格式 | 位元 | 指數位 | 動態範圍 |
+|------|------|--------|---------|
+| FP32 | 32 | 8 | $10^{-38}\sim10^{38}$ |
+| FP16 | 16 | 5 | $6\times10^{-5}\sim65504$ |
+| BF16 | 16 | 8 | 同 FP32，精度較低 |
+
+BF16 優於 FP16：動態範圍與 FP32 相同，不會溢出，無需 Loss Scaling。
+
+```
+FP32 master weights → 複製 BF16 → 前向（BF16）→ loss（FP32）
+                                                  → 反向（BF16 梯度）→ 累積 FP32 → AdamW → （循環）
+```
+
+---
+
+**梯度裁切（Gradient Clipping）**
+
+$$g \leftarrow g \cdot \min\!\left(1,\; \frac{c}{\|g\|_2}\right), \quad c = 1.0$$
+
+在 AdamW 更新**前**執行，防止偶發大梯度破壞訓練穩定性。
+
+---
+
+**分散式訓練**
+
+| 策略 | 原理 | 瓶頸 |
+|------|------|------|
+| DDP（Data Parallel） | 各 GPU 完整副本，All-Reduce 同步梯度 | 模型太大時 OOM |
+| Tensor Parallel（Megatron） | 矩陣按行/列分切到多 GPU | 通訊量大 |
+| Pipeline Parallel | 層分段 + Micro-batching | Bubble overhead |
+| **ZeRO-3**（DeepSpeed） | 分片參數+梯度+優化器狀態，動態 All-Gather | 通訊增加 |
+
+**ZeRO 三個階段（$N$ 個 GPU）**：
+
+| 階段 | 分片內容 | 記憶體節省 |
+|------|---------|-----------|
+| ZeRO-1 | Optimizer states | $N\times$ |
+| ZeRO-2 | + Gradients | $N\times$ |
+| ZeRO-3 | + Parameters | $N\times$（最大） |
+
+---
+
+**Gradient Checkpointing（Activation Recomputation）**
+
+正常反向需保留所有前向激活，記憶體 $O(L \cdot n \cdot d)$。Checkpoint 只保留每隔 $k$ 層的激活，反向時重新計算：
+
+- 記憶體：$O(\sqrt{L} \cdot n \cdot d)$（$k=\sqrt{L}$ 最優）
+- 計算成本：約 +33%（多跑一次前向）
+
+現代 LLM 訓練幾乎全部開啟，使 batch size 可以更大。
+
+---
+
+**完整訓練 Loop**
+
+```python
+for step in range(T_total):
+    lr = warmup_cosine(step)                      # Warmup + Cosine
+    with autocast(dtype=torch.bfloat16):
+        logits = model(x)                          # 前向（BF16）
+        loss = cross_entropy(logits, y)
+    loss.backward()                                # 反向（BF16 梯度 → FP32 累積）
+    clip_grad_norm_(model.parameters(), 1.0)       # 梯度裁切
+    optimizer.step()                               # AdamW（FP32 master weights）
+    scheduler.step()
+    optimizer.zero_grad()
+```
+
+> **一句話**：AdamW + Warmup-Cosine LR + BF16 混合精度 + 梯度裁切是現代 LLM 訓練的「標配四件套」。
+
+![訓練細節：LR 調度曲線、BF16 vs FP32 精度、ZeRO 記憶體節省](figures/dl-training.svg)
+
 ### 6.1 Self-Attention 機制
 
 《Attention Is All You Need》（Vaswani et al. 2017）：**完全拋棄 RNN/CNN**，純注意力架構。
