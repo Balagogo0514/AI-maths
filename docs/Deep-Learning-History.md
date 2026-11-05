@@ -296,6 +296,98 @@ $$\tilde{q}_m = q_m e^{im\theta}, \quad \tilde{k}_n = k_n e^{in\theta} \quad \Ri
 
 > **一句話**：Attention 是**軟性的可微分查詢**——Query 與所有 Key 計算相似度，返回所有 Value 的加權混合，全程可微，讓任意兩位置的路徑長度從 RNN 的 $O(n)$ 降為 $O(1)$。
 
+#### 6.0.6 Flash Attention：IO 感知的分塊計算
+
+標準注意力的瓶頸是 **GPU HBM（高頻寬記憶體）頻寬**，不是算術。把 $n \times n$ 的矩陣寫進/讀出 HBM 極慢；即使算術量相同，IO 越少越快。
+
+**Tiling 核心思路**（Dao et al. 2022）：
+
+```
+把 Q 分成 T_r 個 tile，K/V 各分成 T_c 個 tile
+外迴圈：遍歷 K/V tile（放入 SRAM，不寫 HBM）
+內迴圈：遍歷 Q tile，累積 Softmax 分子與分母
+
+關鍵：Online Softmax 技巧
+  維護 running max m 和 running sum ℓ
+  每次讀入新 K tile 時用舊 m/ℓ 更新：
+    m_new = max(m_old, rowmax(S_new))
+    ℓ_new = ℓ_old · exp(m_old − m_new) + rowsum(exp(S_new − m_new))
+  最終輸出 = accumulated_O / ℓ_final（數值穩定）
+```
+
+| 指標 | 標準 Attention | Flash Attention |
+|------|---------------|----------------|
+| HBM 讀寫次數 | $O(n^2)$ | $O(n^2 / M)$（$M$=SRAM 大小） |
+| 空間（HBM） | $O(n^2)$ | $O(n)$ |
+| 實測速度 | 1× | **2–4×**（A100 上） |
+| 長上下文支援 | 受限 | 百萬 token |
+
+**Flash Attention 2/3**（後續改進）：
+- FA2（2023）：改進並行調度（Q 並行而非 K/V 並行），A100 上達理論 FLOPs 利用率 70%
+- FA3（2024）：利用 H100 TMA 和 Warp Specialization，速度再提升 1.5–2×
+
+**反向傳播的巧妙之處**：前向傳播不保存中間注意力矩陣 $A$，反向傳播時用 $O, \ell$ 在 SRAM 內**重算**所需的 $A$ 塊，以計算換記憶體。
+
+#### 6.0.7 推理優化：KV Cache
+
+自回歸生成時，第 $t$ 步只新增一個 token，之前 token 的 K、V 不需重算：
+
+```
+Step t:
+  新 token xₜ → 只計算 kₜ = xₜ Wᴷ, vₜ = xₜ Wᵛ
+  K_cache = [k₁, k₂, ..., kₜ₋₁, kₜ]  ← append
+  V_cache = [v₁, v₂, ..., vₜ₋₁, vₜ]  ← append
+  Attention(qₜ, K_cache, V_cache)      ← 只算一行
+```
+
+**每步計算量**：$O(t \cdot d)$（非 $O(t^2 \cdot d)$），使長序列生成可行。
+
+**KV Cache 記憶體公式**：
+
+$$\text{Mem}_\text{KV} = 2 \times L \times H \times d_k \times n \times \text{bytes}$$
+
+- $L$=層數，$H$=頭數，$d_k$=每頭維度，$n$=序列長度
+- 以 LLaMA-3 70B（$L=80, H=64, d_k=128$，BF16）：每 token 約 **40 KB**，序列 32K → 1.3 GB
+
+**KV Cache 的瓶頸與解法**：
+
+| 問題 | 解法 |
+|------|------|
+| 記憶體隨 batch×seq 線性膨脹 | **Paged Attention**（vLLM）：非連續記憶體頁，OS 分頁概念 |
+| 多頭 KV Cache 佔用大 | **GQA / MQA**（見下節）|
+| 長序列後期 Cache 失效 | **Sliding Window**（Mistral）：只保留近 $w$ 步 |
+
+#### 6.0.8 現代注意力變體：GQA / MQA
+
+**核心問題**：$H$ 個頭需要 $H$ 組 K、V，KV Cache 大小 $\propto H$。訓練參數對稱不代表推理必須對稱。
+
+**Multi-Query Attention（MQA，Shazeer 2019）**：所有 Q 頭共享**同一組** K、V：
+
+$$\text{head}_i = \text{Attention}(QW_i^Q,\ K W^K,\ V W^V)$$
+
+KV Cache 縮小 $H$ 倍，但多頭的「多視角」退化。
+
+**Grouped-Query Attention（GQA，Ainslie et al. 2023）**：$H$ 個 Q 頭分成 $G$ 組，每組共享一組 K/V（$G$ 通常 4–8）：
+
+```
+H=32 頭，G=8 組：
+Q: [Q₁ Q₂ Q₃ Q₄ | Q₅ Q₆ Q₇ Q₈ | ... | Q₂₉ Q₃₀ Q₃₁ Q₃₂]
+K:  [K_1          | K_2          | ... | K_8             ]
+V:  [V_1          | V_2          | ... | V_8             ]
+```
+
+| 方法 | K/V 組數 | KV Cache 大小 | 品質 |
+|------|---------|--------------|------|
+| MHA（Multi-Head） | $H$ | 100% | 最好 |
+| GQA（Grouped-Query） | $G$（$G < H$） | $G/H$（約 25–50%） | ≈MHA |
+| MQA（Multi-Query） | 1 | $1/H$（約 3%） | 略降 |
+
+**GQA 在現代 LLM 的採用**：LLaMA-3、Mistral、Qwen2、Gemma2 均使用 GQA（通常 $H=32, G=8$ 或 $H=64, G=8$）。GQA 推理速度接近 MQA，品質接近 MHA，是目前的工業標準選擇。
+
+**訓練 GQA 的技巧**：可從已有 MHA checkpoint 透過 Mean Pooling（同組 K/V 頭取平均）初始化 GQA，再繼續預訓練少量步數，品質損失極小。
+
+![Attention 完整計算流程與 GQA 架構](figures/dl-attention.svg)
+
 ### 6.1 Self-Attention 機制
 
 《Attention Is All You Need》（Vaswani et al. 2017）：**完全拋棄 RNN/CNN**，純注意力架構。

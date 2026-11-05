@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" width="820" height="340" font-family="system-ui,sans-serif" font-size="13">
+<defs>
+<marker id="arrL" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#898781"/></marker>
+</defs>
+<rect width="820" height="340" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="385" height="320" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="202" y="30" text-anchor="middle" font-weight="700" font-size="13" fill="#0b0b0b">Scaled Dot-Product Attention</text>
+<rect x="160" y="55" width="120" height="24" rx="5" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="220" y="71" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2a78d6">Q  K  V  （投影矩陣）</text>
+<rect x="160" y="103" width="120" height="24" rx="5" fill="#eb6834" opacity="0.14" stroke="#eb6834" stroke-width="1.5"/>
+<text x="220" y="119" text-anchor="middle" font-size="11.5" font-weight="600" fill="#eb6834">S = QKᵀ  （相似度）</text>
+<rect x="160" y="151" width="120" height="24" rx="5" fill="#eda100" opacity="0.14" stroke="#eda100" stroke-width="1.5"/>
+<text x="220" y="167" text-anchor="middle" font-size="11.5" font-weight="600" fill="#eda100">S / √dₖ  （縮放）</text>
+<rect x="160" y="199" width="120" height="24" rx="5" fill="#898781" opacity="0.14" stroke="#898781" stroke-width="1.5"/>
+<text x="220" y="215" text-anchor="middle" font-size="11.5" font-weight="600" fill="#898781">Mask（+Causal）</text>
+<rect x="160" y="247" width="120" height="24" rx="5" fill="#1baf7a" opacity="0.14" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="220" y="263" text-anchor="middle" font-size="11.5" font-weight="600" fill="#1baf7a">Softmax → A</text>
+<rect x="160" y="295" width="120" height="24" rx="5" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="220" y="311" text-anchor="middle" font-size="11.5" font-weight="600" fill="#2a78d6">Output = AV</text>
+<line x1="220" y1="79" x2="220" y2="103" stroke="#898781" stroke-width="1.5" marker-end="url(#arrL)"/>
+<line x1="220" y1="127" x2="220" y2="151" stroke="#898781" stroke-width="1.5" marker-end="url(#arrL)"/>
+<line x1="220" y1="175" x2="220" y2="199" stroke="#898781" stroke-width="1.5" marker-end="url(#arrL)"/>
+<line x1="220" y1="223" x2="220" y2="247" stroke="#898781" stroke-width="1.5" marker-end="url(#arrL)"/>
+<line x1="220" y1="271" x2="220" y2="295" stroke="#898781" stroke-width="1.5" marker-end="url(#arrL)"/>
+<text x="290" y="67" font-size="10" fill="#898781" font-style="italic">∈ ℝⁿˣᵈᵏ</text>
+<text x="290" y="115" font-size="10" fill="#898781" font-style="italic">∈ ℝⁿˣⁿ</text>
+<text x="290" y="163" font-size="10" fill="#898781" font-style="italic">÷ √dₖ</text>
+<text x="290" y="211" font-size="10" fill="#898781" font-style="italic">−∞ 未來</text>
+<text x="290" y="259" font-size="10" fill="#898781" font-style="italic">∈ ℝⁿˣⁿ</text>
+<text x="290" y="307" font-size="10" fill="#898781" font-style="italic">∈ ℝⁿˣᵈᵛ</text>
+<rect x="20" y="185" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="33" y="185" width="12" height="12" rx="1" fill="#f0f0f0" opacity="0.7"/>
+<rect x="46" y="185" width="12" height="12" rx="1" fill="#f0f0f0" opacity="0.7"/>
+<rect x="59" y="185" width="12" height="12" rx="1" fill="#f0f0f0" opacity="0.7"/>
+<rect x="20" y="198" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="33" y="198" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="46" y="198" width="12" height="12" rx="1" fill="#f0f0f0" opacity="0.7"/>
+<rect x="59" y="198" width="12" height="12" rx="1" fill="#f0f0f0" opacity="0.7"/>
+<rect x="20" y="211" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="33" y="211" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="46" y="211" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="59" y="211" width="12" height="12" rx="1" fill="#f0f0f0" opacity="0.7"/>
+<rect x="20" y="224" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="33" y="224" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="46" y="224" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<rect x="59" y="224" width="12" height="12" rx="1" fill="#2a78d6" opacity="0.7"/>
+<text x="46" y="254" text-anchor="middle" font-size="9" fill="#898781">Causal Mask</text>
+<rect x="14" y="258" width="130" height="45" rx="5" fill="#eda100" opacity="0.08" stroke="#eda100" stroke-width="1"/>
+<text x="79" y="274" text-anchor="middle" font-size="10" font-weight="600" fill="#eda100">Flash Attention</text>
+<text x="79" y="287" text-anchor="middle" font-size="9" fill="#898781">Tiling：不寫 HBM</text>
+<text x="79" y="299" text-anchor="middle" font-size="9" fill="#898781">空間 O(n²)→O(n)</text>
+<rect x="415" y="10" width="395" height="320" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="612" y="30" text-anchor="middle" font-weight="700" font-size="13" fill="#0b0b0b">MHA vs GQA vs MQA（H=8 頭示意）</text>
+<text x="425" y="46" font-size="10" fill="#898781">Q</text>
+<rect x="425" y="50" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="437" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q1</text>
+<rect x="453" y="50" width="24" height="20" rx="3" fill="#eb6834" opacity="0.75"/>
+<text x="465" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q2</text>
+<rect x="481" y="50" width="24" height="20" rx="3" fill="#1baf7a" opacity="0.75"/>
+<text x="493" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q3</text>
+<rect x="509" y="50" width="24" height="20" rx="3" fill="#eda100" opacity="0.75"/>
+<text x="521" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q4</text>
+<rect x="537" y="50" width="24" height="20" rx="3" fill="#7c56c8" opacity="0.75"/>
+<text x="549" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q5</text>
+<rect x="565" y="50" width="24" height="20" rx="3" fill="#d94040" opacity="0.75"/>
+<text x="577" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q6</text>
+<rect x="593" y="50" width="24" height="20" rx="3" fill="#898781" opacity="0.75"/>
+<text x="605" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q7</text>
+<rect x="621" y="50" width="24" height="20" rx="3" fill="#1b8c8c" opacity="0.75"/>
+<text x="633" y="63" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q8</text>
+<text x="425" y="96" font-size="10" fill="#898781">K/V</text>
+<rect x="425" y="100" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="437" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV1</text>
+<rect x="453" y="100" width="24" height="20" rx="3" fill="#eb6834" opacity="0.75"/>
+<text x="465" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV2</text>
+<rect x="481" y="100" width="24" height="20" rx="3" fill="#1baf7a" opacity="0.75"/>
+<text x="493" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV3</text>
+<rect x="509" y="100" width="24" height="20" rx="3" fill="#eda100" opacity="0.75"/>
+<text x="521" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV4</text>
+<rect x="537" y="100" width="24" height="20" rx="3" fill="#7c56c8" opacity="0.75"/>
+<text x="549" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV5</text>
+<rect x="565" y="100" width="24" height="20" rx="3" fill="#d94040" opacity="0.75"/>
+<text x="577" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV6</text>
+<rect x="593" y="100" width="24" height="20" rx="3" fill="#898781" opacity="0.75"/>
+<text x="605" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV7</text>
+<rect x="621" y="100" width="24" height="20" rx="3" fill="#1b8c8c" opacity="0.75"/>
+<text x="633" y="113" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV8</text>
+<line x1="437" y1="70" x2="437" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="465" y1="70" x2="465" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="493" y1="70" x2="493" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="521" y1="70" x2="521" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="549" y1="70" x2="549" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="577" y1="70" x2="577" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="605" y1="70" x2="605" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="633" y1="70" x2="633" y2="100" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<text x="529" y="138" text-anchor="middle" font-size="12" font-weight="700" fill="#2a78d6">MHA</text>
+<text x="529" y="152" text-anchor="middle" font-size="10" fill="#898781">8 組 KV</text>
+<text x="425" y="161" font-size="10" fill="#898781">Q</text>
+<rect x="425" y="165" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="437" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q1</text>
+<rect x="453" y="165" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="465" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q2</text>
+<rect x="481" y="165" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="493" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q3</text>
+<rect x="509" y="165" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="521" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q4</text>
+<rect x="537" y="165" width="24" height="20" rx="3" fill="#eb6834" opacity="0.75"/>
+<text x="549" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q5</text>
+<rect x="565" y="165" width="24" height="20" rx="3" fill="#eb6834" opacity="0.75"/>
+<text x="577" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q6</text>
+<rect x="593" y="165" width="24" height="20" rx="3" fill="#eb6834" opacity="0.75"/>
+<text x="605" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q7</text>
+<rect x="621" y="165" width="24" height="20" rx="3" fill="#eb6834" opacity="0.75"/>
+<text x="633" y="178" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q8</text>
+<text x="425" y="211" font-size="10" fill="#898781">K/V</text>
+<rect x="425" y="215" width="108" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="479" y="228" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV1</text>
+<rect x="537" y="215" width="108" height="20" rx="3" fill="#eb6834" opacity="0.75"/>
+<text x="591" y="228" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV2</text>
+<line x1="437" y1="185" x2="479" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="465" y1="185" x2="479" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="493" y1="185" x2="479" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="521" y1="185" x2="479" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="549" y1="185" x2="591" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="577" y1="185" x2="591" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="605" y1="185" x2="591" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="633" y1="185" x2="591" y2="215" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<text x="529" y="253" text-anchor="middle" font-size="12" font-weight="700" fill="#1baf7a">GQA</text>
+<text x="529" y="267" text-anchor="middle" font-size="10" fill="#898781">2 組 KV (G=2)</text>
+<text x="425" y="276" font-size="10" fill="#898781">Q</text>
+<rect x="425" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="437" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q1</text>
+<rect x="453" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="465" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q2</text>
+<rect x="481" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="493" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q3</text>
+<rect x="509" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="521" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q4</text>
+<rect x="537" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="549" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q5</text>
+<rect x="565" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="577" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q6</text>
+<rect x="593" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="605" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q7</text>
+<rect x="621" y="280" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="633" y="293" text-anchor="middle" font-size="9" fill="white" font-weight="600">Q8</text>
+<text x="425" y="326" font-size="10" fill="#898781">K/V</text>
+<rect x="425" y="330" width="220" height="20" rx="3" fill="#2a78d6" opacity="0.75"/>
+<text x="535" y="343" text-anchor="middle" font-size="9" fill="white" font-weight="600">KV</text>
+<line x1="437" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="465" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="493" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="521" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="549" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="577" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="605" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<line x1="633" y1="300" x2="535" y2="330" stroke="#898781" stroke-width="0.8" opacity="0.4"/>
+<text x="529" y="368" text-anchor="middle" font-size="12" font-weight="700" fill="#eb6834">MQA</text>
+<text x="529" y="382" text-anchor="middle" font-size="10" fill="#898781">1 組 KV</text>
+<text x="783" y="50" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">KV Cache</text>
+<rect x="761" y="80" width="44" height="90" rx="3" fill="#2a78d6" opacity="0.8"/>
+<text x="783" y="76" text-anchor="middle" font-size="9.5" font-weight="600" fill="#2a78d6">100%</text>
+<text x="783" y="185" text-anchor="middle" font-size="9.5" fill="#0b0b0b">MHA</text>
+<text x="783" y="197" text-anchor="middle" font-size="9.5" fill="#0b0b0b">100%</text>
+<rect x="761" y="253" width="44" height="22" rx="3" fill="#1baf7a" opacity="0.8"/>
+<text x="783" y="249" text-anchor="middle" font-size="9.5" font-weight="600" fill="#1baf7a">25%</text>
+<text x="783" y="290" text-anchor="middle" font-size="9.5" fill="#0b0b0b">GQA</text>
+<text x="783" y="302" text-anchor="middle" font-size="9.5" fill="#0b0b0b">25%</text>
+<rect x="761" y="379" width="44" height="11" rx="3" fill="#eb6834" opacity="0.8"/>
+<text x="783" y="375" text-anchor="middle" font-size="9.5" font-weight="600" fill="#eb6834">12.5%</text>
+<text x="783" y="405" text-anchor="middle" font-size="9.5" fill="#0b0b0b">MQA</text>
+<text x="783" y="417" text-anchor="middle" font-size="9.5" fill="#0b0b0b">12.5%</text>
+<line x1="757" y1="170" x2="813" y2="170" stroke="#898781" stroke-width="1"/>
+</svg>
