@@ -178,5 +178,10 @@ const svgJson = JSON.stringify(figures.map(function(f) {
 }));
 const svgScript = '<script>window._svgFigures=' + svgJson + ';<\/script>\n';
 
-fs.writeFileSync(OUT, HEAD + md + svgScript + TAIL, 'utf8');
-console.log('wrote', OUT, 'bytes:', (HEAD + md + svgScript + TAIL).length);
+// svgScript must be placed AFTER the </script> that closes the text/markdown
+// block (TAIL starts with '\n</script>\n'). Putting it before TAIL would place
+// it inside that block, where the browser treats it as raw text, never executing
+// window._svgFigures. String.replace replaces only the first occurrence.
+const finalHtml = HEAD + md + TAIL.replace('</script>', '</script>\n' + svgScript);
+fs.writeFileSync(OUT, finalHtml, 'utf8');
+console.log('wrote', OUT, 'bytes:', finalHtml.length);
