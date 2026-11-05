@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 340" width="820" height="340" font-family="system-ui,sans-serif" font-size="13">
+<defs>
+<marker id="arrM" markerWidth="8" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#898781"/></marker>
+</defs>
+<rect width="820" height="340" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="265" height="320" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="142" y="30" text-anchor="middle" font-weight="700" font-size="12" fill="#0b0b0b">LayerNorm vs RMSNorm 計算步驟</text>
+<text x="22" y="45" font-size="10" font-weight="600" fill="#898781">x ∈ ℝᵈ</text>
+<rect x="22" y="48" width="24" height="20" rx="2" fill="#ee8054"/>
+<text x="34" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">2.1</text>
+<rect x="48" y="48" width="24" height="20" rx="2" fill="#bad3f1"/>
+<text x="60" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">-0.8</text>
+<rect x="74" y="48" width="24" height="20" rx="2" fill="#f3a485"/>
+<text x="86" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">1.5</text>
+<rect x="100" y="48" width="24" height="20" rx="2" fill="#98beeb"/>
+<text x="112" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">-1.2</text>
+<rect x="126" y="48" width="24" height="20" rx="2" fill="#fcece6"/>
+<text x="138" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">0.3</text>
+<rect x="152" y="48" width="24" height="20" rx="2" fill="#f0926c"/>
+<text x="164" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">1.8</text>
+<rect x="178" y="48" width="24" height="20" rx="2" fill="#d4e4f6"/>
+<text x="190" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">-0.5</text>
+<rect x="204" y="48" width="24" height="20" rx="2" fill="#f7c8b5"/>
+<text x="216" y="61" text-anchor="middle" font-size="8.5" fill="#0b0b0b">0.9</text>
+<rect x="22" y="82" width="245" height="22" rx="4" fill="#eb6834" opacity="0.1" stroke="#eb6834" stroke-width="1.2"/>
+<text x="28" y="96" font-size="10" font-weight="600" fill="#eb6834">① 均值 μ = mean(x)</text>
+<text x="267" y="96" text-anchor="end" font-size="9" fill="#898781" font-style="italic">僅 LayerNorm</text>
+<rect x="22" y="110" width="245" height="22" rx="4" fill="#eb6834" opacity="0.1" stroke="#eb6834" stroke-width="1.2"/>
+<text x="28" y="124" font-size="10" font-weight="600" fill="#eb6834">② 方差 σ² = var(x−μ)</text>
+<text x="267" y="124" text-anchor="end" font-size="9" fill="#898781" font-style="italic">僅 LayerNorm</text>
+<rect x="22" y="138" width="245" height="22" rx="4" fill="#2a78d6" opacity="0.1" stroke="#2a78d6" stroke-width="1.2"/>
+<text x="28" y="152" font-size="10" font-weight="600" fill="#2a78d6">③ 正規化  x̂ = (x−μ)/√(σ²+ε)</text>
+<text x="267" y="152" text-anchor="end" font-size="9" fill="#898781" font-style="italic">LN：去均值+縮放</text>
+<rect x="22" y="166" width="245" height="22" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="1.2"/>
+<text x="28" y="180" font-size="10" font-weight="600" fill="#1baf7a">③' RMS = √mean(x²)</text>
+<text x="267" y="180" text-anchor="end" font-size="9" fill="#898781" font-style="italic">RMSNorm：無需 μ</text>
+<rect x="22" y="194" width="245" height="22" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="1.2"/>
+<text x="28" y="208" font-size="10" font-weight="600" fill="#1baf7a">③' x̂ = x / RMS(x)</text>
+<text x="267" y="208" text-anchor="end" font-size="9" fill="#898781" font-style="italic">RMSNorm：只縮放</text>
+<rect x="22" y="222" width="245" height="22" rx="4" fill="#7c56c8" opacity="0.1" stroke="#7c56c8" stroke-width="1.2"/>
+<text x="28" y="236" font-size="10" font-weight="600" fill="#7c56c8">④ 仿射  y = γ⊙x̂ + β</text>
+<text x="267" y="236" text-anchor="end" font-size="9" fill="#898781" font-style="italic">γ,β 可學習（RMSNorm 無 β）</text>
+<text x="22" y="252" font-size="10" font-weight="600" fill="#898781">y ∈ ℝᵈ（正規化後）</text>
+<rect x="22" y="258" width="24" height="20" rx="2" fill="#ec7648"/>
+<text x="34" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">1.4</text>
+<rect x="48" y="258" width="24" height="20" rx="2" fill="#609ae0"/>
+<text x="60" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">-1.1</text>
+<rect x="74" y="258" width="24" height="20" rx="2" fill="#f3aa8d"/>
+<text x="86" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">0.8</text>
+<rect x="100" y="258" width="24" height="20" rx="2" fill="#2f7bd7"/>
+<text x="112" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">-1.5</text>
+<rect x="126" y="258" width="24" height="20" rx="2" fill="#e5eefa"/>
+<text x="138" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">-0.2</text>
+<rect x="152" y="258" width="24" height="20" rx="2" fill="#f0906a"/>
+<text x="164" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">1.1</text>
+<rect x="178" y="258" width="24" height="20" rx="2" fill="#84b1e7"/>
+<text x="190" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">-0.9</text>
+<rect x="204" y="258" width="24" height="20" rx="2" fill="#faddd2"/>
+<text x="216" y="271" text-anchor="middle" font-size="8.5" fill="#0b0b0b">0.3</text>
+<rect x="288" y="10" width="240" height="320" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="408" y="30" text-anchor="middle" font-weight="700" font-size="12" fill="#0b0b0b">Pre-LN vs Post-LN</text>
+<line x1="338" y1="50" x2="338" y2="64" stroke="#898781" stroke-width="1.5" marker-end="url(#arrM)"/>
+<text x="338" y="60" text-anchor="middle" font-size="9" fill="#898781">x</text>
+<rect x="298" y="66" width="80" height="22" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="1.2"/>
+<text x="338" y="80" text-anchor="middle" font-size="9" font-weight="600" fill="#2a78d6">LN / RMSNorm</text>
+<line x1="338" y1="88" x2="338" y2="96" stroke="#898781" stroke-width="1.2" marker-end="url(#arrM)"/>
+<rect x="298" y="100" width="80" height="22" rx="4" fill="#898781" opacity="0.15" stroke="#898781" stroke-width="1.2"/>
+<text x="338" y="114" text-anchor="middle" font-size="9" font-weight="600" fill="#898781">Sublayer (MHA/FFN)</text>
+<line x1="338" y1="122" x2="338" y2="130" stroke="#898781" stroke-width="1.2" marker-end="url(#arrM)"/>
+<path d="M338,66 C392,66 392,134 338,134" fill="none" stroke="#1baf7a" stroke-width="1.5" stroke-dasharray="4,2"/>
+<text x="402" y="104" font-size="9" fill="#1baf7a" font-style="italic">殘差</text>
+<circle cx="338" cy="142" r="9" fill="white" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="338" y="147" text-anchor="middle" font-size="12" font-weight="700" fill="#1baf7a">+</text>
+<text x="338" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#2a78d6">Pre-LN</text>
+<line x1="458" y1="50" x2="458" y2="64" stroke="#898781" stroke-width="1.5" marker-end="url(#arrM)"/>
+<text x="458" y="60" text-anchor="middle" font-size="9" fill="#898781">x</text>
+<rect x="418" y="66" width="80" height="22" rx="4" fill="#898781" opacity="0.15" stroke="#898781" stroke-width="1.2"/>
+<text x="458" y="80" text-anchor="middle" font-size="9" font-weight="600" fill="#898781">Sublayer (MHA/FFN)</text>
+<line x1="458" y1="88" x2="458" y2="96" stroke="#898781" stroke-width="1.2" marker-end="url(#arrM)"/>
+<path d="M458,66 C512,66 512,100 458,100" fill="none" stroke="#1baf7a" stroke-width="1.5" stroke-dasharray="4,2"/>
+<text x="522" y="87" font-size="9" fill="#1baf7a" font-style="italic">殘差</text>
+<circle cx="458" cy="108" r="9" fill="white" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="458" y="113" text-anchor="middle" font-size="12" font-weight="700" fill="#1baf7a">+</text>
+<line x1="458" y1="120" x2="458" y2="128" stroke="#898781" stroke-width="1.2" marker-end="url(#arrM)"/>
+<rect x="418" y="130" width="80" height="22" rx="4" fill="#eb6834" opacity="0.15" stroke="#eb6834" stroke-width="1.2"/>
+<text x="458" y="144" text-anchor="middle" font-size="9" font-weight="600" fill="#eb6834">LN</text>
+<text x="458" y="44" text-anchor="middle" font-size="11" font-weight="700" fill="#eb6834">Post-LN</text>
+<text x="298" y="240" font-size="10" font-weight="700" fill="#2a78d6">Pre-LN：</text>
+<text x="308" y="254" font-size="10" fill="#898781">• 梯度直通殘差，訓練穩定</text>
+<text x="308" y="268" font-size="10" fill="#898781">• 可省略 Warmup</text>
+<text x="298" y="282" font-size="10" font-weight="700" fill="#eb6834">Post-LN：</text>
+<text x="308" y="296" font-size="10" fill="#898781">• 需要 Warmup</text>
+<text x="308" y="310" font-size="10" fill="#898781">• 底層梯度易消失</text>
+<rect x="542" y="10" width="268" height="320" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="676" y="30" text-anchor="middle" font-weight="700" font-size="12" fill="#0b0b0b">BatchNorm / LayerNorm / RMSNorm</text>
+<text x="556" y="41" font-size="9" fill="#898781">Batch↓  Feature→</text>
+<rect x="556" y="44" width="30" height="30" rx="3" fill="#fbe5dd"/>
+<text x="571" y="64" text-anchor="middle" font-size="8" fill="#0b0b0b">0.4</text>
+<rect x="588" y="44" width="30" height="30" rx="3" fill="#85b2e7"/>
+<text x="603" y="64" text-anchor="middle" font-size="8" fill="#0b0b0b">-1.4</text>
+<rect x="620" y="44" width="30" height="30" rx="3" fill="#c5daf3"/>
+<text x="635" y="64" text-anchor="middle" font-size="8" fill="#0b0b0b">-0.7</text>
+<rect x="652" y="44" width="30" height="30" rx="3" fill="#b8d2f1"/>
+<text x="667" y="64" text-anchor="middle" font-size="8" fill="#0b0b0b">-0.8</text>
+<rect x="556" y="76" width="30" height="30" rx="3" fill="#f9d4c5"/>
+<text x="571" y="96" text-anchor="middle" font-size="8" fill="#0b0b0b">0.7</text>
+<rect x="588" y="76" width="30" height="30" rx="3" fill="#faded3"/>
+<text x="603" y="96" text-anchor="middle" font-size="8" fill="#0b0b0b">0.5</text>
+<rect x="620" y="76" width="30" height="30" rx="3" fill="#f5b79f"/>
+<text x="635" y="96" text-anchor="middle" font-size="8" fill="#0b0b0b">1.2</text>
+<rect x="652" y="76" width="30" height="30" rx="3" fill="#95bcea"/>
+<text x="667" y="96" text-anchor="middle" font-size="8" fill="#0b0b0b">-1.2</text>
+<rect x="556" y="108" width="30" height="30" rx="3" fill="#ebf2fb"/>
+<text x="571" y="128" text-anchor="middle" font-size="8" fill="#0b0b0b">-0.2</text>
+<rect x="588" y="108" width="30" height="30" rx="3" fill="#86b2e7"/>
+<text x="603" y="128" text-anchor="middle" font-size="8" fill="#0b0b0b">-1.4</text>
+<rect x="620" y="108" width="30" height="30" rx="3" fill="#b7d1f1"/>
+<text x="635" y="128" text-anchor="middle" font-size="8" fill="#0b0b0b">-0.8</text>
+<rect x="652" y="108" width="30" height="30" rx="3" fill="#fefefd"/>
+<text x="667" y="128" text-anchor="middle" font-size="8" fill="#0b0b0b">0.0</text>
+<rect x="556" y="140" width="30" height="30" rx="3" fill="#85b2e7"/>
+<text x="571" y="160" text-anchor="middle" font-size="8" fill="#0b0b0b">-1.4</text>
+<rect x="588" y="140" width="30" height="30" rx="3" fill="#b2cef0"/>
+<text x="603" y="160" text-anchor="middle" font-size="8" fill="#0b0b0b">-0.9</text>
+<rect x="620" y="140" width="30" height="30" rx="3" fill="#fbe3da"/>
+<text x="635" y="160" text-anchor="middle" font-size="8" fill="#0b0b0b">0.4</text>
+<rect x="652" y="140" width="30" height="30" rx="3" fill="#fdf6f4"/>
+<text x="667" y="160" text-anchor="middle" font-size="8" fill="#0b0b0b">0.1</text>
+<line x1="694" y1="44" x2="694" y2="170" stroke="#eb6834" stroke-width="2"/>
+<text x="698" y="108" font-size="9" font-weight="700" fill="#eb6834">BN</text>
+<text x="698" y="120" font-size="8" fill="#898781">跨樣本</text>
+<line x1="556" y1="182" x2="682" y2="182" stroke="#2a78d6" stroke-width="2"/>
+<text x="620" y="196" text-anchor="middle" font-size="9" font-weight="700" fill="#2a78d6">LN / RMSNorm</text>
+<text x="620" y="208" text-anchor="middle" font-size="8" fill="#898781">跨特徵（每個 token 獨立）</text>
+<text x="554" y="220" font-size="9.5" font-weight="700" fill="#898781"></text>
+<text x="614" y="220" font-size="9.5" font-weight="700" fill="#0b0b0b">統計維度</text>
+<text x="686" y="220" font-size="9.5" font-weight="700" fill="#0b0b0b">外部依賴</text>
+<text x="756" y="220" font-size="9.5" font-weight="700" fill="#0b0b0b">速度</text>
+<text x="554" y="238" font-size="9.5" font-weight="700" fill="#eb6834">BN</text>
+<text x="614" y="238" font-size="9.5" font-weight="400" fill="#0b0b0b">batch×feat</text>
+<text x="686" y="238" font-size="9.5" font-weight="400" fill="#0b0b0b">running μσ</text>
+<text x="756" y="238" font-size="9.5" font-weight="400" fill="#0b0b0b">快</text>
+<rect x="553" y="245" width="254" height="17" rx="2" fill="#f8f8f8"/>
+<text x="554" y="256" font-size="9.5" font-weight="700" fill="#2a78d6">LN</text>
+<text x="614" y="256" font-size="9.5" font-weight="400" fill="#0b0b0b">per-token</text>
+<text x="686" y="256" font-size="9.5" font-weight="400" fill="#0b0b0b">無</text>
+<text x="756" y="256" font-size="9.5" font-weight="400" fill="#0b0b0b">正常</text>
+<text x="554" y="274" font-size="9.5" font-weight="700" fill="#1baf7a">RMSNorm</text>
+<text x="614" y="274" font-size="9.5" font-weight="400" fill="#0b0b0b">per-token</text>
+<text x="686" y="274" font-size="9.5" font-weight="400" fill="#0b0b0b">無</text>
+<text x="756" y="274" font-size="9.5" font-weight="400" fill="#0b0b0b">快15-30%</text>
+<rect x="553" y="245" width="254" height="17" rx="2" fill="#1baf7a" opacity="0.08" stroke="#1baf7a" stroke-width="0.8"/>
+</svg>

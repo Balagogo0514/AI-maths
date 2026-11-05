@@ -468,6 +468,88 @@ $m_h$ 是每個 head 的斜率（超參數，各頭不同）。距離越遠懲�
 
 ![位置編碼對比：Sinusoidal 頻率、RoPE 旋轉示意、ALiBi 偏置](figures/dl-pe.svg)
 
+#### 6.0.10 Layer Normalization 與 RMSNorm
+
+---
+
+**為什麼需要 Normalization**
+
+深層網路訓練時，每一層的輸入分佈隨參數更新不斷漂移（**Internal Covariate Shift**），導致梯度爆炸/消失、學習率難以設定。Normalization 把每層輸入「拉回」穩定分佈，加速收斂。
+
+---
+
+**BatchNorm vs LayerNorm**
+
+| | BatchNorm（Ioffe 2015） | LayerNorm（Ba 2016） |
+|---|---|---|
+| 統計維度 | **跨樣本**（同一特徵，batch 維） | **跨特徵**（同一樣本，特徵維） |
+| 均值/方差形狀 | $(C,)$，共享整個 batch | $(d,)$，每個 token 獨立 |
+| 推論需要 | 移動平均（running stats） | 無需，即時計算 |
+| 適用場景 | CNN / 大 batch | Transformer / 小 batch / 可變長序列 |
+
+Transformer 選 LayerNorm：序列長度可變、batch size 小、每個 token 位置應獨立正規化。
+
+---
+
+**LayerNorm 公式**
+
+對 $d$ 維向量 $x$（一個 token 的 embedding）：
+
+$$\mu = \frac{1}{d}\sum_{j=1}^d x_j, \quad \sigma^2 = \frac{1}{d}\sum_{j=1}^d (x_j - \mu)^2$$
+
+$$\hat{x}_i = \frac{x_i - \mu}{\sqrt{\sigma^2 + \epsilon}}, \quad y_i = \gamma_i \hat{x}_i + \beta_i$$
+
+- $\gamma, \beta \in \mathbb{R}^d$：可學習的 scale / shift，初始化 $\gamma=\mathbf{1},\, \beta=\mathbf{0}$
+- $\epsilon \approx 10^{-5}$：防止除零
+- 淨效果：輸出均值≈0、方差≈1，再由 $\gamma,\beta$ 決定最終尺度
+
+---
+
+**Pre-LN vs Post-LN**
+
+```
+Post-LN:  y = LayerNorm( x + Sublayer(x) )   ← 原版 Transformer / BERT
+Pre-LN:   y = x + Sublayer( LayerNorm(x) )   ← GPT 系列 / LLaMA / Qwen
+```
+
+| | Post-LN | Pre-LN |
+|---|---|---|
+| 訓練穩定性 | 較差（底層梯度小） | **更穩定**（梯度直通殘差） |
+| 學習率 Warmup | **必須** | 可省略或縮短 |
+| 最終性能 | 理論略高 | 差距極小 |
+| 採用 | 原版 Transformer、BERT | **GPT 全系、LLaMA、Qwen** |
+
+Post-LN 梯度消失原因：梯度穿過 LayerNorm 的 Jacobian 被壓縮（Frobenius 範數 $< 1$），多層疊加後底層梯度趨近於零，必須 Warmup 才能穩定訓練。
+
+---
+
+**RMSNorm（現代主流簡化）**
+
+**Zhang & Sennrich 2019**，去掉均值計算，只做 RMS 縮放：
+
+$$\text{RMS}(x) = \sqrt{\frac{1}{d}\sum_{i=1}^d x_i^2}, \quad \hat{x}_i = \frac{x_i}{\text{RMS}(x)}, \quad y_i = \gamma_i \hat{x}_i$$
+
+- 去掉 $\beta$（shift 項）和 $\mu$ 計算
+- 速度比 LayerNorm 快約 **15–30%**，效果接近
+- 採用：**LLaMA 全系、Mistral、Qwen、Gemma**——幾乎所有現代 LLM
+
+---
+
+**在 Transformer Block 中的位置（Pre-LN 示意）**
+
+```
+x ──┬─────────────────────────────► (+) ──┬─────────────────────────────► (+) ──►
+    │                               ↑     │                               ↑
+    └─► RMSNorm ─► MHA ────────────┘     └─► RMSNorm ─► FFN ────────────┘
+         殘差前正規化                           殘差前正規化
+```
+
+每個 Sublayer 前各一個 RMSNorm，殘差連接讓梯度直通底層。
+
+> **一句話**：LayerNorm 在每個 token 內部做正規化；RMSNorm 去掉均值只保留 RMS 縮放，更快且效果相當，是現代 LLM 的標準選擇。
+
+![LayerNorm vs RMSNorm 計算流程與 Pre-LN vs Post-LN 比較](figures/dl-ln.svg)
+
 ### 6.1 Self-Attention 機制
 
 《Attention Is All You Need》（Vaswani et al. 2017）：**完全拋棄 RNN/CNN**，純注意力架構。
