@@ -143,7 +143,7 @@ window.MathJax = {
   // Replace SVGFIGURE placeholders with inline SVG (figures collected at build time).
   if (window._svgFigures && window._svgFigures.length) {
     doc.querySelectorAll('p').forEach(function(p) {
-      var m = p.textContent.match(/^SVGFIGURE(\d+)$/);
+      var m = p.textContent.match(/^SVGFIGURE(\\d+)$/);
       if (!m) return;
       var fig = window._svgFigures[+m[1]];
       if (!fig) return;
