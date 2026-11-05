@@ -757,6 +757,81 @@ for step in range(T_total):
 
 ![訓練細節：LR 調度曲線、BF16 vs FP32 精度、ZeRO 記憶體節省](figures/dl-training.svg)
 
+#### 6.0.13 Scaling Law（縮放法則）
+
+**核心問題**：給定固定計算預算 $C$（FLOPs），如何分配**模型大小 $N$** 與**訓練資料量 $D$**（tokens）使 loss 最低？
+
+---
+
+**Kaplan et al. 2020（OpenAI）——幂律關係**
+
+Loss 與 $N$、$D$、$C$ 各自呈幂律：
+
+$$L(N) \approx \left(\frac{N_c}{N}\right)^{0.076}, \quad L(D) \approx \left(\frac{D_c}{D}\right)^{0.095}, \quad L(C) \approx \left(\frac{C_c}{C}\right)^{0.050}$$
+
+**結論**：增大模型比增加資料更有效（$\alpha_N > \alpha_D$）→ GPT-3（175B）訓練 300B tokens，模型遠比資料「厚」。
+
+---
+
+**Chinchilla（Hoffmann et al. 2022，DeepMind）——計算最優**
+
+重新實驗更多 $(N, D)$ 組合，推翻 Kaplan，提出**最優比例 $D^* \approx 20N$**：
+
+$$N^* \propto C^{0.5}, \quad D^* \propto C^{0.5}$$
+
+聯合損失擬合：
+
+$$L(N, D) = \underbrace{1.69}_{E} + \frac{406.4}{N^{0.34}} + \frac{410.7}{D^{0.28}}$$
+
+其中 $E$ 是自然語言的不可約熵下界（nats）。
+
+| 模型 | $N$ | $D$ | $D/N$ | 是否 compute-optimal |
+|------|-----|-----|-------|---------------------|
+| GPT-3 | 175B | 300B | 1.7× | 嚴重訓練不足 |
+| Gopher | 280B | 300B | 1.1× | 嚴重訓練不足 |
+| **Chinchilla** | **70B** | **1.4T** | **20×** | 最優 |
+| LLaMA-3 8B | 8B | 15T | 1875× | 推理最優（over-train） |
+
+---
+
+**Over-Training（推理最優）**
+
+Chinchilla 最優是**訓練時**計算效率最優。但部署時推理成本 $\propto N \times \text{請求數}$，「小模型多訓練」更划算：
+
+```
+訓練最優：N* ≈ D*/20（Chinchilla）
+推理最優：N 盡量小，D 盡量大（LLaMA 策略）
+```
+
+LLaMA-3 8B 用 15T tokens 訓練 8B 模型（$D/N = 1875\times$），讓小模型達到接近大模型的性能。
+
+---
+
+**湧現能力（Emergent Abilities，Wei et al. 2022）**
+
+某些能力在小模型幾乎為零，達到閾值後**突然出現**：
+
+| 能力 | 湧現閾值 |
+|------|---------|
+| 算術（3 位數加法） | ~100B 參數 |
+| Chain-of-Thought 推理 | ~100B 參數 |
+| 多步指令遵循 | ~137B 參數 |
+
+**爭議**（Schaeffer et al. 2023）：「湧現」是評估指標不連續性的假象（如 Exact Match），換連續指標後能力是平滑增長的。
+
+---
+
+**資料縮放瓶頸**
+
+高品質網路文字估計約 $10^{13}$ tokens，純粹增加 $D$ 的路徑受限。解法：
+- **合成資料**：Phi 系列（教科書品質合成資料）
+- **多模態**：圖像/音頻/程式碼
+- **反覆訓練**：Epoch > 1，配合去重避免記憶化
+
+> **一句話**：Chinchilla 給出訓練最優的 $N \approx D/20$，但推理成本驅動「過度訓練」小模型——LLaMA 系列的核心策略正是如此。
+
+![Scaling Law：幂律曲線、Chinchilla 等值線、Over-Training 比較](figures/dl-scaling.svg)
+
 ### 6.1 Self-Attention 機制
 
 《Attention Is All You Need》（Vaswani et al. 2017）：**完全拋棄 RNN/CNN**，純注意力架構。
