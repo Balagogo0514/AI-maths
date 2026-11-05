@@ -136,6 +136,46 @@ ImageNet 預訓練 → 微調（Fine-tuning）的範式在此時代成熟：在�
 
 ## 5. 第五波：序列模型與注意力（2014–2018）
 
+### 5.0 循環神經網路 RNN（1986–2014）
+
+**標準 RNN** 是第一個處理序列的神經網路，共享同一組權重逐步展開：
+
+$$h_t = \tanh(W_{hh}\, h_{t-1} + W_{xh}\, x_t + b_h)$$
+$$y_t = W_{hy}\, h_t + b_y$$
+
+- $h_t$：隱藏狀態，扮演「記憶」角色
+- $W_{hh}$：狀態轉移矩陣（同一組，跨所有時間步共享）
+- 展開後本質是極深的前饋網路（深度 = 序列長度 $T$）
+
+**展開示意**：
+
+```
+x₁ → [h₁] → [h₂] → [h₃] → ... → [hₜ] → y
+        ↑        ↑        ↑              ↑
+       W_hh    W_hh    W_hh           W_hh
+```
+
+**核心問題：梯度消失 / 梯度爆炸**
+
+反向傳播時梯度需穿越 $T$ 個時間步：
+
+$$\frac{\partial L}{\partial h_1} = \frac{\partial L}{\partial h_T} \cdot \prod_{t=2}^{T} \frac{\partial h_t}{\partial h_{t-1}} = \frac{\partial L}{\partial h_T} \cdot \prod_{t=2}^{T} W_{hh}^\top \cdot \text{diag}(\tanh'(\cdot))$$
+
+- $\|W_{hh}\| < 1$：梯度指數衰減 → **消失**，無法學長程依賴
+- $\|W_{hh}\| > 1$：梯度指數爆炸 → 訓練不穩（以梯度裁剪 Gradient Clipping 緩解）
+
+**GRU（Gated Recurrent Unit，Cho 2014）**：LSTM 的輕量替代，只用兩個門（重置門 $r_t$、更新門 $z_t$）：
+
+$$\tilde{h}_t = \tanh(W[r_t \odot h_{t-1}, x_t]),\quad h_t = (1-z_t)\odot h_{t-1} + z_t \odot \tilde{h}_t$$
+
+參數比 LSTM 少 25%，許多任務性能相當。
+
+**RNN 的歷史貢獻**：
+- 語音辨識（CTC Loss + RNN，2006）
+- 語言模型（RNNLM，2010）
+- 機器翻譯（Seq2Seq，2014）
+- 為 Attention 和 Transformer 鋪路
+
 ### 5.1 LSTM：長程依賴的解法
 
 標準 RNN 梯度隨時間步指數衰減：$\partial L/\partial h_0 \sim \lambda^T$，$T$ 大時消失或爆炸。
@@ -199,12 +239,69 @@ $h$ 個頭從不同子空間捕獲不同類型的依賴關係（句法、語義�
 | 長程依賴 | 衰減 | 直接連接，$O(1)$ |
 | 規模擴展 | 難 | 線性擴展 |
 
-### 6.4 BERT 與 GPT：預訓練範式確立（2018–2019）
+### 6.4 BERT：雙向預訓練語言模型（Devlin et al. 2018）
+
+**BERT = Bidirectional Encoder Representations from Transformers**
+
+GPT 用 Transformer Decoder（只看左邊），BERT 用 **Transformer Encoder（同時看左右）**，取得雙向上下文。
+
+**預訓練任務一：Masked Language Model（MLM）**
+
+隨機遮蔽 15% 的 token，讓模型預測被遮蔽的詞：
+
+```
+輸入：The cat sat on the [MASK] .
+預測：                        mat
+```
+
+- 15% 中：80% 換成 `[MASK]`，10% 換成隨機詞，10% 保持不變
+- 防止模型只學 `[MASK]` 的表示，強迫理解上下文語義
+
+**預訓練任務二：Next Sentence Prediction（NSP）**
+
+判斷句子 B 是否為句子 A 的下一句（後來研究發現 NSP 效果存疑，RoBERTa 移除之）：
+
+```
+[CLS] 句子A [SEP] 句子B [SEP] → IsNext / NotNext
+```
+
+**BERT 架構**：
+
+| 版本 | 層數 | 隱藏維度 | 注意力頭 | 參數量 |
+|------|------|----------|----------|--------|
+| BERT-Base | 12 | 768 | 12 | 110M |
+| BERT-Large | 24 | 1024 | 16 | 340M |
+
+**微調（Fine-tuning）範式**：在下游任務上只需接一個小頭（Linear Layer），少量標註資料即可達 SOTA：
+
+```
+預訓練 BERT（大量無標註文字）
+         ↓ 凍結 or 微調所有層
+分類頭 / QA頭 / NER頭（少量標註資料）
+```
+
+**BERT 的歷史意義**：
+- 11 個 NLP benchmark 同時刷新 SOTA
+- 確立「預訓練語言模型 + 任務微調」為 NLP 標準流程
+- [CLS] token 表示成為句子級語義表示的通用方式
+
+**BERT 後繼者**：
+
+| 模型 | 改進點 |
+|------|--------|
+| RoBERTa（2019） | 移除 NSP、更大 batch、更長訓練 |
+| ALBERT（2019） | 參數共享，大幅減少參數量 |
+| DistilBERT（2019） | 知識蒸餾，60% 大小 97% 性能 |
+| DeBERTa（2020） | 解耦位置與內容注意力 |
+
+### 6.5 GPT 系列：生成式預訓練
 
 | 模型 | 訓練目標 | 適合任務 |
 |------|----------|----------|
-| **BERT** | Masked Language Model（雙向） | 分類、問答、NER |
-| **GPT** | Causal Language Model（單向自回歸） | 文本生成 |
+| **BERT** | MLM（雙向，填空） | 分類、問答、NER |
+| **GPT** | CLM（單向自回歸，預測下一詞） | 文本生成、對話 |
+
+$$P(x_1,\ldots,x_T) = \prod_{t=1}^{T} P(x_t \mid x_1,\ldots,x_{t-1})$$
 
 **預訓練 + 微調**成為 NLP 標準流程，取代了特徵工程 + 任務專用模型。
 
