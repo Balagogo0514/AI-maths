@@ -305,6 +305,56 @@ $$P(x_1,\ldots,x_T) = \prod_{t=1}^{T} P(x_t \mid x_1,\ldots,x_{t-1})$$
 
 **預訓練 + 微調**成為 NLP 標準流程，取代了特徵工程 + 任務專用模型。
 
+### 6.6 Encoder vs Decoder：為何現代大模型只用 Decoder？
+
+原始 Transformer 同時有 Encoder 和 Decoder，現代大模型（GPT/LLaMA/Qwen）卻全數拋棄 Encoder，只保留 Decoder。
+
+**結構核心差異：Self-Attention 是否有因果遮罩（Causal Mask）**
+
+| 特性 | Encoder | Decoder |
+|------|---------|---------|
+| Self-Attention | **雙向**：每個位置可看全部 | **單向**：只看左側（過去） |
+| 因果遮罩 | 無 | 有（上三角 $= -\infty$） |
+| Cross-Attention | 無 | 有（接收 Encoder 輸出） |
+| 適合 | 理解（分類、NER、問答） | 生成（逐 token 自回歸） |
+
+**Causal Mask 的本質**——把未來位置設為 $-\infty$，softmax 後為 0：
+
+$$\text{Mask}_{ij} = \begin{cases} 0 & i \geq j \\ -\infty & i < j \end{cases}$$
+
+```
+位置  1  2  3  4
+  1 [✓  ✗  ✗  ✗]   只看自己
+  2 [✓  ✓  ✗  ✗]   看 1,2
+  3 [✓  ✓  ✓  ✗]   看 1,2,3
+  4 [✓  ✓  ✓  ✓]   看全部
+```
+
+訓練時所有位置**並行**計算；推理時**自回歸**逐步生成。
+
+**為何只用 Decoder？四個根本原因：**
+
+**① 統一理解與生成**：Decoder 把「理解」和「生成」都化為「預測下一個 token」。足夠大的 Decoder-only 模型（GPT-3 展示）可在 zero-shot 下完成翻譯、摘要、分類，無需 Encoder。
+
+**② 訓練目標最簡、最可擴展**：
+$$L = -\sum_t \log P(x_t \mid x_1, \ldots, x_{t-1})$$
+無需設計 MLM 遮蔽策略，整個網際網路文字直接拿來用，天然支援無限規模化。
+
+**③ KV Cache 推理高效**：生成時只新增一個 token，之前 token 的 K, V 快取不重算，增量 $O(1)$。Encoder 每次需重算全序列，無法快取。
+
+**④ Encoder-Decoder 的 Cross-Attention 是不必要的抽象**：當輸入輸出同語言時（對話、問答），把問題和答案拼在同一序列裡，Cross-Attention 自然退化為 Self-Attention，結構更簡潔。
+
+**什麼情況保留 Encoder-Decoder？**
+
+| 場景 | 代表模型 | 原因 |
+|------|----------|------|
+| 機器翻譯 | 原始 Transformer | 源/目標語言 Cross-Attention 建模對應關係 |
+| 語音辨識 | Whisper | 音頻 Encoder + 文字 Decoder |
+| 圖像描述 | BLIP-2 | 視覺 Encoder + 文字 Decoder |
+| 統一 NLP | T5 / mT5 | 所有任務 text-to-text |
+
+> **一句話**：Decoder-only 把理解與生成統一為預測下一 token，訓練目標最簡、規模化最容易、KV Cache 推理最高效，這是現代大模型的共同選擇。
+
 ---
 
 ## 7. 第七波：大模型與湧現（2020–2023）
