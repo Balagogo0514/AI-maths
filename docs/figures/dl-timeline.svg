@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="580" height="290" viewBox="0 0 580 290">
+<rect width="580" height="290" fill="#fcfcfb" rx="8"/>
+<text x="290" y="22" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0b0b0b">深度學習八波演化時間軸</text>
+<text x="290" y="38" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#898781">核心主線：解決梯度消失 → 長程依賴 → 並行效率 → 規模化</text>
+<rect x="48.0" y="96" width="158.5" height="104" rx="0" fill="#eda100" opacity="0.07"/>
+<rect x="206.5" y="96" width="225.6" height="104" rx="0" fill="#2a78d6" opacity="0.07"/>
+<rect x="432.1" y="96" width="67.1" height="104" rx="0" fill="#eb6834" opacity="0.07"/>
+<rect x="499.2" y="96" width="18.3" height="104" rx="0" fill="#1baf7a" opacity="0.07"/>
+<rect x="517.5" y="96" width="30.5" height="104" rx="0" fill="#2a78d6" opacity="0.07"/>
+<line x1="48" y1="148" x2="548" y2="148" stroke="#c3c2b7" stroke-width="1.5"/>
+<polygon points="548,148 542,144 542,152" fill="#c3c2b7"/>
+<line x1="90.7" y1="144" x2="90.7" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="91" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1950</text>
+<line x1="151.7" y1="144" x2="151.7" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="152" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1960</text>
+<line x1="212.6" y1="144" x2="212.6" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="213" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1970</text>
+<line x1="273.6" y1="144" x2="273.6" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="274" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1980</text>
+<line x1="334.6" y1="144" x2="334.6" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="335" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1990</text>
+<line x1="395.6" y1="144" x2="395.6" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="396" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">2000</text>
+<line x1="456.5" y1="144" x2="456.5" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="457" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">2010</text>
+<line x1="517.5" y1="144" x2="517.5" y2="152" stroke="#c3c2b7" stroke-width="0.8"/>
+<text x="518" y="164" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">2020</text>
+<line x1="48.0" y1="148" x2="48.0" y2="138" stroke="#eda100" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="48.0" cy="148" r="4" fill="#eda100" opacity="0.9"/>
+<text x="48" y="100" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eda100">MCP神經元</text>
+<text x="48" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1943</text>
+<line x1="133.4" y1="148" x2="133.4" y2="158" stroke="#eda100" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="133.4" cy="148" r="4" fill="#eda100" opacity="0.9"/>
+<text x="133" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eda100">感知機</text>
+<text x="133" y="200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1957</text>
+<line x1="206.5" y1="148" x2="206.5" y2="138" stroke="#898781" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="206.5" cy="148" r="4" fill="#898781" opacity="0.9"/>
+<text x="207" y="100" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#898781">寒冬</text>
+<text x="207" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">Minsky</text>
+<line x1="310.2" y1="148" x2="310.2" y2="138" stroke="#2a78d6" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="310.2" cy="148" r="4" fill="#2a78d6" opacity="0.9"/>
+<text x="310" y="100" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">反向傳播</text>
+<text x="310" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1986</text>
+<line x1="383.4" y1="148" x2="383.4" y2="158" stroke="#2a78d6" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="383.4" cy="148" r="4" fill="#2a78d6" opacity="0.9"/>
+<text x="383" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">LeNet</text>
+<text x="383" y="200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">1998</text>
+<line x1="432.1" y1="148" x2="432.1" y2="138" stroke="#eb6834" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="432.1" cy="148" r="4" fill="#eb6834" opacity="0.9"/>
+<text x="432" y="100" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eb6834">預訓練</text>
+<text x="432" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">Hinton</text>
+<line x1="468.7" y1="148" x2="468.7" y2="158" stroke="#eb6834" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="468.7" cy="148" r="5" fill="#eb6834" opacity="0.9"/>
+<text x="469" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eb6834">AlexNet</text>
+<text x="477" y="189" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#eda100">★</text>
+<text x="469" y="200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">2012</text>
+<line x1="487.0" y1="148" x2="487.0" y2="138" stroke="#eb6834" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="487.0" cy="148" r="4" fill="#eb6834" opacity="0.9"/>
+<text x="487" y="100" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eb6834">ResNet</text>
+<text x="487" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">2015</text>
+<line x1="499.2" y1="148" x2="499.2" y2="158" stroke="#1baf7a" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="499.2" cy="148" r="5" fill="#1baf7a" opacity="0.9"/>
+<text x="499" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1baf7a">Transformer</text>
+<text x="507" y="189" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#eda100">★</text>
+<text x="499" y="200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">2017</text>
+<line x1="505.3" y1="148" x2="505.3" y2="138" stroke="#1baf7a" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="505.3" cy="148" r="4" fill="#1baf7a" opacity="0.9"/>
+<text x="505" y="100" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1baf7a">BERT/GPT</text>
+<text x="505" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">2018</text>
+<line x1="517.5" y1="148" x2="517.5" y2="158" stroke="#2a78d6" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="517.5" cy="148" r="4" fill="#2a78d6" opacity="0.9"/>
+<text x="518" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">GPT-3</text>
+<text x="518" y="200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">175B</text>
+<line x1="529.7" y1="148" x2="529.7" y2="138" stroke="#2a78d6" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="529.7" cy="148" r="4" fill="#2a78d6" opacity="0.9"/>
+<text x="530" y="100" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">ChatGPT</text>
+<text x="530" y="113" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">RLHF</text>
+<line x1="541.9" y1="148" x2="541.9" y2="158" stroke="#2a78d6" stroke-width="1.2" stroke-dasharray="2,2"/>
+<circle cx="541.9" cy="148" r="4" fill="#2a78d6" opacity="0.9"/>
+<text x="542" y="190" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6">o1/R1</text>
+<text x="542" y="200" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#898781">推理</text>
+<text x="97" y="280" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eda100" opacity="0.6">W1</text>
+<text x="255" y="280" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6" opacity="0.6">W2</text>
+<text x="450" y="280" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#eb6834" opacity="0.6">W3-4</text>
+<text x="505" y="280" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#1baf7a" opacity="0.6">W5-6</text>
+<text x="530" y="280" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="bold" fill="#2a78d6" opacity="0.6">W7-8</text>
+<text x="552" y="152" font-family="sans-serif" font-size="9" fill="#898781">年</text>
+</svg>

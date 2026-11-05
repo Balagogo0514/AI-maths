@@ -2,6 +2,8 @@
 
 > 從感知機到大語言模型，每個時代都由一個核心問題驅動：如何讓梯度流得更深、更遠、更有效率。
 
+![深度學習八波演化時間軸](figures/dl-timeline.svg)
+
 ---
 
 ## 1. 第一波：感知機與人工神經元（1943–1969）
@@ -124,6 +126,8 @@ $$\frac{\partial L}{\partial x} = \frac{\partial L}{\partial H} \cdot \left(1 + 
 
 即使 $\partial F/\partial x \approx 0$，梯度仍可透過 $+1$ 項直接回傳。
 
+![殘差連接：讓梯度流得更深](figures/dl-residual.svg)
+
 ### 4.3 遷移學習確立
 
 ImageNet 預訓練 → 微調（Fine-tuning）的範式在此時代成熟：在小資料集上也能獲得強大特徵表示。
@@ -218,6 +222,8 @@ $$L(N) \propto N^{-\alpha_N}, \quad L(D) \propto D^{-\alpha_D}$$
 $$N_{\text{opt}} \propto C^{0.5}, \quad D_{\text{opt}} \propto C^{0.5}$$
 
 → 許多大模型訓練資料不足（underfitting），而非模型太小。
+
+![Scaling Law：參數量成長與損失冪律](figures/dl-scaling.svg)
 
 ### 7.2 湧現能力（Emergent Abilities）
 
