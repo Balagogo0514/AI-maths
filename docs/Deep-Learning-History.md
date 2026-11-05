@@ -207,6 +207,95 @@ $$\alpha_{ij} = \frac{\exp(e_{ij})}{\sum_k \exp(e_{ik})}, \quad c_i = \sum_j \al
 
 ## 6. 第六波：Transformer 統一（2017–2020）
 
+### 6.0 Attention 機制深度解析
+
+#### 6.0.1 起源：Bahdanau Attention（2015）
+
+RNN Seq2Seq 把整個序列壓縮成一個固定向量 $c$，長序列資訊丟失。**Attention 的核心思想**：解碼每個輸出時，動態決定「要看輸入的哪個部分，看多少」。
+
+解碼器第 $i$ 步，對編碼器所有位置 $j$ 計算相關度分數，轉為注意力權重，再加權聚合：
+
+$$e_{ij} = v^\top \tanh(W_s s_{i-1} + W_h h_j), \quad \alpha_{ij} = \frac{\exp(e_{ij})}{\sum_k \exp(e_{ik})}, \quad c_i = \sum_j \alpha_{ij} h_j$$
+
+#### 6.0.2 縮放點積注意力（Scaled Dot-Product Attention）
+
+Transformer 把注意力抽象為三個角色：
+
+| 向量 | 意義 | 類比 |
+|------|------|------|
+| **Q**（Query） | 我在找什麼？ | 搜尋關鍵字 |
+| **K**（Key） | 我有什麼？ | 資料庫索引 |
+| **V**（Value） | 實際內容是什麼？ | 資料庫值 |
+
+$$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
+
+**四步計算流程**：
+
+**① 相似度矩陣**：$S = QK^\top \in \mathbb{R}^{n \times n}$，$S_{ij} = q_i \cdot k_j$，越大代表越相關。
+
+**② 縮放（除以 $\sqrt{d_k}$）**：$d_k$ 維向量內積的方差 $= d_k$，不縮放時 softmax 進入飽和區、梯度趨零：
+
+$$\text{Var}(q \cdot k) = \sum_{i=1}^{d_k} \text{Var}(q_i k_i) = d_k \quad \Rightarrow \quad \text{std} = \sqrt{d_k}$$
+
+**③ Softmax → 注意力權重**：$A = \text{softmax}(\tilde{S}) \in \mathbb{R}^{n \times n}$，每行和為 1。
+
+**④ 加權聚合**：$\text{Output} = AV$，每個位置的輸出是所有 Value 的加權混合。
+
+**Q、K、V 的來源**：輸入 $X \in \mathbb{R}^{n \times d}$ 透過三個可學習投影矩陣生成：
+
+$$Q = XW^Q,\quad K = XW^K,\quad V = XW^V \quad (W^Q, W^K \in \mathbb{R}^{d \times d_k},\ W^V \in \mathbb{R}^{d \times d_v})$$
+
+- **Self-Attention**：Q、K、V 皆來自同一序列 $X$，每個位置同時扮演三角色
+- **Cross-Attention**（Encoder-Decoder）：$Q$ 來自解碼器，$K, V$ 來自編碼器輸出
+
+#### 6.0.3 Multi-Head Attention：多視角並行
+
+單頭只能捕捉一種關係（如句法），多頭允許同時學習多種模式：
+
+$$\text{head}_i = \text{Attention}(QW_i^Q,\; KW_i^K,\; VW_i^V)$$
+
+$$\text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)\, W^O$$
+
+每頭維度 $d_k = d/h$，總計算量不變。實際觀察中不同頭分工：某頭專注句法依存、某頭處理共指消解、某頭捕捉局部相鄰。
+
+#### 6.0.4 位置編碼（Positional Encoding）
+
+Self-Attention 無順序感知——$A_{ij}$ 只看內容相似度，對位置 1 和位置 100 一視同仁，必須注入位置資訊。
+
+**正弦位置編碼（原始 Transformer）**：
+
+$$PE_{(pos,2i)} = \sin\!\left(\frac{pos}{10000^{2i/d}}\right), \quad PE_{(pos,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$
+
+**RoPE（現代主流，LLaMA / Qwen）**：把相對位置旋轉進 Q、K 向量：
+
+$$\tilde{q}_m = q_m e^{im\theta}, \quad \tilde{k}_n = k_n e^{in\theta} \quad \Rightarrow \quad \tilde{q}_m \cdot \tilde{k}_n = \text{Re}[(q_m \cdot k_n^*)\, e^{i(m-n)\theta}]$$
+
+內積只依賴**相對位置** $m-n$，長上下文外推更自然，使 context window 擴展到 1M token。
+
+#### 6.0.5 複雜度與 Flash Attention
+
+| 操作 | 時間 | 空間 |
+|------|------|------|
+| $QK^\top$ | $O(n^2 d)$ | $O(n^2)$ |
+| Softmax | $O(n^2)$ | $O(n^2)$ |
+| $AV$ | $O(n^2 d)$ | $O(nd)$ |
+
+**瓶頸**：$O(n^2)$ 空間，$n=100\text{K}$ 時注意力矩陣需 $10^{10}$ 個元素，無法放入 GPU 記憶體。
+
+**Flash Attention（Dao et al. 2022）**：分塊計算（tiling），避免將完整 $n \times n$ 矩陣寫入 HBM：
+- 時間複雜度仍 $O(n^2)$，但 IO 操作大幅減少，速度 2–4×
+- 空間降至 $O(n)$，使百萬 token 長上下文成為可能
+
+**近似方法**：
+
+| 方法 | 思路 | 複雜度 |
+|------|------|--------|
+| Longformer | 局部窗口 + 全局 token | $O(n)$ |
+| GQA（分組查詢） | 多 Q 共享同一組 K, V | 推理快 2–8× |
+| Linformer | 低秩分解 K, V | $O(n)$ |
+
+> **一句話**：Attention 是**軟性的可微分查詢**——Query 與所有 Key 計算相似度，返回所有 Value 的加權混合，全程可微，讓任意兩位置的路徑長度從 RNN 的 $O(n)$ 降為 $O(1)$。
+
 ### 6.1 Self-Attention 機制
 
 《Attention Is All You Need》（Vaswani et al. 2017）：**完全拋棄 RNN/CNN**，純注意力架構。
