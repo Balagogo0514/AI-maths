@@ -550,6 +550,91 @@ x ──┬───────────────────────
 
 ![LayerNorm vs RMSNorm 計算流程與 Pre-LN vs Post-LN 比較](figures/dl-ln.svg)
 
+#### 6.0.11 Feed-Forward Network（FFN）
+
+每個 Transformer Block 有兩個子層：MHA + **FFN**。FFN 接在 Attention 之後，對每個 token **獨立**做非線性變換（不跨 token）。
+
+---
+
+**標準 FFN（Vaswani 2017）**
+
+$$\text{FFN}(x) = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2$$
+
+- $W_1 \in \mathbb{R}^{d_{ff} \times d}$，$W_2 \in \mathbb{R}^{d \times d_{ff}}$
+- 原始論文：$d = 512,\; d_{ff} = 2048$（**4× 擴展比**）
+- 參數量：$2 \times d \times d_{ff}$，約佔整個模型 **2/3** 的參數
+- 設計直覺：先投影到高維空間學習豐富非線性組合，再壓縮回 $d$ 維保持殘差維度一致
+
+---
+
+**激活函數演進**
+
+| 激活 | 公式 | 採用 |
+|------|------|------|
+| ReLU | $\max(0,x)$ | 原版 Transformer |
+| GELU | $x \cdot \Phi(x)$（$\Phi$ 為正態 CDF） | BERT、GPT-2 |
+| SwiGLU | $\text{Swish}(W_1 x) \odot (W_3 x)$ | LLaMA、Qwen、Gemma |
+| GeGLU | $\text{GELU}(W_1 x) \odot (W_2 x)$ | PaLM |
+
+**GELU** 近似：
+
+$$\text{GELU}(x) \approx 0.5x\!\left(1 + \tanh\!\left[\sqrt{2/\pi}(x + 0.044715x^3)\right]\right)$$
+
+---
+
+**SwiGLU（現代主流，Shazeer 2020）**
+
+GLU（Gated Linear Unit）思想：兩個投影——一個做激活、一個做門控，逐元素相乘：
+
+$$\text{FFN}_{\text{SwiGLU}}(x) = \bigl(\text{Swish}(xW_1) \odot xW_3\bigr)\, W_2, \quad \text{Swish}(x) = x \cdot \sigma(x)$$
+
+現在有**三個矩陣**（$W_1, W_2, W_3$），為保持參數量與 2 矩陣版相同，$d_{ff}$ 縮小：
+
+$$d_{ff} = \tfrac{2}{3} \times 4d = \tfrac{8d}{3} \approx 2.67d \quad\text{（再取整到 128 的倍數）}$$
+
+LLaMA-3 8B 實際值：$d = 4096,\; d_{ff} = 14336$（$\approx 3.5d$）
+
+---
+
+**FFN 的詮釋：鍵值記憶體（Geva et al. 2021）**
+
+| 矩陣 | 詮釋 |
+|------|------|
+| $W_1$ 的每一行 | 鍵（key）：與輸入 $x$ 匹配 |
+| 激活後的稀疏向量 | 匹配強度（稀疏化） |
+| $W_2$ 的每一列 | 值（value）：儲存的知識片段 |
+| FFN 輸出 | 被激活的 value 加權和 |
+
+> **事實知識主要存在 FFN**（「巴黎是法國的首都」），**語法/推理主要在 Attention**。
+
+---
+
+**參數量分布（LLaMA-3 8B，$L=32$）**
+
+| 部分 | 參數量 | 佔比 |
+|------|--------|------|
+| FFN（SwiGLU 3 矩陣） | $32 \times 3 \times 4096 \times 14336 \approx 5.6\text{B}$ | **~70%** |
+| MHA（含 GQA） | $\approx 0.5\text{B}$ | ~6% |
+| Embedding | $\approx 0.5\text{B}$ | ~6% |
+| Norm + 其他 | 極少 | ~1% |
+
+---
+
+**FFN 與 MoE 的關係**
+
+MoE 就是把一個 Dense FFN 替換成 $N$ 個 Expert FFN，每次 token 只激活 top-$k$ 個：
+
+```
+Dense：  token ──► FFN ──► 輸出
+MoE：    token ──► Router ──► E₁·g₁ + E₃·g₃（top-2）──► 輸出
+```
+
+Mixtral 8×7B：8 個 Expert，每次激活 2 個，激活參數 ≈ 12.9B，總參數 46.7B。
+
+> **一句話**：FFN 是 Transformer 的「知識倉庫」，SwiGLU 門控機制讓它更有選擇性地組合特徵，約佔模型 70% 的參數。
+
+![FFN 結構：標準 vs SwiGLU 門控、激活函數比較、參數量分布](figures/dl-ffn.svg)
+
 ### 6.1 Self-Attention 機制
 
 《Attention Is All You Need》（Vaswani et al. 2017）：**完全拋棄 RNN/CNN**，純注意力架構。
