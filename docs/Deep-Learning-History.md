@@ -452,6 +452,150 @@ $$L = -\sum_t \log P(x_t \mid x_1, \ldots, x_{t-1})$$
 
 ---
 
+### 6.7 Transformer 訓練細節
+
+大模型的強大不只來自架構，更來自**精心設計的訓練工程**：正確的損失函數、穩定的優化器、混合精度、分散式並行。
+
+#### 訓練目標（Loss Function）
+
+**Decoder-only（GPT 系列）— 因果語言模型（CLM）**：
+
+$$L = -\frac{1}{T}\sum_{t=1}^{T} \log P(x_t \mid x_1, \ldots, x_{t-1};\, \theta)$$
+
+每個位置預測下一個 token，對整個序列的交叉熵取平均。
+
+**Encoder-only（BERT）— 遮蔽語言模型（MLM）**：
+
+$$L = -\sum_{i \in \mathcal{M}} \log P(x_i \mid x_{\setminus \mathcal{M}};\, \theta)$$
+
+只對被遮蔽的位置集合 $\mathcal{M}$ 計算損失，其餘位置不參與梯度回傳。
+
+#### Tokenization：BPE / WordPiece / SentencePiece
+
+原始文字必須先轉為離散 token ID，才能輸入模型。
+
+**BPE（Byte Pair Encoding，GPT 系列）**：
+1. 初始：每個字元都是一個 token
+2. 反覆合併最頻繁的相鄰 pair：`t`+`h`→`th`，`th`+`e`→`the`
+3. 直到詞彙表達到目標大小（GPT-4 約 100K tokens）
+
+**WordPiece（BERT）**：合併準則改為最大化語言模型 log-likelihood。
+
+**SentencePiece（LLaMA/Qwen）**：直接在 unicode byte 層面操作，語言無關。
+
+#### 優化器：AdamW
+
+標準 Adam 加上**解耦權重衰減（Decoupled Weight Decay）**：
+
+$$m_t = \beta_1 m_{t-1} + (1-\beta_1) g_t \quad (\text{一階矩})$$
+$$v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2 \quad (\text{二階矩})$$
+$$\theta_t = \theta_{t-1} - \eta \cdot \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon} - \eta \lambda \theta_{t-1}$$
+
+| 超參數 | 典型值 | 作用 |
+|--------|--------|------|
+| $\beta_1$ | 0.9 | 梯度指數移動平均（平滑方向） |
+| $\beta_2$ | 0.95–0.999 | 梯度平方指數移動平均（自適應 LR） |
+| $\epsilon$ | $10^{-8}$ | 防除以零 |
+| $\lambda$ | 0.1 | 權重衰減（L2 正則強度） |
+
+> **為何 AdamW 優於 Adam**：Adam 的 L2 正則與自適應學習率耦合，使得不同參數的正則化強度不均；AdamW 把衰減從梯度更新中分離，正則化效果更一致。
+
+#### 學習率調度：Warmup + Cosine Decay
+
+Transformer 對學習率極敏感，需兩階段調度：
+
+**Warmup 階段**（通常佔訓練 1–5% 步數）：
+
+$$\eta_t = \eta_{\max} \cdot \frac{t}{t_{\text{warm}}}$$
+
+**Cosine Decay 階段**：
+
+$$\eta_t = \eta_{\min} + \frac{1}{2}(\eta_{\max} - \eta_{\min})\left(1 + \cos\frac{t - t_{\text{warm}}}{T - t_{\text{warm}}} \pi\right)$$
+
+> **為何需要 Warmup**：訓練初期二階矩估計 $v_t \approx 0$，Adam 的偏差修正 $\hat{v}_t$ 不可靠；Warmup 讓優化器先以小學習率積累可靠的梯度統計，避免初始不穩定的大步幅。
+
+![學習率 Warmup+Cosine 調度曲線 與 ZeRO 記憶體節省示意](figures/dl-training.svg)
+
+#### 梯度裁剪（Gradient Clipping）
+
+Transformer 偶發梯度爆炸，以全域 L2 範數裁剪穩定訓練：
+
+$$\text{if } \|g\|_2 > \delta: \quad g \leftarrow g \cdot \frac{\delta}{\|g\|_2}$$
+
+典型值 $\delta = 1.0$，不改變梯度方向，僅縮放大小。
+
+#### 正則化技術
+
+| 技術 | 位置 | 作用 |
+|------|------|------|
+| Dropout | Attention 權重、FFN 層 | 隨機丟棄（訓練 $p=0.1$，推理 $p=0$） |
+| Weight Decay | AdamW 中 | L2 正則，抑制權重過大 |
+| **Pre-Norm** | 每個子層前 | 梯度可直接通過殘差路徑，訓練更穩定 |
+| Label Smoothing | 損失函數 | 軟化 one-hot 目標，防止過度自信 |
+
+> **Pre-Norm vs Post-Norm**：原始 Transformer 用 Post-Norm（`LayerNorm(x + Sublayer(x))`），現代大模型改 Pre-Norm（`x + Sublayer(LayerNorm(x))`），梯度可沿殘差路徑直通，不需精細調 Warmup 也能穩定。
+
+#### 混合精度訓練（Mixed Precision / BF16）
+
+FP32 訓練佔記憶體大，改用 **BF16**（Brain Float 16）：
+
+| 格式 | 位元 | 動態範圍 | 精度 |
+|------|------|----------|------|
+| FP32 | 32 | $10^{-38}$–$10^{38}$ | 7 位十進位 |
+| FP16 | 16 | $10^{-5}$–65504 | 3–4 位 |
+| **BF16** | **16** | **同 FP32** | **2–3 位** |
+
+BF16 保留 FP32 的指數位元數（8 bit），動態範圍相同，不會像 FP16 那樣發生溢出（overflow）。
+
+**AMP 訓練流程**：前向（BF16）→ 損失（FP32）→ 反向（BF16）→ 優化器（FP32 master copy）
+
+記憶體節省 ≈50%，速度提升 2–3×（Tensor Core 對 BF16 有硬體加速）。
+
+#### 大規模分散式訓練
+
+| 並行策略 | 切分維度 | 適用場景 |
+|----------|----------|----------|
+| **資料並行（DDP）** | Batch | 模型能放入單張 GPU |
+| **張量並行（Megatron-LM）** | 矩陣列/行 | 單層參數超過單 GPU |
+| **流水線並行** | 層 | 極大模型，層數多 |
+| **ZeRO（DeepSpeed）** | 優化器/梯度/參數 | 通用記憶體節省 |
+
+**ZeRO 三個 Stage**：
+- ZeRO-1：分片**優化器狀態** → ~4× 記憶體節省
+- ZeRO-2：再分片**梯度** → ~8×
+- ZeRO-3：再分片**模型參數** → ~64×（4 GPU 環境下每 GPU 只存 1/4 參數）
+
+#### 訓練穩定性問題
+
+| 問題 | 症狀 | 解法 |
+|------|------|------|
+| Loss spike | 訓練中途 loss 突然飆升 | 降 LR、梯度裁剪、checkpoint 回滾 |
+| NaN / Inf | 梯度爆炸 | 降低 lr、加強裁剪、改 BF16 |
+| 訓練/驗證 gap 大 | 過擬合 | 增 Dropout、Weight Decay |
+| Loss 不下降 | 卡 plateau | 增大 batch size、調 Warmup 長度 |
+
+#### 完整訓練流程
+
+```
+原始語料
+  ↓ Tokenize（BPE/SentencePiece）
+Token ID 序列
+  ↓ 切成固定長度 chunks（如 2048 tokens）
+Mini-batch
+  ↓ 前向傳播（BF16，Flash Attention）
+Logits → Cross-Entropy Loss
+  ↓ 反向傳播
+梯度（Gradient Clipping clip=1.0）
+  ↓ AdamW 更新（Warmup + Cosine LR）
+更新後參數
+  ↓ 每 N 步存 checkpoint
+繼續下一個 step...
+```
+
+**實際規模（GPT-3 為例）**：300B tokens 語料、batch 3.2M tokens（梯度累積實現）、$\eta_{\max}=6\times10^{-4}$、warmup 375M tokens，訓練數週於數千張 A100。
+
+---
+
 ## 7. 第七波：大模型與湧現（2020–2023）
 
 ### 7.1 Scaling Law（Kaplan et al. 2020）
