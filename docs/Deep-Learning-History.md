@@ -388,6 +388,86 @@ V:  [V_1          | V_2          | ... | V_8             ]
 
 ![Attention 完整計算流程與 GQA 架構](figures/dl-attention.svg)
 
+#### 6.0.9 位置編碼深入：Sinusoidal / Learned / RoPE / ALiBi
+
+Transformer 的 Self-Attention 是**集合操作**——把 token 當無序集合，任意交換兩個 token 後輸出不變。位置編碼（Positional Encoding，PE）把「第幾個位置」的資訊注入 embedding，讓模型恢復順序感知。
+
+---
+
+**Sinusoidal PE（Vaswani 2017，原始 Transformer）**
+
+$$PE_{(pos,2i)} = \sin\!\left(\frac{pos}{10000^{2i/d}}\right), \quad PE_{(pos,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$
+
+直接相加：$x'_{pos} = x_{pos} + PE_{pos}$
+
+| 設計要點 | 說明 |
+|---------|------|
+| 低維（$i$ 小）→ 高頻 | 區分相鄰位置 |
+| 高維（$i$ 大）→ 低頻 | 區分遠距位置 |
+| 相對位置可推導 | $PE_{pos+k}$ 可由 $PE_{pos}$ 線性變換（三角恆等式） |
+| 無參數、可外推 | 訓練 512 tokens 推論時仍可用更長序列（但效果會下降） |
+
+---
+
+**Learned PE（BERT / GPT-2）**
+
+```
+PE_table ∈ ℝ^{max_len × d}   ← 可訓練 Embedding 矩陣
+```
+
+把位置當 token id 查表，加到 token embedding。優點：更靈活；缺點：超過 `max_len` 無法外推，多 $\text{max\_len} \times d$ 個參數。
+
+---
+
+**RoPE（Rotary Position Embedding，Su et al. 2021）—— 現代主流**
+
+不把 PE 加到 embedding，而是在計算 $QK^\top$ **前**，對 Q、K 施加「旋轉」：
+
+$$\tilde{q}_m = q_m \cdot e^{im\theta}, \quad \tilde{k}_n = k_n \cdot e^{in\theta}$$
+
+內積自然包含相對位置：
+
+$$\langle \tilde{q}_m, \tilde{k}_n \rangle = \text{Re}\!\left[q_m k_n^* \cdot e^{i(m-n)\theta}\right]$$
+
+實作：對 $(q_{2i},\, q_{2i+1})$ 成對旋轉（2D 旋轉矩陣），旋轉角 $\theta_i = 10000^{-2i/d}$：
+
+$$\begin{bmatrix}\tilde{q}_{2i}\\\tilde{q}_{2i+1}\end{bmatrix} = \begin{bmatrix}\cos m\theta_i & -\sin m\theta_i\\\sin m\theta_i & \cos m\theta_i\end{bmatrix} \begin{bmatrix}q_{2i}\\q_{2i+1}\end{bmatrix}$$
+
+| 優點 | 說明 |
+|------|------|
+| 純相對位置 | Attention score 只依賴 $m-n$ |
+| 無額外參數 | 旋轉角由公式生成 |
+| 強外推 | 搭配 YaRN / RoPE scaling 可延伸至數十萬 token |
+| 與 Flash Attention 相容 | 旋轉僅作用於 Q/K，不影響 V |
+
+採用：LLaMA 全系、Mistral、Qwen、GPT-NeoX、Falcon。
+
+---
+
+**ALiBi（Attention with Linear Biases，Press et al. 2022）**
+
+不改 embedding，直接在 Attention score 加線性距離懲罰：
+
+$$A_{ij} = \frac{q_i k_j^\top}{\sqrt{d_k}} - m_h \cdot |i - j|$$
+
+$m_h$ 是每個 head 的斜率（超參數，各頭不同）。距離越遠懲罰越大，外推性強，天然偏好局部注意力。採用：BLOOM。
+
+---
+
+**四種 PE 對比**
+
+| | Sinusoidal | Learned | RoPE | ALiBi |
+|---|:---:|:---:|:---:|:---:|
+| 額外參數 | 0 | $\text{max\_len} \times d$ | 0 | 0 |
+| 外推能力 | 有限 | 無 | 強（+YaRN） | 強 |
+| 相對位置 | 可推導 | 否 | 原生 | 原生 |
+| 注入方式 | 加法 | 加法 | 旋轉 Q/K | Attention bias |
+| 代表模型 | 原版 Transformer | BERT/GPT-2 | LLaMA/Qwen | BLOOM |
+
+> **一句話**：RoPE 同時兼顧「無需參數、原生相對位置、強外推」，是現代 LLM 的工業標準 PE。
+
+![位置編碼對比：Sinusoidal 頻率、RoPE 旋轉示意、ALiBi 偏置](figures/dl-pe.svg)
+
 ### 6.1 Self-Attention 機制
 
 《Attention Is All You Need》（Vaswani et al. 2017）：**完全拋棄 RNN/CNN**，純注意力架構。
