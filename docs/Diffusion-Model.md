@@ -66,6 +66,67 @@ $$
 
 ---
 
+### 0.2.5 GAN 失敗的數學原因（更深層）
+
+GAN 的原始損失等價於最小化 **JS 散度**：
+
+$$\mathcal{L}_{\text{GAN}} = \mathbb{E}[\log D(x)] + \mathbb{E}[\log(1-D(G(z)))] \equiv 2\,\text{JS}(p_{\text{data}} \| p_{\text{gen}}) - 2\log 2$$
+
+**訓練初期的梯度消失**：當 $p_{\text{gen}}$ 和 $p_{\text{data}}$ 幾乎不重疊（維度詛咒下幾乎必然如此）：
+
+$$\text{JS}(p_{\text{data}} \| p_{\text{gen}}) = \log 2 \quad\text{（常數）} \implies \nabla_\theta \mathcal{L} = 0$$
+
+Generator 完全學不了任何東西。WGAN 改用 Wasserstein 距離緩解此問題，但博弈本質不變：  
+Generator 和 Discriminator 的**博弈均衡**（Nash equilibrium）極難達到，  
+Generator 總會找到「欺騙 D 的捷徑」而不是「生成多樣圖像」→ 模式崩塌。
+
+---
+
+### 0.2.6 Score Function 為何繞過正規化常數？
+
+學習分布 $p(x)$ 通常需要能量模型：$p(x) = e^{-E_\theta(x)} / Z_\theta$，
+其中 $Z_\theta = \int e^{-E_\theta(x)} dx$ 在高維中**不可計算**。
+
+但 **Score Function** $s(x) = \nabla_x \log p(x)$ 把 $Z$ 自動消掉：
+
+$$s(x) = \nabla_x \log \frac{e^{-E(x)}}{Z} = \underbrace{-\nabla_x E(x)}_{\text{可計算}} - \underbrace{\nabla_x \log Z}_{= 0,\ Z\text{ 不依賴 }x}$$
+
+**Hyvärinen（2005）Score Matching**：用 Fisher 散度訓練，完全不需要 $Z$：
+
+$$\mathcal{L}_{\text{SM}} = \mathbb{E}_{p(x)}\!\left[\text{tr}(\nabla_x s_\theta(x)) + \tfrac{1}{2}\|s_\theta(x)\|^2\right]$$
+
+**問題**：需要計算 Jacobian 的跡，計算量 $O(d)$，$d=786{,}432$ 維時代價巨大。
+
+**Vincent（2011）Denoising Score Matching 的解法**：加噪聲後 score 有閉合形式：
+
+$$\nabla_{x_t} \log p_\sigma(x_t | x_0) = -\frac{x_t - x_0}{\sigma^2} = -\frac{\epsilon}{\sqrt{1-\bar\alpha_t}}$$
+
+因此訓練目標變成：**「預測加入的噪聲 $\epsilon$」**，完全不需要計算 Jacobian，
+代價從 $O(d)$ 降到 $O(1)$。這就是為什麼 $\hat\epsilon_\theta(x_t,t)$ 等價於估計 score function。
+
+---
+
+### 0.2.7 高維典型集：為什麼插值失敗
+
+高維空間有一個反直覺的現象——**典型集（Typical Set）**：
+
+$$\text{高維高斯 } \mathcal{N}(0, I_d) \text{ 的質量集中在半徑} \approx \sqrt{d} \text{ 的球殼上}$$
+
+驗證：$\mathbb{E}[\|x\|^2] = d$，$\text{Var}(\|x\|^2) = 2d$，故 $\|x\| \approx \sqrt{d}$ 以高概率成立。
+
+**對插值的影響**：
+
+```
+圖像 A：‖xₐ‖ ≈ √d（在典型集球殼上）
+圖像 B：‖x_b‖ ≈ √d（在典型集球殼上）
+插值點：‖(xₐ+x_b)/2‖ ≈ √d/√2 ≈ 0.7√d  ← 比球殼內縮了 30%
+```
+
+插值結果落在更低能量的「非典型」區域，對應**亮度偏低、細節模糊**的圖像——
+這正是 VAE 和直接插值總是模糊的數學根源。
+
+---
+
 ### 0.3 為什麼分多步？（難問題 → T 個簡單問題）
 
 | 方式 | 任務難度 | 結果 |
@@ -98,6 +159,36 @@ t 小（低噪聲）→ 幾乎清晰的圖去噪 → 學精細細節（毛髮紋
 
 ---
 
+### 0.4.5 SDE 完整理論——為什麼逆向過程必然存在
+
+**前向 SDE（Itô 微分方程）**：
+
+$$dx = \underbrace{f(x,t)}_{\text{漂移項}} dt + \underbrace{g(t)}_{\text{擴散係數}} dW$$
+
+DDPM 對應 $f(x,t) = -\frac{\beta(t)}{2}x$（Ornstein-Uhlenbeck 過程），這個 SDE 能將**任意分布**逐漸推向 $\mathcal{N}(0,I)$。
+
+**Anderson（1982）逆向 SDE 定理**：
+
+$$dx = \underbrace{\left[f(x,t) - g(t)^2\,\nabla_x\log p_t(x)\right]}_{\text{逆向漂移 = 前向漂移 − g²×score}} dt + g(t)\,d\bar W$$
+
+這個方程描述了如何從 $\mathcal{N}(0,I)$ **精確還原**到原始分布 $p_{\text{data}}(x)$，
+唯一需要的額外項是 **score function** $\nabla_x\log p_t(x)$。
+
+**關鍵洞見**：
+- 前向 SDE 完全由人設計（選 $\beta(t)$），不需要訓練
+- 逆向 SDE 存在性是**數學定理**，只要知道 score 就可以反轉
+- 神經網路的唯一工作：學習各時間步的 score（即學 $\hat\epsilon_\theta$）
+
+**DDPM / DDIM 的統一視角**：
+
+| 方法 | 採樣方程 | 隨機性 | 步數 |
+|---|---|---|---|
+| DDPM | 離散化逆向 **SDE**（有 $\sigma_t z$ 隨機項） | 有 | 1000 步 |
+| DDIM | 離散化逆向 **ODE**（去掉隨機項） | 無（確定性） | 50 步 |
+| DPM-Solver | 高階 ODE 求解器（3–4 步高精度） | 無 | 5–20 步 |
+
+---
+
 ### 0.5 四種生成模型的本質比較
 
 | 方法 | 核心思路 | 訓練穩定性 | 分布覆蓋 | 生成品質 | 速度 |
@@ -115,6 +206,8 @@ t 小（低噪聲）→ 幾乎清晰的圖去噪 → 學精細細節（毛髮紋
 ---
 
 ![為何加噪再去噪 · Score Function · 生成模型比較](figures/diffusion-why.svg)
+
+![流形假說 · Score Function 向量場 · SDE 理論](figures/diffusion-score.svg)
 
 ---
 
