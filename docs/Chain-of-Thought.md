@@ -354,6 +354,68 @@ DeepSeek-R1 技術報告記錄了一個有趣現象：
 
 這正是滲流理論所說的「湧現」：沒有任何局部規則指定「要自我反思」，但在規模與訓練達到臨界點後，宏觀行為自然出現。
 
+### 7.5 思維鏈的可見度：各模型政策比較
+
+推理模型的思維鏈（thinking tokens）是否對外開放，各廠商政策差異很大：
+
+| 模型 | 思維鏈可見 | API 取得方式 | 備注 |
+|---|---|---|---|
+| OpenAI o1 / o3 / o4 | ✗ 完全隱藏 | 只回傳 token 數量 | 商業封閉 |
+| Claude Extended Thinking | ✓ 大部分可見 | `thinking` block | 可設預算上限 |
+| DeepSeek-R1 | ✓ 完全開放 | `<think>` 標籤 | 開源 MIT License |
+| QwQ-32B（Qwen） | ✓ 完全開放 | 直接輸出 | 開源 |
+| Gemini 2.0 Flash Thinking | ✓ 部分可見 | `thought` 欄位 | 實驗性功能 |
+
+**OpenAI o1/o3 的做法**：
+
+```json
+// API 回應只有計費數字，沒有思維內容
+{
+  "usage": {
+    "completion_tokens_details": {
+      "reasoning_tokens": 890   ← 只有數量，無文字
+    }
+  }
+}
+```
+
+**Claude Extended Thinking 的做法**：
+
+```python
+response = client.messages.create(
+    model="claude-sonnet-4-5",
+    thinking={"type": "enabled", "budget_tokens": 10000},
+    messages=[{"role": "user", "content": "..."}]
+)
+for block in response.content:
+    if block.type == "thinking":
+        print(block.thinking)   # 完整思維鏈
+    elif block.type == "text":
+        print(block.text)       # 最終答案
+```
+
+**DeepSeek-R1 的做法**：
+
+```
+<think>
+讓我先嘗試第一種方法...
+等等，這裡有問題，如果 x 是負數的話...
+換個角度，用數學歸納法...
+驗算：代入 n=3，結果正確。
+</think>
+答案是 42。
+```
+
+**為什麼 OpenAI 選擇隱藏？**
+
+| 原因 | 說明 |
+|---|---|
+| 商業考量 | 思維鏈暴露「解題策略」，競爭對手可蒸餾訓練 |
+| 安全考量 | 模型知道思維被看到時，會「表演推理」而非真正推理 |
+| 實際諷刺 | DeepSeek-R1 完全開放且效果優秀，說明開放不必然有害 |
+
+**結論**：目前取得完整思維鏈最方便的途徑是 **DeepSeek-R1**（開源，可本地部署）或 **Claude Extended Thinking API**（商業 API，大部分可見）。
+
 ---
 
 ## 8. 效能數字對比
