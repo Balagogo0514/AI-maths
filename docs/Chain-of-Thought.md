@@ -418,6 +418,137 @@ for block in response.content:
 
 ---
 
+### 7.6 實作：用指令印出思維鏈
+
+#### Claude Extended Thinking API
+
+```python
+import anthropic
+
+client = anthropic.Anthropic()  # 讀取 ANTHROPIC_API_KEY 環境變數
+
+response = client.messages.create(
+    model="claude-sonnet-4-5",
+    max_tokens=16000,
+    thinking={
+        "type": "enabled",
+        "budget_tokens": 10000   # 思維 token 上限
+    },
+    messages=[{"role": "user", "content": "解：x² - 5x + 6 = 0"}]
+)
+
+for block in response.content:
+    if block.type == "thinking":
+        print("=== 思維鏈 ===")
+        print(block.thinking)
+    elif block.type == "text":
+        print("=== 最終答案 ===")
+        print(block.text)
+```
+
+#### DeepSeek-R1 官方 API（相容 OpenAI SDK）
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    api_key="your-deepseek-api-key",
+    base_url="https://api.deepseek.com"
+)
+
+response = client.chat.completions.create(
+    model="deepseek-reasoner",   # R1 模型
+    messages=[{"role": "user", "content": "解：x² - 5x + 6 = 0"}]
+)
+
+msg = response.choices[0].message
+print("=== 思維鏈 ===")
+print(msg.reasoning_content)   # <think>...</think> 完整內容
+print("=== 最終答案 ===")
+print(msg.content)
+```
+
+#### Ollama 本地執行 DeepSeek-R1（完全免費）
+
+```bash
+# 安裝模型（一次性）
+ollama pull deepseek-r1:7b    # 7B（約 4.7 GB）
+ollama pull deepseek-r1:14b   # 14B（約 9 GB）
+
+# 終端機直接對話
+ollama run deepseek-r1:7b
+```
+
+```python
+import ollama, re
+
+response = ollama.chat(
+    model="deepseek-r1:7b",
+    messages=[{"role": "user", "content": "解：x² - 5x + 6 = 0"}]
+)
+
+full = response["message"]["content"]
+
+think = re.search(r"<think>(.*?)</think>", full, re.DOTALL)
+answer = re.sub(r"<think>.*?</think>", "", full, flags=re.DOTALL).strip()
+
+print("=== 思維鏈 ===")
+print(think.group(1) if think else "(無)")
+print("=== 最終答案 ===")
+print(answer)
+```
+
+#### Streaming——邊生成邊印
+
+```python
+# Claude Streaming
+with client.messages.stream(
+    model="claude-sonnet-4-5",
+    max_tokens=16000,
+    thinking={"type": "enabled", "budget_tokens": 8000},
+    messages=[{"role": "user", "content": "..."}]
+) as stream:
+    for event in stream:
+        if hasattr(event, "type"):
+            if event.type == "content_block_start":
+                if event.content_block.type == "thinking":
+                    print("\n[思維中...]", flush=True)
+            elif event.type == "content_block_delta":
+                if event.delta.type == "thinking_delta":
+                    print(event.delta.thinking, end="", flush=True)
+                elif event.delta.type == "text_delta":
+                    print(event.delta.text, end="", flush=True)
+```
+
+```python
+# DeepSeek-R1 Streaming
+stream = client.chat.completions.create(
+    model="deepseek-reasoner",
+    messages=[{"role": "user", "content": "..."}],
+    stream=True
+)
+
+for chunk in stream:
+    delta = chunk.choices[0].delta
+    if hasattr(delta, "reasoning_content") and delta.reasoning_content:
+        print(delta.reasoning_content, end="", flush=True)
+    elif delta.content:
+        print("\n[答案]", delta.content, end="", flush=True)
+```
+
+#### 各方法速覽
+
+| 方法 | 關鍵參數 | 思維鏈欄位 | 費用 |
+|---|---|---|---|
+| Claude API | `thinking={"type":"enabled"}` | `block.thinking` | 計費 |
+| DeepSeek 官方 API | `model="deepseek-reasoner"` | `msg.reasoning_content` | 計費 |
+| Ollama 本地 | `ollama run deepseek-r1:7b` | `<think>` regex 解析 | **免費** |
+| OpenAI o1/o3 | ❌ 不可取得 | — | — |
+
+**最快上手**：`ollama pull deepseek-r1:7b` → `ollama run deepseek-r1:7b`，一行指令，本地免費執行。
+
+---
+
 ## 8. 效能數字對比
 
 | 模型 | 任務 | 標準 | +CoT | +Self-Consistency |
