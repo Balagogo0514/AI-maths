@@ -662,7 +662,126 @@ Mamba（SSM）試圖把這個代價也消除。
 
 ---
 
-## 12. 一句話記憶
+## 12. Transformer 與 Diffusion Model
+
+> **一句話**：Diffusion Model 定義了一個「逐步去噪」的訓練框架，骨幹網路只是其中一個模組；U-Net 是早期選擇，Transformer（DiT）是現代選擇。
+
+### 12.1 Diffusion Model 的框架 vs 骨幹
+
+```
+Diffusion Framework
+│
+├── 前向過程：x₀ → x_T  （逐步加噪，固定數學）
+├── 逆向過程：x_T → x₀  （學習去噪，依賴骨幹網路）
+│       │
+│       ├── 骨幹 = U-Net  （SD 1/2 時代）
+│       └── 骨幹 = Transformer  （DiT / SD3 / Sora 時代）
+└── 損失：MSE(ε̂_θ(x_t,t,c) − ε)
+```
+
+骨幹的唯一職責：給定帶噪 latent $x_t$、時間步 $t$、條件 $c$，預測加入的噪聲 $\hat\epsilon$。
+
+---
+
+### 12.2 Cross-Attention：文字如何影響圖像
+
+Transformer 天然支援序列對序列的 Cross-Attention，這正是文生圖的關鍵橋梁：
+
+$$
+\text{Cross-Attn}(Q_{\text{image}}, K_{\text{text}}, V_{\text{text}})
+= \text{softmax}\!\left(\frac{Q_{\text{image}} K_{\text{text}}^\top}{\sqrt{d_k}}\right) V_{\text{text}}
+$$
+
+| 角色 | 來源 | 作用 |
+|---|---|---|
+| **Q**（Query） | 圖像 latent patch | 「我需要什麼文字資訊？」 |
+| **K, V**（Key / Value） | 文字 token（CLIP/T5） | 「文字描述的語義」 |
+
+每個圖像 patch 透過 Attention 加權選取文字 token 的資訊 → 局部語義對齊。
+
+**U-Net 時代**：Cross-Attention 只插入在 $16\times16$、$8\times8$ 的瓶頸層，全局感受野有限。  
+**DiT 時代**：每個 Transformer Block 都含 Cross-Attention，全局感受野從第一層開始。
+
+---
+
+### 12.3 DiT：純 Transformer 骨幹
+
+Peebles & Xie（2022）提出 **Diffusion Transformer（DiT）**：
+
+**Patch 化流程**：
+```
+Latent z ∈ R^{H×W×C}
+  ↓ 切成 p×p patch（預設 p=2）
+  ↓ 展開為序列 (H/p)×(W/p) 個 token
+  ↓ Transformer 處理
+  ↓ 重組回 H×W，預測 ε̂
+```
+
+**條件注入—adaLN-Zero**（最優方式）：
+
+$$
+y = \underbrace{\gamma(c,t)}_{\text{MLP輸出}} \cdot \text{LayerNorm}(x) + \underbrace{\beta(c,t)}_{\text{MLP輸出}}
+$$
+
+Block 初始化時 $\gamma=1, \beta=0$（Zero 初始化），使訓練初期跳過不穩定的條件訊號。
+
+**為什麼 DiT 優於 U-Net？**
+
+| 面向 | U-Net | DiT |
+|---|---|---|
+| 感受野 | 堆疊 Conv，有限 | 一層 Attn = 任意 patch 連接 |
+| Scaling | 效果飽和 | FID ∝ GFLOPs⁻ᵅ（冪律，越算越好） |
+| 解析度彈性 | 固定分辨率 | 調整 patch 數即可改變解析度 |
+| 影片擴展 | 需特殊 3D Conv | 加 3D patch + temporal PE 自然泛化 |
+
+**Scaling Law（Peebles 2022）**：
+
+$$
+\text{FID} \propto \text{GFLOPs}^{-\alpha}, \quad \alpha \approx 0.3
+$$
+
+從 DiT-S（33M）→ DiT-XL（675M），FID 從 43.5 → **2.3**，與 LLM Scaling Law 形式完全一致。
+
+---
+
+### 12.4 Sora：時空 Patch 擴散
+
+OpenAI Sora（2024）被認為是將 DiT 推廣到影片：
+
+```
+影片  ──→  3D Patch（空間 p×p × 時間 f frames）
+      ──→  展開序列（token 數 ∝ 解析度 × 幀數）
+      ──→  Transformer 全局 Attention
+      ──→  預測每個 patch 的噪聲
+```
+
+**關鍵洞見**：影片只是「更長的序列」，Transformer 的 $O(n^2)$ 複雜度是代價，但 Flash Attention 大幅緩解。任意長寬比、任意時長只需改變序列長度。
+
+---
+
+### 12.5 模型演進時間線
+
+```
+2020  DDPM           U-Net（純 CNN）
+  │
+2022  SD 1/2         U-Net + Cross-Attention（CLIP 文字條件）
+  │
+2022  DiT            純 Transformer 骨幹，Scaling Law 驗證
+  │
+2024  Sora           Spatial-Temporal DiT，任意長寬比影片
+  │
+2024  SD3 / FLUX.1   MMDiT（Multi-Modal DiT，文圖 token 交叉）
+```
+
+**MMDiT（SD3/FLUX）**：文字與圖像 token 完全平等對待，聯合 Self-Attention，不再區分 Q/K/V 的來源。
+
+---
+
+![Transformer 與 Diffusion Model](figures/diffusion-transformer.svg)
+
+---
+
+## 13. 一句話記憶
 
 $$
 \text{Transformer Block} = \underbrace{x + \text{Attn}(\text{Norm}(x))}_{\text{跨 token 聚合資訊}} + \underbrace{x + \text{FFN}(\text{Norm}(x))}_{\text{逐 token 非線性變換}}
@@ -682,5 +801,8 @@ $$
 - Touvron, H. et al. (2023). *LLaMA: Open and Efficient Foundation Language Models*. arXiv:2302.13971.
 - Shazeer, N. (2020). *GLU Variants Improve Transformer*. arXiv:2002.05202. (SwiGLU)
 - Zhang, B. & Sennrich, R. (2019). *Root Mean Square Layer Normalization*. NeurIPS.
+- Peebles, W. & Xie, S. (2022). *Scalable Diffusion Models with Transformers*. arXiv:2212.09748. (DiT)
+- Ho, J. et al. (2020). *Denoising Diffusion Probabilistic Models*. NeurIPS. (DDPM)
+- Rombach, R. et al. (2022). *High-Resolution Image Synthesis with Latent Diffusion Models*. CVPR. (LDM/SD)
 - Fedus, W. et al. (2022). *Switch Transformers: Scaling to Trillion Parameter Models*. JMLR. (MoE)
 - DeepSeek-AI. (2024). *DeepSeek-V3 Technical Report*. arXiv:2412.19437.

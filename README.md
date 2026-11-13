@@ -13,9 +13,9 @@ AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、�
 | [梯度下降](docs/Gradient-Descent.md) | LLM 的優化核心，與反向傳播、殘差連接的交互作用 |
 | [損失函數](docs/Loss-Function.md) | MSE、交叉熵等：衡量預測與目標的差距並提供梯度 |
 | [KV Cache 與 Attention 機制](docs/KV-Cache.md) | Scaled Dot-Product Attention（Q/K/V、√dₖ 縮放）、Multi-Head、三種 Attention 形式、位置編碼（Sinusoidal/RoPE/ALiBi）、Flash Attention（Tiling + Online Softmax）；KV Cache 原理（Prefill/Decode）、MHA/MQA/GQA、Paged Attention、量化 KV Cache |
-| [擴散模型](docs/Diffusion-Model.md) | DDPM 前向/逆向數學、Score SDE、DDIM、CFG、LDM、DiT、Flow Matching；圖像/音訊/蛋白質生成應用 |
+| [擴散模型](docs/Diffusion-Model.md) | DDPM 前向/逆向數學、Score SDE、DDIM、CFG、LDM；**DiT**（Patch 化、adaLN-Zero、Scaling Law FID ∝ GFLOPs⁻ᵅ）、**Cross-Attention 文字條件注入**（Q=圖像/K,V=文字）、**Sora 時空 Patch**、**MMDiT/SD3/FLUX**；骨幹演進時間線；Flow Matching；圖像/音訊/蛋白質/分子生成應用 |
 | [深度學習演化史](docs/Deep-Learning-History.md) | 八個演化波次（1943–今）：感知機 → 反向傳播 → CNN → ResNet → Seq2Seq → Transformer → 大模型 → 多模態/推理模型；涵蓋 RNN/LSTM/BERT/GPT、Encoder vs Decoder、Transformer 訓練細節（AdamW、Warmup+Cosine LR、BF16 混合精度、ZeRO 分散式並行）；含七張圖示 |
-| [Transformer 架構](docs/Transformer.md) | Encoder-Decoder 全局結構、殘差連接（Pre/Post-LN）、RMSNorm、FFN/SwiGLU、Scaling Law（Chinchilla D*=20N）、MoE；**BERT**（雙向 Attention、MLM/NSP、RoBERTa/ELECTRA 等後繼）；**GPT 系列**（Causal LM、ICL、InstructGPT RLHF 三階段、GPT-4 多模態）|
+| [Transformer 架構](docs/Transformer.md) | Encoder-Decoder 全局結構、殘差連接（Pre/Post-LN）、RMSNorm、FFN/SwiGLU、Scaling Law（Chinchilla D*=20N）、MoE；**BERT**（雙向 Attention、MLM/NSP、RoBERTa/ELECTRA 等後繼）；**GPT 系列**（Causal LM、ICL、InstructGPT RLHF 三階段、GPT-4 多模態）；**Mamba/SSM**（選擇性狀態空間、並行 Scan、Mamba-2）；**Transformer vs CNN/RNN**；**DiT/Diffusion**（骨幹框架分離、Cross-Attention 條件注入、adaLN-Zero、Scaling Law、Sora 時空 Patch、MMDiT）|
 | [Chain-of-Thought 推理](docs/Chain-of-Thought.md) | Few-shot CoT、Zero-shot CoT（17.7%→78.7%）、Self-Consistency（+17.9% GSM8K）、ToT、ReAct、Reflexion（語言 RL、HumanEval 67%→91%）、PoT；計算深度定理（L×T 層等效計算）；DeepSeek-R1 GRPO 四階段訓練；各模型思維鏈可見度比較；API 程式碼範例與 Prompt 誘導模板 |
 | [滲流理論與湧現](docs/Percolation.md) | 相變（p_c≈0.593、P∞∼(p−p_c)^β）、臨界指數、重整化群、SIR 模型、網路滲流（ER 圖）、自組織臨界性；LLM 湧現能力類比（BIG-Bench、複合技能閾值、Schaeffer 2023 度量幻覺）；量子滲流（Anderson 局域化、表面碼容錯閾值、MIPT、糾纏滲流）|
 

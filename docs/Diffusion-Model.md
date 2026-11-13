@@ -155,12 +155,82 @@ $$\epsilon_{\text{guided}} = \epsilon_\theta(x_t, \emptyset) + w \cdot \bigl[\ep
 
 ### 7.2 Diffusion Transformer（DiT）
 
-Peebles & Xie（2023）以 **Transformer 取代 U-Net**：
+Peebles & Xie（2022）以 **純 Transformer 取代 U-Net**，發現 Diffusion Model 同樣遵循 Scaling Law。
 
-- 將 latent 分割為 patch → 序列輸入 Transformer
-- 條件（$t$、類別）透過 adaLN-Zero 注入
-- 更好的 scaling law：DiT-XL/2 超越當時所有 U-Net 模型
-- **Sora** 推測基於此架構
+**核心設計**：
+
+1. **Patch 化**：Latent $z \in \mathbb{R}^{H \times W \times C}$ 切成 $p \times p$ patch，展開為長度 $(H/p)(W/p)$ 的 token 序列
+2. **時間步嵌入**：$t$ 透過 sinusoidal → MLP，與類別條件合併為 $c$
+3. **adaLN-Zero**（最優條件注入）：
+
+$$
+y = \gamma(c) \cdot \text{LayerNorm}(x) + \beta(c)
+$$
+
+初始化 $\gamma=1, \beta=0$（Zero init），讓模型先學會去噪再學條件引導。
+
+**Scaling Law（FID ∝ GFLOPs⁻ᵅ）**：
+
+| 模型 | 參數量 | FID ↓（越低越好） |
+|---|---|---|
+| DiT-S/2 | 33M | 43.5 |
+| DiT-B/2 | 130M | 22.1 |
+| DiT-L/2 | 458M | 9.6 |
+| DiT-XL/2 | 675M | **2.3** |
+
+模型越大，品質越好，冪律關係與 LLM 完全一致。
+
+---
+
+### 7.3 Cross-Attention 文字條件注入
+
+U-Net 與 DiT 都可透過 **Cross-Attention** 注入文字條件：
+
+$$
+\text{Cross-Attn}(Q_{\text{image}}, K_{\text{text}}, V_{\text{text}}) = \text{softmax}\!\left(\frac{Q K^\top}{\sqrt{d_k}}\right) V
+$$
+
+| 角色 | 來源 | 意義 |
+|---|---|---|
+| Q | 圖像 patch token | 「我需要什麼文字資訊？」 |
+| K, V | 文字 token（CLIP/T5） | 「文字描述的語義」 |
+
+每個圖像 patch 透過 Attention 加權選取文字資訊，實現**局部語義對齊**。
+
+**U-Net 時代（SD 1/2）**：Cross-Attention 只插入瓶頸層（$16^2$、$8^2$），感受野受限。  
+**DiT 時代（SD3/FLUX）**：每層 Transformer Block 皆含 Cross-Attention，全局感受野。  
+**MMDiT（SD3/FLUX.1）**：文字與圖像 token 完全平等，聯合 Self-Attention，取消 Cross-Attention 分界。
+
+---
+
+### 7.4 Sora：時空 Patch 擴散
+
+OpenAI Sora（2024）推廣 DiT 至影片生成：
+
+```
+影片 ──→ 3D Patch（空間 p×p × 時間 f frames）
+     ──→ 展開序列（長度 ∝ 解析度 × 幀數）
+     ──→ Transformer 全局 Attention
+     ──→ 預測每個 patch 的噪聲 ε̂
+```
+
+**關鍵洞見**：影片只是「更長的序列」，任意長寬比、任意時長只需改變序列長度。Flash Attention 緩解 $O(n^2)$ 的記憶體壓力。
+
+---
+
+### 7.5 模型演進時間線
+
+```
+2020  DDPM           U-Net（純 CNN）
+2022  SD 1/2         U-Net + Cross-Attention（CLIP 文字條件）
+2022  DiT            純 Transformer，Scaling Law 驗證
+2024  Sora           Spatial-Temporal DiT，任意長寬比影片
+2024  SD3 / FLUX.1   MMDiT，文圖 token 聯合 Self-Attention
+```
+
+---
+
+![Transformer 與 Diffusion](figures/diffusion-transformer.svg)
 
 ---
 
