@@ -138,16 +138,76 @@ Answer:  126
 
 ### 3.3 Reflexion（Shinn et al. 2023）
 
-讓模型在失敗後**反思自己的錯誤**，生成語言層面的 self-critique 並存入 memory：
+#### 核心問題
+
+傳統 RL 讓 agent 從錯誤中學習的方式是**更新模型權重**，代價極高。Reflexion 的洞察：
+
+> 與其更新權重，不如讓模型**用語言描述自己的錯誤**，存入 memory，下次直接讀取。
+
+#### 三層架構
 
 ```
-嘗試 1: [推理] → 答案 A → 環境反饋：錯誤
-反思:   "我在第三步忘記考慮負數情況，
-         下次需要先列出所有邊界條件"
-嘗試 2: [加入反思後重新推理] → 答案 B → 正確
+Actor（行動者）
+  ↓ 生成行動序列 / 推理鏈
+Evaluator（評估者）
+  ↓ 判斷成功/失敗（unit tests / ground truth / LLM 打分）
+Self-Reflection（自我反思）
+  ↓ 生成語言反思文字
+Memory
+  ├── 短期：當前嘗試的完整軌跡（Thought+Act+Obs）
+  └── 長期：歷次反思的累積（跨回合持久化）
 ```
 
-**本質**：用自然語言做「梯度更新」——但不更新模型權重，而是更新 prompt context。
+#### 完整執行流程（程式碼題為例）
+
+```
+嘗試 1：
+  Actor:      def fib(n): return n if n<=1 else fib(n-1)+fib(n-2)
+  Evaluator:  fib(100) 超時 → FAIL
+  Reflection: "遞迴版本有指數級重複計算，需要 memoization"
+  → memory.append(reflection)
+
+嘗試 2（prompt 開頭插入反思）：
+  Actor:      @lru_cache(maxsize=None)
+              def fib(n): return n if n<=1 else fib(n-1)+fib(n-2)
+  Evaluator:  fib(100) = 354224848179261915075 → PASS ✓
+```
+
+#### 與傳統 RL 的正式對比
+
+| | 傳統 RL | Reflexion |
+|---|---|---|
+| 學習信號 | 數值獎勵 $r_t$ | 語言反思文字 |
+| 更新方式 | 梯度下降（更新 $\theta$） | 更新 prompt context |
+| 記憶形式 | 神經網路權重 | 自然語言（stored in memory）|
+| 成本 | 需重新訓練 | 只需推理（inference only）|
+| 可解釋性 | 黑盒 | 反思文字可直接閱讀 |
+
+#### 效能數字
+
+| 任務 | 基準 | + Reflexion |
+|---|---|---|
+| HotpotQA（多跳推理） | ReAct 28% | **40%** |
+| HumanEval（Python 程式） | GPT-4 67% | **91%** |
+| AlfWorld（文字冒險） | ReAct 71% | **97%** |
+
+#### 關鍵限制
+
+1. **記憶長度瓶頸**：反思文字累積在 prompt，受 context window 限制（通常保留最近 3–5 次）
+2. **Evaluator 品質決定上限**：程式碼題有 unit tests 客觀評分；開放式任務用 LLM 打分則可能有偏差
+3. **反思可能是幻覺**：模型描述的失敗原因不一定是真正的原因（與 CoT unfaithfulness 同源）
+4. **非永久學習**：重啟 session 後長期記憶清空，真正的能力提升仍需 fine-tuning
+
+#### 定位：通往推理模型的過渡形態
+
+```
+CoT → ReAct → Reflexion → o1 / DeepSeek-R1
+（單次推理）（+工具）（+多次嘗試+反思） （反思內化為 RL 訓練目標）
+```
+
+Reflexion 證明了「讓模型反思自己的錯誤」是有效的；o1/R1 則透過 RL 訓練把這個過程**內化進模型權重本身**，不再需要 prompt engineering。
+
+![Reflexion 三層架構、記憶機制、與 RL 對比、任務效能](figures/cot-reflexion.svg)
 
 ### 3.4 Program-of-Thought（PoT）/ PAL
 
