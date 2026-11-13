@@ -1,4 +1,4 @@
-# AI 中的 KV Cache 與 Attention 影響
+# AI 中的 KV Cache 與 Attention 機制
 
 KV cache 是大型語言模型在推論階段常用的加速技巧，主要用在 autoregressive generation，也就是模型一次生成一個 token 的情境。它的核心想法很直接：對於已經處理過的 token，不要在每一步都重新計算它們的 `key` 和 `value`，而是把它們存起來，下一步直接重用。
 
@@ -372,3 +372,204 @@ $$
 - 為多請求動態排程 cache block
 
 也就是說，KV cache 問題在系統層面常常更像「記憶體系統設計問題」，而不只是「attention 公式問題」。
+
+---
+
+## 13. Attention 機制深入解析
+
+> 本節詳述 Attention 的數學基礎，作為前面所有章節的完整背景。
+
+### 13.1 Scaled Dot-Product Attention
+
+給定輸入序列，先對每個 token 做三次獨立線性投影：
+
+$$
+Q = XW_Q, \quad K = XW_K, \quad V = XW_V
+$$
+
+**直觀意義**：
+- **Q（Query）**：「我想找什麼」——當前位置的查詢向量
+- **K（Key）**：「我有什麼」——每個位置的索引向量
+- **V（Value）**：「實際內容」——被擷取的資訊本體
+
+完整計算：
+
+$$
+\text{Attention}(Q,K,V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
+$$
+
+**為什麼除以 $\sqrt{d_k}$？**
+
+點積 $q \cdot k = \sum_{i=1}^{d_k} q_i k_i$，假設各分量 $\sim \mathcal{N}(0,1)$，
+則 $\text{Var}(q \cdot k) = d_k$，標準差為 $\sqrt{d_k}$。
+
+不縮放時 $d_k$ 大 → 點積極端 → softmax 飽和（梯度趨近 0）→ 學習停滯。
+除以 $\sqrt{d_k}$ 讓方差回到 1，softmax 在合理區間工作。
+
+**注意力權重矩陣**：
+
+$$
+\alpha_{ij} = \frac{\exp(q_i \cdot k_j / \sqrt{d_k})}{\sum_{j'} \exp(q_i \cdot k_{j'} / \sqrt{d_k})}
+$$
+
+最終輸出是 V 的加權和：$o_i = \sum_j \alpha_{ij} \cdot v_j$
+
+---
+
+### 13.2 Multi-Head Attention（多頭注意力）
+
+單頭只能學一種關注模式。多頭讓模型**並行學習不同子空間的關係**：
+
+$$
+\text{head}_h = \text{Attention}(QW_Q^h,\; KW_K^h,\; VW_V^h)
+$$
+
+$$
+\text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1,\ldots,\text{head}_H)\,W_O
+$$
+
+典型設定：$d_\text{model}=512,\; H=8,\; d_k=d_v=64$（即 $d_\text{model}/H$）
+
+**各頭傾向學什麼**（BERT 可視化研究）：
+
+| 頭類型 | 關注模式 |
+|---|---|
+| 句法頭 | 主詞-動詞、形容詞-名詞依賴關係 |
+| 指代頭 | he → John 等共指消解 |
+| 局部頭 | 鄰近 1–3 個 token |
+| 分隔頭 | [SEP]、句末符號 |
+| 位置頭 | 前一個或後一個 token |
+
+---
+
+### 13.3 三種 Attention 形式
+
+| 類型 | Q 來源 | K/V 來源 | 用途 |
+|---|---|---|---|
+| **Self-Attention** | 自身序列 | 自身序列 | Encoder 理解語境 |
+| **Causal Self-Attention** | 自身（遮蔽未來） | 自身（過去+現在） | Decoder 自回歸生成 |
+| **Cross-Attention** | Decoder 隱狀態 | Encoder 輸出 | Seq2Seq 對齊（翻譯、摘要） |
+
+**Causal Mask 實作**：
+
+```
+位置 i 只能看 j ≤ i 的位置
+遮蔽方式：未來位置填入 −∞，softmax 後自動歸零
+```
+
+---
+
+## 14. 位置編碼（Positional Encoding）
+
+Attention 本身對序列順序完全無感知（排列不變），**必須注入位置資訊**。
+
+### 14.1 Sinusoidal PE（原始 Transformer）
+
+$$
+\text{PE}(\text{pos},\, 2i)   = \sin\!\left(\frac{\text{pos}}{10000^{2i/d}}\right)
+$$
+
+$$
+\text{PE}(\text{pos},\, 2i+1) = \cos\!\left(\frac{\text{pos}}{10000^{2i/d}}\right)
+$$
+
+每個維度 $i$ 對應一個頻率，從高頻（$i=0$，快速振盪）到低頻（$i=d/2$，緩慢振盪）。
+任意相對位置 $\Delta = \text{pos}_1 - \text{pos}_2$ 可由固定線性組合表達，
+使模型能泛化到訓練長度以外。
+
+### 14.2 RoPE（旋轉位置編碼，現代主流）
+
+LLaMA、GPT-NeoX、Mistral 等模型採用。
+
+**核心思想**：將 Q/K 向量按二維旋轉矩陣旋轉，旋轉角正比於位置：
+
+$$
+\tilde{q}_{\text{pos}} = R_{\text{pos}}\, q, \quad \tilde{k}_{\text{pos}} = R_{\text{pos}}\, k
+$$
+
+點積具有「相對位置性質」：
+
+$$
+\tilde{q}_i^\top \tilde{k}_j = q^\top R_{i-j}\, k
+$$
+
+即點積只依賴相對位置 $(i-j)$，絕對位置消失。
+
+**優點**：外推到訓練長度之外表現更好（YaRN、LongRoPE 等進一步延伸）。
+
+### 14.3 ALiBi（線性偏置，不修改向量）
+
+MPT、BLOOM 採用。不修改 Q/K 本身，直接在 attention score 加線性距離懲罰：
+
+$$
+\text{score}(i,j) = \frac{q_i \cdot k_j}{\sqrt{d_k}} - m \cdot |i - j|
+$$
+
+$m$ 為各頭的斜率，強制近鄰偏好，外推時衰減行為可預測。
+
+| 編碼方式 | 修改位置 | 長度外推 | 代表模型 |
+|---|---|---|---|
+| Sinusoidal | 加到 embedding | 普通 | 原始 Transformer |
+| Learned PE | 加到 embedding | 差 | GPT-2 |
+| RoPE | 旋轉 Q/K | 好（搭配延伸技術） | LLaMA-3、Qwen |
+| ALiBi | attention score 偏置 | 好 | MPT、BLOOM |
+
+---
+
+## 15. Flash Attention（IO 感知加速）
+
+### 15.1 瓶頸所在
+
+標準實作必須把完整 $n \times n$ 矩陣寫入 HBM（GPU 主記憶體）：
+
+```
+標準流程（高 HBM 讀寫次數）：
+HBM → S = QKᵀ → HBM → P = softmax(S) → HBM → O = PV → HBM
+```
+
+當 $n=4096$，12 頭，每頭 $4096^2 \times 4$ bytes = 64 MB，HBM I/O 成為瓶頸。
+
+### 15.2 Flash Attention 解法（Dao 2022）
+
+**關鍵技術：Tiling + Online Softmax**
+
+1. 將 Q/K/V **分塊（tiling）**，每塊能放進 SRAM（晶片上快取，~100× 快）
+2. 利用 Online Softmax 算法：不需要先看完整一行，分塊累積 max 和 normalizer
+3. 每塊計算完直接累加到輸出，不需要存完整 $n \times n$
+
+**複雜度對比**：
+
+| | 時間 | HBM 讀寫 | 顯存（Attention） |
+|---|---|---|---|
+| 標準 Attention | $O(n^2 d)$ | $O(n^2)$ | $O(n^2)$ |
+| Flash Attention | $O(n^2 d)$ | $O(n)$ | $O(n)$ |
+
+時間複雜度相同，但 HBM I/O 大幅減少，實際速度快 **2–4×**，
+訓練時也因不需存 $n \times n$ 矩陣而支援更長序列。
+
+**數學結果完全等價**，非近似算法。
+
+---
+
+## 16. 具體數字走一遍
+
+以 **GPT-2 small**（$d=768$，$H=12$，$d_k=64$，$n=1024$）為例：
+
+```
+輸入：1024 tokens，每個 768 維
+
+Q/K/V 投影（每組）：768 × 64 × 12 = 589,824 個參數
+三組共：1,769,472 個參數
+
+Attention 矩陣（每頭）：1024 × 1024 = 1,048,576 個數
+全部 12 頭：12,582,912 個數 ≈ 48 MB（float32）
+
+KV Cache（1 層，float32）：
+  2（K+V）× 12（頭）× 1024（seq）× 64（dₖ）× 4 bytes ≈ 6.3 MB
+
+推理時每生成 1 個新 token：
+  - 標準（無 Cache）：計算所有 token 的 Q/K/V → O(n²d) FLOPs
+  - 有 Cache：只算新 token 的 Q，與 Cache 中的 K/V 做點積 → O(nd) FLOPs
+```
+
+**每層節省**：$O(n^2 d) \to O(nd)$，$n$ 越大節省越顯著。
