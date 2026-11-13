@@ -289,7 +289,146 @@ Discriminator（ELECTRA）：對每個 token 判斷「是原詞還是被替換�
 
 ---
 
-## 9. 一句話記憶
+## 9. GPT 系列：Decoder-only 的規模化之路
+
+> GPT（Radford et al. 2018，OpenAI）是 Transformer Decoder 的最重要應用，
+> 從 117M 擴展到數兆參數，確立了「預訓練大型語言模型」的現代路線。
+
+### 9.1 演進脈絡
+
+```
+GPT-1 (2018)  → GPT-2 (2019) → GPT-3 (2020) → InstructGPT (2022) → GPT-4 (2023)
+ 117M 參數       1.5B 參數      175B 參數       175B + RLHF          ~1.8T MoE（推測）
+ 有監督 fine-tune  zero-shot     few-shot ICL    指令跟隨              多模態
+```
+
+### 9.2 核心架構差異（vs BERT）
+
+GPT 與 BERT 最大差異在 Attention 方向：
+
+```
+BERT（Encoder）：每個位置看完整序列（雙向）
+GPT（Decoder） ：位置 t 只看 1…t（Causal Mask）
+```
+
+原因：自回歸生成的概率鏈式分解要求遮蔽未來：
+
+$$
+P(x_1, x_2, \ldots, x_T) = \prod_{t=1}^{T} P(x_t \mid x_1, \ldots, x_{t-1})
+$$
+
+Causal Mask：在 Attention score 矩陣的**上三角**填 $-\infty$，softmax 後歸零。
+
+GPT 相比原始 Transformer 的改動：
+- LayerNorm 移到每個子層**前**（Pre-LN），訓練更穩定
+- 最後一層後加一個額外 LayerNorm
+- 位置編碼：Learned PE（非 Sinusoidal）
+
+**GPT-2 規格**：
+
+| 版本 | 層數 | d_model | 頭數 | 參數 |
+|---|---|---|---|---|
+| Small | 12 | 768 | 12 | 117M |
+| Medium | 24 | 1024 | 16 | 345M |
+| Large | 36 | 1280 | 20 | 762M |
+| XL | 48 | 1600 | 25 | 1.5B |
+
+### 9.3 預訓練目標：Causal Language Modeling
+
+$$
+\mathcal{L}_\text{CLM} = -\sum_{t=1}^{T} \log P(x_t \mid x_1, \ldots, x_{t-1};\, \theta)
+$$
+
+每個位置都參與損失（不像 MLM 只算 15%），**資料效率更高**。
+
+| 模型 | 訓練資料 | 規模 |
+|---|---|---|
+| GPT-1 | BooksCorpus（7000 本書）| ~5 GB |
+| GPT-2 | WebText（Reddit 外鏈 + 高 karma 過濾）| 40 GB |
+| GPT-3 | Common Crawl + Books + Wikipedia + WebText | 570 GB / ~300B tokens |
+
+### 9.4 BPE 分詞（Byte Pair Encoding）
+
+GPT 使用 BPE，GPT-2 改用 **Byte-level BPE**（詞彙表 50,257）：
+
+```
+演算法：
+1. 初始詞彙表 = 所有 Unicode 字節（256 個）
+2. 反覆合併出現頻率最高的 byte pair
+3. 重複直到詞彙表達到目標大小
+
+Byte-level 優勢：OOV 為零，任何 Unicode 文字都能表示
+```
+
+### 9.5 GPT-3 與 In-Context Learning
+
+GPT-3（175B）最重要的貢獻是展示了 **In-Context Learning（ICL）**——
+**不更新任何參數**，只靠 Prompt 中的範例讓模型執行新任務：
+
+```
+Zero-shot： "Translate English to French: cheese →"
+One-shot：  "sea otter → loutre de mer\ncheese →"
+Few-shot：  "sea otter → loutre de mer\npeppermint → menthe poivrée\ncheese →"
+```
+
+**為什麼有效**（主要假說）：
+- **Meta-learning**：預訓練見過大量「格式 → 答案」結構，模型學會辨識並延續
+- **隱式梯度下降**：Akyürek et al. 2022 證明 Transformer Forward Pass 能隱式實現梯度下降
+- **模式匹配**：Razeghi et al. 2022 — ICL 更接近「從訓練資料中找匹配模式」
+
+### 9.6 InstructGPT 與 RLHF
+
+**問題**：GPT-3 預測「下一詞」，不是「幫助用戶」，常產生不安全、無用的輸出。
+
+**InstructGPT（Ouyang et al. 2022）**用三階段 RLHF 對齊：
+
+```
+Stage 1：Supervised Fine-Tuning（SFT）
+  人工示範高質量回答 → fine-tune GPT-3（~13,000 對）
+
+Stage 2：Reward Model（RM）訓練
+  人工排名同一 Prompt 的多個回答（A > B > C）
+  Bradley-Terry 損失：ℒ = -E[log σ(r(x,yw) − r(x,yl))]
+
+Stage 3：PPO 強化學習
+  用 RM 分數為獎勵，PPO 優化語言模型策略
+  加 KL 懲罰防止偏離 SFT 太遠：
+  r_total = r_RM(x,y) − β · KL(π_RL ‖ π_SFT)
+```
+
+**關鍵結果**：1.3B InstructGPT 在人類偏好評估中**明顯優於 175B GPT-3**——
+對齊的收益遠大於規模。
+
+### 9.7 GPT-4
+
+OpenAI 未公開架構，已知與推測：
+
+**已確認**：
+- 多模態輸入（圖片 + 文字）
+- Context window：8K → 32K → 128K（GPT-4 Turbo）
+
+**廣泛推測**：MoE 架構（8 Expert × ~220B，總參 ~1.8T，每次激活 ~220B）
+
+**性能跳躍**：
+
+| 測試 | GPT-3.5 | GPT-4 |
+|---|---|---|
+| MMLU | 70.0% | 86.4% |
+| HumanEval | 48.1% | 67.0% |
+| BAR Exam | ~10th %ile | ~90th %ile |
+
+### 9.8 GPT 四個關鍵轉折
+
+| 版本 | 轉折 | 意義 |
+|---|---|---|
+| GPT-1 | Transformer + 大量無標注文本 | 預訓練可遷移下游任務 |
+| GPT-3 | 175B + ICL | 不 fine-tune，prompt 即可解任務；湧現能力初現 |
+| InstructGPT | RLHF | 有能力 ≠ 有用；對齊才能落地 |
+| GPT-4 | 多模態 + 超長 context | 從語言助手走向通用助手 |
+
+---
+
+## 10. 一句話記憶
 
 $$
 \text{Transformer Block} = \underbrace{x + \text{Attn}(\text{Norm}(x))}_{\text{跨 token 聚合資訊}} + \underbrace{x + \text{FFN}(\text{Norm}(x))}_{\text{逐 token 非線性變換}}
