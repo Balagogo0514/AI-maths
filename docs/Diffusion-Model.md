@@ -146,12 +146,100 @@ $$\epsilon_{\text{guided}} = \epsilon_\theta(x_t, \emptyset) + w \cdot \bigl[\ep
 
 ## 7. 網路架構
 
-### 7.1 U-Net（主流架構）
+> **核心觀念**：Diffusion Model 是一個**訓練框架**（前向加噪 + 逆向去噪），骨幹網路只是其中一個可替換的模組。
+> 早期選擇 **CNN（U-Net）**，現代選擇 **Transformer（DiT）**。
+
+### 7.0 圖像如何從噪聲到清晰
+
+**前向過程（固定數學，無需學習）**：
+
+$$
+q(x_t | x_{t-1}) = \mathcal{N}\!\left(\sqrt{1-\beta_t}\, x_{t-1},\ \beta_t I\right)
+$$
+
+每步乘以 $\sqrt{1-\beta_t}$（壓縮訊號）並加高斯噪聲，$T$ 步後 $x_T \sim \mathcal{N}(0, I)$。  
+一步採樣公式：$x_t = \sqrt{\bar\alpha_t}\, x_0 + \sqrt{1-\bar\alpha_t}\, \epsilon$，$\epsilon \sim \mathcal{N}(0,I)$。
+
+**逆向過程（神經網路學習）**：
+
+$$
+x_{t-1} = \frac{1}{\sqrt{\alpha_t}}\!\left(x_t - \frac{1-\alpha_t}{\sqrt{1-\bar\alpha_t}}\,\hat\epsilon_\theta(x_t, t, c)\right) + \sigma_t z
+$$
+
+骨幹網路 $\hat\epsilon_\theta$ 輸入「帶噪 latent + 時間步 + 條件」，預測加入的噪聲 $\epsilon$，  
+然後一步步還原：**純噪聲 → 半清晰輪廓 → 細節 → 完整圖像**。
+
+```
+t=1000  ████████████  （純噪聲）
+t= 800  ████████▒▒░░  （輪廓浮現）
+t= 500  ████▒▒░░░░    （結構成形）
+t= 200  ██░░░░        （細節增加）
+t=   0  ░░            （完整生成圖像）
+```
+
+**為什麼要在 Latent 空間做？（LDM）**
+
+| 空間 | 分辨率 | 計算量 | 範例 |
+|---|---|---|---|
+| 像素空間 | 512×512×3 | 極大 | DDPM（原始） |
+| 潛在空間 | 64×64×4 | ÷20 | Stable Diffusion |
+
+VAE Encoder 把圖像壓縮到 latent，擴散模型在 latent 上去噪，VAE Decoder 還原到像素。
+
+---
+
+### 7.1 U-Net CNN 骨幹
+
+#### 為什麼選 CNN（U-Net）？
+
+Diffusion Model 需要骨幹能**同時捕捉局部細節（紋理/邊緣）與全局結構**。  
+U-Net 的 Encoder-Decoder 結構 + Skip Connection 天然滿足這個需求：
+
+```
+輸入 xₜ（64×64×4）
+│
+├── Encoder（下採樣，CNN 堆疊）
+│   ├── 64×64  ← ResBlock × 2  → 淺層特徵（邊緣、紋理）
+│   ├── 32×32  ← ResBlock × 2  → 中層特徵（形狀、局部結構）
+│   └── 16×16  ← ResBlock + Self-Attn  → 語義特徵
+│
+├── Bottleneck（8×8）
+│   └── ResBlock → Cross-Attn（文字條件）→ ResBlock
+│
+├── Decoder（上採樣，對稱）
+│   ├── 16×16 ←─────────────────────── skip from Encoder 16×16
+│   ├── 32×32 ←─────────────────────── skip from Encoder 32×32
+│   └── 64×64 ←─────────────────────── skip from Encoder 64×64
+│
+└── 輸出 ε̂（與輸入同尺寸，預測噪聲）
+```
+
+#### ResBlock 內部結構
+
+$$
+\text{ResBlock}(x, t) = x + \text{Conv}_{3\times3}\!\left(\text{SiLU}\!\left(\text{GroupNorm}\!\left(\text{Conv}_{3\times3}(\text{GroupNorm}(x))\right) + \text{MLP}(t)\right)\right)
+$$
+
+| 組件 | 作用 |
+|---|---|
+| `Conv 3×3` | 局部特徵提取（感受野逐層擴大） |
+| `GroupNorm(32組)` | 正規化（比 BN 更適合小 batch） |
+| `SiLU` | 平滑非線性（比 ReLU 在擴散模型表現更好） |
+| `時間步 MLP` | 將 $t$ 的 sinusoidal 嵌入加進每個 ResBlock |
+| `殘差 +x` | 防止梯度消失，保留低頻訊號 |
+
+#### Skip Connection 的角色
+
+Encoder 的中間特徵圖透過 Skip Connection 直接傳給對應的 Decoder 層，  
+讓 Decoder 在恢復高解析度時能重用低層的**空間細節**（邊緣、位置）。  
+這正是從模糊到清晰「細節還原」的關鍵機制。
 
 以 U-Net 為骨幹，加入：
 - **時間嵌入**：$t$ 透過 sinusoidal embedding → MLP，以 AdaGN 注入每個 ResBlock
 - **Self-Attention**：在中間層（$16\times16$、$8\times8$）加入
 - **Cross-Attention**：文字/類別條件注入
+
+![前向逆向過程 · U-Net CNN 骨幹 · 感受野比較](figures/diffusion-cnn.svg)
 
 ### 7.2 Diffusion Transformer（DiT）
 
