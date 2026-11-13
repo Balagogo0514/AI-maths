@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="260" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="140" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">Tree of Thoughts（ToT）</text>
+<circle cx="140" cy="56" r="16" fill="#2a78d6" opacity="0.2" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="140" y="60" text-anchor="middle" font-size="9" fill="#2a78d6" font-weight="600">問題</text>
+<line x1="140" y1="72" x2="80" y2="84" stroke="#898781" stroke-width="1.5"/>
+<circle cx="80" cy="100" r="16" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="80" y="104" text-anchor="middle" font-size="9" fill="#1baf7a" font-weight="600">思路A</text>
+<line x1="140" y1="72" x2="140" y2="84" stroke="#898781" stroke-width="1.5"/>
+<circle cx="140" cy="100" r="16" fill="#d94040" opacity="0.08" stroke="#d94040" stroke-width="1.5"/>
+<text x="140" y="104" text-anchor="middle" font-size="9" fill="#d94040" font-weight="600">思路B</text>
+<line x1="130" y1="90" x2="150" y2="110" stroke="#d94040" stroke-width="2"/>
+<line x1="150" y1="90" x2="130" y2="110" stroke="#d94040" stroke-width="2"/>
+<text x="140" y="130" text-anchor="middle" font-size="8" fill="#d94040">剪枝</text>
+<line x1="140" y1="72" x2="200" y2="84" stroke="#898781" stroke-width="1.5"/>
+<circle cx="200" cy="100" r="16" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="200" y="104" text-anchor="middle" font-size="9" fill="#1baf7a" font-weight="600">思路C</text>
+<line x1="80" y1="116" x2="50" y2="134" stroke="#898781" stroke-width="1.5"/>
+<circle cx="50" cy="150" r="13" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="1.5"/>
+<text x="50" y="154" text-anchor="middle" font-size="9" fill="#1baf7a" font-weight="600">A1</text>
+<line x1="80" y1="116" x2="110" y2="134" stroke="#898781" stroke-width="1.5"/>
+<circle cx="110" cy="150" r="13" fill="#d94040" opacity="0.08" stroke="#d94040" stroke-width="1.5"/>
+<text x="110" y="154" text-anchor="middle" font-size="9" fill="#d94040" font-weight="600">A2</text>
+<line x1="102" y1="142" x2="118" y2="158" stroke="#d94040" stroke-width="1.5"/>
+<line x1="118" y1="142" x2="102" y2="158" stroke="#d94040" stroke-width="1.5"/>
+<line x1="200" y1="116" x2="170" y2="134" stroke="#898781" stroke-width="1.5"/>
+<circle cx="170" cy="150" r="13" fill="#2a78d6" opacity="0.2" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="170" y="154" text-anchor="middle" font-size="9" fill="#2a78d6" font-weight="600">C1</text>
+<line x1="200" y1="116" x2="230" y2="134" stroke="#898781" stroke-width="1.5"/>
+<circle cx="230" cy="150" r="13" fill="#d94040" opacity="0.08" stroke="#d94040" stroke-width="1.5"/>
+<text x="230" y="154" text-anchor="middle" font-size="9" fill="#d94040" font-weight="600">C2</text>
+<line x1="222" y1="142" x2="238" y2="158" stroke="#d94040" stroke-width="1.5"/>
+<line x1="238" y1="142" x2="222" y2="158" stroke="#d94040" stroke-width="1.5"/>
+<line x1="50" y1="163" x2="110" y2="195" stroke="#898781" stroke-width="1.5"/>
+<line x1="170" y1="163" x2="110" y2="195" stroke="#898781" stroke-width="1.5"/>
+<circle cx="110" cy="205" r="18" fill="#2a78d6" opacity="0.2" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="110" y="209" text-anchor="middle" font-size="9" fill="#2a78d6" font-weight="600">答案 ✓</text>
+<text x="68" y="170" font-size="8.5" fill="#1baf7a">評分: 好</text>
+<text x="188" y="170" font-size="8.5" fill="#1baf7a">評分: 好</text>
+<rect x="18" y="232" width="78" height="18" rx="3" fill="#1baf7a" opacity="0.12" stroke="#1baf7a" stroke-width="0.8"/>
+<text x="57" y="244" text-anchor="middle" font-size="8.5" fill="#1baf7a" font-weight="600">生成 Generator</text>
+<rect x="100" y="232" width="78" height="18" rx="3" fill="#eda100" opacity="0.12" stroke="#eda100" stroke-width="0.8"/>
+<text x="139" y="244" text-anchor="middle" font-size="8.5" fill="#eda100" font-weight="600">評估 Evaluator</text>
+<rect x="182" y="232" width="78" height="18" rx="3" fill="#2a78d6" opacity="0.12" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="221" y="244" text-anchor="middle" font-size="8.5" fill="#2a78d6" font-weight="600">搜索 BFS/DFS</text>
+<text x="140" y="265" text-anchor="middle" font-size="9" fill="#898781">適用：24點、創意寫作、跨段落規劃</text>
+<rect x="285" y="10" width="260" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">ReAct（推理 + 行動）</text>
+<rect x="296" y="36" width="238" height="36" rx="4" fill="#7c56c8" opacity="0.09" stroke="#7c56c8" stroke-width="0.8"/>
+<rect x="296" y="36" width="52" height="36" rx="4" fill="#7c56c8" opacity="0.2"/>
+<text x="322" y="49" text-anchor="middle" font-size="9" font-weight="700" fill="#7c56c8">Thought</text>
+<text x="354" y="58" font-size="9" fill="#0b0b0b" font-style="italic">我需要查詢 X 的當前數值</text>
+<line x1="415" y1="72" x2="415" y2="80" stroke="#898781" stroke-width="1" stroke-dasharray="2,2"/>
+<rect x="296" y="84" width="238" height="36" rx="4" fill="#2a78d6" opacity="0.09" stroke="#2a78d6" stroke-width="0.8"/>
+<rect x="296" y="84" width="52" height="36" rx="4" fill="#2a78d6" opacity="0.2"/>
+<text x="322" y="97" text-anchor="middle" font-size="9" font-weight="700" fill="#2a78d6">Act</text>
+<text x="322" y="110" text-anchor="middle" font-size="7.5" fill="#2a78d6" font-style="italic">🔧工具</text>
+<text x="354" y="106" font-size="9" fill="#0b0b0b" font-style="italic">Search("X current value")</text>
+<line x1="415" y1="120" x2="415" y2="128" stroke="#898781" stroke-width="1" stroke-dasharray="2,2"/>
+<rect x="296" y="132" width="238" height="36" rx="4" fill="#eb6834" opacity="0.09" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="296" y="132" width="52" height="36" rx="4" fill="#eb6834" opacity="0.2"/>
+<text x="322" y="145" text-anchor="middle" font-size="9" font-weight="700" fill="#eb6834">Obs</text>
+<text x="354" y="154" font-size="9" fill="#0b0b0b" font-style="italic">搜索結果：X = 42</text>
+<line x1="415" y1="168" x2="415" y2="176" stroke="#898781" stroke-width="1" stroke-dasharray="2,2"/>
+<rect x="296" y="180" width="238" height="36" rx="4" fill="#7c56c8" opacity="0.09" stroke="#7c56c8" stroke-width="0.8"/>
+<rect x="296" y="180" width="52" height="36" rx="4" fill="#7c56c8" opacity="0.2"/>
+<text x="322" y="193" text-anchor="middle" font-size="9" font-weight="700" fill="#7c56c8">Thought</text>
+<text x="354" y="202" font-size="9" fill="#0b0b0b" font-style="italic">X = 42，接下來計算 42×3</text>
+<line x1="415" y1="216" x2="415" y2="224" stroke="#898781" stroke-width="1" stroke-dasharray="2,2"/>
+<rect x="296" y="228" width="238" height="36" rx="4" fill="#2a78d6" opacity="0.09" stroke="#2a78d6" stroke-width="0.8"/>
+<rect x="296" y="228" width="52" height="36" rx="4" fill="#2a78d6" opacity="0.2"/>
+<text x="322" y="241" text-anchor="middle" font-size="9" font-weight="700" fill="#2a78d6">Act</text>
+<text x="322" y="254" text-anchor="middle" font-size="7.5" fill="#2a78d6" font-style="italic">🔧工具</text>
+<text x="354" y="250" font-size="9" fill="#0b0b0b" font-style="italic">Calculator("42×3")</text>
+<text x="415" y="278" text-anchor="middle" font-size="9" fill="#898781">Claude/GPT function calling 的前身</text>
+<rect x="560" y="10" width="250" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="685" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">效能提升數字</text>
+<text x="568" y="49" font-size="8.5" fill="#898781">GSM8K</text>
+<text x="568" y="59" font-size="7.5" fill="#898781" font-style="italic">GPT-3 175B</text>
+<rect x="568" y="65" width="28.3" height="10" rx="2" fill="#898781" opacity="0.7"/>
+<text x="599.3" y="74" font-size="8.5" fill="#898781" font-weight="600">17.7%</text>
+<text x="560" y="74" text-anchor="end" font-size="7.5" fill="#898781">基準</text>
+<rect x="568" y="77" width="75.0" height="10" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="646.0" y="86" font-size="8.5" fill="#2a78d6" font-weight="600">46.9%</text>
+<text x="560" y="86" text-anchor="end" font-size="7.5" fill="#898781">CoT</text>
+<rect x="568" y="89" width="119.0" height="10" rx="2" fill="#eb6834" opacity="0.7"/>
+<text x="690.0" y="98" font-size="8.5" fill="#eb6834" font-weight="600">74.4%</text>
+<text x="560" y="98" text-anchor="end" font-size="7.5" fill="#898781">SC/o1</text>
+<text x="568" y="120" font-size="8.5" fill="#898781">MultiArith</text>
+<text x="568" y="130" font-size="7.5" fill="#898781" font-style="italic">GPT-3 175B</text>
+<rect x="568" y="136" width="54.1" height="10" rx="2" fill="#898781" opacity="0.7"/>
+<text x="625.1" y="145" font-size="8.5" fill="#898781" font-weight="600">33.8%</text>
+<text x="560" y="145" text-anchor="end" font-size="7.5" fill="#898781">基準</text>
+<rect x="568" y="148" width="125.9" height="10" rx="2" fill="#eda100" opacity="0.7"/>
+<text x="696.9" y="157" font-size="8.5" fill="#eda100" font-weight="600">78.7%</text>
+<text x="560" y="157" text-anchor="end" font-size="7.5" fill="#898781">CoT</text>
+<text x="568" y="191" font-size="8.5" fill="#898781">MATH</text>
+<text x="568" y="201" font-size="7.5" fill="#898781" font-style="italic">PaLM 540B</text>
+<rect x="568" y="207" width="14.1" height="10" rx="2" fill="#898781" opacity="0.7"/>
+<text x="585.1" y="216" font-size="8.5" fill="#898781" font-weight="600">8.8%</text>
+<text x="560" y="216" text-anchor="end" font-size="7.5" fill="#898781">基準</text>
+<rect x="568" y="219" width="45.4" height="10" rx="2" fill="#1baf7a" opacity="0.7"/>
+<text x="616.4" y="228" font-size="8.5" fill="#1baf7a" font-weight="600">28.4%</text>
+<text x="560" y="228" text-anchor="end" font-size="7.5" fill="#898781">CoT</text>
+<text x="568" y="262" font-size="8.5" fill="#898781">AIME 2024</text>
+<text x="568" y="272" font-size="7.5" fill="#898781" font-style="italic">GPT-4o/o1</text>
+<rect x="568" y="278" width="21.4" height="10" rx="2" fill="#898781" opacity="0.7"/>
+<text x="592.4" y="287" font-size="8.5" fill="#898781" font-weight="600">13.4%</text>
+<text x="560" y="287" text-anchor="end" font-size="7.5" fill="#898781">基準</text>
+<rect x="568" y="302" width="133.3" height="10" rx="2" fill="#eb6834" opacity="0.7"/>
+<text x="704.3" y="311" font-size="8.5" fill="#eb6834" font-weight="600">83.3%</text>
+<text x="560" y="311" text-anchor="end" font-size="7.5" fill="#898781">SC/o1</text>
+</svg>
