@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="400" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="210" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">代表模型架構參數</text>
+<rect x="16" y="36" width="80" height="14" fill="#898781" opacity="0.2"/>
+<text x="56" y="46" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="700">模型</text>
+<rect x="96" y="36" width="36" height="14" fill="#898781" opacity="0.2"/>
+<text x="114" y="46" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="700">層數</text>
+<rect x="132" y="36" width="56" height="14" fill="#898781" opacity="0.2"/>
+<text x="160" y="46" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="700">d_model</text>
+<rect x="188" y="36" width="36" height="14" fill="#898781" opacity="0.2"/>
+<text x="206" y="46" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="700">頭數</text>
+<rect x="224" y="36" width="52" height="14" fill="#898781" opacity="0.2"/>
+<text x="250" y="46" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="700">d_ff</text>
+<rect x="276" y="36" width="64" height="14" fill="#898781" opacity="0.2"/>
+<text x="308" y="46" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="700">參數</text>
+<rect x="16" y="50" width="324" height="20" fill="#898781" opacity="0.05"/>
+<text x="56" y="63" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="700">GPT-2 small</text>
+<text x="114" y="63" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">12</text>
+<text x="160" y="63" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">768</text>
+<text x="206" y="63" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">12</text>
+<text x="250" y="63" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">3072</text>
+<text x="308" y="63" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="700">117M</text>
+<rect x="16" y="72" width="324" height="20" fill="#898781" opacity="0.05"/>
+<text x="56" y="85" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="700">GPT-2 XL</text>
+<text x="114" y="85" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">48</text>
+<text x="160" y="85" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">1600</text>
+<text x="206" y="85" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">25</text>
+<text x="250" y="85" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">6400</text>
+<text x="308" y="85" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="700">1.5B</text>
+<rect x="16" y="94" width="324" height="20" fill="#898781" opacity="0.05"/>
+<text x="56" y="107" text-anchor="middle" font-size="8.5" fill="#7c56c8" font-weight="700">GPT-3</text>
+<text x="114" y="107" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">96</text>
+<text x="160" y="107" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">12288</text>
+<text x="206" y="107" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">96</text>
+<text x="250" y="107" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">49152</text>
+<text x="308" y="107" text-anchor="middle" font-size="8.5" fill="#7c56c8" font-weight="700">175B</text>
+<rect x="16" y="116" width="324" height="20" fill="#2a78d6" opacity="0.05"/>
+<text x="56" y="129" text-anchor="middle" font-size="8.5" fill="#2a78d6" font-weight="700">LLaMA-3 8B</text>
+<text x="114" y="129" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">32</text>
+<text x="160" y="129" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">4096</text>
+<text x="206" y="129" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">32</text>
+<text x="250" y="129" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">14336</text>
+<text x="308" y="129" text-anchor="middle" font-size="8.5" fill="#2a78d6" font-weight="700">8B</text>
+<rect x="16" y="138" width="324" height="20" fill="#2a78d6" opacity="0.05"/>
+<text x="56" y="151" text-anchor="middle" font-size="8.5" fill="#2a78d6" font-weight="700">LLaMA-3 70B</text>
+<text x="114" y="151" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">80</text>
+<text x="160" y="151" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">8192</text>
+<text x="206" y="151" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">64</text>
+<text x="250" y="151" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">28672</text>
+<text x="308" y="151" text-anchor="middle" font-size="8.5" fill="#2a78d6" font-weight="700">70B</text>
+<rect x="16" y="160" width="324" height="20" fill="#eb6834" opacity="0.05"/>
+<text x="56" y="173" text-anchor="middle" font-size="8.5" fill="#eb6834" font-weight="700">DeepSeek-V3</text>
+<text x="114" y="173" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">61</text>
+<text x="160" y="173" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">7168</text>
+<text x="206" y="173" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">128</text>
+<text x="250" y="173" text-anchor="middle" font-size="8.5" fill="#0b0b0b" font-weight="400">18432</text>
+<text x="308" y="173" text-anchor="middle" font-size="8.5" fill="#eb6834" font-weight="700">671B*</text>
+<text x="16" y="192" font-size="8" fill="#898781" font-style="italic">* DeepSeek-V3 為 MoE，每次激活 37B 參數</text>
+<rect x="16" y="204" width="390" height="38" rx="4" fill="#eda100" opacity="0.1" stroke="#eda100" stroke-width="0.8"/>
+<text x="210" y="217" text-anchor="middle" font-size="9.5" font-weight="700" fill="#eda100">Kaplan 2020 最優深寬比</text>
+<text x="210" y="230" text-anchor="middle" font-size="8.5" fill="#898781">d_ff ≈ 4×d_model  |  d_k = d_model/H ≈ 64  |  深度增益 > 寬度增益（相同參數量）</text>
+<rect x="425" y="10" width="385" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="617" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">GPT-2 small 參數計算走一遍</text>
+<rect x="432" y="36" width="370" height="20" rx="2" fill="#898781" opacity="0.07"/>
+<text x="436" y="49" font-size="9" fill="#898781" font-weight="600">Token Embedding</text>
+<text x="620" y="49" text-anchor="end" font-size="8.5" fill="#898781">50257 × 768</text>
+<text x="798" y="49" text-anchor="end" font-size="9" fill="#898781" font-weight="700">38.6M</text>
+<rect x="432" y="58" width="370" height="20" rx="2" fill="#898781" opacity="0.07"/>
+<text x="436" y="71" font-size="9" fill="#898781" font-weight="600">Position Embedding</text>
+<text x="620" y="71" text-anchor="end" font-size="8.5" fill="#898781">1024 × 768</text>
+<text x="798" y="71" text-anchor="end" font-size="9" fill="#898781" font-weight="700">0.8M</text>
+<rect x="432" y="80" width="370" height="20" rx="2" fill="#7c56c8" opacity="0.07"/>
+<text x="436" y="93" font-size="9" fill="#7c56c8" font-weight="600">Q/K/V 投影（每層）</text>
+<text x="620" y="93" text-anchor="end" font-size="8.5" fill="#898781">3 × 768²</text>
+<text x="798" y="93" text-anchor="end" font-size="9" fill="#7c56c8" font-weight="700">1.77M</text>
+<rect x="432" y="102" width="370" height="20" rx="2" fill="#7c56c8" opacity="0.07"/>
+<text x="436" y="115" font-size="9" fill="#7c56c8" font-weight="600">Output 投影（每層）</text>
+<text x="620" y="115" text-anchor="end" font-size="8.5" fill="#898781">768²</text>
+<text x="798" y="115" text-anchor="end" font-size="9" fill="#7c56c8" font-weight="700">0.59M</text>
+<rect x="432" y="124" width="370" height="20" rx="2" fill="#2a78d6" opacity="0.07"/>
+<text x="436" y="137" font-size="9" fill="#2a78d6" font-weight="600">FFN W1（每層）</text>
+<text x="620" y="137" text-anchor="end" font-size="8.5" fill="#898781">768 × 3072</text>
+<text x="798" y="137" text-anchor="end" font-size="9" fill="#2a78d6" font-weight="700">2.36M</text>
+<rect x="432" y="146" width="370" height="20" rx="2" fill="#2a78d6" opacity="0.07"/>
+<text x="436" y="159" font-size="9" fill="#2a78d6" font-weight="600">FFN W2（每層）</text>
+<text x="620" y="159" text-anchor="end" font-size="8.5" fill="#898781">3072 × 768</text>
+<text x="798" y="159" text-anchor="end" font-size="9" fill="#2a78d6" font-weight="700">2.36M</text>
+<rect x="432" y="168" width="370" height="20" rx="2" fill="#898781" opacity="0.07"/>
+<text x="436" y="181" font-size="9" fill="#898781" font-weight="600">LayerNorm×2（每層）</text>
+<text x="620" y="181" text-anchor="end" font-size="8.5" fill="#898781">768×2×2</text>
+<text x="798" y="181" text-anchor="end" font-size="9" fill="#898781" font-weight="700">≈0M</text>
+<rect x="432" y="190" width="370" height="20" rx="2" fill="#7c56c8" opacity="0.07"/>
+<text x="436" y="203" font-size="9" fill="#7c56c8" font-weight="600">12 層 Attn+FFN</text>
+<text x="620" y="203" text-anchor="end" font-size="8.5" fill="#898781">12 × 7.08M</text>
+<text x="798" y="203" text-anchor="end" font-size="9" fill="#7c56c8" font-weight="700">85.0M</text>
+<rect x="432" y="212" width="370" height="20" rx="2" fill="#1baf7a" opacity="0.18"/>
+<text x="436" y="225" font-size="9" fill="#1baf7a" font-weight="700">合計</text>
+<text x="620" y="225" text-anchor="end" font-size="8.5" fill="#898781">38.6+0.8+85</text>
+<text x="798" y="225" text-anchor="end" font-size="9" fill="#1baf7a" font-weight="700">≈124M</text>
+<rect x="432" y="242" width="370" height="68" rx="4" fill="#2a78d6" opacity="0.05" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="617" y="255" text-anchor="middle" font-size="10" font-weight="700" fill="#2a78d6">Scaling Law 關鍵結論（Kaplan 2020）</text>
+<text x="436" y="268" font-size="8.5" fill="#2a78d6">Loss ∝ N⁻⁰·⁰⁷³（模型參數）×  D⁻⁰·⁰⁵⁰（資料量）</text>
+<text x="436" y="282" font-size="8.5" fill="#eda100">Chinchilla（2022）：最優配比 D* = 20N（token 數 ≈ 20× 參數量）</text>
+<text x="436" y="296" font-size="8.5" fill="#898781">相同計算預算下：增加深度（層數）比增加寬度（d_model）更有效率</text>
+</svg>

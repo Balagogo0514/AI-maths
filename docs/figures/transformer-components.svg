@@ -1,0 +1,112 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="260" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="140" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">殘差連接正規化位置</text>
+<rect x="20" y="32" width="116" height="14" rx="3" fill="#d94040" opacity="0.18"/>
+<text x="78" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#d94040">Post-LN（原始）</text>
+<rect x="24" y="50" width="108" height="20" rx="3" fill="#898781" opacity="0.12" stroke="#898781" stroke-width="0.8"/>
+<text x="78" y="63" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="400">x（輸入）</text>
+<line x1="78" y1="70" x2="78" y2="74" stroke="#898781" stroke-width="1.5"/>
+<polygon points="78.0,74.0 73.0,66.0 83.0,66.0" fill="#898781"/>
+<rect x="24" y="74" width="108" height="20" rx="3" fill="#7c56c8" opacity="0.12" stroke="#7c56c8" stroke-width="0.8"/>
+<text x="78" y="87" text-anchor="middle" font-size="8.5" fill="#7c56c8" font-weight="700">Sublayer(x)</text>
+<line x1="78" y1="94" x2="78" y2="98" stroke="#898781" stroke-width="1.5"/>
+<polygon points="78.0,98.0 73.0,90.0 83.0,90.0" fill="#898781"/>
+<rect x="24" y="98" width="108" height="20" rx="3" fill="#7c56c8" opacity="0.12" stroke="#7c56c8" stroke-width="0.8"/>
+<text x="78" y="111" text-anchor="middle" font-size="8.5" fill="#7c56c8" font-weight="700">x + Sublayer(x)</text>
+<line x1="78" y1="118" x2="78" y2="122" stroke="#898781" stroke-width="1.5"/>
+<polygon points="78.0,122.0 73.0,114.0 83.0,114.0" fill="#898781"/>
+<rect x="24" y="122" width="108" height="20" rx="3" fill="#d94040" opacity="0.12" stroke="#d94040" stroke-width="0.8"/>
+<text x="78" y="135" text-anchor="middle" font-size="8.5" fill="#d94040" font-weight="700">LayerNorm</text>
+<line x1="78" y1="142" x2="78" y2="146" stroke="#898781" stroke-width="1.5"/>
+<polygon points="78.0,146.0 73.0,138.0 83.0,138.0" fill="#898781"/>
+<rect x="24" y="146" width="108" height="20" rx="3" fill="#898781" opacity="0.12" stroke="#898781" stroke-width="0.8"/>
+<text x="78" y="159" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="400">輸出</text>
+<text x="78" y="178" text-anchor="middle" font-size="8" fill="#d94040" font-style="italic">需 warmup，收斂後略優</text>
+<rect x="148" y="32" width="116" height="14" rx="3" fill="#1baf7a" opacity="0.18"/>
+<text x="206" y="42" text-anchor="middle" font-size="9" font-weight="700" fill="#1baf7a">Pre-LN（現代）</text>
+<rect x="152" y="50" width="108" height="20" rx="3" fill="#898781" opacity="0.12" stroke="#898781" stroke-width="0.8"/>
+<text x="206" y="63" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="400">x（輸入）</text>
+<line x1="206" y1="70" x2="206" y2="74" stroke="#898781" stroke-width="1.5"/>
+<polygon points="206.0,74.0 201.0,66.0 211.0,66.0" fill="#898781"/>
+<rect x="152" y="74" width="108" height="20" rx="3" fill="#1baf7a" opacity="0.12" stroke="#1baf7a" stroke-width="0.8"/>
+<text x="206" y="87" text-anchor="middle" font-size="8.5" fill="#1baf7a" font-weight="700">LayerNorm(x)</text>
+<line x1="206" y1="94" x2="206" y2="98" stroke="#898781" stroke-width="1.5"/>
+<polygon points="206.0,98.0 201.0,90.0 211.0,90.0" fill="#898781"/>
+<rect x="152" y="98" width="108" height="20" rx="3" fill="#7c56c8" opacity="0.12" stroke="#7c56c8" stroke-width="0.8"/>
+<text x="206" y="111" text-anchor="middle" font-size="8.5" fill="#7c56c8" font-weight="700">Sublayer(·)</text>
+<line x1="206" y1="118" x2="206" y2="122" stroke="#898781" stroke-width="1.5"/>
+<polygon points="206.0,122.0 201.0,114.0 211.0,114.0" fill="#898781"/>
+<rect x="152" y="122" width="108" height="20" rx="3" fill="#7c56c8" opacity="0.12" stroke="#7c56c8" stroke-width="0.8"/>
+<text x="206" y="135" text-anchor="middle" font-size="8.5" fill="#7c56c8" font-weight="700">x + Sublayer(·)</text>
+<line x1="206" y1="142" x2="206" y2="146" stroke="#898781" stroke-width="1.5"/>
+<polygon points="206.0,146.0 201.0,138.0 211.0,138.0" fill="#898781"/>
+<rect x="152" y="146" width="108" height="20" rx="3" fill="#898781" opacity="0.12" stroke="#898781" stroke-width="0.8"/>
+<text x="206" y="159" text-anchor="middle" font-size="8.5" fill="#898781" font-weight="400">輸出</text>
+<text x="206" y="178" text-anchor="middle" font-size="8" fill="#1baf7a" font-style="italic">更穩定，大 lr 可用</text>
+<line x1="22" y1="50" x2="16" y2="50" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="16" y1="50" x2="16" y2="162" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="16" y1="162" x2="22" y2="162" stroke="#eb6834" stroke-width="1.2"/>
+<text x="9" y="110" text-anchor="middle" font-size="7.5" fill="#eb6834" transform="rotate(-90,9,110)">殘差</text>
+<line x1="150" y1="50" x2="144" y2="50" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="144" y1="50" x2="144" y2="162" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="144" y1="162" x2="150" y2="162" stroke="#eb6834" stroke-width="1.2"/>
+<text x="137" y="110" text-anchor="middle" font-size="7.5" fill="#eb6834" transform="rotate(-90,137,110)">殘差</text>
+<rect x="14" y="215" width="252" height="70" rx="4" fill="#7c56c8" opacity="0.07" stroke="#7c56c8" stroke-width="0.8"/>
+<text x="140" y="228" text-anchor="middle" font-size="10" font-weight="700" fill="#7c56c8">RMSNorm vs LayerNorm</text>
+<text x="20" y="243" font-size="8.5" fill="#898781">LN(x) = (x−μ)/σ · γ + β   （計算均值+方差）</text>
+<text x="20" y="257" font-size="8.5" fill="#7c56c8">RMS(x) = √(1/d·Σxᵢ²),  RMSNorm = x/RMS·γ</text>
+<text x="20" y="271" font-size="8.5" fill="#1baf7a">省略均值計算 → 快 ~15%，LLaMA/Qwen 採用</text>
+<rect x="285" y="10" width="260" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">FFN 變體比較</text>
+<rect x="292" y="36" width="246" height="46" rx="4" fill="#898781" opacity="0.09" stroke="#898781" stroke-width="1"/>
+<text x="298" y="49" font-size="9.5" font-weight="700" fill="#898781">Standard FFN</text>
+<text x="298" y="62" font-size="8.5" fill="#0b0b0b" font-family="monospace">ReLU(xW₁+b₁)·W₂+b₂</text>
+<text x="298" y="74" font-size="8" fill="#898781">2 矩陣，無閘控  |  原始 Transformer</text>
+<rect x="292" y="88" width="246" height="46" rx="4" fill="#eda100" opacity="0.09" stroke="#eda100" stroke-width="1"/>
+<text x="298" y="101" font-size="9.5" font-weight="700" fill="#eda100">GELU FFN</text>
+<text x="298" y="114" font-size="8.5" fill="#0b0b0b" font-family="monospace">GELU(xW₁)·W₂</text>
+<text x="298" y="126" font-size="8" fill="#898781">平滑激活函數  |  BERT, GPT-2</text>
+<rect x="292" y="140" width="246" height="46" rx="4" fill="#2a78d6" opacity="0.09" stroke="#2a78d6" stroke-width="1"/>
+<text x="298" y="153" font-size="9.5" font-weight="700" fill="#2a78d6">SwiGLU</text>
+<text x="298" y="166" font-size="8.5" fill="#0b0b0b" font-family="monospace">Swish(xW₁)⊙xW₂·W₃</text>
+<text x="298" y="178" font-size="8" fill="#898781">3 矩陣，閘控機制  |  LLaMA, PaLM, Qwen</text>
+<rect x="292" y="192" width="246" height="46" rx="4" fill="#7c56c8" opacity="0.09" stroke="#7c56c8" stroke-width="1"/>
+<text x="298" y="205" font-size="9.5" font-weight="700" fill="#7c56c8">GeGLU</text>
+<text x="298" y="218" font-size="8.5" fill="#0b0b0b" font-family="monospace">GELU(xW₁)⊙xW₂·W₃</text>
+<text x="298" y="230" font-size="8" fill="#898781">3 矩陣，GELU 閘  |  T5 v1.1</text>
+<rect x="292" y="248" width="246" height="62" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="415" y="261" text-anchor="middle" font-size="9.5" font-weight="700" fill="#2a78d6">SwiGLU 閘控機制</text>
+<text x="298" y="275" font-size="8.5" fill="#0b0b0b">Swish(z) = z · σ(z)  （平滑 ReLU）</text>
+<text x="298" y="286" font-size="8.5" fill="#2a78d6">xW₁ → 激活分支（Swish）</text>
+<text x="298" y="297" font-size="8.5" fill="#2a78d6">xW₂ → 閘控分支（線性）</text>
+<text x="298" y="308" font-size="8.5" fill="#2a78d6">兩分支逐元素相乘 ⊙ → 選擇性通過</text>
+<rect x="560" y="10" width="250" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="685" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="#0b0b0b">參數分布（每層）</text>
+<text x="568" y="50" font-size="9" font-weight="600" fill="#898781">d_model=4096，H=32，d_ff=14336（LLaMA-3 8B）</text>
+<rect x="568" y="58" width="35.2" height="16" rx="2" fill="#7c56c8" opacity="0.7"/>
+<text x="606.2" y="69" font-size="8.5" fill="#7c56c8" font-weight="600">50.3M</text>
+<text x="566" y="69" text-anchor="end" font-size="8" fill="#898781">Q/K/V 投影</text>
+<rect x="568" y="78" width="11.7" height="16" rx="2" fill="#7c56c8" opacity="0.7"/>
+<text x="582.7" y="89" font-size="8.5" fill="#7c56c8" font-weight="600">16.8M</text>
+<text x="566" y="89" text-anchor="end" font-size="8" fill="#898781">Output 投影</text>
+<rect x="568" y="98" width="41.0" height="16" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="612.0" y="109" font-size="8.5" fill="#2a78d6" font-weight="600">58.7M</text>
+<text x="566" y="109" text-anchor="end" font-size="8" fill="#898781">FFN W₁</text>
+<rect x="568" y="118" width="41.0" height="16" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="612.0" y="129" font-size="8.5" fill="#2a78d6" font-weight="600">58.7M</text>
+<text x="566" y="129" text-anchor="end" font-size="8" fill="#898781">FFN W₂</text>
+<rect x="568" y="138" width="41.0" height="16" rx="2" fill="#2a78d6" opacity="0.7"/>
+<text x="612.0" y="149" font-size="8.5" fill="#2a78d6" font-weight="600">58.7M</text>
+<text x="566" y="149" text-anchor="end" font-size="8" fill="#898781">FFN W₃</text>
+<rect x="568" y="164" width="234" height="30" rx="4" fill="#2a78d6" opacity="0.1" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="685" y="176" text-anchor="middle" font-size="9" fill="#2a78d6" font-weight="700">Attention : FFN ≈ 1 : 2.1</text>
+<text x="685" y="188" text-anchor="middle" font-size="8.5" fill="#898781">FFN 通常占每層參數的 60–65%</text>
+<rect x="568" y="202" width="234" height="82" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.8"/>
+<text x="685" y="215" text-anchor="middle" font-size="10" font-weight="700" fill="#eb6834">MoE 稀疏化 FFN</text>
+<text x="572" y="228" font-size="8.5" fill="#eb6834">N 個 Expert FFN，每次只激活 Top-K 個</text>
+<text x="572" y="240" font-size="8.5" fill="#898781">• Router = softmax(xWg) → 選 K/N Expert</text>
+<text x="572" y="252" font-size="8.5" fill="#eb6834">• DeepSeek-V3：671B 參數 / 37B 激活</text>
+<text x="572" y="264" font-size="8.5" fill="#898781">• 推理成本 ≈ 37B 密集模型</text>
+<text x="572" y="276" font-size="8.5" fill="#898781">• 輔助損失防止 Expert 崩塌（負載均衡）</text>
+</svg>
