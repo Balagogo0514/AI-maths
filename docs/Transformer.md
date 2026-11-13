@@ -186,7 +186,110 @@ Transformer 的 Attention 形式決定 KV Cache 的使用方式：
 
 ---
 
-## 8. 一句話記憶
+## 8. BERT：雙向預訓練的 Encoder
+
+> BERT（Devlin et al. 2018，Google）是 Transformer Encoder 的最重要應用，
+> 開啟了「預訓練 → Fine-tune」的 NLP 新範式。
+
+### 8.1 核心差異：單向 vs 雙向
+
+```
+GPT（Decoder-only）：「他把 _」只看左側 → 只能用前文
+BERT（Encoder-only）：「他把 [MASK] 放進了背包」← 左右都看
+```
+
+雙向 Attention 讓每個 token 能同時利用完整上下文，
+理解任務（分類、問答、NER）因此顯著受益；
+但雙向模型**不能自回歸生成**——生成第 $t$ 個詞時不能看 $t+1$。
+
+### 8.2 架構
+
+純 Encoder Stack，無 Decoder，無 Causal Mask：
+
+```
+[CLS] token₁ token₂ … [SEP] （+ 句B tokens + [SEP]）
+       ↓
+Token Embedding
+  + Segment Embedding（句 A → Eₐ，句 B → E_B）
+  + Position Embedding（Learned，非 Sinusoidal）
+       ↓
+Bidirectional Self-Attention × L 層
+       ↓
+h_[CLS], h₁, h₂, …, hₙ
+```
+
+| | BERT-base | BERT-large |
+|---|---|---|
+| 層數 | 12 | 24 |
+| d_model | 768 | 1024 |
+| 頭數 | 12 | 16 |
+| 參數量 | **110M** | **340M** |
+
+### 8.3 預訓練任務
+
+#### MLM（Masked Language Modeling）
+
+隨機遮蔽 **15%** token，要求模型還原：
+
+$$
+\mathcal{L}_\text{MLM} = -\sum_{i \in \text{masked}} \log P(x_i \mid \tilde{x})
+$$
+
+遮蔽策略（15% 中）：
+- **80%** → `[MASK]`
+- **10%** → 隨機替換為其他詞
+- **10%** → 保持原詞不變
+
+加入後兩種是為了縮小預訓練（有 `[MASK]`）與 fine-tuning（無 `[MASK]`）的分佈差距。
+
+#### NSP（Next Sentence Prediction）
+
+給兩個句子，預測 B 是否是 A 的下一句（二元分類，從 `[CLS]` 隱狀態輸出）：
+
+```
+50% IsNext：  A = "天氣很好。"  B = "我決定去散步。"  → IsNext
+50% NotNext： A = "天氣很好。"  B = "股市今日大漲。"  → NotNext
+```
+
+> **RoBERTa（2019）後來發現 NSP 效果存疑**：NotNext 範例來自不同段落，
+> 模型可能只是學主題差異而非真正的句間邏輯，移除 NSP 後性能反而提升。
+
+### 8.4 Fine-tuning 下游任務
+
+預訓練後加一個小型分類頭，fine-tune 全部參數：
+
+| 任務 | 輸入格式 | 分類頭 |
+|---|---|---|
+| 句子分類（情感、主題）| `[CLS] 句子 [SEP]` | `h_[CLS]` → Linear |
+| 句對分類（NLI）| `[CLS] 句A [SEP] 句B [SEP]` | `h_[CLS]` → Linear |
+| 問答（SQuAD）| `[CLS] 問題 [SEP] 段落 [SEP]` | 每個 token → 預測 start/end |
+| NER | `[CLS] 句子 [SEP]` | 每個 token → 類別標籤 |
+
+BERT 一次性在 11 個 NLP 任務刷新 SOTA，確立了「預訓練語言模型」的中心地位。
+
+### 8.5 重要後繼模型
+
+| 模型 | 核心改進 |
+|---|---|
+| **RoBERTa**（Meta 2019）| 去除 NSP、動態遮蔽、更大 batch（8K）、160GB 語料 |
+| **ALBERT**（Google 2019）| 跨層參數共享 + Factorized Embedding → 大幅減少參數 |
+| **DistilBERT**（HuggingFace 2019）| 知識蒸餾：60% 參數、40% 加速，保留 97% 性能 |
+| **ELECTRA**（Google 2020）| 替換 token 偵測，全部 token 都算損失（比 MLM 效率高 4×）|
+| **DeBERTa**（Microsoft 2020）| Disentangled Attention：內容向量與位置向量分開做 Attention |
+
+**ELECTRA 的巧思**：
+
+```
+Generator（小 BERT）：MLM 還原遮蔽詞（可能還原為錯詞）
+Discriminator（ELECTRA）：對每個 token 判斷「是原詞還是被替換」
+
+損失覆蓋全部 token（而非只 15%）
+→ 相同計算量下，有效學習訊號是 BERT 的 ~4× 以上
+```
+
+---
+
+## 9. 一句話記憶
 
 $$
 \text{Transformer Block} = \underbrace{x + \text{Attn}(\text{Norm}(x))}_{\text{跨 token 聚合資訊}} + \underbrace{x + \text{FFN}(\text{Norm}(x))}_{\text{逐 token 非線性變換}}
