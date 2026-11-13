@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="250" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="135" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#d94040">直接生成為何困難？</text>
+<line x1="25" y1="175" x2="245" y2="175" stroke="#898781" stroke-width="1"/>
+<line x1="25" y1="40" x2="25" y2="175" stroke="#898781" stroke-width="1"/>
+<text x="135" y="188" text-anchor="middle" font-size="8" fill="#898781">像素維度 1</text>
+<text x="14" y="110" text-anchor="middle" font-size="8" fill="#898781" transform="rotate(-90,14,110)">像素維度 2</text>
+<path d="M40,160 C60,120 90,70 130,55 C160,45 200,60 230,90 C235,96 238,105 235,115" fill="none" stroke="#2a78d6" stroke-width="8" opacity="0.2"/>
+<path d="M40,160 C60,120 90,70 130,55 C160,45 200,60 230,90 C235,96 238,105 235,115" fill="none" stroke="#2a78d6" stroke-width="2" opacity="0.8"/>
+<text x="170" y="52" font-size="8" fill="#2a78d6" font-weight="700">真實圖像流形</text>
+<text x="170" y="62" font-size="7.5" fill="#898781">（極薄的高維曲面）</text>
+<circle cx="50" cy="100" r="3" fill="#898781" opacity="0.5"/>
+<circle cx="80" cy="145" r="3" fill="#898781" opacity="0.5"/>
+<circle cx="110" cy="90" r="3" fill="#898781" opacity="0.5"/>
+<circle cx="160" cy="130" r="3" fill="#898781" opacity="0.5"/>
+<circle cx="200" cy="80" r="3" fill="#898781" opacity="0.5"/>
+<circle cx="220" cy="140" r="3" fill="#898781" opacity="0.5"/>
+<circle cx="60" cy="60" r="3" fill="#898781" opacity="0.5"/>
+<circle cx="140" cy="160" r="3" fill="#898781" opacity="0.5"/>
+<line x1="50" y1="100" x2="65" y2="85" stroke="#d94040" stroke-width="1.5" stroke-dasharray="4,2"/>
+<polygon points="65.0,85.0 62.9,94.2 55.8,87.1" fill="#d94040"/>
+<line x1="80" y1="145" x2="67" y2="158" stroke="#d94040" stroke-width="1.5" stroke-dasharray="4,2"/>
+<polygon points="67.0,158.0 69.1,148.8 76.2,155.9" fill="#d94040"/>
+<line x1="110" y1="90" x2="96" y2="79" stroke="#d94040" stroke-width="1.5" stroke-dasharray="4,2"/>
+<polygon points="96.0,79.0 105.4,80.0 99.2,87.9" fill="#d94040"/>
+<line x1="160" y1="130" x2="150" y2="113" stroke="#d94040" stroke-width="1.5" stroke-dasharray="4,2"/>
+<polygon points="150.0,113.0 158.4,117.4 149.7,122.4" fill="#d94040"/>
+<line x1="200" y1="80" x2="223" y2="60" stroke="#d94040" stroke-width="1.5" stroke-dasharray="4,2"/>
+<polygon points="223.0,60.0 220.2,69.0 213.7,61.5" fill="#d94040"/>
+<text x="135" y="195" text-anchor="middle" font-size="8.5" font-weight="700" fill="#d94040">問題：沒有穩定的梯度方向</text>
+<text x="135" y="206" text-anchor="middle" font-size="8" fill="#898781">圖像空間 99.99% 是「無效圖像」</text>
+<text x="135" y="216" text-anchor="middle" font-size="8" fill="#898781">直接從噪聲 z 映射到圖像 = 極難</text>
+<rect x="20" y="224" width="115" height="34" rx="3" fill="#d94040" opacity="0.08" stroke="#d94040" stroke-width="0.8"/>
+<text x="77" y="236" text-anchor="middle" font-size="8.5" font-weight="700" fill="#d94040">GAN 嘗試過這條路</text>
+<text x="77" y="247" text-anchor="middle" font-size="8" fill="#898781">生成器 vs 判別器</text>
+<text x="77" y="257" text-anchor="middle" font-size="8" fill="#d94040">→ 訓練不穩定 / 模式崩塌</text>
+<rect x="142" y="224" width="108" height="34" rx="3" fill="#eb6834" opacity="0.08" stroke="#eb6834" stroke-width="0.8"/>
+<text x="196" y="236" text-anchor="middle" font-size="8.5" font-weight="700" fill="#eb6834">圖像插值？</text>
+<text x="196" y="247" text-anchor="middle" font-size="8" fill="#898781">(x₁+x₂)/2 在像素空間</text>
+<text x="196" y="257" text-anchor="middle" font-size="8" fill="#eb6834">→ 模糊，不在流形上</text>
+<rect x="272" y="10" width="260" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="402" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#1baf7a">Score Function：破局關鍵</text>
+<line x1="287" y1="175" x2="522" y2="175" stroke="#898781" stroke-width="1"/>
+<line x1="287" y1="40" x2="287" y2="175" stroke="#898781" stroke-width="1"/>
+<path d="M302,160 C322,120 352,70 392,55 C422,45 462,60 492,90 C497,96 500,105 497,115" fill="none" stroke="#1baf7a" stroke-width="8" opacity="0.2"/>
+<path d="M302,160 C322,120 352,70 392,55 C422,45 462,60 492,90 C497,96 500,105 497,115" fill="none" stroke="#1baf7a" stroke-width="2" opacity="0.8"/>
+<line x1="310" y1="100" x2="327.9021363665482" y2="87.21275973817988" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="327.9,87.2 324.3,95.9 318.5,87.8" fill="#1baf7a"/>
+<circle cx="310" cy="100" r="3" fill="#898781" opacity="0.5"/>
+<line x1="340" y1="145" x2="319.5365851307109" y2="153.07766376419306" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="319.5,153.1 325.1,145.5 328.8,154.8" fill="#1baf7a"/>
+<circle cx="340" cy="145" r="3" fill="#898781" opacity="0.5"/>
+<line x1="370" y1="90" x2="355.2827759043061" y2="73.64752878256235" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="355.3,73.6 364.4,76.2 356.9,82.9" fill="#1baf7a"/>
+<circle cx="370" cy="90" r="3" fill="#898781" opacity="0.5"/>
+<line x1="420" y1="130" x2="441.594077715781" y2="125.79336148393877" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="441.6,125.8 434.7,132.2 432.8,122.4" fill="#1baf7a"/>
+<circle cx="420" cy="130" r="3" fill="#898781" opacity="0.5"/>
+<line x1="460" y1="80" x2="462.189081818462" y2="58.10918181538024" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="462.2,58.1 466.4,66.6 456.4,65.6" fill="#1baf7a"/>
+<circle cx="460" cy="80" r="3" fill="#898781" opacity="0.5"/>
+<line x1="480" y1="140" x2="492.37082047096015" y2="121.80761695447038" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="492.4,121.8 492.0,131.2 483.7,125.6" fill="#1baf7a"/>
+<circle cx="480" cy="140" r="3" fill="#898781" opacity="0.5"/>
+<line x1="320" y1="60" x2="340.9985595167707" y2="66.56204984899082" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="341.0,66.6 331.9,68.9 334.9,59.4" fill="#1baf7a"/>
+<circle cx="320" cy="60" r="3" fill="#898781" opacity="0.5"/>
+<line x1="400" y1="160" x2="378.0" y2="160.0" stroke="#1baf7a" stroke-width="1.5"/>
+<polygon points="378.0,160.0 386.0,155.0 386.0,165.0" fill="#1baf7a"/>
+<circle cx="400" cy="160" r="3" fill="#898781" opacity="0.5"/>
+<text x="402" y="188" text-anchor="middle" font-size="9" font-weight="700" fill="#1baf7a">Score = ∇_x log p(x)</text>
+<text x="402" y="199" text-anchor="middle" font-size="8.5" fill="#898781">「往哪個方向改圖，能讓它更真實？」</text>
+<rect x="285" y="207" width="240" height="30" rx="4" fill="#1baf7a" opacity="0.09" stroke="#1baf7a" stroke-width="1"/>
+<text x="405" y="219" text-anchor="middle" font-size="9" font-weight="700" fill="#1baf7a">去噪 ≡ 學習 Score Function</text>
+<text x="405" y="231" text-anchor="middle" font-size="8" fill="#898781">最優去噪器 ε̂ ∝ −∇_x log p_σ(x)（Tweedie 公式）</text>
+<rect x="285" y="243" width="240" height="40" rx="4" fill="#7c56c8" opacity="0.08" stroke="#7c56c8" stroke-width="0.8"/>
+<text x="405" y="255" text-anchor="middle" font-size="9" font-weight="700" fill="#7c56c8">多尺度：難問題切成 T 個簡單問題</text>
+<text x="291" y="268" font-size="8" fill="#898781">• 高噪聲 t≈T → 學全局結構（輪廓/構圖）</text>
+<text x="291" y="279" font-size="8" fill="#898781">• 低噪聲 t≈0 → 學局部細節（紋理/邊緣）</text>
+<rect x="544" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="677" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">生成模型大比較</text>
+<rect x="550" y="36" width="253" height="22" rx="2" fill="#0b0b0b" opacity="0.07"/>
+<text x="556" y="51" font-size="8" font-weight="700" fill="#0b0b0b">方法</text>
+<text x="614" y="51" font-size="8" font-weight="700" fill="#0b0b0b">訓練穩定</text>
+<text x="663" y="51" font-size="8" font-weight="700" fill="#0b0b0b">覆蓋分布</text>
+<text x="714" y="51" font-size="8" font-weight="700" fill="#0b0b0b">生成品質</text>
+<text x="754" y="51" font-size="8" font-weight="700" fill="#0b0b0b">速度</text>
+<rect x="550" y="60" width="253" height="22" rx="2" fill="#d94040" opacity="0.06"/>
+<text x="556" y="74" font-size="8.5" font-weight="700" fill="#d94040">GAN</text>
+<text x="614" y="74" font-size="8" font-weight="400" fill="#d94040">✗ 不穩定</text>
+<text x="663" y="74" font-size="8" font-weight="400" fill="#d94040">✗ 模式崩塌</text>
+<text x="714" y="74" font-size="8" font-weight="400" fill="#898781">★★★★</text>
+<text x="754" y="74" font-size="8" font-weight="400" fill="#1baf7a">★★★★★</text>
+<rect x="550" y="82" width="253" height="22" rx="2" fill="#eb6834" opacity="0.06"/>
+<text x="556" y="96" font-size="8.5" font-weight="700" fill="#eb6834">VAE</text>
+<text x="614" y="96" font-size="8" font-weight="400" fill="#1baf7a">✓ 穩定</text>
+<text x="663" y="96" font-size="8" font-weight="400" fill="#1baf7a">✓ 覆蓋全</text>
+<text x="714" y="96" font-size="8" font-weight="400" fill="#898781">★★</text>
+<text x="754" y="96" font-size="8" font-weight="400" fill="#1baf7a">★★★★★</text>
+<rect x="550" y="104" width="253" height="22" rx="2" fill="#eda100" opacity="0.06"/>
+<text x="556" y="118" font-size="8.5" font-weight="700" fill="#eda100">Flow</text>
+<text x="614" y="118" font-size="8" font-weight="400" fill="#1baf7a">✓ 穩定</text>
+<text x="663" y="118" font-size="8" font-weight="400" fill="#1baf7a">✓ 精確</text>
+<text x="714" y="118" font-size="8" font-weight="400" fill="#898781">★★★</text>
+<text x="754" y="118" font-size="8" font-weight="400" fill="#898781">★★★</text>
+<rect x="550" y="126" width="253" height="22" rx="2" fill="#1baf7a" opacity="0.06"/>
+<text x="556" y="140" font-size="8.5" font-weight="700" fill="#1baf7a">Diffusion</text>
+<text x="614" y="140" font-size="8" font-weight="400" fill="#1baf7a">✓ 穩定</text>
+<text x="663" y="140" font-size="8" font-weight="400" fill="#1baf7a">✓ 覆蓋全</text>
+<text x="714" y="140" font-size="8" font-weight="400" fill="#1baf7a">★★★★★</text>
+<text x="754" y="140" font-size="8" font-weight="400" fill="#898781">★★</text>
+<text x="560" y="156" font-size="9.5" font-weight="700" fill="#1baf7a">Diffusion 為何訓練最穩定？</text>
+<text x="556" y="170" font-size="8.5" fill="#898781">• 損失函數：MSE(ε̂ − ε)，回歸問題，非博弈</text>
+<text x="556" y="183" font-size="8.5" fill="#898781">• 梯度訊號清晰：每步只預測「這一小步的噪聲」</text>
+<text x="556" y="196" font-size="8.5" fill="#898781">• 無模式崩塌：每個時間步都有獨立梯度監督</text>
+<rect x="550" y="213" width="253" height="44" rx="4" fill="#eda100" opacity="0.09" stroke="#eda100" stroke-width="0.8"/>
+<text x="677" y="226" text-anchor="middle" font-size="9" font-weight="700" fill="#eda100">直覺比喻</text>
+<text x="556" y="238" font-size="8.5" fill="#898781">GAN：要求新手直接畫傑作 → 壓力大</text>
+<text x="556" y="250" font-size="8.5" fill="#1baf7a">Diffusion：先打草稿，再逐步細化 → 穩</text>
+</svg>
