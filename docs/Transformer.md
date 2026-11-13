@@ -428,7 +428,132 @@ OpenAI 未公開架構，已知與推測：
 
 ---
 
-## 10. 一句話記憶
+## 10. Mamba：線性複雜度的 State Space Model
+
+> Mamba（Gu & Dao 2023）以選擇性狀態空間模型取代 Attention，
+> 將序列建模複雜度從 $O(n^2)$ 降至 $O(n)$，推理記憶體從 $O(n)$ 降至 $O(1)$。
+
+### 10.1 動機：Transformer 的長序列瓶頸
+
+Attention 計算量與序列長度成**平方**關係，序列翻倍計算量翻四倍。
+長文件、長對話、長影片時代價極高。
+
+### 10.2 連續時間狀態空間模型（SSM）
+
+Mamba 源於控制理論的線性時不變系統：
+
+$$
+h'(t) = A\,h(t) + B\,x(t), \qquad y(t) = C\,h(t)
+$$
+
+- $x(t)$：輸入，$h(t)$：隱狀態（有限大小的「記憶」），$y(t)$：輸出
+- $A, B, C$：學習到的矩陣
+
+**離散化**（電腦處理序列必須）——以 Zero-Order Hold 引入時間步長 $\Delta$：
+
+$$
+\bar{A} = e^{\Delta A}, \quad \bar{B} = (\Delta A)^{-1}(e^{\Delta A}-I)\cdot\Delta B
+$$
+
+$$
+h_t = \bar{A}\,h_{t-1} + \bar{B}\,x_t, \qquad y_t = C\,h_t
+$$
+
+### 10.3 Mamba 的核心創新：Selective SSM（S6）
+
+前代 S4 的 $A,B,C$ 是**固定矩陣**，每個 token 被同等對待，無法選擇性記憶。
+
+Mamba 讓 $B_t$、$C_t$、$\Delta_t$ **成為輸入的函數**：
+
+$$
+B_t = f_B(x_t), \quad C_t = f_C(x_t), \quad \Delta_t = \text{softplus}(W_\Delta x_t)
+$$
+
+**$\Delta_t$ 的作用**：
+- $\Delta_t$ 小 → 離散化後 $\bar{A} \approx I$，隱狀態幾乎不更新（遺忘）
+- $\Delta_t$ 大 → 隱狀態大幅更新（記憶此 token）
+
+模型動態決定「這個 token 值得記多少」，實現選擇性記憶。
+
+### 10.4 兩種計算模式
+
+Mamba 同一組參數，訓練與推理用不同模式：
+
+```
+訓練（Parallel Scan）：
+  關聯掃描算法（Parallel Prefix Scan）並行計算全序列
+  複雜度 O(n)，支援 GPU 並行，不需 n×n Attention 矩陣
+
+推理（Recurrent）：
+  逐 token 遞推 h_t = Ā·h_{t-1} + B̄·x_t
+  每步 O(1) 計算，隱狀態大小固定不增長
+```
+
+**複雜度對比**：
+
+| | Transformer | Mamba |
+|---|---|---|
+| 訓練複雜度 | $O(n^2 d)$ | $O(n\,d)$ |
+| 推理每步成本 | $O(n\,d)$（讀 KV Cache）| $O(d)$（固定隱狀態）|
+| 推理記憶體 | $O(n)$（KV 隨長度增長）| $O(1)$（固定大小）|
+| 長序列推理速度 | 線性下降 | 恆定 |
+| 精確長程查詢 | ✓（Attention 直接存取）| △（壓縮後可能遺失）|
+
+### 10.5 MambaBlock 結構
+
+```
+輸入 x
+ ├─ Linear → Δ,B,C → Selective SSM ──┐
+ │                                    ├── ⊙ → Linear → 輸出
+ └─ Linear → SiLU ───────────────────┘
+```
+
+兩條分支逐元素相乘：SSM 分支做選擇性記憶，SiLU 分支做門控。
+無 Attention，無顯式 Cross-token 操作。
+
+### 10.6 效能數字（Gu & Dao 2023）
+
+```
+語言建模（Pile）：Mamba-3B ≈ Transformer++ 3B（perplexity 相近）
+推理吞吐量（2K tokens）：Mamba 比 Transformer 快 5×
+長序列（16K–1M tokens）：Transformer 記憶體爆炸，Mamba 線性擴展
+```
+
+### 10.7 Mamba 的根本限制
+
+Transformer 是**隨機存取記憶體**（任意查詢歷史），
+Mamba 是**有損壓縮記憶體**（細節可能遺失）：
+
+```
+Transformer：「第 1000 個 token 說了 X」→ Attention 直接取回
+Mamba：       該 token 已壓縮進固定大小隱狀態，精確細節可能遺失
+```
+
+→ Needle-in-a-haystack 精確召回、In-context Learning 能力目前弱於 Transformer。
+
+### 10.8 Mamba-2 與混合架構
+
+**Mamba-2（Dao & Gu 2024）**：將 SSM 統一到「結構化矩陣乘法」框架（State Space Duality），
+與 Attention 建立理論等價關係，更適合矩陣乘法硬體。
+
+**混合架構**——Mamba 層負責長程壓縮記憶，Attention 層負責精確短程查詢：
+
+| 模型 | 架構 | 特點 |
+|---|---|---|
+| **Jamba**（AI21 2024）| Mamba + Transformer 交替 | 商用 LLM，256K context |
+| **Zamba**（Zyphr 2024）| 以 Mamba 為主穿插少量 Attention | 7B 開源 |
+| **Hymba**（NVIDIA 2024）| Mamba + Attention 在同一層並行 | 1.5B，短/長程互補 |
+
+**定位**：
+```
+Transformer  ：隨機存取記憶體（精確查詢，O(n) 空間）
+Mamba        ：有損壓縮記憶體（O(1) 空間，但精確召回弱）
+混合架構     ：兩種記憶模式並存，取各自優勢
+```
+
+---
+
+## 11. 一句話記憶
 
 $$
 \text{Transformer Block} = \underbrace{x + \text{Attn}(\text{Norm}(x))}_{\text{跨 token 聚合資訊}} + \underbrace{x + \text{FFN}(\text{Norm}(x))}_{\text{逐 token 非線性變換}}
