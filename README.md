@@ -12,7 +12,7 @@ AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、�
 | [反向傳播](docs/Backpropagation.md) | 以鏈式法則沿計算圖回傳梯度的機制 |
 | [梯度下降](docs/Gradient-Descent.md) | LLM 的優化核心，與反向傳播、殘差連接的交互作用 |
 | [損失函數](docs/Loss-Function.md) | MSE、交叉熵等：衡量預測與目標的差距並提供梯度 |
-| [KV Cache 與 Attention](docs/KV-Cache.md) | 推理加速的關鍵快取，及其對注意力計算的影響 |
+| [KV Cache 與 Attention 機制](docs/KV-Cache.md) | Scaled Dot-Product Attention（Q/K/V、√dₖ 縮放）、Multi-Head、三種 Attention 形式、位置編碼（Sinusoidal/RoPE/ALiBi）、Flash Attention（Tiling + Online Softmax）；KV Cache 原理（Prefill/Decode）、MHA/MQA/GQA、Paged Attention、量化 KV Cache |
 | [擴散模型](docs/Diffusion-Model.md) | DDPM 前向/逆向數學、Score SDE、DDIM、CFG、LDM、DiT、Flow Matching；圖像/音訊/蛋白質生成應用 |
 | [深度學習演化史](docs/Deep-Learning-History.md) | 八個演化波次（1943–今）：感知機 → 反向傳播 → CNN → ResNet → Seq2Seq → Transformer → 大模型 → 多模態/推理模型；涵蓋 RNN/LSTM/BERT/GPT、Encoder vs Decoder、Transformer 訓練細節（AdamW、Warmup+Cosine LR、BF16 混合精度、ZeRO 分散式並行）；含七張圖示 |
 | [Chain-of-Thought 推理](docs/Chain-of-Thought.md) | Few-shot CoT、Zero-shot CoT（17.7%→78.7%）、Self-Consistency（+17.9% GSM8K）、ToT、ReAct、Reflexion（語言 RL、HumanEval 67%→91%）、PoT；計算深度定理（L×T 層等效計算）；DeepSeek-R1 GRPO 四階段訓練；各模型思維鏈可見度比較；API 程式碼範例與 Prompt 誘導模板 |
