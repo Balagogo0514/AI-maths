@@ -553,7 +553,116 @@ Mamba        ：有損壓縮記憶體（O(1) 空間，但精確召回弱）
 
 ---
 
-## 11. 一句話記憶
+## 11. Transformer、CNN、RNN 的關係
+
+### 11.1 歷史脈絡
+
+```
+1980s–90s  CNN（影像）/ RNN（序列）
+2014–17    Seq2Seq + Attention（RNN 的補丁）
+2017       Transformer（Attention Is All You Need）
+2020+      Vision Transformer（攻入 CNN 的影像領域）
+```
+
+Transformer 吸收了 CNN 和 RNN 各自的優點，同時解決了兩者的核心限制。
+
+### 11.2 RNN 的優缺點
+
+**設計**：用隱狀態 $h_t$ 傳遞歷史：
+
+$$
+h_t = f(W_h h_{t-1} + W_x x_t + b)
+$$
+
+**優點**：自然處理可變長序列，理論上可記住任意長歷史。
+
+**致命缺陷**：
+- **無法並行**：$h_t$ 依賴 $h_{t-1}$，訓練速度受限
+- **梯度消失**：長序列時 $\partial L/\partial h_1 \approx \prod_i (\partial h_i/\partial h_{i-1})$ 指數衰減
+- **資訊瓶頸**：所有歷史壓縮進固定大小 $h_t$，遠距依賴難以保持
+
+LSTM 用遺忘/輸入/輸出三個門緩解梯度消失，但無法並行的本質不變。
+
+### 11.3 CNN 在序列上的應用
+
+1D 卷積：
+
+$$
+y_t = \sum_{k=0}^{K-1} w_k \cdot x_{t-k}
+$$
+
+**優點**：完全可並行、局部不變性（kernel 共享）。
+
+**核心限制**：感受野 $=K \times$ 層數，覆蓋長程依賴需很深的網路。
+WaveNet / TCN 用 Dilated Conv 把感受野指數擴大，但仍是固定結構。
+
+### 11.4 Transformer 如何超越兩者
+
+| 能力 | RNN | CNN | Transformer |
+|---|---|---|---|
+| 訓練並行 | ✗ | ✓ | ✓ |
+| 任意長程依賴 | △（梯度消失）| △（需夠深）| ✓（直接 Attention）|
+| **動態權重** | ✗（固定 W）| ✗（固定 kernel）| ✓（依輸入而定）|
+| 位置感知 | ✓（天然有序）| △（局部）| 需額外 PE |
+| 推理記憶體 | $O(1)$（只需 $h_t$）| $O(1)$ | $O(n)$（KV Cache）|
+
+**關鍵突破**：Attention 權重由輸入內容動態決定，每次 Forward 都不同；
+CNN 的 kernel 和 RNN 的 $W_h$ 是靜態的。
+
+### 11.5 數學上的統一視角
+
+**Attention 是廣義的 CNN**：
+
+$$
+\text{CNN：} \quad y_t = \sum_k \underbrace{w_k}_{\text{固定權重}} \cdot x_{t-k}
+$$
+
+$$
+\text{Attention：} \quad y_t = \sum_j \underbrace{\alpha_{tj}}_{\text{動態 = } f(x_t, x_j)} \cdot v_j
+$$
+
+若強制 $\alpha_{tj}$ 只依賴相對位置 $(t-j)$ 而不依賴內容，Self-Attention 退化為 CNN。
+
+**Attention 也能模擬 RNN**：RNN 用有限記憶體近似無限歷史；
+Attention 直接使用完整歷史，能表示 RNN 能表示的一切（反之不然）。
+
+### 11.6 Vision Transformer（ViT）衝擊 CNN
+
+**ViT（Dosovitskiy 2020）**：把影像切成 $16 \times 16$ 的 patch 當 token：
+
+$$
+224 \times 224 \text{ 影像} \to 14 \times 14 = 196 \text{ 個 patch} \to \text{Transformer Encoder}
+$$
+
+| | CNN（ResNet）| ViT |
+|---|---|---|
+| 歸納偏置 | 局部性 + 平移不變 | 無（全靠資料學）|
+| 小資料集 | 更好 | 更差 |
+| 大資料集（JFT-300M）| 好 | 明顯更好 |
+| 長程關係 | 需很深 | 直接 Attention |
+
+### 11.7 三者融合的現代架構
+
+**CNN 借鑑 Transformer**：
+- **ConvNeXt**（2022）：把 ResNet 一步步改成「像 Transformer」（大 kernel 7×7、LayerNorm、GELU、倒置瓶頸）→ 追平 ViT
+
+**Transformer 借鑑 CNN**：
+- **Swin Transformer**：加入局部窗口 Attention，恢復平移不變性，$O(n^2) \to O(n)$
+
+**現代定位**：
+```
+RNN（LSTM/GRU）：幾乎退出主流；Mamba（SSM）是 RNN 的現代復興
+CNN             ：影像特徵提取 backbone；小資料 NLP；音訊生成
+Transformer     ：NLP 完全主導；大型影像/多模態模型主導
+```
+
+**一句話**：RNN 解決「序列」但無法並行；CNN 解決「並行」但感受野有限；
+Transformer 用動態 Attention 同時解決兩個問題，代價是 $O(n^2)$ 記憶體；
+Mamba（SSM）試圖把這個代價也消除。
+
+---
+
+## 12. 一句話記憶
 
 $$
 \text{Transformer Block} = \underbrace{x + \text{Attn}(\text{Norm}(x))}_{\text{跨 token 聚合資訊}} + \underbrace{x + \text{FFN}(\text{Norm}(x))}_{\text{逐 token 非線性變換}}
