@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 346" width="820" height="346" font-family="system-ui,sans-serif">
+<rect width="820" height="346" fill="#fcfcfb" rx="10"/>
+<rect x="12" y="10" width="214" height="284" rx="8" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+<rect x="12" y="10" width="214" height="20" rx="8" fill="#eb6834" opacity="0.16"/>
+<text x="119.0" y="24.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#eb6834">真實連結</text>
+<rect x="238" y="10" width="166" height="284" rx="8" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+<rect x="238" y="10" width="166" height="20" rx="8" fill="#7c56c8" opacity="0.16"/>
+<text x="321.0" y="24.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#7c56c8">框架</text>
+<rect x="416" y="10" width="188" height="284" rx="8" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+<rect x="416" y="10" width="188" height="20" rx="8" fill="#2a78d6" opacity="0.16"/>
+<text x="510.0" y="24.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#2a78d6">結構類比</text>
+<rect x="616" y="10" width="192" height="284" rx="8" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+<rect x="616" y="10" width="192" height="20" rx="8" fill="#6b6a66" opacity="0.16"/>
+<text x="712.0" y="24.0" text-anchor="middle" font-size="10.5" font-weight="700" fill="#6b6a66">無已知關係</text>
+<rect x="20" y="40" width="198" height="56" rx="5" fill="#eb6834" opacity="0.08" stroke="#eb6834" stroke-width="1"/>
+<text x="27.0" y="53.0" text-anchor="start" font-size="9" font-weight="700" fill="#eb6834">§3.3  Mersenne 2^k − 1</text>
+<text x="27.0" y="66.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">全 1 貼近不動點 −1，前 k 步全是奇數步</text>
+<text x="27.0" y="77.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">T^j(2^k−1) = 3^j·2^(k−j) − 1（k&lt;40）</text>
+<text x="27.0" y="88.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">步數約 1.95 倍；質數與否無差別</text>
+<rect x="20" y="110" width="198" height="56" rx="5" fill="#eb6834" opacity="0.08" stroke="#eb6834" stroke-width="1"/>
+<text x="27.0" y="123.0" text-anchor="start" font-size="9" font-weight="700" fill="#eb6834">§3.12  Fermat F_n</text>
+<text x="27.0" y="136.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">2^(2^n)−1 = ∏F_k；貼近 {1,2}（乘數 3/4）</text>
+<text x="27.0" y="147.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">T^(2j)(1+2^N) = 1 + 3^j·2^(N−2j)</text>
+<text x="27.0" y="158.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">所有正循環的乘數 &lt; 1（吸引）</text>
+<rect x="20" y="172" width="198" height="56" rx="5" fill="#eb6834" opacity="0.08" stroke="#eb6834" stroke-width="1"/>
+<text x="27.0" y="185.0" text-anchor="start" font-size="9" font-weight="700" fill="#eb6834">§3.4  Fibonacci F_n</text>
+<text x="27.0" y="198.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">O/E 序列禁 OO：合法序列數 = F_(m+2)</text>
+<text x="27.0" y="209.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">熵 0.462 &lt; ln φ = 0.481</text>
+<text x="27.0" y="220.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">費氏數當起點：無特殊性</text>
+<rect x="20" y="234" width="198" height="56" rx="5" fill="#eb6834" opacity="0.08" stroke="#eb6834" stroke-width="1"/>
+<text x="27.0" y="247.0" text-anchor="start" font-size="9" font-weight="700" fill="#eb6834">§3.8  Euler 數與 e</text>
+<text x="27.0" y="260.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">2^k/3^s = ∏(1 + 1/(3nᵢ))；k ≥ 2.78×10¹⁰</text>
+<text x="27.0" y="271.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">文獻下界恰為 ln2/ln3 的收斂分母</text>
+<text x="27.0" y="282.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">正割數 Eₙ：無已知關係</text>
+<rect x="246" y="96" width="150" height="118" rx="5" fill="#7c56c8" opacity="0.08" stroke="#7c56c8" stroke-width="1"/>
+<text x="253.0" y="109.0" text-anchor="start" font-size="9" font-weight="700" fill="#7c56c8">§3.5  Lucas 序列</text>
+<text x="253.0" y="122.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">U_n(P,Q) 統一框架：</text>
+<text x="255.0" y="134.0" text-anchor="start" font-size="7.4" font-weight="400" fill="#898781">2^n − 1 = U_n(3,2)</text>
+<text x="255.0" y="144.0" text-anchor="start" font-size="7.4" font-weight="400" fill="#898781">(4^i − 1)/3 = U_i(5,4)</text>
+<text x="255.0" y="154.0" text-anchor="start" font-size="7.4" font-weight="400" fill="#898781">3^n − 2^n = U_n(5,6)</text>
+<text x="255.0" y="164.0" text-anchor="start" font-size="7.4" font-weight="400" fill="#898781">Fₙ, Lₙ = U/V_n(1,−1)</text>
+<text x="255.0" y="174.0" text-anchor="start" font-size="7.4" font-weight="400" fill="#898781">F_n(Fermat) = V_(2^n)(3,2)</text>
+<text x="253.0" y="209.0" text-anchor="start" font-size="6.8" font-weight="400" fill="#898781">2^k−3^s 不是 Lucas 項；Lₙ 無特殊性</text>
+<rect x="424" y="40" width="172" height="56" rx="5" fill="#2a78d6" opacity="0.08" stroke="#2a78d6" stroke-width="1"/>
+<text x="431.0" y="53.0" text-anchor="start" font-size="9" font-weight="700" fill="#2a78d6">§3.6  Catalan Cₙ</text>
+<text x="431.0" y="66.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">零漂移首次穿越 = Catalan；Collatz 次臨界</text>
+<text x="431.0" y="77.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">N_k：k=⌊s·log₂3⌋+1 才非零</text>
+<text x="431.0" y="88.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">真實：Cₙ 奇 ⇔ n = 2^k − 1</text>
+<rect x="424" y="110" width="172" height="56" rx="5" fill="#2a78d6" opacity="0.08" stroke="#2a78d6" stroke-width="1"/>
+<text x="431.0" y="123.0" text-anchor="start" font-size="9" font-weight="700" fill="#2a78d6">§3.11  Motzkin Mₙ</text>
+<text x="431.0" y="136.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">Dyck 加水平步；成長率 3 與乘數無關</text>
+<text x="431.0" y="147.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">偶數項 n = m·4^j − 1, −2（m 奇）</text>
+<text x="431.0" y="158.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">反向樹屬一元—二元樹</text>
+<rect x="624" y="40" width="176" height="56" rx="5" fill="#6b6a66" opacity="0.08" stroke="#6b6a66" stroke-width="1"/>
+<text x="631.0" y="53.0" text-anchor="start" font-size="9" font-weight="700" fill="#6b6a66">§3.7  Bernoulli Bₙ</text>
+<text x="631.0" y="66.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">2、3 恆在分母屬巧合</text>
+<text x="631.0" y="77.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">v₂ = v₃ = −1（對稱）vs Collatz 不對稱</text>
+<text x="631.0" y="88.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">延拓 f 只含 cos</text>
+<rect x="624" y="172" width="176" height="56" rx="5" fill="#6b6a66" opacity="0.08" stroke="#6b6a66" stroke-width="1"/>
+<text x="631.0" y="185.0" text-anchor="start" font-size="9" font-weight="700" fill="#6b6a66">§3.9  Stirling 數／公式</text>
+<text x="631.0" y="198.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">數：無關；公式：奇偶向量熵 0.95 bits</text>
+<text x="631.0" y="209.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">天真期望循環數不衰減</text>
+<text x="631.0" y="220.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">副產物：λ = (1+√(7/3))/2</text>
+<rect x="624" y="234" width="176" height="56" rx="5" fill="#6b6a66" opacity="0.08" stroke="#6b6a66" stroke-width="1"/>
+<text x="631.0" y="247.0" text-anchor="start" font-size="9" font-weight="700" fill="#6b6a66">§3.10  Pell Pₙ</text>
+<text x="631.0" y="260.0" text-anchor="start" font-size="7.8" font-weight="400" fill="#0b0b0b">U_n(2,−1)，根 1 ± √2；√2 的收斂分母</text>
+<text x="631.0" y="271.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#898781">log₂3 像典型實數（成長率 ≈ 1.1）</text>
+<text x="631.0" y="282.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#898781">Fibonacci、Pell 為最慢極端</text>
+<line x1="218" y1="80" x2="246" y2="120" stroke="#7c56c8" stroke-width="1.6"/>
+<circle cx="218" cy="80" r="2.4" fill="#7c56c8"/>
+<circle cx="246" cy="120" r="2.4" fill="#7c56c8"/>
+<line x1="218" y1="138" x2="246" y2="154" stroke="#7c56c8" stroke-width="1.6"/>
+<circle cx="218" cy="138" r="2.4" fill="#7c56c8"/>
+<circle cx="246" cy="154" r="2.4" fill="#7c56c8"/>
+<line x1="218" y1="200" x2="246" y2="188" stroke="#7c56c8" stroke-width="1.6"/>
+<circle cx="218" cy="200" r="2.4" fill="#7c56c8"/>
+<circle cx="246" cy="188" r="2.4" fill="#7c56c8"/>
+<line x1="204" y1="96" x2="204" y2="110" stroke="#eb6834" stroke-width="2.2"/>
+<line x1="34" y1="96" x2="34" y2="110" stroke="#eb6834" stroke-width="2.2"/>
+<text x="119.0" y="106.0" text-anchor="middle" font-size="7" font-weight="700" fill="#eb6834">貼近 −1 ↔ 貼近 1</text>
+<polyline points="218,50 321,50 424,54" fill="none" stroke="#eb6834" stroke-width="1.6"/>
+<circle cx="218" cy="50" r="2.4" fill="#eb6834"/>
+<circle cx="424" cy="54" r="2.4" fill="#eb6834"/>
+<text x="321.0" y="44.0" text-anchor="middle" font-size="7" font-weight="700" fill="#eb6834">Cₙ 奇 ⇔ n=2^k−1</text>
+<line x1="464" y1="96" x2="464" y2="110" stroke="#2a78d6" stroke-width="1.8" stroke-dasharray="4,3"/>
+<line x1="556" y1="96" x2="556" y2="110" stroke="#2a78d6" stroke-width="1.8" stroke-dasharray="4,3"/>
+<polyline points="218,222 321,222 624,222" fill="none" stroke="#2a78d6" stroke-width="1.4" stroke-dasharray="4,3"/>
+<circle cx="218" cy="222" r="2.4" fill="#2a78d6"/>
+<circle cx="624" cy="222" r="2.4" fill="#2a78d6"/>
+<text x="510.0" y="218.0" text-anchor="middle" font-size="7" font-weight="700" fill="#2a78d6">反向樹成長率 λ（修正 §3.4）</text>
+<line x1="218" y1="262" x2="624" y2="262" stroke="#2a78d6" stroke-width="1.4" stroke-dasharray="4,3"/>
+<circle cx="218" cy="262" r="2.4" fill="#2a78d6"/>
+<circle cx="624" cy="262" r="2.4" fill="#2a78d6"/>
+<text x="510.0" y="258.0" text-anchor="middle" font-size="7" font-weight="700" fill="#2a78d6">log₂3 與 √2 的連分數對比</text>
+<rect x="12" y="302" width="796" height="34" rx="8" fill="white" stroke="#e0e0e0" stroke-width="1"/>
+<line x1="24" y1="313" x2="48" y2="313" stroke="#eb6834" stroke-width="2"/>
+<text x="54.0" y="316.0" text-anchor="start" font-size="8" font-weight="400" fill="#0b0b0b">真實關係（可驗證）</text>
+<line x1="168" y1="313" x2="192" y2="313" stroke="#7c56c8" stroke-width="2"/>
+<text x="198.0" y="316.0" text-anchor="start" font-size="8" font-weight="400" fill="#0b0b0b">同屬 Lucas 序列</text>
+<line x1="290" y1="313" x2="314" y2="313" stroke="#2a78d6" stroke-width="1.6" stroke-dasharray="4,3"/>
+<text x="320.0" y="316.0" text-anchor="start" font-size="8" font-weight="400" fill="#0b0b0b">類比／對比</text>
+<text x="24.0" y="329.0" text-anchor="start" font-size="8" font-weight="400" fill="#898781">三個共同機制：① 2-進位貼近（−1 排斥、1 吸引）　② 2^k 與 3^s 的不可公度（連分數）　③ 漂移符號與臨界（q = 4）</text>
+</svg>
