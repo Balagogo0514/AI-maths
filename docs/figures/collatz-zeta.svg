@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="292" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="156.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">T^k(x) = x 的解：ℤ₂ vs 整數</text>
+<line x1="50" y1="150" x2="290" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="50" y1="150" x2="50" y2="54" stroke="#898781" stroke-width="0.8"/>
+<line x1="47" y1="150.0" x2="290" y2="150.0" stroke="#eee" stroke-width="0.6"/>
+<text x="44.0" y="153.0" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">1</text>
+<line x1="47" y1="117.1" x2="290" y2="117.1" stroke="#eee" stroke-width="0.6"/>
+<text x="44.0" y="120.1" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">10^2</text>
+<line x1="47" y1="84.3" x2="290" y2="84.3" stroke="#eee" stroke-width="0.6"/>
+<text x="44.0" y="87.3" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">10^4</text>
+<polyline points="56.7,145.1 70.0,140.1 83.3,135.2 96.7,130.2 110.0,125.3 123.3,120.3 136.7,115.4 150.0,110.4 163.3,105.5 176.7,100.5 190.0,95.6 203.3,90.7 216.7,85.7 230.0,80.8 243.3,75.8 256.7,70.9 270.0,65.9 283.3,61.0" fill="none" stroke="#2a78d6" stroke-width="1.8"/>
+<circle cx="56.7" cy="145.1" r="2.6" fill="#eb6834"/>
+<text x="56.7" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">1</text>
+<circle cx="70.0" cy="140.1" r="2.6" fill="#eb6834"/>
+<text x="70.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">2</text>
+<circle cx="83.3" cy="138.5" r="2.6" fill="#eb6834"/>
+<circle cx="96.7" cy="140.1" r="2.6" fill="#eb6834"/>
+<text x="96.7" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">4</text>
+<circle cx="110.0" cy="145.1" r="2.6" fill="#eb6834"/>
+<circle cx="123.3" cy="136.1" r="2.6" fill="#eb6834"/>
+<text x="123.3" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">6</text>
+<circle cx="136.7" cy="145.1" r="2.6" fill="#eb6834"/>
+<circle cx="150.0" cy="140.1" r="2.6" fill="#eb6834"/>
+<text x="150.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">8</text>
+<circle cx="163.3" cy="138.5" r="2.6" fill="#eb6834"/>
+<circle cx="176.7" cy="140.1" r="2.6" fill="#eb6834"/>
+<text x="176.7" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">10</text>
+<circle cx="190.0" cy="131.7" r="2.6" fill="#eb6834"/>
+<circle cx="203.3" cy="136.1" r="2.6" fill="#eb6834"/>
+<text x="203.3" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">12</text>
+<circle cx="216.7" cy="145.1" r="2.6" fill="#eb6834"/>
+<circle cx="230.0" cy="140.1" r="2.6" fill="#eb6834"/>
+<text x="230.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">14</text>
+<circle cx="243.3" cy="138.5" r="2.6" fill="#eb6834"/>
+<circle cx="256.7" cy="140.1" r="2.6" fill="#eb6834"/>
+<text x="256.7" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">16</text>
+<circle cx="270.0" cy="145.1" r="2.6" fill="#eb6834"/>
+<circle cx="283.3" cy="136.1" r="2.6" fill="#eb6834"/>
+<text x="283.3" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">18</text>
+<text x="170.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">k（週期長度的上界）</text>
+<text x="55.0" y="62.0" text-anchor="start" font-size="8" font-weight="700" fill="#2a78d6">藍：ℤ₂ 的週期點數 2^k</text>
+<text x="55.0" y="73.0" text-anchor="start" font-size="8" font-weight="700" fill="#eb6834">橘：整數解（正＋負＋零）</text>
+<rect x="18" y="176" width="276" height="108" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="156.0" y="190.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0b0b0b">ℤ₂：D = 2^k − 3^s 恆為奇數 ⇒ c/D ∈ ℤ₂</text>
+<text x="156.0" y="203.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#2a78d6">每個奇偶模式恰一個週期點：ζ_T(z) = 1/(1 − 2z)</text>
+<text x="156.0" y="218.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#eb6834">k = 18：ℤ₂ 有 262,144 個，整數只有 7 個</text>
+<text x="156.0" y="232.0" text-anchor="middle" font-size="8" font-weight="400" fill="#898781">正整數：偶數 k 為 2、奇數 k 為 0（k ≤ 18 窮舉）</text>
+<text x="156.0" y="245.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#7c56c8">級數到 z^18 恰為 1/(1 − z²)</text>
+<text x="156.0" y="260.0" text-anchor="middle" font-size="8" font-weight="400" fill="#898781">⇔ 沒有非平凡正循環（只涵蓋循環，不含發散）</text>
+<text x="156.0" y="273.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">N_k 含所有長度整除 k 的循環</text>
+<rect x="314" y="10" width="232" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="430.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">循環的 Euler 乘積</text>
+<text x="430.0" y="42.0" text-anchor="middle" font-size="8" font-weight="400" fill="#898781">ζ_T(z) = ∏ (1 − z^|γ|)^(−1)，γ 取遍基本循環</text>
+<rect x="322" y="50" width="216" height="18" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.5"/>
+<text x="328.0" y="62.5" text-anchor="start" font-size="8.5" font-weight="700" fill="#0b0b0b">{0}</text>
+<text x="440.0" y="62.5" text-anchor="start" font-size="8" font-weight="400" fill="#898781">長度 1</text>
+<text x="532.0" y="62.5" text-anchor="end" font-size="8.5" font-weight="700" fill="#2a78d6">(1 − z)⁻¹</text>
+<rect x="322" y="71" width="216" height="18" rx="4" fill="#7c56c8" opacity="0.07" stroke="#7c56c8" stroke-width="0.5"/>
+<text x="328.0" y="83.5" text-anchor="start" font-size="8.5" font-weight="700" fill="#0b0b0b">{−1}</text>
+<text x="440.0" y="83.5" text-anchor="start" font-size="8" font-weight="400" fill="#898781">長度 1</text>
+<text x="532.0" y="83.5" text-anchor="end" font-size="8.5" font-weight="700" fill="#7c56c8">(1 − z)⁻¹</text>
+<rect x="322" y="92" width="216" height="18" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.5"/>
+<text x="328.0" y="104.5" text-anchor="start" font-size="8.5" font-weight="700" fill="#0b0b0b">{1, 2}</text>
+<text x="440.0" y="104.5" text-anchor="start" font-size="8" font-weight="400" fill="#898781">長度 2</text>
+<text x="532.0" y="104.5" text-anchor="end" font-size="8.5" font-weight="700" fill="#2a78d6">(1 − z^2)⁻¹</text>
+<rect x="322" y="113" width="216" height="18" rx="4" fill="#7c56c8" opacity="0.07" stroke="#7c56c8" stroke-width="0.5"/>
+<text x="328.0" y="125.5" text-anchor="start" font-size="8.5" font-weight="700" fill="#0b0b0b">{−5, −7, −10}</text>
+<text x="440.0" y="125.5" text-anchor="start" font-size="8" font-weight="400" fill="#898781">長度 3</text>
+<text x="532.0" y="125.5" text-anchor="end" font-size="8.5" font-weight="700" fill="#7c56c8">(1 − z^3)⁻¹</text>
+<rect x="322" y="134" width="216" height="18" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.5"/>
+<text x="328.0" y="146.5" text-anchor="start" font-size="8.5" font-weight="700" fill="#0b0b0b">{−17, …}</text>
+<text x="440.0" y="146.5" text-anchor="start" font-size="8" font-weight="400" fill="#898781">長度 11</text>
+<text x="532.0" y="146.5" text-anchor="end" font-size="8.5" font-weight="700" fill="#2a78d6">(1 − z^11)⁻¹</text>
+<text x="430.0" y="165.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">N_k = Σ_(|γ| 整除 k) |γ|　（窮舉與乘積一致，k ≤ 18 已驗證）</text>
+<rect x="328.0" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="338.5" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">1</text>
+<text x="338.5" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">2</text>
+<rect x="351.5" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="362.0" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">2</text>
+<text x="362.0" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">4</text>
+<rect x="375.0" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="385.5" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">3</text>
+<text x="385.5" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">5</text>
+<rect x="398.5" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="409.0" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">4</text>
+<text x="409.0" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">4</text>
+<rect x="422.0" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="432.5" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">5</text>
+<text x="432.5" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">2</text>
+<rect x="445.5" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="456.0" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">6</text>
+<text x="456.0" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">7</text>
+<rect x="469.0" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="479.5" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">7</text>
+<text x="479.5" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">2</text>
+<rect x="492.5" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="503.0" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">8</text>
+<text x="503.0" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">4</text>
+<rect x="516.0" y="178" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="526.5" y="186.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">9</text>
+<text x="526.5" y="196.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">5</text>
+<rect x="328.0" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="338.5" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">10</text>
+<text x="338.5" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">4</text>
+<rect x="351.5" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="362.0" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">11</text>
+<text x="362.0" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">13</text>
+<rect x="375.0" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="385.5" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">12</text>
+<text x="385.5" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">7</text>
+<rect x="398.5" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="409.0" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">13</text>
+<text x="409.0" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">2</text>
+<rect x="422.0" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="432.5" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">14</text>
+<text x="432.5" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">4</text>
+<rect x="445.5" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="456.0" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">15</text>
+<text x="456.0" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">5</text>
+<rect x="469.0" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="479.5" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">16</text>
+<text x="479.5" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">4</text>
+<rect x="492.5" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="503.0" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">17</text>
+<text x="503.0" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">2</text>
+<rect x="516.0" y="202" width="21" height="22" rx="2" fill="#eb6834" opacity="0.10" stroke="#eb6834" stroke-width="0.5"/>
+<text x="526.5" y="210.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">18</text>
+<text x="526.5" y="220.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">7</text>
+<rect x="322" y="232" width="216" height="52" rx="4" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="430.0" y="246.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">已知循環只有 {0}、{−1}、{1,2}、{−5,−7,−10}、</text>
+<text x="430.0" y="258.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">{−17,…}（k ≤ 18 內，其餘為 0）</text>
+<text x="430.0" y="272.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">類比：質數 ↔ 基本循環（但無已知函數方程）</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">對數密度與 ζ 在 s=1 的極點</text>
+<line x1="596" y1="150" x2="796" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="596" y1="150" x2="596" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="596" y1="150.0" x2="796" y2="150.0" stroke="#f0f0f0" stroke-width="0.7" stroke-dasharray="0"/>
+<line x1="596" y1="101.1" x2="796" y2="101.1" stroke="#ddd" stroke-width="0.7" stroke-dasharray="4,3"/>
+<line x1="596" y1="76.7" x2="796" y2="76.7" stroke="#ddd" stroke-width="0.7" stroke-dasharray="4,3"/>
+<text x="591.0" y="104.1" text-anchor="end" font-size="7.5" font-weight="700" fill="#d94040">1/3</text>
+<text x="591.0" y="79.7" text-anchor="end" font-size="7.5" font-weight="700" fill="#2a78d6">1/2</text>
+<text x="591.0" y="153.0" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">0</text>
+<polyline points="596.0,77.3 605.2,79.7 615.7,79.1 625.9,78.5 636.0,78.4 645.9,78.3 656.0,78.1 666.0,78.0 676.0,77.9 686.0,77.8 696.0,77.7 706.0,77.7 716.0,77.6 726.0,77.5 736.0,77.5 746.0,77.4 756.0,77.4 766.0,77.4 776.0,77.3 786.0,77.3 796.0,77.3" fill="none" stroke="#2a78d6" stroke-width="1.8"/>
+<polyline points="596.0,64.5 605.2,68.8 615.7,74.3 625.9,78.8 636.0,81.9 645.9,83.9 656.0,85.7 666.0,87.1 676.0,88.2 686.0,89.2 696.0,90.1 706.0,90.8 716.0,91.5 726.0,92.0 736.0,92.5 746.0,93.0 756.0,93.4 766.0,93.8 776.0,94.1 786.0,94.4 796.0,94.7" fill="none" stroke="#eb6834" stroke-width="1.8"/>
+<text x="596.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">10^1</text>
+<text x="636.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">10^2</text>
+<text x="676.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">10^3</text>
+<text x="716.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">10^4</text>
+<text x="756.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">10^5</text>
+<text x="796.0" y="160.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">10^6</text>
+<text x="696.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">x</text>
+<text x="600.0" y="124.0" text-anchor="start" font-size="7.5" font-weight="700" fill="#2a78d6">藍：偶數的 Σ1/n ÷ ln x → 1/2</text>
+<text x="600.0" y="135.0" text-anchor="start" font-size="7.5" font-weight="700" fill="#eb6834">橘：與 6 互質 → 1/3（x=10^6：0.377）</text>
+<rect x="566" y="178" width="236" height="106" rx="4" fill="#eda100" opacity="0.07" stroke="#eda100" stroke-width="0.9"/>
+<text x="684.0" y="192.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">Dirichlet 級數留數 = 密度（Abelian 方向，記憶）</text>
+<text x="684.0" y="205.0" text-anchor="middle" font-size="8" font-weight="400" fill="#898781">與 6 互質：ζ(s)(1 − 2^(−s))(1 − 3^(−s))，留數 1/3</text>
+<text x="684.0" y="218.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">收斂很慢（誤差約 1/ln x）：只是相容，不算驗證</text>
+<text x="684.0" y="233.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">奇數 n ≤ 3×10⁵：T(n) 與 6 互質（0 例外），模 6 為 1 或 5</text>
+<text x="684.0" y="246.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">= §3.2「3 的倍數進不來」，即拿掉 Euler 因子 p = 2, 3</text>
+<text x="684.0" y="262.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#d94040">ζ 的零點、黎曼猜想：與 Collatz 無已知關係</text>
+<text x="684.0" y="275.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">（我沒有查文獻）</text>
+</svg>
