@@ -2,7 +2,7 @@
 
 AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、微積分與分析、線性代數與幾何，以及數論與計算理論。全部以繁體中文撰寫，並含 LaTeX 公式（在 GitHub 上會自動渲染）。
 
-> 共 35 篇筆記。點標題即可開啟對應筆記。
+> 共 36 篇筆記。點標題即可開啟對應筆記。
 
 ## 深度學習核心
 
@@ -62,6 +62,7 @@ AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、�
 | [黎曼猜想](docs/Riemann-Hypothesis.md) | zeta 函數、零點與素數分布 |
 | [NP 問題](docs/NP.md) | P/NP、NP-complete 與 AI 的關係，含逐步範例 |
 | [區塊鏈理論](docs/Blockchain.md) | SHA-256、ECDSA、Merkle Tree；PoW/PoS/BFT；zk-SNARK/STARK、AMM 恆積公式；量子威脅與 NIST 後量子標準 |
+| [冰雹猜想](docs/Collatz.md) | 3n+1 問題（考拉茲／角谷／敘拉古猜想）：Syracuse 映射、反向樹、隨機漂移模型（步數≈10.43 ln n）、Conway 不可判定性、Tao 2019「幾乎所有軌道」、驗證至 2⁶⁸；含軌道與停止時間散布、反向樹與進展時間線圖示 |
 | [賽局理論](docs/Game-Theory.md) | Nash 均衡、囚徒困境、逆向歸納、Folk Theorem、Shapley Value、VCG 機制；GAN、MARL、聯邦學習 |
 
 ---

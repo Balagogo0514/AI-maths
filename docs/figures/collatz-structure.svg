@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="345" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="182.5" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">反向樹：從 1 往回長（深度 0–9）</text>
+<line x1="35.0" y1="142.1" x2="44.5" y2="142.1" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="66.5" y1="142.1" x2="76.0" y2="142.1" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="98.0" y1="142.1" x2="107.5" y2="142.1" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="129.5" y1="142.1" x2="139.0" y2="142.1" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="161.0" y1="142.1" x2="170.5" y2="88.7" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="161.0" y1="142.1" x2="170.5" y2="195.5" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="192.5" y1="88.7" x2="202.0" y2="88.7" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="192.5" y1="195.5" x2="202.0" y2="195.5" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="224.0" y1="88.7" x2="233.5" y2="62.0" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="224.0" y1="88.7" x2="233.5" y2="115.4" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="224.0" y1="195.5" x2="233.5" y2="168.8" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="224.0" y1="195.5" x2="233.5" y2="222.2" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="255.5" y1="62.0" x2="265.0" y2="62.0" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="255.5" y1="115.4" x2="265.0" y2="115.4" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="255.5" y1="168.8" x2="265.0" y2="168.8" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="255.5" y1="222.2" x2="265.0" y2="222.2" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="287.0" y1="62.0" x2="296.5" y2="62.0" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="287.0" y1="115.4" x2="296.5" y2="97.6" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="287.0" y1="115.4" x2="296.5" y2="133.2" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="287.0" y1="168.8" x2="296.5" y2="168.8" stroke="#2a78d6" stroke-width="1.2"/>
+<line x1="287.0" y1="222.2" x2="296.5" y2="204.4" stroke="#eb6834" stroke-width="1.2"/>
+<line x1="287.0" y1="222.2" x2="296.5" y2="240.0" stroke="#2a78d6" stroke-width="1.2"/>
+<rect x="13.0" y="135.6" width="22" height="13" rx="3" fill="#1baf7a" opacity="0.14" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="24.0" y="144.9" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">1</text>
+<rect x="44.5" y="135.6" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="55.5" y="144.9" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">2</text>
+<rect x="76.0" y="135.6" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="87.0" y="144.9" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">4</text>
+<rect x="107.5" y="135.6" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="118.5" y="144.9" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">8</text>
+<rect x="139.0" y="135.6" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="150.0" y="144.9" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">16</text>
+<rect x="170.5" y="82.2" width="22" height="13" rx="3" fill="#eb6834" opacity="0.14" stroke="#eb6834" stroke-width="0.9"/>
+<text x="181.5" y="91.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">5</text>
+<rect x="170.5" y="189.0" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="181.5" y="198.3" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">32</text>
+<rect x="202.0" y="82.2" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="213.0" y="91.5" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">10</text>
+<rect x="202.0" y="189.0" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="213.0" y="198.3" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">64</text>
+<rect x="233.5" y="55.5" width="22" height="13" rx="3" fill="#eb6834" opacity="0.14" stroke="#eb6834" stroke-width="0.9"/>
+<text x="244.5" y="64.8" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">3</text>
+<rect x="233.5" y="108.9" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="244.5" y="118.2" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">20</text>
+<rect x="233.5" y="162.3" width="22" height="13" rx="3" fill="#eb6834" opacity="0.14" stroke="#eb6834" stroke-width="0.9"/>
+<text x="244.5" y="171.6" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">21</text>
+<rect x="233.5" y="215.7" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="244.5" y="225.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">128</text>
+<rect x="265.0" y="55.5" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="276.0" y="64.8" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">6</text>
+<rect x="265.0" y="108.9" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="276.0" y="118.2" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">40</text>
+<rect x="265.0" y="162.3" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="276.0" y="171.6" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">42</text>
+<rect x="265.0" y="215.7" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="276.0" y="225.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">256</text>
+<rect x="296.5" y="55.5" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="307.5" y="64.8" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">12</text>
+<rect x="296.5" y="91.1" width="22" height="13" rx="3" fill="#eb6834" opacity="0.14" stroke="#eb6834" stroke-width="0.9"/>
+<text x="307.5" y="100.4" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">13</text>
+<rect x="296.5" y="126.7" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="307.5" y="136.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">80</text>
+<rect x="296.5" y="162.3" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="307.5" y="171.6" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">84</text>
+<rect x="296.5" y="197.9" width="22" height="13" rx="3" fill="#eb6834" opacity="0.14" stroke="#eb6834" stroke-width="0.9"/>
+<text x="307.5" y="207.2" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">85</text>
+<rect x="296.5" y="233.5" width="22" height="13" rx="3" fill="#2a78d6" opacity="0.14" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="307.5" y="242.8" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">512</text>
+<line x1="26" y1="253" x2="46" y2="253" stroke="#2a78d6" stroke-width="1.5"/>
+<text x="50.0" y="256.0" text-anchor="start" font-size="8" font-weight="400" fill="#2a78d6">n → 2n（永遠可逆推）</text>
+<line x1="26" y1="266" x2="46" y2="266" stroke="#eb6834" stroke-width="1.5"/>
+<text x="50.0" y="269.0" text-anchor="start" font-size="8" font-weight="400" fill="#eb6834">n → (n−1)/3（僅當 n ≡ 4 mod 6）</text>
+<text x="24.0" y="285.0" text-anchor="start" font-size="8.5" font-weight="700" fill="#0b0b0b">猜想 ⇔ 這棵樹覆蓋全部正整數</text>
+<rect x="367" y="10" width="230" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="482.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">隨機模型：為何軌道傾向下降</text>
+<text x="376.0" y="44.0" text-anchor="start" font-size="8.5" font-weight="700" fill="#0b0b0b">奇數 n 的 v = v₂(3n+1) 服從 P(v=k)=2⁻ᵏ</text>
+<rect x="388" y="58.0" width="20" height="60.0" rx="2" fill="#2a78d6" opacity="0.65"/>
+<text x="398.0" y="129.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">v=1</text>
+<text x="398.0" y="55.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#2a78d6">1/2</text>
+<rect x="416" y="88.0" width="20" height="30.0" rx="2" fill="#2a78d6" opacity="0.65"/>
+<text x="426.0" y="129.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">v=2</text>
+<text x="426.0" y="85.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#2a78d6">1/4</text>
+<rect x="444" y="103.0" width="20" height="15.0" rx="2" fill="#2a78d6" opacity="0.65"/>
+<text x="454.0" y="129.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">v=3</text>
+<text x="454.0" y="100.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#2a78d6">1/8</text>
+<rect x="472" y="110.5" width="20" height="7.5" rx="2" fill="#2a78d6" opacity="0.65"/>
+<text x="482.0" y="129.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">v=4</text>
+<text x="482.0" y="107.5" text-anchor="middle" font-size="7.5" font-weight="400" fill="#2a78d6">1/16</text>
+<rect x="500" y="114.2" width="20" height="3.8" rx="2" fill="#2a78d6" opacity="0.65"/>
+<text x="510.0" y="129.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">v=5</text>
+<text x="510.0" y="111.2" text-anchor="middle" font-size="7.5" font-weight="400" fill="#2a78d6">1/32</text>
+<rect x="528" y="116.1" width="20" height="1.9" rx="2" fill="#2a78d6" opacity="0.65"/>
+<text x="538.0" y="129.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">v=6</text>
+<text x="538.0" y="113.1" text-anchor="middle" font-size="7.5" font-weight="400" fill="#2a78d6">1/64</text>
+<line x1="384" y1="118" x2="558" y2="118" stroke="#898781" stroke-width="0.8"/>
+<rect x="375" y="134" width="214" height="40" rx="4" fill="#1baf7a" opacity="0.09" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="482.0" y="147.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#1baf7a">E[ln(縮放倍率)] = ln 3 − E[v]·ln 2</text>
+<text x="482.0" y="160.0" text-anchor="middle" font-size="8.5" font-weight="400" fill="#0b0b0b">= ln 3 − 2 ln 2 = ln(3/4) ≈ −0.288 &lt; 0</text>
+<text x="482.0" y="171.0" text-anchor="middle" font-size="8" font-weight="400" fill="#898781">每個奇數步平均縮小約 25%</text>
+<line x1="396" y1="262" x2="580" y2="262" stroke="#898781" stroke-width="0.8"/>
+<line x1="396" y1="262" x2="396" y2="188" stroke="#898781" stroke-width="0.8"/>
+<polyline points="396.0,237.0 397.7,228.5 399.3,233.8 401.0,225.4 402.6,230.6 404.3,235.9 405.9,227.5 407.6,232.7 409.3,224.3 410.9,229.6 412.6,221.2 414.2,226.5 415.9,218.1 417.5,223.4 419.2,215.0 420.9,220.3 422.5,225.6 424.2,217.2 425.8,222.4 427.5,227.7 429.2,219.3 430.8,224.6 432.5,216.2 434.1,221.5 435.8,226.8 437.4,218.4 439.1,223.7 440.8,215.3 442.4,220.6 444.1,212.2 445.7,217.5 447.4,222.7 449.0,214.4 450.7,219.7 452.4,211.3 454.0,216.6 455.7,208.2 457.3,213.5 459.0,205.1 460.6,210.4 462.3,215.7 464.0,207.3 465.6,212.6 467.3,217.8 468.9,223.1 470.6,214.7 472.3,220.0 473.9,211.6 475.6,216.9 477.2,208.6 478.9,213.8 480.5,219.1 482.2,210.7 483.9,216.0 485.5,207.6 487.2,212.9 488.8,218.2 490.5,209.8 492.1,215.1 493.8,206.7 495.5,212.0 497.1,203.7 498.8,208.9 500.4,200.6 502.1,205.8 503.7,197.5 505.4,202.8 507.1,194.4 508.7,199.7 510.4,204.9 512.0,210.2 513.7,201.9 515.4,207.1 517.0,198.8 518.7,204.0 520.3,195.7 522.0,201.0 523.6,192.6 525.3,197.9 527.0,203.1 528.6,208.4 530.3,213.7 531.9,205.3 533.6,210.6 535.2,215.9 536.9,207.5 538.6,212.8 540.2,218.0 541.9,209.7 543.5,215.0 545.2,220.2 546.8,225.5 548.5,230.8 550.2,222.4 551.8,227.6 553.5,232.9 555.1,238.2 556.8,229.7 558.5,235.0 560.1,226.6 561.8,231.8 563.4,223.4 565.1,228.7 566.7,234.0 568.4,239.2 570.1,244.5 571.7,249.8 573.4,240.9 575.0,246.2 576.7,251.5 578.3,256.7 580.0,262.0" fill="none" stroke="#2a78d6" stroke-width="1.3"/>
+<line x1="396.0" y1="237.0" x2="453.0" y2="262.0" stroke="#eb6834" stroke-width="1.5" stroke-dasharray="4,3"/>
+<text x="402.0" y="194.0" text-anchor="start" font-size="8" font-weight="700" fill="#2a78d6">實際軌道（藍）</text>
+<text x="402.0" y="204.0" text-anchor="start" font-size="8" font-weight="700" fill="#eb6834">理論漂移（橘）</text>
+<text x="456.0" y="256.0" text-anchor="start" font-size="7.5" font-weight="400" fill="#eb6834">預期 34 步</text>
+<text x="488.0" y="276.0" text-anchor="middle" font-size="8" font-weight="400" fill="#898781">27 的 ln n 軌道：比平均漂移多撐 3 倍</text>
+<text x="488.0" y="287.0" text-anchor="middle" font-size="8" font-weight="700" fill="#d94040">啟發式 ≠ 證明：無法排除極少數發散軌道</text>
+<rect x="609" y="10" width="201" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="709.5" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">進展時間線</text>
+<line x1="626" y1="48" x2="626" y2="232" stroke="#898781" stroke-width="1.3"/>
+<circle cx="626" cy="50" r="4" fill="#898781"/>
+<text x="636.0" y="49.0" text-anchor="start" font-size="9.5" font-weight="700" fill="#898781">1937</text>
+<text x="636.0" y="61.0" text-anchor="start" font-size="8" font-weight="400" fill="#898781">Collatz 提出問題</text>
+<circle cx="626" cy="80" r="4" fill="#7c56c8"/>
+<text x="636.0" y="79.0" text-anchor="start" font-size="9.5" font-weight="700" fill="#7c56c8">1972</text>
+<text x="636.0" y="91.0" text-anchor="start" font-size="8" font-weight="400" fill="#898781">Conway：廣義版不可判定</text>
+<circle cx="626" cy="110" r="4" fill="#2a78d6"/>
+<text x="636.0" y="109.0" text-anchor="start" font-size="9.5" font-weight="700" fill="#2a78d6">1976</text>
+<text x="636.0" y="121.0" text-anchor="start" font-size="8" font-weight="400" fill="#898781">Terras：幾乎所有 n 有限停止</text>
+<circle cx="626" cy="140" r="4" fill="#eb6834"/>
+<text x="636.0" y="139.0" text-anchor="start" font-size="9.5" font-weight="700" fill="#eb6834">1993</text>
+<text x="636.0" y="151.0" text-anchor="start" font-size="8" font-weight="400" fill="#898781">Eliahou：非平凡循環 ≥ 1.7×10⁷ 步</text>
+<circle cx="626" cy="170" r="4" fill="#2a78d6"/>
+<text x="636.0" y="169.0" text-anchor="start" font-size="9.5" font-weight="700" fill="#2a78d6">2003</text>
+<text x="636.0" y="181.0" text-anchor="start" font-size="8" font-weight="400" fill="#898781">Krasikov–Lagarias：≥ x^0.84 個收斂</text>
+<circle cx="626" cy="200" r="4" fill="#1baf7a"/>
+<text x="636.0" y="199.0" text-anchor="start" font-size="9.5" font-weight="700" fill="#1baf7a">2019</text>
+<text x="636.0" y="211.0" text-anchor="start" font-size="8" font-weight="400" fill="#0b0b0b">Tao：幾乎所有軌道達到「幾乎有界」</text>
+<circle cx="626" cy="230" r="4" fill="#eda100"/>
+<text x="636.0" y="229.0" text-anchor="start" font-size="9.5" font-weight="700" fill="#eda100">2020</text>
+<text x="636.0" y="241.0" text-anchor="start" font-size="8" font-weight="400" fill="#898781">Barina：驗證至 2⁶⁸ ≈ 2.95×10²⁰</text>
+<text x="709.0" y="270.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#d94040">仍未解：是否「所有」n 都到 1？</text>
+<text x="709.0" y="283.0" text-anchor="middle" font-size="8" font-weight="400" fill="#898781">（Erdős：數學還沒準備好）</text>
+</svg>
