@@ -394,6 +394,49 @@ $$
 
 ![Catalan：首次穿越計數 N_k、尾端衰減、C_n 的奇偶與 2^k−3^s=±1 的三個循環](figures/collatz-catalan.svg)
 
+### 3.7 Bernoulli：沒有已知關係的檢查
+
+> 標示「（已驗證）」者，是我用程式實際檢查過的結果。結論先說：**就我所知，Collatz 與 Bernoulli 數沒有已知的直接關係**；我沒有查文獻，以下是依我的知識加上計算，檢查幾個看起來像接點的地方，並說明為什麼它們不構成連結。
+
+**1. von Staudt–Clausen：2 與 3 恆在分母**
+
+$$
+\text{den}(B_{2k})=\prod_{(p-1)\mid 2k}p
+$$
+
+（用精確分數驗證，$2k\le80$。）$p=2$ 時 $1\mid2k$、$p=3$ 時 $2\mid2k$ 恆成立，所以每個 $B_{2k}$ 的分母都含 2 和 3，且分母 $\equiv6\pmod{12}$（已驗證）。這與 Collatz 的兩個質數 2、3 重合，但只是因為 $1,2$ 整除每個偶數。更重要的是兩者的對比：
+
+| 量 | Bernoulli 數 | Collatz |
+|---|---|---|
+| 2-進位 | $v_2(B_{2k})=-1$ | 位移，擴張（§3.1） |
+| 3-進位 | $v_3(B_{2k})=-1$ | $\times3$ 收縮（§3.2） |
+
+$v_2(B_{2k})=v_3(B_{2k})=-1$ 對所有 $2k\le80$ 成立（已驗證）：兩種大小恆等，完全對稱；而 Collatz 的特點正是 2-進位與 3-進位「不對稱」。所以這個重合沒有結構意義。質數 5 要到 $4\mid2k$ 才進入分母（$B_4,B_8,B_{12}$ 的 $v_5=-1$，已驗證）。
+
+**2. Chamberland 延拓：只有 cos，沒有 tan／cot**
+
+§8.5 的延拓可化簡為 $f(z)=z+\frac{1-(2z+1)\cos\pi z}{4}$（已驗證）。Bernoulli 數出現在 $\tan$、$\cot$、$\coth$ 的泰勒展開，例如
+
+$$
+z\cot z=\sum_{n\ge0}(-1)^n\frac{B_{2n}(2z)^{2n}}{(2n)!}
+$$
+
+（$z=0.3$ 已驗證）。但 $f$ 只含 $\cos\pi z$，它的係數只有階乘；$1/\cos$ 對應的是 Euler 數，不是 Bernoulli 數。所以延拓的級數分析不會自然出現 Bernoulli 數。
+
+**3. 其他想過但不成立的地方**
+
+- **Faulhaber 冪和**：連續做奇數步 $x\mapsto3x+1$ 得 $x_j=3^j(x_0+\tfrac12)-\tfrac12$（由 §3.2 已驗證的恆等式推得），是純等比級數。循環條件中的 $c=\sum_i 3^{\,s-1-i}2^{k_i}$ 是「2 的冪與 3 的冪的乘積和」，不是冪和 $\sum k^m$，不會出現 Bernoulli 數。
+- **ζ 函數值**：$\zeta(1-n)=-B_n/n$ 把 Bernoulli 數與 $\zeta$ 連起來，而 §3.1、§7 的 Collatz 結果是測度論與 2-進位分析，沒有 Dirichlet 級數的角色。
+
+| 方面 | 結論 |
+|---|---|
+| 與 2、3 兩個質數 | 巧合：von Staudt–Clausen 只是 $1,2\mid2k$ |
+| 2-進位／3-進位 | Bernoulli 數對稱（$v_2=v_3=-1$），Collatz 靠不對稱 |
+| Chamberland 延拓 | $f(z)=z+\frac{1-(2z+1)\cos\pi z}{4}$，只有 cos，無 Bernoulli |
+| Faulhaber、ζ | 與 Collatz 的結構無關 |
+
+![Bernoulli：von Staudt–Clausen 分母格點、v_p(B_2k)、延拓 f 的實數線圖](figures/collatz-bernoulli.svg)
+
 ---
 
 ## 4. 反向樹：從 1 往回長
@@ -562,7 +605,13 @@ $$
 f(z)=\frac{z}{2}\cos^2\!\frac{\pi z}{2}+\frac{3z+1}{2}\sin^2\!\frac{\pi z}{2}
 $$
 
-$\cos^2$ 與 $\sin^2$ 在偶數、奇數點分別為 1、0，所以 $f$ 在整數 $n$ 上等於 $T(n)$（$n=1,\dots,20$ 已驗證）。下圖是我自己計算的：對 $\mathrm{Re}\,z\in[-2.5,4.5]$、$\mathrm{Im}\,z\in[-1.5,1.5]$ 的網格迭代 60 次，標出不逃逸（$|\mathrm{Im}\,z|\le12$）的點。非逃逸點約占取樣的 12.0%，集中在實軸附近，呈現球狀分支與自相似結構（為 60 次迭代的數值結果，非嚴格定理）。$0$ 是不動點，$1\leftrightarrow2$ 構成 2-循環。
+$\cos^2$ 與 $\sin^2$ 在偶數、奇數點分別為 1、0，所以 $f$ 在整數 $n$ 上等於 $T(n)$（$n=1,\dots,20$ 已驗證）。化簡後得到只含 $\cos$ 的封閉形式（隨機 2000 個複數點最大誤差 $3\times10^{-13}$，已驗證；$n=1,\dots,39$ 上等於 $T(n)$）：
+
+$$
+f(z)=z+\frac{1-(2z+1)\cos\pi z}{4}
+$$
+
+下圖是我自己計算的：對 $\mathrm{Re}\,z\in[-2.5,4.5]$、$\mathrm{Im}\,z\in[-1.5,1.5]$ 的網格迭代 60 次，標出不逃逸（$|\mathrm{Im}\,z|\le12$）的點。非逃逸點約占取樣的 12.0%，集中在實軸附近，呈現球狀分支與自相似結構（為 60 次迭代的數值結果，非嚴格定理）。$0$ 是不動點，$1\leftrightarrow2$ 構成 2-循環。
 
 ![Chamberland 延拓的複平面圖](figures/collatz-fractal.svg)
 
@@ -633,6 +682,7 @@ collatz_steps(837799)  # 524
 | 混沌與碎形 | 複平面延拓出碎形，參見 `Fractal.md`；軌道對初值極度敏感 |
 | 不可判定性 | 廣義 Collatz 可編碼圖靈機，與 `NP.md`、可計算性主題相通 |
 | 數論 | 2-進位／3-進位的交互作用，參見 `Prime-Theory.md` |
+| Bernoulli 數 | 無已知直接關係；von Staudt–Clausen 使 2、3 恆在分母但屬巧合，$v_2=v_3=-1$ 對稱而 Collatz 靠不對稱（§3.7） |
 | Catalan 數／猜想 | 首次穿越計數：Catalan 是零漂移類比，Collatz 為次臨界（§3.6）；$C_n$ 奇數 ⇔ $n=2^k-1$；$2^k-3^s=\pm1$ 對應三個最小循環 |
 | Lucas 數／序列 | $L_n$ 本身無特殊性；Lucas 序列 $U_n(P,Q)$ 統一 Mersenne 數、$(4^i-1)/3$、$3^n-2^n$、Fibonacci（§3.5） |
 | Fibonacci | 標準版 O/E 步序列是黃金分割位移，合法序列數 $=F_{m+2}$（§3.4）；費氏數當起點則看不出特殊性 |
