@@ -13,7 +13,7 @@ let md = fs.readFileSync(SRC, 'utf8');
 // avoiding data: URI CSP issues and broken relative paths.
 const srcDir = path.dirname(SRC);
 const figures = [];
-md = md.replace(/!\[([^\]]*)\]\((figures\/[^)]+\.svg)\)/g, function(match, alt, figPath) {
+md = md.replace(/!\[((?:[^\[\]]|\[[^\]]*\])*)\]\((figures\/[^)]+\.svg)\)/g, function(match, alt, figPath) {
   const svgFile = path.join(srcDir, figPath);
   try {
     const svgContent = fs.readFileSync(svgFile, 'utf8');
@@ -65,6 +65,7 @@ main{max-width:780px;margin:0 auto;padding-block:2.2rem 4rem;
 #doc h2{font-family:var(--font-display);font-weight:600;font-size:1.5rem;line-height:1.25;text-wrap:balance;
   margin:2.4em 0 .7em;padding-top:1.1em;border-top:1px solid var(--border)}
 #doc h3{font-family:var(--font-display);font-weight:600;font-size:1.18rem;margin:1.8em 0 .5em;color:var(--fg)}
+#doc h1,#doc h2,#doc h3,#doc h4{scroll-margin-top:3.6rem}
 #doc h4{font-weight:600;font-size:1rem;margin:1.4em 0 .4em;color:var(--accent)}
 #doc p{margin:.8em 0}
 #doc a{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent-soft)}
@@ -140,6 +141,16 @@ window.MathJax = {
   });
   var doc = document.getElementById('doc');
   doc.innerHTML = html;
+  // GitHub-style heading ids so in-page links such as TOC entries (#...) work.
+  (function(){
+    var used = {};
+    doc.querySelectorAll('h1,h2,h3,h4,h5,h6').forEach(function(h){
+      var base = h.textContent.trim().toLowerCase().replace(/[^\\p{L}\\p{M}\\p{N}_\\- ]/gu, '').replace(/ /g, '-');
+      var id = base, n = 0;
+      while (used[id]) { n++; id = base + '-' + n; }
+      used[id] = true; h.id = id;
+    });
+  })();
   // Replace SVGFIGURE placeholders with inline SVG (figures collected at build time).
   if (window._svgFigures && window._svgFigures.length) {
     doc.querySelectorAll('p').forEach(function(p) {
@@ -164,6 +175,9 @@ window.MathJax = {
     var w = document.createElement('div'); w.className='table-wrap';
     t.parentNode.insertBefore(w,t); w.appendChild(t);
   });
+  if (location.hash) {
+    try { var tgt = document.getElementById(decodeURIComponent(location.hash.slice(1))); if (tgt) tgt.scrollIntoView(); } catch(e) {}
+  }
   function typeset(){ if(window.MathJax && MathJax.typesetPromise) MathJax.typesetPromise([doc]); }
   if(window.MathJax && MathJax.startup && MathJax.startup.promise){ MathJax.startup.promise.then(typeset); }
   else { document.getElementById('mathjax').addEventListener('load', typeset); }
