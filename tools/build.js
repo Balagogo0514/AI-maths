@@ -13,7 +13,7 @@ let md = fs.readFileSync(SRC, 'utf8');
 // avoiding data: URI CSP issues and broken relative paths.
 const srcDir = path.dirname(SRC);
 const figures = [];
-md = md.replace(/!\[((?:[^\[\]]|\[[^\]]*\])*)\]\((figures\/[^)]+\.svg)\)/g, function(match, alt, figPath) {
+md = md.replace(/!\[([^\n]*?)\]\((figures\/[^)\s]+\.svg)\)/g, function(match, alt, figPath) {
   const svgFile = path.join(srcDir, figPath);
   try {
     const svgContent = fs.readFileSync(svgFile, 'utf8');
@@ -154,20 +154,27 @@ window.MathJax = {
   // Replace SVGFIGURE placeholders with inline SVG (figures collected at build time).
   if (window._svgFigures && window._svgFigures.length) {
     doc.querySelectorAll('p').forEach(function(p) {
-      var m = p.textContent.match(/^SVGFIGURE(\\d+)$/);
+      var m = p.textContent.match(/^\\s*SVGFIGURE(\\d+)\\s*([\\s\\S]*)$/);
       if (!m) return;
       var fig = window._svgFigures[+m[1]];
       if (!fig) return;
+      var rest = m[2].trim();   // a caption line directly after the image stays as its own paragraph
       var wrap = document.createElement('figure');
       wrap.style.cssText = 'margin:1.5em 0;text-align:center;overflow-x:auto';
       wrap.innerHTML = fig.svg;
-      if (fig.alt) {
+      if (fig.alt && !rest) {
         var cap = document.createElement('figcaption');
         cap.style.cssText = 'font-size:.85em;color:var(--muted);margin-top:.4em';
         cap.textContent = fig.alt;
         wrap.appendChild(cap);
       }
-      p.parentNode.replaceChild(wrap, p);
+      if (rest) {
+        var first = p.firstChild;
+        if (first && first.nodeType === 3) first.textContent = first.textContent.replace(/^\\s*SVGFIGURE\\d+\\s*/, '');
+        p.parentNode.insertBefore(wrap, p);
+      } else {
+        p.parentNode.replaceChild(wrap, p);
+      }
     });
   }
   // wrap tables for horizontal scroll on small screens
