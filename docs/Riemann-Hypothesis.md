@@ -144,7 +144,7 @@ $$
 而區域
 
 $$
-0<\operatorname{Re}(s)<1
+0 < \operatorname{Re}(s)<1
 $$
 
 叫做**臨界帶**（critical strip）。
@@ -174,7 +174,7 @@ $$
 已知所有非平凡零點都落在臨界帶
 
 $$
-0<\operatorname{Re}(s)<1
+0 < \operatorname{Re}(s)<1
 $$
 
 裡面。

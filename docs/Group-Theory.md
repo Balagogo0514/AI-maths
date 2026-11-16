@@ -1263,7 +1263,7 @@ $$f \text{ 可用根式求解} \iff \mathrm{Gal}(f) \text{ 為可解群}。$$
 
 | 技巧 | 說明 |
 |------|------|
-| **判別式** | $\Delta = \prod_{i<j}(\alpha_i - \alpha_j)^2 \in F$。$\mathrm{Gal}(f) \subseteq A_n \iff \Delta$ 為 $F$ 中的平方 |
+| **判別式** | $\Delta = \prod_{i < j}(\alpha_i - \alpha_j)^2 \in F$。$\mathrm{Gal}(f) \subseteq A_n \iff \Delta$ 為 $F$ 中的平方 |
 | **三次不可約多項式** | $\Delta$ 為平方 $\Rightarrow$ $\mathrm{Gal} = A_3 \cong \mathbb{Z}_3$；否則 $\mathrm{Gal} = S_3$ |
 | **傳遞性** | 不可約多項式的伽羅瓦群在根上傳遞，$\deg f \mid \|\mathrm{Gal}\|$ |
 | **模 $p$ 約化（Dedekind）** | 若 $f$ 模 $p$ 後無重根，其分解型（各不可約因式次數）給出 $\mathrm{Gal}(f)$ 中一個該輪換型的元素 |
@@ -1357,7 +1357,7 @@ $$f(t) = t^n + a_1 t^{n-1} + \cdots + a_n \in \mathbb{Q}(a_1, \dots, a_n)[t]$$
 
 **基本對稱多項式**　在 $x_1, \dots, x_n$ 中，
 
-$$e_1 = \sum x_i,\quad e_2 = \sum_{i<j} x_ix_j,\quad \dots,\quad e_n = x_1x_2\cdots x_n.$$
+$$e_1 = \sum x_i,\quad e_2 = \sum_{i < j} x_ix_j,\quad \dots,\quad e_n = x_1x_2\cdots x_n.$$
 
 **韋達公式**　
 

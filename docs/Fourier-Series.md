@@ -176,7 +176,7 @@ $$
 因此
 
 $$
-x\sim 2\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}\sin(nx),\qquad -\pi<x<\pi.
+x\sim 2\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}\sin(nx),\qquad -\pi < x < \pi.
 $$
 
 這個例子很重要，因為它說明了看起來不是波形的函數，也能拆成無限多個波形的和。把前幾項畫出來時，會看到近似曲線愈來愈接近直線，但在跳躍點附近仍會出現明顯波動。
@@ -188,8 +188,8 @@ $$
 $$
 f(x)=
 \begin{cases}
-1,&0<x<\pi,\\
--1,&-\pi<x<0,
+1,&0 < x < \pi,\\
+-1,&-\pi < x<0,
 \end{cases}
 $$
 
@@ -581,7 +581,7 @@ $$
 最後得到
 
 $$
-x\sim 2\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}\sin(nx),\qquad -\pi<x<\pi.
+x\sim 2\sum_{n=1}^{\infty}\frac{(-1)^{n+1}}{n}\sin(nx),\qquad -\pi < x < \pi.
 $$
 
 ### 14.5 例子：方波為什麼只剩奇次諧波
@@ -591,8 +591,8 @@ $$
 $$
 f(x)=
 \begin{cases}
-1,&0<x<\pi,\\
--1,&-\pi<x<0.
+1,&0 < x < \pi,\\
+-1,&-\pi < x<0.
 \end{cases}
 $$
 
