@@ -62,7 +62,7 @@ AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、�
 | [黎曼猜想](docs/Riemann-Hypothesis.md) | zeta 函數、零點與素數分布 |
 | [NP 問題](docs/NP.md) | P/NP、NP-complete 與 AI 的關係，含逐步範例 |
 | [區塊鏈理論](docs/Blockchain.md) | SHA-256、ECDSA、Merkle Tree；PoW/PoS/BFT；zk-SNARK/STARK、AMM 恆積公式；量子威脅與 NIST 後量子標準 |
-| [冰雹猜想](docs/Collatz.md) | 3n+1 問題（考拉茲／角谷／敘拉古猜想）：Syracuse 映射、2-進位／3-進位觀點（位移共軛與收縮對偶）、Mersenne 數的爬升與崩落、O/E 序列的黃金分割位移（Fibonacci）、Lucas 序列統一觀點、Catalan（首次穿越計數與 Catalan 猜想）、反向樹、隨機漂移模型（步數≈10.43 ln n）、Conway 不可判定性、變形（qn+r 家族、F₂[x] 類比、複平面延拓、Juggler）、Tao 2019「幾乎所有軌道」、驗證至 2⁶⁸；§3 附特殊數列對照總表；含軌道與停止時間散布、反向樹與進展時間線、2-進位與 3-進位觀點、變形對照、複平面碎形與 Mersenne 數、Fibonacci、Lucas 序列、Catalan 與 Bernoulli（無關係的檢查）、Euler 數與 e（循環乘積恆等式）、Stirling（反向樹成長率 λ）、Pell 數與連分數、Motzkin 數、Fermat 數（貼近 1 vs 貼近 −1）案例、Riemann zeta 與動力 zeta、Dirichlet 級數，以及 §3 特殊數列總覽共十九組圖示 |
+| [冰雹猜想](docs/Collatz.md) | 3n+1 問題（考拉茲／角谷／敘拉古猜想）：Syracuse 映射、2-進位／3-進位觀點（位移共軛與收縮對偶）、Mersenne 數的爬升與崩落、O/E 序列的黃金分割位移（Fibonacci）、Lucas 序列統一觀點、Catalan（首次穿越計數與 Catalan 猜想）、反向樹、隨機漂移模型（步數≈10.43 ln n）、Conway 不可判定性、變形（qn+r 家族、F₂[x] 類比、複平面延拓、Juggler）、Tao 2019「幾乎所有軌道」、驗證至 2⁶⁸；§3 附特殊數列對照總表；含軌道與停止時間散布、反向樹與進展時間線、2-進位與 3-進位觀點、變形對照、複平面碎形與 Mersenne 數、Fibonacci、Lucas 序列、Catalan 與 Bernoulli（無關係的檢查）、Euler 數與 e（循環乘積恆等式）、Stirling（反向樹成長率 λ）、Pell 數與連分數、Motzkin 數、Fermat 數（貼近 1 vs 貼近 −1）案例、Riemann zeta 與動力 zeta、Dirichlet 級數、Möbius 函數，以及 §3 特殊數列總覽共二十組圖示 |
 | [賽局理論](docs/Game-Theory.md) | Nash 均衡、囚徒困境、逆向歸納、Folk Theorem、Shapley Value、VCG 機制；GAN、MARL、聯邦學習 |
 
 ---
