@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">ℤ₂：Euler 乘積取遍 Lyndon 字</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">∏_k (1 − z^k)^(−L_k) = 1/(1 − 2z)，L_k = (1/k) Σ_(d|k) μ(k/d) 2^d</text>
+<line x1="46" y1="150" x2="262" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="46" y1="150" x2="46" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="43" y1="146.1" x2="262" y2="146.1" stroke="#eee" stroke-width="0.6"/>
+<text x="40.0" y="149.1" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">1</text>
+<line x1="43" y1="120.6" x2="262" y2="120.6" stroke="#eee" stroke-width="0.6"/>
+<text x="40.0" y="123.6" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">10^1</text>
+<line x1="43" y1="95.1" x2="262" y2="95.1" stroke="#eee" stroke-width="0.6"/>
+<text x="40.0" y="98.1" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">10^2</text>
+<line x1="43" y1="69.7" x2="262" y2="69.7" stroke="#eee" stroke-width="0.6"/>
+<text x="40.0" y="72.7" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">10^3</text>
+<rect x="47.0" y="138.4" width="13.4" height="11.6" fill="#2a78d6" opacity="0.8"/>
+<text x="53.7" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">1</text>
+<rect x="62.4" y="146.1" width="13.4" height="3.9" fill="#2a78d6" opacity="0.8"/>
+<text x="69.1" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">2</text>
+<rect x="77.9" y="138.4" width="13.4" height="11.6" fill="#2a78d6" opacity="0.8"/>
+<text x="84.6" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">3</text>
+<rect x="93.3" y="133.9" width="13.4" height="16.1" fill="#2a78d6" opacity="0.8"/>
+<text x="100.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">4</text>
+<rect x="108.7" y="126.2" width="13.4" height="23.8" fill="#2a78d6" opacity="0.8"/>
+<text x="115.4" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">5</text>
+<rect x="124.1" y="121.8" width="13.4" height="28.2" fill="#2a78d6" opacity="0.8"/>
+<text x="130.9" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">6</text>
+<rect x="139.6" y="114.1" width="13.4" height="35.9" fill="#2a78d6" opacity="0.8"/>
+<text x="146.3" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">7</text>
+<rect x="155.0" y="108.4" width="13.4" height="41.6" fill="#2a78d6" opacity="0.8"/>
+<text x="161.7" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">8</text>
+<rect x="170.4" y="101.5" width="13.4" height="48.5" fill="#2a78d6" opacity="0.8"/>
+<text x="177.1" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">9</text>
+<rect x="185.9" y="95.2" width="13.4" height="54.8" fill="#2a78d6" opacity="0.8"/>
+<text x="192.6" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10</text>
+<rect x="201.3" y="88.3" width="13.4" height="61.7" fill="#2a78d6" opacity="0.8"/>
+<text x="208.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">11</text>
+<rect x="216.7" y="81.8" width="13.4" height="68.2" fill="#2a78d6" opacity="0.8"/>
+<text x="223.4" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">12</text>
+<rect x="232.1" y="74.8" width="13.4" height="75.2" fill="#2a78d6" opacity="0.8"/>
+<text x="238.9" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">13</text>
+<rect x="247.6" y="68.0" width="13.4" height="82.0" fill="#2a78d6" opacity="0.8"/>
+<text x="254.3" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">14</text>
+<text x="154.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">長度 k</text>
+<text x="49.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">L_k：2, 1, 2, 3, 6, 9, 18, 30, 56, 99, 186, 335, 630, 1161</text>
+<rect x="18" y="176" width="246" height="108" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="190.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">乘積展開到 z^14，係數恰為 2^n（已驗證）</text>
+<text x="141.0" y="203.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">Lyndon 字數：窮舉 k ≤ 12 與公式一致</text>
+<text x="141.0" y="216.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">F₂ 上的不可約多項式：窮舉 deg ≤ 12，個數相同</text>
+<text x="141.0" y="231.0" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">⇒ ζ_T(z) 與 F₂[x] 的 zeta 是同一個式子（z = 2^(−s)）</text>
+<text x="141.0" y="244.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">「質數」= 基本循環，函數域版 RH 平凡：</text>
+<text x="141.0" y="256.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">ζ = 1/(1 − 2^(1−s))，無零點，只有一個極點（記憶）</text>
+<text x="141.0" y="271.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">ℤ 上只剩 5 個因子（§3.13）</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">Syracuse 像被 p 整除的比例對 1/p</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">奇數 n ≤ 4×10⁵ 的 (3n+1)/2^k，共 200,000 個</text>
+<line x1="322" y1="150" x2="540" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="322" y1="150" x2="322" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="322" y1="106.0" x2="540" y2="106.0" stroke="#898781" stroke-width="0.8"/>
+<text x="316.0" y="144.2" text-anchor="end" font-size="7" font-weight="400" fill="#898781">-2%</text>
+<text x="316.0" y="109.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0</text>
+<text x="316.0" y="73.8" text-anchor="end" font-size="7" font-weight="400" fill="#898781">+2%</text>
+<rect x="328.6" y="90.3" width="18" height="31.5" fill="#898781" opacity="0.18"/>
+<circle cx="337.6" cy="106.0" r="3" fill="#2a78d6"/>
+<text x="337.6" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=5</text>
+<rect x="359.7" y="86.7" width="18" height="38.6" fill="#898781" opacity="0.18"/>
+<circle cx="368.7" cy="106.0" r="3" fill="#2a78d6"/>
+<text x="368.7" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=7</text>
+<rect x="390.9" y="81.1" width="18" height="49.8" fill="#898781" opacity="0.18"/>
+<circle cx="399.9" cy="106.0" r="3" fill="#2a78d6"/>
+<text x="399.9" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=11</text>
+<rect x="422.0" y="78.7" width="18" height="54.5" fill="#898781" opacity="0.18"/>
+<circle cx="431.0" cy="106.1" r="3" fill="#2a78d6"/>
+<text x="431.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=13</text>
+<rect x="453.1" y="74.5" width="18" height="63.0" fill="#898781" opacity="0.18"/>
+<circle cx="462.1" cy="106.0" r="3" fill="#2a78d6"/>
+<text x="462.1" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=17</text>
+<rect x="484.3" y="72.6" width="18" height="66.8" fill="#898781" opacity="0.18"/>
+<circle cx="493.3" cy="106.1" r="3" fill="#2a78d6"/>
+<text x="493.3" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=19</text>
+<rect x="515.4" y="69.1" width="18" height="73.8" fill="#898781" opacity="0.18"/>
+<circle cx="524.4" cy="105.9" r="3" fill="#2a78d6"/>
+<text x="524.4" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=23</text>
+<text x="325.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">點：(實測比例 × p − 1)　灰帶：獨立抽樣的 ±2σ（僅作尺度）</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="190.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">p = 5, 7, 11, 13, 17：實測與 1/p 四位小數全相符</text>
+<text x="415.0" y="204.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">與 5, 7, 11, 13 互質：0.5754（預測 ∏(1−1/p) = 0.5754）</text>
+<text x="415.0" y="217.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">與 5, …, 23 互質：0.4908（預測 0.4908）</text>
+<text x="415.0" y="231.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">|偏差| ≤ 4e-05，比 σ（≥ 0.0045）小兩個數量級</text>
+<text x="415.0" y="245.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">比隨機抽樣更均勻（確定性結構），不是更隨機；σ 只是尺度</text>
+<text x="415.0" y="258.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">p = 2, 3 被結構拿掉（像與 6 互質，§3.13）</text>
+<text x="415.0" y="271.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d94040">每個與 6 互質的整數都能當像 ⇒ 檢查偏弱</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">像中的質數個數對 3/ln m 的累計</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">Hardy–Littlewood 型啟發式：密度 = (1/ln m) / ∏_(p=2,3)(1 − 1/p) = 3/ln m</text>
+<line x1="596" y1="150" x2="796" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="596" y1="150" x2="596" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="593" y1="137.4" x2="796" y2="137.4" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="140.4" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0.98</text>
+<line x1="593" y1="112.3" x2="796" y2="112.3" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="115.3" text-anchor="end" font-size="7" font-weight="400" fill="#898781">1.00</text>
+<line x1="593" y1="87.1" x2="796" y2="87.1" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="90.1" text-anchor="end" font-size="7" font-weight="400" fill="#898781">1.02</text>
+<line x1="596" y1="112.3" x2="796" y2="112.3" stroke="#898781" stroke-width="1" stroke-dasharray="4,3"/>
+<polyline points="616.0,125.7 620.0,124.8 624.0,124.2 628.0,123.2 632.0,123.1 636.0,122.1 640.0,120.6 644.0,119.9 648.0,120.4 652.0,120.3 656.0,119.5 660.0,119.2 664.0,120.2 668.0,119.1 672.0,119.1 676.0,119.0 680.0,118.0 684.0,118.6 688.0,118.1 692.0,118.2 696.0,118.4 700.0,118.1 704.0,117.6 708.0,117.6 712.0,117.7 716.0,117.3 720.0,117.7 724.0,116.9 728.0,116.4 732.0,116.8 736.0,116.9 740.0,117.0 744.0,116.9 748.0,117.0 752.0,117.2 756.0,117.2 760.0,116.7 764.0,116.7 768.0,116.9 772.0,116.7 776.0,116.5 780.0,116.3 784.0,116.5 788.0,116.4 792.0,116.1 796.0,116.7" fill="none" stroke="#2a78d6" stroke-width="1.8"/>
+<polyline points="620.0,116.5 624.0,117.0 628.0,116.1 632.0,115.9 636.0,116.2 640.0,115.9 644.0,115.8 648.0,116.3 652.0,114.6 656.0,114.3 660.0,115.3 664.0,115.6 668.0,114.9 672.0,114.9 676.0,114.6 680.0,114.6 684.0,114.0 688.0,114.4 692.0,114.6 696.0,114.2 700.0,114.0 704.0,114.5 708.0,114.7 712.0,114.2 716.0,114.4 720.0,114.3 724.0,114.2 728.0,114.2 732.0,114.1 736.0,113.9 740.0,114.0 744.0,113.6 748.0,113.5 752.0,113.6 756.0,114.1 760.0,114.2 764.0,114.0 768.0,113.8 772.0,114.2 776.0,114.3 780.0,114.1 784.0,113.9 788.0,114.0 792.0,113.6 796.0,113.2" fill="none" stroke="#eb6834" stroke-width="1.4"/>
+<text x="596.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">0</text>
+<text x="696.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">0.5</text>
+<text x="796.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">1</text>
+<text x="696.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">累計到第 j 個（佔全部的比例）</text>
+<text x="599.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">藍：Syracuse 像　橘：與 6 互質的整數（≤ 1.2×10⁶）</text>
+<rect x="566" y="176" width="236" height="108" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="190.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">像中的質數：52,500，預測 Σ 3/ln m = 52,683.6</text>
+<text x="684.0" y="203.0" text-anchor="middle" font-size="8" font-weight="700" fill="#2a78d6">比值 0.9965（偏差約 0.35%）</text>
+<text x="684.0" y="216.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">對照：與 6 互質整數的質數比例 0.2323，</text>
+<text x="684.0" y="228.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">平均 3/ln m = 0.2325</text>
+<text x="684.0" y="242.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">像的質數比例 0.2625，約是一般整數 1/ln m 的 3 倍</text>
+<text x="684.0" y="256.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">這是啟發式，不是定理；對照組的比值 0.9993</text>
+<text x="684.0" y="270.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">步數無 Euler 乘積（§3.14）；循環乘積是對元素取積</text>
+</svg>
