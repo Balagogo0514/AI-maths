@@ -1,8 +1,8 @@
-# 冰雹猜想（續）：函數、變換與算子的關係（§3.13–§3.25）
+# 冰雹猜想（續）：函數、變換與算子的關係（§3.13–§3.26）
 
-本檔是 [Collatz.md](Collatz.md) 第 3 節的後半。拆檔的原因：`Collatz.md` 的公式超過 2300 個，GitHub 在單頁公式過多時會有部分公式顯示 "Unable to render expression"，所以把 §3.13 之後的小節移到這裡。**小節編號沿用 `Collatz.md`**：§3.0 總表與 §3.1–§3.12、§4 以後的章節在 `Collatz.md`，§3.13–§3.25 在本檔。
+本檔是 [Collatz.md](Collatz.md) 第 3 節的後半。拆檔的原因：`Collatz.md` 的公式超過 2300 個，GitHub 在單頁公式過多時會有部分公式顯示 "Unable to render expression"，所以把 §3.13 之後的小節移到這裡。**小節編號沿用 `Collatz.md`**：§3.0 總表與 §3.1–§3.12、§4 以後的章節在 `Collatz.md`，§3.13–§3.26 在本檔。
 
-每節都是同一個格式：先驗證 Collatz 與該主題（zeta、Dirichlet 級數、Möbius 函數、Lambert W、Gamma 函數、Euler 乘積、Selberg 跡公式、Hecke 算子、Ramanujan 求和、Mellin／Fourier／Laplace 變換、Gauss 求和）是否有關係，標明「已驗證」或「記憶」，沒有關係就明說；並附一張圖示。
+每節都是同一個格式：先驗證 Collatz 與該主題（zeta、Dirichlet 級數、Möbius 函數、Lambert W、Gamma 函數、Euler 乘積、Selberg 跡公式、Hecke 算子、Ramanujan 求和、Mellin／Fourier／Laplace 變換、Gauss 求和、Bernoulli 多項式）是否有關係，標明「已驗證」或「記憶」，沒有關係就明說；並附一張圖示。
 
 ---
 
@@ -21,6 +21,7 @@
 - [3.23 Fourier 變換](#323-fourier-變換)
 - [3.24 Laplace 變換](#324-laplace-變換)
 - [3.25 Gauss 求和](#325-gauss-求和)
+- [3.26 Bernoulli 多項式](#326-bernoulli-多項式)
 
 ---
 
@@ -762,3 +763,53 @@ Gauss 和在 $L$ 函數的函數方程裡當根數（記憶）。Collatz 的層�
 | 與猜想本身 | 無已知關係 |
 
 ![Gauss 求和：單位群的階、二次 Gauss 和與巧合、三角形數當 Collatz 起點](figures/collatz-gauss.svg)
+
+### 3.26 Bernoulli 多項式
+
+> 標示「（已驗證）」者，是我用程式實際檢查過的結果；「記憶」為依印象整理、未核對的說法。結論先說：**Collatz 與 Bernoulli 多項式沒有已知的直接關係**（我沒有搜尋這個主題的文獻）。§3.7 已檢查過 Bernoulli 數（無已知關係）。Bernoulli 多項式在形式上多了一層結構：它們是加倍映射轉移算子的本徵函數，與 Collatz 反向樹的 $2n$ 分支同型，但那只是一個分支，不是 Collatz 本身。
+
+**1. 加倍映射轉移算子的本徵函數（已驗證）**
+
+Bernoulli 多項式滿足乘法定理 $B_n(x)=2^{n-1}\left[B_n(\frac x2)+B_n(\frac{x+1}{2})\right]$。加倍映射 $x\mapsto2x$（模 1）的轉移算子 $(Lf)(x)=\frac12\left[f(\frac x2)+f(\frac{x+1}2)\right]$ 因此滿足
+
+$$
+L\,B_n=2^{-n}\,B_n
+$$
+
+我驗證了： $n=1,\dots,12$、6 個有理數 $x$，乘法定理與本徵值關係式都精確成立；模 4 版本（ $B_n(x)=4^{n-1}\sum_{j<4}B_n(\frac{x+j}4)$）在 $n\le9$ 也成立。
+
+在 Fourier 係數上， $B_n(x)$ 的係數是 $m^{-n}$，本徵值關係就是「頻率加倍」（§3.23）： $(2m)^{-n}=2^{-n}m^{-n}$。與 §3.20 對應： $U_2$ 作用在序列 $a_n=n^{-s}$ 上也是本徵值 $2^{-s}$。但 Collatz 的完整轉移算子是 $L=U_2+R$， $R$ 的平移破壞了這個結構（§3.20），所以 Bernoulli 多項式不是 Collatz 轉移算子的本徵函數。
+
+**2. 殘餘類的正規化冪和是 dyadic 點上的 Bernoulli 多項式（已驗證）**
+
+§3.14 說殘餘類 $n\equiv r\ (\mathrm{mod}\ 2^k)$ 的 Dirichlet 級數是 Hurwitz zeta： $2^{-ks}\zeta(s,r/2^k)$。而 $\zeta(1-p,a)=-B_p(a)/p$（標準結果，記憶）。我用 mpmath（30 位精度）對 $p=1,\dots,7$、 $a\in\{\frac12,\frac14,\frac38,\frac5{16},\frac13\}$ 驗證了，最大誤差是 $2.5\times10^{-32}$。例如「 $n\equiv5\ (\mathrm{mod}\ 8)$ 的 $n$ 的正規化和」：
+
+$$
+8\,\zeta(-1,\tfrac58)=0.27083333=-4\,B_2(\tfrac58)
+$$
+
+模 8 的八個類（ $r=1,\dots,8$）逐一核對， $8\,\zeta(-1,r/8)=-4B_2(r/8)$ 都成立。所以停止時間同餘類（§3.1）的冪和，正規化後就是 $B_p(r/2^k)$。這是一般的 Hurwitz zeta 恆等式，沒有 Collatz 特有的內容。
+
+**3. 有限和：Faulhaber（已驗證，精確）**
+
+對同餘類取到 $M$ 項的冪和，有精確公式
+
+$$
+\sum_{j=0}^{M-1}(r+2^kj)^p=\frac{2^{kp}}{p+1}\left[B_{p+1}(M+\frac r{2^k})-B_{p+1}(\frac r{2^k})\right]
+$$
+
+我用精確分數檢查了 $p\le6$、 $k\le5$、全部 $r<2^k$、 $M\in\{1,2,5,13\}$，共 1736 個情形，全部相等。
+
+**4. 沒有的部分**
+
+- **Bernoulli 數**（§3.7）：von Staudt–Clausen 使 2、3 恆在分母屬巧合， $v_2=v_3=-1$ 對稱，而 Collatz 靠的是不對稱。
+- **軌道與停止時間**：沒有已知結果把它們與 Bernoulli 多項式連起來（這次沒搜尋）。
+
+| 接點 | 性質 |
+|---|---|
+| 加倍轉移算子 $LB_n=2^{-n}B_n$ | 已驗證；對應 $U_2$ 一支，完整的 $L=U_2+R$ 不成立 |
+| 殘餘類冪和 $=-\ldots B_p(r/2^k)$ | Hurwitz zeta 恆等式，已驗證，通用 |
+| Faulhaber 同餘類和 | 精確恆等式，已驗證，通用 |
+| 與猜想本身 | 無已知關係 |
+
+![Bernoulli 多項式：加倍映射轉移算子的本徵函數、同餘類的正規化和、Faulhaber 同餘類和](figures/collatz-bernpoly.svg)
