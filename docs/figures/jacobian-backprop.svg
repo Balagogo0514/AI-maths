@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">鏈式法則：J 相乘</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">x → f → z → g → y → L（純量損失）</text>
+<rect x="18" y="62" width="44" height="22" rx="5" fill="#2a78d6" opacity="0.12" stroke="#2a78d6" stroke-width="1"/>
+<text x="40.0" y="77.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">x</text>
+<rect x="78" y="62" width="44" height="22" rx="5" fill="#2a78d6" opacity="0.12" stroke="#2a78d6" stroke-width="1"/>
+<text x="100.0" y="77.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">z = f(x)</text>
+<rect x="148" y="62" width="44" height="22" rx="5" fill="#2a78d6" opacity="0.12" stroke="#2a78d6" stroke-width="1"/>
+<text x="170.0" y="77.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">y = g(z)</text>
+<rect x="213" y="62" width="44" height="22" rx="5" fill="#2a78d6" opacity="0.12" stroke="#2a78d6" stroke-width="1"/>
+<text x="235.0" y="77.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">L</text>
+<line x1="62.0" y1="73.0" x2="78.0" y2="73.0" stroke="#898781" stroke-width="1.2"/>
+<line x1="78.0" y1="73.0" x2="73.7" y2="75.6" stroke="#898781" stroke-width="1.2"/>
+<line x1="78.0" y1="73.0" x2="73.7" y2="70.4" stroke="#898781" stroke-width="1.2"/>
+<text x="70.0" y="59.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#898781">J_f</text>
+<line x1="122.0" y1="73.0" x2="148.0" y2="73.0" stroke="#898781" stroke-width="1.2"/>
+<line x1="148.0" y1="73.0" x2="143.7" y2="75.6" stroke="#898781" stroke-width="1.2"/>
+<line x1="148.0" y1="73.0" x2="143.7" y2="70.4" stroke="#898781" stroke-width="1.2"/>
+<text x="135.0" y="59.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#898781">J_g</text>
+<line x1="192.0" y1="73.0" x2="213.0" y2="73.0" stroke="#898781" stroke-width="1.2"/>
+<line x1="213.0" y1="73.0" x2="208.7" y2="75.6" stroke="#898781" stroke-width="1.2"/>
+<line x1="213.0" y1="73.0" x2="208.7" y2="70.4" stroke="#898781" stroke-width="1.2"/>
+<text x="202.5" y="59.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#898781">∇L</text>
+<text x="141.0" y="105.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#eb6834">前向模式（JVP）：u → J_f u → J_g (J_f u)</text>
+<line x1="40.0" y1="112.0" x2="235.0" y2="112.0" stroke="#eb6834" stroke-width="1.4"/>
+<line x1="235.0" y1="112.0" x2="230.7" y2="114.6" stroke="#eb6834" stroke-width="1.4"/>
+<line x1="235.0" y1="112.0" x2="230.7" y2="109.4" stroke="#eb6834" stroke-width="1.4"/>
+<text x="141.0" y="132.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#1baf7a">反向模式（VJP）：vᵀ → vᵀ J_g → (vᵀ J_g) J_f</text>
+<line x1="235.0" y1="139.0" x2="40.0" y2="139.0" stroke="#1baf7a" stroke-width="1.4"/>
+<line x1="40.0" y1="139.0" x2="44.3" y2="136.4" stroke="#1baf7a" stroke-width="1.4"/>
+<line x1="40.0" y1="139.0" x2="44.3" y2="141.6" stroke="#1baf7a" stroke-width="1.4"/>
+<rect x="18" y="150" width="246" height="134" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="165.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">J_(g∘f) = J_g · J_f（已驗證：誤差 3.3×10⁻¹⁰）</text>
+<text x="141.0" y="180.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">兩個方向的乘法順序不同，結果相同，成本不同</text>
+<text x="141.0" y="195.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">純量損失 L（m = 1）：一次反向傳播得到整個梯度</text>
+<text x="141.0" y="210.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">∇L = J_Lᵀ，J_L 是 1×n 的列向量</text>
+<text x="141.0" y="225.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">實作上不會寫出整個矩陣：</text>
+<text x="141.0" y="238.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">4096 → 4096 的一層就有 4096² = 16,777,216 個元素</text>
+<text x="141.0" y="252.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">只需要「J 乘向量」或「向量乘 J」這兩種操作</text>
+<text x="141.0" y="266.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">自動微分（autograd）就是系統化地做這兩件事</text>
+<text x="141.0" y="278.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">一層 tanh：J = diag(1 − tanh²z)·W</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">f(x) = tanh(Wx + b)，n = 5，m = 3（隨機種子 1）</text>
+<text x="347.0" y="55.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">x1</text>
+<text x="381.0" y="55.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">x2</text>
+<text x="415.0" y="55.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">x3</text>
+<text x="449.0" y="55.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">x4</text>
+<text x="483.0" y="55.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">x5</text>
+<text x="325.0" y="73.0" text-anchor="end" font-size="7" font-weight="700" fill="#898781">f1</text>
+<rect x="330" y="58" width="32" height="22" fill="#2a78d6" opacity="0.77" rx="3"/>
+<text x="346.0" y="72.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+1.04</text>
+<rect x="364" y="58" width="32" height="22" fill="#2a78d6" opacity="0.85" rx="3"/>
+<text x="380.0" y="72.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+1.17</text>
+<rect x="398" y="58" width="32" height="22" fill="#2a78d6" opacity="0.18" rx="3"/>
+<text x="414.0" y="72.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+0.05</text>
+<rect x="432" y="58" width="32" height="22" fill="#eb6834" opacity="0.52" rx="3"/>
+<text x="448.0" y="72.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">-0.62</text>
+<rect x="466" y="58" width="32" height="22" fill="#eb6834" opacity="0.68" rx="3"/>
+<text x="482.0" y="72.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">-0.88</text>
+<text x="325.0" y="97.0" text-anchor="end" font-size="7" font-weight="700" fill="#898781">f2</text>
+<rect x="330" y="82" width="32" height="22" fill="#2a78d6" opacity="0.16" rx="3"/>
+<text x="346.0" y="96.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+0.01</text>
+<rect x="364" y="82" width="32" height="22" fill="#eb6834" opacity="0.36" rx="3"/>
+<text x="380.0" y="96.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">-0.35</text>
+<rect x="398" y="82" width="32" height="22" fill="#eb6834" opacity="0.44" rx="3"/>
+<text x="414.0" y="96.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">-0.49</text>
+<rect x="432" y="82" width="32" height="22" fill="#2a78d6" opacity="0.19" rx="3"/>
+<text x="448.0" y="96.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+0.07</text>
+<rect x="466" y="82" width="32" height="22" fill="#2a78d6" opacity="0.18" rx="3"/>
+<text x="482.0" y="96.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+0.05</text>
+<text x="325.0" y="121.0" text-anchor="end" font-size="7" font-weight="700" fill="#898781">f3</text>
+<rect x="330" y="106" width="32" height="22" fill="#2a78d6" opacity="0.24" rx="3"/>
+<text x="346.0" y="120.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+0.15</text>
+<rect x="364" y="106" width="32" height="22" fill="#eb6834" opacity="0.30" rx="3"/>
+<text x="380.0" y="120.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">-0.25</text>
+<rect x="398" y="106" width="32" height="22" fill="#2a78d6" opacity="0.15" rx="3"/>
+<text x="414.0" y="120.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">+0.00</text>
+<rect x="432" y="106" width="32" height="22" fill="#eb6834" opacity="0.16" rx="3"/>
+<text x="448.0" y="120.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">-0.02</text>
+<rect x="466" y="106" width="32" height="22" fill="#eb6834" opacity="0.40" rx="3"/>
+<text x="482.0" y="120.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">-0.42</text>
+<text x="415.0" y="138.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">藍：正　橘：負（J 的 3×5 個元素）</text>
+<rect x="290" y="150" width="250" height="134" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="165.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">⟨v, J u⟩ = ⟨Jᵀ v, u⟩（JVP 與 VJP 的對偶）</text>
+<text x="415.0" y="180.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#2a78d6">⟨v, J u⟩ = 0.414471556</text>
+<text x="415.0" y="193.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#2a78d6">⟨Jᵀ v, u⟩ = 0.414471556</text>
+<text x="415.0" y="208.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">解析 J 與中央差分的最大誤差 1.4×10⁻¹⁰（已驗證）</text>
+<text x="415.0" y="223.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">tanh 層的 J = 對角矩陣 diag(1 − tanh² z) 乘 W</text>
+<text x="415.0" y="237.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">對角矩陣乘法只是逐元素縮放，不需要建出矩陣</text>
+<text x="415.0" y="251.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">→ 反向傳播逐層乘上 diag(…)·Wᵀ</text>
+<text x="415.0" y="265.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">這是 Backpropagation.md 的核心（記憶：標準做法）</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">算出整個雅可比矩陣要幾次？</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">f: ℝⁿ → ℝᵐ（每次傳播的成本約為一次前向）</text>
+<line x1="596.0" y1="150.0" x2="796.0" y2="150.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="596.0" y1="150.0" x2="596.0" y2="58.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="593.0" y1="150.0" x2="796.0" y2="150.0" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="153.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">1</text>
+<line x1="593.0" y1="122.3" x2="796.0" y2="122.3" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="125.3" text-anchor="end" font-size="7" font-weight="400" fill="#898781">10^1</text>
+<line x1="593.0" y1="94.6" x2="796.0" y2="94.6" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="97.6" text-anchor="end" font-size="7" font-weight="400" fill="#898781">10^2</text>
+<line x1="593.0" y1="66.9" x2="796.0" y2="66.9" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="69.9" text-anchor="end" font-size="7" font-weight="400" fill="#898781">10^3</text>
+<rect x="616" y="66.9" width="22" height="83.1" fill="#eb6834" opacity="0.85"/>
+<rect x="640" y="150.0" width="22" height="0.0" fill="#1baf7a" opacity="0.85"/>
+<text x="627.0" y="64.9" text-anchor="middle" font-size="7" font-weight="700" fill="#eb6834">1000</text>
+<text x="651.0" y="148.0" text-anchor="middle" font-size="7" font-weight="700" fill="#1baf7a">1</text>
+<text x="639.0" y="160.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">n=1000, m=1</text>
+<rect x="681" y="122.3" width="22" height="27.7" fill="#eb6834" opacity="0.85"/>
+<rect x="705" y="122.3" width="22" height="27.7" fill="#1baf7a" opacity="0.85"/>
+<text x="692.0" y="120.3" text-anchor="middle" font-size="7" font-weight="700" fill="#eb6834">10</text>
+<text x="716.0" y="120.3" text-anchor="middle" font-size="7" font-weight="700" fill="#1baf7a">10</text>
+<text x="704.0" y="160.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">n=10, m=10</text>
+<rect x="746" y="150.0" width="22" height="0.0" fill="#eb6834" opacity="0.85"/>
+<rect x="770" y="66.9" width="22" height="83.1" fill="#1baf7a" opacity="0.85"/>
+<text x="757.0" y="148.0" text-anchor="middle" font-size="7" font-weight="700" fill="#eb6834">1</text>
+<text x="781.0" y="64.9" text-anchor="middle" font-size="7" font-weight="700" fill="#1baf7a">1000</text>
+<text x="769.0" y="160.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">n=1, m=1000</text>
+<text x="599.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">橘：前向模式（n 次 JVP）　綠：反向模式（m 次 VJP）</text>
+<rect x="566" y="176" width="236" height="108" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="191.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#0b0b0b">完整的 J 要 min(n, m) 次傳播（挑成本低的模式）</text>
+<text x="684.0" y="205.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">輸出少、輸入多（損失函數 m = 1）→ 反向模式</text>
+<text x="684.0" y="218.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">輸入少、輸出多（n = 1）→ 前向模式</text>
+<text x="684.0" y="233.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">神經網路訓練幾乎都是 m = 1，所以用反向傳播</text>
+<text x="684.0" y="247.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d94040">成本比較是依標準做法推算（記憶），沒有實測</text>
+<text x="684.0" y="261.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">實測的是上面的恆等式與誤差</text>
+</svg>
