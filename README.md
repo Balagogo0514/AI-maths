@@ -2,7 +2,7 @@
 
 AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、微積分與分析、線性代數與幾何，以及數論與計算理論。全部以繁體中文撰寫，並含 LaTeX 公式（在 GitHub 上會自動渲染）。
 
-> 共 37 篇筆記。點標題即可開啟對應筆記。
+> 共 38 篇筆記。點標題即可開啟對應筆記。
 
 ## 深度學習核心
 
@@ -62,8 +62,9 @@ AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、�
 | [黎曼猜想](docs/Riemann-Hypothesis.md) | zeta 函數、零點與素數分布；§14 應用與條件結果（RH 的等價陳述、GRH 條件結果、與物理的類比） |
 | [NP 問題](docs/NP.md) | P/NP、NP-complete 與 AI 的關係，含逐步範例 |
 | [區塊鏈理論](docs/Blockchain.md) | SHA-256、ECDSA、Merkle Tree；PoW/PoS/BFT；zk-SNARK/STARK、AMM 恆積公式；量子威脅與 NIST 後量子標準 |
-| [冰雹猜想](docs/Collatz.md) | 3n+1 問題（考拉茲／角谷／敘拉古猜想）：定義與別名、軌道與紀錄保持者、反向樹、隨機漂移模型（步數≈10.43 ln n）、為什麼這麼難、已知結果（Conway 不可判定性、Tao 2019「幾乎所有軌道」、驗證至 2⁶⁸）、推廣與變形（qn+r 家族、F₂[x] 類比、複平面延拓、Juggler）、與本庫的連結；含軌道與停止時間散布、反向樹與進展時間線、變形對照、複平面碎形共四組圖示；第 3 章整章另列於下一篇 |
-| [冰雹猜想（續）](docs/Collatz-Connections.md) | Collatz 第 3 章（§3.0–§3.26）：Syracuse 映射與等價陳述、2-進位／3-進位觀點、§3.0 特殊數列對照總表；與 Mersenne、Fibonacci、Lucas、Catalan、Bernoulli、Euler 數與 e、Stirling、Pell、Motzkin、Fermat 的關係；與 Riemann zeta 及動力 zeta（含 ζ 零點檢查）、Dirichlet 級數、Möbius 函數、Lambert W、Gamma 函數、Euler 乘積、Selberg 跡公式、Hecke 算子、Ramanujan 求和、Mellin／Fourier／Laplace 變換、Gauss 求和、Bernoulli 多項式的關係檢查（多數「無已知關係」，並標明已驗證與記憶）；拆檔是因為單頁公式過多時 GitHub 可能有部分公式無法渲染；共二十八組圖示 |
+| [冰雹猜想](docs/Collatz.md) | 3n+1 問題（考拉茲／角谷／敘拉古猜想）：定義與別名、軌道與紀錄保持者、反向樹、隨機漂移模型（步數≈10.43 ln n）、為什麼這麼難、已知結果（Conway 不可判定性、Tao 2019「幾乎所有軌道」、驗證至 2⁶⁸）、推廣與變形（qn+r 家族、F₂[x] 類比、複平面延拓、Juggler）、與本庫的連結；含軌道與停止時間散布、反向樹與進展時間線、變形對照、複平面碎形共四組圖示；第 3 章另列於下兩篇 |
+| [冰雹猜想（續）](docs/Collatz-Connections.md) | Collatz 第 3 章前半（§3.0–§3.12）：Syracuse 映射與等價陳述、2-進位／3-進位觀點、§3.0 特殊數列對照總表；與 Mersenne、Fibonacci、Lucas、Catalan、Bernoulli、Euler 數與 e、Stirling、Pell、Motzkin、Fermat 的關係（真實連結／類比／無關係，標明已驗證與記憶）；共十三組圖示 |
+| [冰雹猜想（續二）](docs/Collatz-Functions.md) | Collatz 第 3 章後半（§3.13–§3.26）：與 Riemann zeta 及動力 zeta（含 ζ 零點檢查）、Dirichlet 級數、Möbius 函數、Lambert W、Gamma 函數、Euler 乘積、Selberg 跡公式、Hecke 算子、Ramanujan 求和、Mellin／Fourier／Laplace 變換、Gauss 求和、Bernoulli 多項式的關係檢查（多數「無已知關係」，並標明已驗證與記憶）；拆檔是因為單頁公式過多時 GitHub 會有大量公式無法渲染；共十五組圖示 |
 | [賽局理論](docs/Game-Theory.md) | Nash 均衡、囚徒困境、逆向歸納、Folk Theorem、Shapley Value、VCG 機制；GAN、MARL、聯邦學習 |
 
 ---

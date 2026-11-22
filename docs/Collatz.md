@@ -82,7 +82,7 @@ n = 7 :  7 → 22 → 11 → 34 → 17 → 52 → 26 → 13 → 40 → 20 → 10
 
 ## 3. 基本概念與等價陳述（另檔）
 
-第 3 章整章移到 [Collatz-Connections.md](Collatz-Connections.md)（拆檔的原因：單頁公式過多時，GitHub 可能有部分公式無法渲染；小節編號不變）。本檔其餘章節引用的「§3.x」都指該檔。為了讓後面的章節好讀，這裡只留 Syracuse 映射的定義：
+第 3 章分成兩個檔案（拆檔的原因：單頁公式超過約 1800 個時，GitHub 會有大量公式無法渲染；小節編號不變）：[Collatz-Connections.md](Collatz-Connections.md)（Syracuse 映射、§3.0 總表、§3.1–§3.12 特殊數列）與 [Collatz-Functions.md](Collatz-Functions.md)（§3.13–§3.26 函數、變換與算子）。本檔其餘章節引用的「§3.x」都指這兩個檔案。為了讓後面的章節好讀，這裡只留 Syracuse 映射的定義：
 
 $$
 T(n)=\frac{3n+1}{2^{v_2(3n+1)}},\qquad n\text{ 為奇數}
@@ -90,7 +90,7 @@ $$
 
 其中 $v_2(m)$ 是 $m$ 的 2-進位賦值； $T$ 把「一次乘 3 加 1 與其後所有除 2」打包成一步。
 
-第 3 章的小節：
+§3.0–§3.12（`Collatz-Connections.md`）：
 
 - [§3.0 特殊數列對照總表（§3.3–§3.26）](Collatz-Connections.md#30-特殊數列對照總表33326)
 - [§3.1 2-進位觀點](Collatz-Connections.md#31-2-進位觀點)
@@ -105,20 +105,23 @@ $$
 - [§3.10 Pell 數與連分數](Collatz-Connections.md#310-pell-數與連分數)
 - [§3.11 Motzkin 數](Collatz-Connections.md#311-motzkin-數)
 - [§3.12 Fermat 數](Collatz-Connections.md#312-fermat-數)
-- [§3.13 Riemann zeta 與動力 zeta](Collatz-Connections.md#313-riemann-zeta-與動力-zeta)
-- [§3.14 Dirichlet 級數](Collatz-Connections.md#314-dirichlet-級數)
-- [§3.15 Möbius 函數](Collatz-Connections.md#315-möbius-函數)
-- [§3.16 Lambert W 函數](Collatz-Connections.md#316-lambert-w-函數)
-- [§3.17 Gamma 函數](Collatz-Connections.md#317-gamma-函數)
-- [§3.18 Euler 乘積](Collatz-Connections.md#318-euler-乘積)
-- [§3.19 Selberg 跡公式](Collatz-Connections.md#319-selberg-跡公式)
-- [§3.20 Hecke 算子](Collatz-Connections.md#320-hecke-算子)
-- [§3.21 Ramanujan 求和](Collatz-Connections.md#321-ramanujan-求和)
-- [§3.22 Mellin 變換](Collatz-Connections.md#322-mellin-變換)
-- [§3.23 Fourier 變換](Collatz-Connections.md#323-fourier-變換)
-- [§3.24 Laplace 變換](Collatz-Connections.md#324-laplace-變換)
-- [§3.25 Gauss 求和](Collatz-Connections.md#325-gauss-求和)
-- [§3.26 Bernoulli 多項式](Collatz-Connections.md#326-bernoulli-多項式)
+
+§3.13–§3.26（`Collatz-Functions.md`）：
+
+- [§3.13 Riemann zeta 與動力 zeta](Collatz-Functions.md#313-riemann-zeta-與動力-zeta)
+- [§3.14 Dirichlet 級數](Collatz-Functions.md#314-dirichlet-級數)
+- [§3.15 Möbius 函數](Collatz-Functions.md#315-möbius-函數)
+- [§3.16 Lambert W 函數](Collatz-Functions.md#316-lambert-w-函數)
+- [§3.17 Gamma 函數](Collatz-Functions.md#317-gamma-函數)
+- [§3.18 Euler 乘積](Collatz-Functions.md#318-euler-乘積)
+- [§3.19 Selberg 跡公式](Collatz-Functions.md#319-selberg-跡公式)
+- [§3.20 Hecke 算子](Collatz-Functions.md#320-hecke-算子)
+- [§3.21 Ramanujan 求和](Collatz-Functions.md#321-ramanujan-求和)
+- [§3.22 Mellin 變換](Collatz-Functions.md#322-mellin-變換)
+- [§3.23 Fourier 變換](Collatz-Functions.md#323-fourier-變換)
+- [§3.24 Laplace 變換](Collatz-Functions.md#324-laplace-變換)
+- [§3.25 Gauss 求和](Collatz-Functions.md#325-gauss-求和)
+- [§3.26 Bernoulli 多項式](Collatz-Functions.md#326-bernoulli-多項式)
 
 ---
 
