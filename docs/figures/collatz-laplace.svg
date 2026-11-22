@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">平均步數：6.952 ln n</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">E[τ] ≈ ln n / |μ|，μ = ½ ln(3/4)；z M(θ) = 1 的根</text>
+<line x1="46" y1="150" x2="262" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="46" y1="150" x2="46" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="43" y1="139.6" x2="262" y2="139.6" stroke="#eee" stroke-width="0.6"/>
+<text x="40.0" y="142.6" text-anchor="end" font-size="7" font-weight="400" fill="#898781">50</text>
+<line x1="43" y1="113.8" x2="262" y2="113.8" stroke="#eee" stroke-width="0.6"/>
+<text x="40.0" y="116.8" text-anchor="end" font-size="7" font-weight="400" fill="#898781">75</text>
+<line x1="43" y1="87.9" x2="262" y2="87.9" stroke="#eee" stroke-width="0.6"/>
+<text x="40.0" y="90.9" text-anchor="end" font-size="7" font-weight="400" fill="#898781">100</text>
+<line x1="46.0" y1="138.8" x2="262.0" y2="72.5" stroke="#eb6834" stroke-width="1.4" stroke-dasharray="5,3"/>
+<circle cx="45.6" cy="139.6" r="3.2" fill="#2a78d6"/>
+<circle cx="99.5" cy="123.4" r="3.2" fill="#2a78d6"/>
+<circle cx="153.5" cy="106.9" r="3.2" fill="#2a78d6"/>
+<circle cx="207.6" cy="90.4" r="3.2" fill="#2a78d6"/>
+<circle cx="261.6" cy="73.7" r="3.2" fill="#2a78d6"/>
+<text x="46.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10³</text>
+<text x="100.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁴</text>
+<text x="154.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁵</text>
+<text x="208.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁶</text>
+<text x="262.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁷</text>
+<text x="154.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">n</text>
+<text x="49.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">藍：實測平均（每尺度 20000 個 n）　橘虛線：6.952 ln n</text>
+<rect x="18" y="176" width="246" height="108" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="190.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#0b0b0b">T 到 1 的步數，n ∈ [N, 2N]，N = 10³ … 10⁷</text>
+<text x="141.0" y="203.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#1baf7a">相鄰尺度的斜率：6.80、6.93、6.93、6.97</text>
+<text x="141.0" y="216.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">預測 6.952 = 10.43 / 1.5（§5 標準映射的 10.43）</text>
+<text x="141.0" y="231.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">預測值比實測平均高約 1 步（常數項）</text>
+<text x="141.0" y="245.0" text-anchor="middle" font-size="8" font-weight="700" fill="#1baf7a">平均上吻合（隨機模型的 Laplace 型預測）</text>
+<text x="141.0" y="259.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">矩母函數 E[z^τ] ≈ n^(−θ(z))，θ 解 z·M(θ) = 1（推導，記憶）</text>
+<text x="141.0" y="272.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d94040">只是數值吻合，不是證明；真實奇偶性並非獨立</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">變異數：101.4 ln n</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">Var[τ] ≈ σ² ln n / |μ|³，σ² = 0.30174</text>
+<line x1="322" y1="150" x2="540" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="322" y1="150" x2="322" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="319" y1="133.1" x2="540" y2="133.1" stroke="#eee" stroke-width="0.6"/>
+<text x="316.0" y="136.1" text-anchor="end" font-size="7" font-weight="400" fill="#898781">750</text>
+<line x1="319" y1="116.2" x2="540" y2="116.2" stroke="#eee" stroke-width="0.6"/>
+<text x="316.0" y="119.2" text-anchor="end" font-size="7" font-weight="400" fill="#898781">1000</text>
+<line x1="319" y1="99.2" x2="540" y2="99.2" stroke="#eee" stroke-width="0.6"/>
+<text x="316.0" y="102.2" text-anchor="end" font-size="7" font-weight="400" fill="#898781">1250</text>
+<line x1="319" y1="82.3" x2="540" y2="82.3" stroke="#eee" stroke-width="0.6"/>
+<text x="316.0" y="85.3" text-anchor="end" font-size="7" font-weight="400" fill="#898781">1500</text>
+<line x1="322.0" y1="133.7" x2="540.0" y2="70.4" stroke="#eb6834" stroke-width="1.4" stroke-dasharray="5,3"/>
+<line x1="321.6" y1="136.4" x2="321.6" y2="135.5" stroke="#2a78d6" stroke-width="1.4"/>
+<circle cx="321.6" cy="136.0" r="3.2" fill="#2a78d6"/>
+<line x1="376.0" y1="125.7" x2="376.0" y2="124.5" stroke="#2a78d6" stroke-width="1.4"/>
+<circle cx="376.0" cy="125.1" r="3.2" fill="#2a78d6"/>
+<line x1="430.5" y1="110.1" x2="430.5" y2="108.7" stroke="#2a78d6" stroke-width="1.4"/>
+<circle cx="430.5" cy="109.4" r="3.2" fill="#2a78d6"/>
+<line x1="485.0" y1="94.4" x2="485.0" y2="92.6" stroke="#2a78d6" stroke-width="1.4"/>
+<circle cx="485.0" cy="93.5" r="3.2" fill="#2a78d6"/>
+<line x1="539.6" y1="81.3" x2="539.6" y2="79.2" stroke="#2a78d6" stroke-width="1.4"/>
+<circle cx="539.6" cy="80.3" r="3.2" fill="#2a78d6"/>
+<text x="322.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10³</text>
+<text x="376.5" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁴</text>
+<text x="431.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁵</text>
+<text x="485.5" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁶</text>
+<text x="540.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10⁷</text>
+<text x="431.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">n</text>
+<text x="325.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">藍：實測變異數（±1 標準誤）　橘虛線：101.4 ln n</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="190.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#0b0b0b">實測 / 預測：0.956、0.892、0.912、0.927、0.914</text>
+<text x="415.0" y="203.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">（0.89 到 0.96 倍）</text>
+<text x="415.0" y="216.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">相鄰尺度的斜率：70、101、102、85，預測 101.4</text>
+<text x="415.0" y="231.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">兩端的偏離與取樣誤差相當（斜率誤差約 ±9，估計）</text>
+<text x="415.0" y="245.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">sd：26.6（10³）到 39.1（10⁷）</text>
+<text x="415.0" y="259.0" text-anchor="middle" font-size="8" font-weight="700" fill="#1baf7a">變異數約在 10% 內吻合</text>
+<text x="415.0" y="272.0" text-anchor="middle" font-size="8" font-weight="700" fill="#d94040">數值吻合，不是證明</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">指數增長率 = 收斂橫坐標</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">令 z = e^(−s)，Σ c_d z^d 的收斂橫坐標 = c_d 的指數增長率</text>
+<line x1="596" y1="150" x2="796" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="596" y1="150" x2="596" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="593" y1="128.0" x2="796" y2="128.0" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="131.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0.20</text>
+<line x1="593" y1="106.0" x2="796" y2="106.0" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="109.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0.25</text>
+<line x1="593" y1="84.0" x2="796" y2="84.0" stroke="#eee" stroke-width="0.6"/>
+<text x="590.0" y="87.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0.30</text>
+<line x1="596" y1="113.0" x2="796" y2="113.0" stroke="#eb6834" stroke-width="1.3" stroke-dasharray="4,3"/>
+<text x="795.0" y="124.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#eb6834">ln λ = 0.2341</text>
+<polyline points="596.0,89.4 600.4,117.8 604.9,68.0 609.3,105.4 613.8,89.4 618.2,132.7 622.7,120.9 627.1,127.7 631.6,94.4 636.0,120.9 640.4,113.0 644.9,120.7 649.3,112.4 653.8,117.2 658.2,111.5 662.7,112.8 667.1,109.0 671.6,115.4 676.0,115.5 680.4,112.1 684.9,112.6 689.3,111.6 693.8,111.4 698.2,113.6 702.7,114.8 707.1,113.1 711.6,112.5 716.0,112.0 720.4,113.1 724.9,113.9 729.3,113.2 733.8,112.5 738.2,112.9 742.7,113.5 747.1,113.4 751.6,113.2 756.0,112.8 760.4,113.0 764.9,112.8 769.3,112.8 773.8,113.1 778.2,113.1 782.7,113.0 787.1,113.1 791.6,112.9" fill="none" stroke="#2a78d6" stroke-width="1.6"/>
+<text x="596.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">10</text>
+<text x="640.4" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">20</text>
+<text x="684.9" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">30</text>
+<text x="729.3" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">40</text>
+<text x="773.8" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">50</text>
+<text x="696.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">深度 d</text>
+<text x="599.0" y="56.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">藍：ln(|L_(d+1)| / |L_d|)（反向樹層大小）</text>
+<rect x="566" y="176" width="236" height="108" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="190.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#0b0b0b">d = 50…53：0.2339、0.2340、0.2342、0.2340</text>
+<text x="684.0" y="203.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">§3.9 的 λ = (1 + √(7/3))/2，ln λ = 0.2341（吻合）</text>
+<text x="684.0" y="217.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">Σ_d |L_d| e^(−sd) 在 s &gt; 0.2341 收斂（已驗證）</text>
+<text x="684.0" y="231.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">週期軌道：N_k = 2^k，ζ_T = 1/(1−2z) 極點在 z = ½</text>
+<text x="684.0" y="244.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">⇒ 橫坐標 s = ln 2（拓撲熵，§3.13、§3.19）</text>
+<text x="684.0" y="258.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">Laplace 方法 = Stirling（§3.9），通用</text>
+<text x="684.0" y="272.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d94040">無已知結果把軌道或猜想本身連到 Laplace 變換</text>
+</svg>
