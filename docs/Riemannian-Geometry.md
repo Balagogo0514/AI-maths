@@ -162,8 +162,7 @@ $$
 
 $$
 \nabla_{\partial_i}\partial_j
-=
-\sum_{k=1}^n \Gamma_{ij}^k \partial_k,
+= \sum_{k=1}^n \Gamma_{ij}^k \partial_k,
 $$
 
 其中 $\Gamma_{ij}^k$ 稱為 **Christoffel symbols**。它們不是張量，但描述了座標系下 connection 的具體形式。
@@ -213,8 +212,7 @@ $$
 
 $$
 R(X,Y)Z
-=
-\nabla_X\nabla_Y Z
+= \nabla_X\nabla_Y Z
 -\nabla_Y\nabla_X Z
 -\nabla_{[X,Y]}Z.
 $$
@@ -227,8 +225,7 @@ $$
 
 $$
 K(u,v)
-=
-\frac{g(R(u,v)v,u)}
+= \frac{g(R(u,v)v,u)}
 {g(u,u)g(v,v)-g(u,v)^2}.
 $$
 

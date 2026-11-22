@@ -83,8 +83,8 @@ $$
 
 $$
 \frac{\Delta y}{\Delta x}
-= f'(g(x)) \frac{\Delta u}{\Delta x}
-+ \varepsilon_2 \frac{\Delta u}{\Delta x}
+= f'(g(x)) \frac{\Delta u}{\Delta x} +
+\varepsilon_2 \frac{\Delta u}{\Delta x}
 $$
 
 當 $\Delta x \to 0$ 時，
@@ -168,8 +168,8 @@ $$
 
 $$
 \frac{f(g(x+t)) - f(g(x))}{t}
-= f'(g(x)) \frac{\Delta g}{t}
-+ \frac{r(\Delta g)}{t}
+= f'(g(x)) \frac{\Delta g}{t} +
+\frac{r(\Delta g)}{t}
 $$
 
 再把最後一項拆開：
@@ -184,8 +184,8 @@ $$
 
 $$
 \frac{f(g(x+t)) - f(g(x))}{t}
-= f'(g(x)) \frac{\Delta g}{t}
-+ \frac{r(\Delta g)}{\Delta g} \cdot \frac{\Delta g}{t}
+= f'(g(x)) \frac{\Delta g}{t} +
+\frac{r(\Delta g)}{\Delta g} \cdot \frac{\Delta g}{t}
 $$
 
 現在令 $t \to 0$。

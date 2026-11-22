@@ -421,8 +421,7 @@ R(\beta)
 \cos\alpha\\
 \sin\alpha
 \end{pmatrix}
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 \cos\beta\cos\alpha-\sin\beta\sin\alpha\\
 \sin\beta\cos\alpha+\cos\beta\sin\alpha
 \end{pmatrix}.
@@ -1197,8 +1196,7 @@ $$
 x'\\
 y'
 \end{pmatrix}
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 \cos\theta & -\sin\theta\\
 \sin\theta & \cos\theta
 \end{pmatrix}

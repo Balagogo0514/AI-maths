@@ -861,8 +861,7 @@ J^2=
 0 & -1 \\
 1 & 0
 \end{pmatrix}^2
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 -1 & 0 \\
 0 & -1
 \end{pmatrix}
@@ -905,20 +904,17 @@ $$
 
 $$
 e^{xJ}
-=
-\cos x
+= \cos x
 \begin{pmatrix}
 1 & 0 \\
 0 & 1
-\end{pmatrix}
-+
+\end{pmatrix} +
 \sin x
 \begin{pmatrix}
 0 & -1 \\
 1 & 0
 \end{pmatrix}
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 \cos x & -\sin x \\
 \sin x & \cos x
 \end{pmatrix}
@@ -947,8 +943,7 @@ $$
 a \\
 b
 \end{pmatrix}
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 -b \\
 a
 \end{pmatrix}

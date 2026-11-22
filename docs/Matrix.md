@@ -42,8 +42,7 @@ $$
 
 $$
 xy^\top
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 x_1 \\
 x_2 \\
 \vdots \\
@@ -152,8 +151,7 @@ xy^\top=
 \begin{pmatrix}
 3 & 4
 \end{pmatrix}
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 3 & 4 \\
 6 & 8
 \end{pmatrix}
@@ -222,8 +220,7 @@ $$
 
 $$
 \text{proj}_{y}(x)
-=
-\frac{x^\top y}{\|y\|^2}y
+= \frac{x^\top y}{\|y\|^2}y
 $$
 
 這說明內積會抽出 `x` 在 `y` 方向上的有效成分。
@@ -635,15 +632,13 @@ c_1
 \begin{pmatrix}
 1 \\
 0
-\end{pmatrix}
-+
+\end{pmatrix} +
 c_2
 \begin{pmatrix}
 0 \\
 1
 \end{pmatrix}
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 0 \\
 0
 \end{pmatrix}
@@ -680,14 +675,12 @@ $$
 \begin{pmatrix}
 1 \\
 2
-\end{pmatrix}
--
+\end{pmatrix} -
 \begin{pmatrix}
 2 \\
 4
 \end{pmatrix}
-=
-\begin{pmatrix}
+= \begin{pmatrix}
 0 \\
 0
 \end{pmatrix}

@@ -16,8 +16,7 @@ $$
 
 $$
 P(X_{t+1}=j \mid X_t=i, X_{t-1}, \dots, X_0)
-=
-P(X_{t+1}=j \mid X_t=i)
+= P(X_{t+1}=j \mid X_t=i)
 $$
 
 則稱其具有馬可夫性（Markov Property）。
@@ -172,8 +171,7 @@ HMM 的關鍵在於：觀測值不是直接按照前一步觀測值轉移，而�
 
 $$
 P(q_{t+1} \mid q_t, q_{t-1}, \dots, q_1)
-=
-P(q_{t+1} \mid q_t)
+= P(q_{t+1} \mid q_t)
 $$
 
 也就是說，HMM 的內部狀態轉移仍然是一條馬可夫鏈。
@@ -184,8 +182,7 @@ $$
 
 $$
 P(o_t \mid q_t, q_{t-1}, \dots, o_{t-1}, \dots)
-=
-P(o_t \mid q_t)
+= P(o_t \mid q_t)
 $$
 
 這表示在知道當前隱藏狀態後，過去的狀態與觀測值不再額外影響當前觀測值的分布。
