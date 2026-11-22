@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">|det J| = 面積縮放倍率</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">線性映射 A 把單位正方形（灰）送成平行四邊形（橘）</text>
+<line x1="44.0" y1="134.0" x2="153.2" y2="134.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="58.0" y1="148.0" x2="58.0" y2="52.8" stroke="#898781" stroke-width="0.8"/>
+<polygon points="58.0,134.0 86.0,134.0 86.0,106.0 58.0,106.0" fill="#898781" opacity="0.25" stroke="#898781" stroke-width="1.0"/>
+<polygon points="58.0,134.0 114.0,120.0 142.0,78.0 86.0,92.0" fill="#eb6834" opacity="0.35" stroke="#eb6834" stroke-width="1.5"/>
+<text x="86.0" y="102.0" text-anchor="middle" font-size="7" font-weight="700" fill="#898781">1</text>
+<text x="114.0" y="97.6" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">面積 2.5</text>
+<line x1="58.0" y1="134.0" x2="114.0" y2="120.0" stroke="#2a78d6" stroke-width="1.6"/>
+<line x1="114.0" y1="120.0" x2="110.5" y2="123.5" stroke="#2a78d6" stroke-width="1.6"/>
+<line x1="114.0" y1="120.0" x2="109.2" y2="118.5" stroke="#2a78d6" stroke-width="1.6"/>
+<line x1="58.0" y1="134.0" x2="86.0" y2="92.0" stroke="#7c56c8" stroke-width="1.6"/>
+<line x1="86.0" y1="92.0" x2="85.8" y2="97.0" stroke="#7c56c8" stroke-width="1.6"/>
+<line x1="86.0" y1="92.0" x2="81.5" y2="94.1" stroke="#7c56c8" stroke-width="1.6"/>
+<rect x="18" y="176" width="246" height="108" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="191.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#0b0b0b">A 的兩列是 (2, 1) 與 (0.5, 1.5)，det A = 2×1.5 − 1×0.5 = 2.5</text>
+<text x="141.0" y="205.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#1baf7a">平行四邊形面積（鞋帶公式）= 2.5 = det A（已驗證）</text>
+<text x="141.0" y="219.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">雅可比矩陣是「局部的 A」：</text>
+<text x="141.0" y="232.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">小區域面積 ≈ |det J| × 原面積，J 依所在的點而變</text>
+<text x="141.0" y="246.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">藍：A 的第 1 欄 (2, 0.5)　紫：第 2 欄 (1, 1.5)</text>
+<text x="141.0" y="260.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">（欄 = 單位向量被送到哪裡）</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">符號與零：翻轉與壓扁</text>
+<line x1="298.0" y1="100.0" x2="386.0" y2="100.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="306.0" y1="108.0" x2="306.0" y2="24.0" stroke="#898781" stroke-width="0.8"/>
+<polygon points="306.0,100.0 346.0,100.0 346.0,60.0 306.0,60.0" fill="#898781" opacity="0.25" stroke="#898781" stroke-width="1.0"/>
+<polygon points="306.0,100.0 306.0,60.0 346.0,60.0 346.0,100.0" fill="#eb6834" opacity="0.35" stroke="#eb6834" stroke-width="1.5"/>
+<text x="346.0" y="116.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">det = −1</text>
+<text x="346.0" y="128.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">交換 x、y：面積不變、方向翻轉</text>
+<line x1="412.0" y1="100.0" x2="500.0" y2="100.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="420.0" y1="108.0" x2="420.0" y2="24.0" stroke="#898781" stroke-width="0.8"/>
+<polygon points="420.0,100.0 460.0,100.0 460.0,60.0 420.0,60.0" fill="#898781" opacity="0.25" stroke="#898781" stroke-width="1.0"/>
+<polygon points="420.0,100.0 460.0,80.0 540.0,40.0 500.0,60.0" fill="#d94040" opacity="0.35" stroke="#d94040" stroke-width="1.5"/>
+<text x="460.0" y="116.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d94040">det = 0</text>
+<text x="460.0" y="128.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">兩欄平行：壓成線段</text>
+<text x="415.0" y="148.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">灰色：單位正方形</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="191.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#0b0b0b">交換矩陣 [[0,1],[1,0]]：鞋帶面積 = -1（負號 = 逆時針變順時針）</text>
+<text x="415.0" y="205.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#0b0b0b">奇異矩陣 [[1,2],[0.5,1]]：det = 0，像的面積 = 0（已驗證）</text>
+<text x="415.0" y="219.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#d94040">det J = 0 ⇒ 該點 f 把方向壓扁（降維），J 不可逆</text>
+<text x="415.0" y="233.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">反函數定理（§9）要求 det J ≠ 0</text>
+<text x="415.0" y="247.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">det J 的符號在一個連通區域內不變號時，f 保持（或全部翻轉）方向</text>
+<text x="415.0" y="260.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">（最後一句是標準事實，記憶）</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">換元積分：圓盤面積 = ∬ r dr dθ</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">(r, θ) ∈ [0,1] × [0, 2π] 的長方形，被送到單位圓盤</text>
+<polygon points="574.0,150.0 650.0,150.0 650.0,78.0 574.0,78.0" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="1.3"/>
+<line x1="589.2" y1="150.0" x2="589.2" y2="78.0" stroke="#cdd9ee" stroke-width="0.6"/>
+<line x1="604.4" y1="150.0" x2="604.4" y2="78.0" stroke="#cdd9ee" stroke-width="0.6"/>
+<line x1="619.6" y1="150.0" x2="619.6" y2="78.0" stroke="#cdd9ee" stroke-width="0.6"/>
+<line x1="634.8" y1="150.0" x2="634.8" y2="78.0" stroke="#cdd9ee" stroke-width="0.6"/>
+<line x1="574.0" y1="132.0" x2="650.0" y2="132.0" stroke="#cdd9ee" stroke-width="0.6"/>
+<line x1="574.0" y1="114.0" x2="650.0" y2="114.0" stroke="#cdd9ee" stroke-width="0.6"/>
+<line x1="574.0" y1="96.0" x2="650.0" y2="96.0" stroke="#cdd9ee" stroke-width="0.6"/>
+<text x="612.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">r：0 → 1</text>
+<text x="571.0" y="114.0" text-anchor="end" font-size="7.5" font-weight="400" fill="#898781">θ</text>
+<line x1="658.0" y1="114.0" x2="688.0" y2="114.0" stroke="#898781" stroke-width="1.4"/>
+<line x1="688.0" y1="114.0" x2="683.7" y2="116.6" stroke="#898781" stroke-width="1.4"/>
+<line x1="688.0" y1="114.0" x2="683.7" y2="111.4" stroke="#898781" stroke-width="1.4"/>
+<circle cx="740" cy="114" r="36" fill="#eb6834" opacity="0.18" stroke="#eb6834" stroke-width="1.4"/>
+<circle cx="740" cy="114" r="7.2" fill="none" stroke="#f3c9b8" stroke-width="0.6"/>
+<circle cx="740" cy="114" r="14.4" fill="none" stroke="#f3c9b8" stroke-width="0.6"/>
+<circle cx="740" cy="114" r="21.6" fill="none" stroke="#f3c9b8" stroke-width="0.6"/>
+<circle cx="740" cy="114" r="28.8" fill="none" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="776.0" y2="114.0" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="765.5" y2="88.5" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="740.0" y2="78.0" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="714.5" y2="88.5" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="704.0" y2="114.0" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="714.5" y2="139.5" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="740.0" y2="150.0" stroke="#f3c9b8" stroke-width="0.6"/>
+<line x1="740.0" y1="114.0" x2="765.5" y2="139.5" stroke="#f3c9b8" stroke-width="0.6"/>
+<text x="740.0" y="162.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">單位圓盤</text>
+<rect x="566" y="176" width="236" height="108" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="191.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#0b0b0b">det J = r ⇒ 面積 = ∬ r dr dθ = ∫₀^(2π) ∫₀¹ r dr dθ = π</text>
+<text x="684.0" y="205.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">數值：400×400 格中點積分，det J 用中央差分算</text>
+<text x="684.0" y="218.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#1baf7a">得到 3.14159265，與 π = 3.14159265 相同（已驗證）</text>
+<text x="684.0" y="233.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#0b0b0b">換元積分公式：∫ f(y) dy = ∫ f(φ(x)) |det J_φ(x)| dx</text>
+<text x="684.0" y="247.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">|det J| 補償了「小格被拉大或縮小」</text>
+<text x="684.0" y="261.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">離原點越遠，同樣的 (Δr, Δθ) 掃過的面積越大</text>
+<text x="684.0" y="274.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+</svg>

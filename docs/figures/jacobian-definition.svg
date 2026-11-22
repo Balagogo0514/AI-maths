@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">J 的排列：輸出是列、輸入是欄</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.8" font-weight="400" fill="#898781">f: ℝⁿ → ℝᵐ，J 是 m × n 的矩陣</text>
+<text x="100.0" y="70.0" text-anchor="middle" font-size="8" font-weight="700" fill="#2a78d6">x1</text>
+<text x="144.0" y="70.0" text-anchor="middle" font-size="8" font-weight="700" fill="#2a78d6">x2</text>
+<text x="188.0" y="70.0" text-anchor="middle" font-size="8" font-weight="700" fill="#2a78d6">x3</text>
+<text x="70.0" y="97.0" text-anchor="end" font-size="8" font-weight="700" fill="#eb6834">f1</text>
+<text x="70.0" y="127.0" text-anchor="end" font-size="8" font-weight="700" fill="#eb6834">f2</text>
+<rect x="78" y="78" width="42" height="28" rx="3" fill="#f1f4f7" opacity="1" stroke="#dde3e9" stroke-width="0.8"/>
+<text x="99.0" y="96.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#0b0b0b">∂f1/∂x1</text>
+<rect x="122" y="78" width="42" height="28" rx="3" fill="#f1f4f7" opacity="1" stroke="#dde3e9" stroke-width="0.8"/>
+<text x="143.0" y="96.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#0b0b0b">∂f1/∂x2</text>
+<rect x="166" y="78" width="42" height="28" rx="3" fill="#f1f4f7" opacity="1" stroke="#dde3e9" stroke-width="0.8"/>
+<text x="187.0" y="96.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#0b0b0b">∂f1/∂x3</text>
+<rect x="78" y="108" width="42" height="28" rx="3" fill="#f1f4f7" opacity="1" stroke="#dde3e9" stroke-width="0.8"/>
+<text x="99.0" y="126.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#0b0b0b">∂f2/∂x1</text>
+<rect x="122" y="108" width="42" height="28" rx="3" fill="#f1f4f7" opacity="1" stroke="#dde3e9" stroke-width="0.8"/>
+<text x="143.0" y="126.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#0b0b0b">∂f2/∂x2</text>
+<rect x="166" y="108" width="42" height="28" rx="3" fill="#7c56c8" opacity="0.35" stroke="#7c56c8" stroke-width="1.5"/>
+<text x="187.0" y="126.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#0b0b0b">∂f2/∂x3</text>
+<text x="142.0" y="152.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#eb6834">第 i 列 = 第 i 個輸出 f_i 對所有輸入的偏導數（梯度的轉置）</text>
+<text x="142.0" y="164.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#2a78d6">第 j 欄 = 所有輸出對第 j 個輸入的偏導數</text>
+<rect x="18" y="176" width="246" height="108" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="191.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#0b0b0b">紫色格：J_ij = ∂f_i / ∂x_j（第 2 列、第 3 欄）</text>
+<text x="141.0" y="205.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">m = 1：J 是 1 × n 的列向量 = 梯度的轉置</text>
+<text x="141.0" y="218.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">n = m = 1：J 就是普通的導數 f′(x)</text>
+<text x="141.0" y="232.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">J 依賴所在的點 x：不同的點，矩陣不同</text>
+<text x="141.0" y="246.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">有些書把 J 轉置（梯度寫成欄向量），看公式先確認慣例</text>
+<text x="141.0" y="260.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">本篇一律用「輸出為列、輸入為欄」</text>
+<text x="141.0" y="273.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">例：f(x, y) = (x²y, 5x + sin y) 在 (1, 2)</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">J = [[2xy, x²], [5, cos y]]，J(1, 2) = [[4, 1], [5, −0.416]]（按列）</text>
+<line x1="324.0" y1="148.0" x2="546.0" y2="148.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="332.0" y1="156.0" x2="332.0" y2="58.0" stroke="#898781" stroke-width="0.8"/>
+<polygon points="332.0,148.0 400.0,63.0 417.0,70.1 349.0,155.1" fill="#eb6834" opacity="0.3" stroke="#eb6834" stroke-width="1.3"/>
+<line x1="332.0" y1="148.0" x2="400.0" y2="63.0" stroke="#2a78d6" stroke-width="1.8"/>
+<line x1="400.0" y1="63.0" x2="399.3" y2="68.0" stroke="#2a78d6" stroke-width="1.8"/>
+<line x1="400.0" y1="63.0" x2="395.3" y2="64.7" stroke="#2a78d6" stroke-width="1.8"/>
+<line x1="332.0" y1="148.0" x2="349.0" y2="155.1" stroke="#7c56c8" stroke-width="1.8"/>
+<line x1="349.0" y1="155.1" x2="344.1" y2="155.8" stroke="#7c56c8" stroke-width="1.8"/>
+<line x1="349.0" y1="155.1" x2="346.0" y2="151.0" stroke="#7c56c8" stroke-width="1.8"/>
+<text x="404.0" y="67.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#2a78d6">J 的第 1 欄 (4, 5)</text>
+<text x="353.0" y="165.1" text-anchor="start" font-size="7.2" font-weight="700" fill="#7c56c8">第 2 欄 (1, −0.416)</text>
+<text x="376.2" y="120.8" text-anchor="middle" font-size="7" font-weight="700" fill="#eb6834">單位方塊 → 平行四邊形</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="191.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">J 的第 j 欄 = 第 j 個輸入方向的單位小段被送到哪裡</text>
+<text x="415.0" y="205.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">第 1 欄 = f 沿 x 方向的變化率 = (2xy, 5) = (4, 5)</text>
+<text x="415.0" y="218.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#7c56c8">第 2 欄 = f 沿 y 方向的變化率 = (x², cos y) = (1, −0.416)</text>
+<text x="415.0" y="233.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">輸入方塊 [0,1]² 在 J 下的像是兩欄張成的平行四邊形</text>
+<text x="415.0" y="247.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#d94040">（局部近似；圖中是線性近似的像，不是 f 本身的像）</text>
+<text x="415.0" y="261.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">面積 = |det J| = |4·(−0.416) − 1·5| = 6.665</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">形狀記帳</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">m × n 的 J 乘上 n 維向量，得到 m 維向量</text>
+<rect x="574" y="60" width="220" height="40" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="684.0" y="75.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">前向：Δy ≈ J Δx</text>
+<text x="684.0" y="89.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">(m×n)·(n×1) = (m×1)：輸入的小變動 → 輸出的小變動</text>
+<rect x="574" y="108" width="220" height="40" rx="4" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="684.0" y="123.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">鏈式法則：J_(g∘f) = J_g J_f</text>
+<text x="684.0" y="137.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">(p×m)·(m×n) = (p×n)：形狀相容才能相乘</text>
+<rect x="574" y="156" width="220" height="40" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="684.0" y="171.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">方陣時：m = n，det J 才有意義</text>
+<text x="684.0" y="185.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">（行列式只有方陣才有，§6）</text>
+<rect x="566" y="204" width="236" height="80" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="218.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#0b0b0b">梯度：∇L = Jᵀ（純量 L，J 是 1×n）</text>
+<text x="684.0" y="232.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">Hessian：H = J_(∇L)（梯度的雅可比矩陣，n×n）</text>
+<text x="684.0" y="246.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">線性函數 f(x) = A x：J 處處等於 A</text>
+<text x="684.0" y="260.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">（兩點是標準事實）</text>
+<text x="684.0" y="274.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+</svg>
