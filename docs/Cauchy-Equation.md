@@ -492,13 +492,13 @@ $$
 對奇異積分，常寫成
 
 $$
-\operatorname{p.v.}\int_{-\infty}^{\infty}\frac{f(x)}{x-a}\,dx
+\mathrm{p.v.}\int_{-\infty}^{\infty}\frac{f(x)}{x-a}\,dx
 $$
 
 或在對稱奇異點附近寫成
 
 $$
-\operatorname{p.v.}\int_{a-\varepsilon}^{a+\varepsilon}\frac{f(x)}{x-a}\,dx
+\mathrm{p.v.}\int_{a-\varepsilon}^{a+\varepsilon}\frac{f(x)}{x-a}\,dx
 $$
 
 作用：
@@ -523,7 +523,7 @@ $$
 | 柯西－歐拉微分方程 | $ax^2y''+bxy'+cy=g(x)$ | 處理特殊變係數微分方程 | 常需避開 $x=0$ 的奇異性 |
 | 柯西－黎曼方程 | $u_x=v_y,\;u_y=-v_x$ | 判別複函數是否解析 | 常需偏導存在且連續 |
 | 柯西初值問題 | $y'=f(x,y),\;y(x_0)=y_0$ | 由初始狀態求解微分方程 | 常需連續性與 Lipschitz 條件 |
-| 柯西主值 | $\operatorname{p.v.}\int \cdots$ | 處理奇異積分 | 需用對稱極限定義 |
+| 柯西主值 | $\mathrm{p.v.}\int \cdots$ | 處理奇異積分 | 需用對稱極限定義 |
 
 ## 12. 補充說明
 

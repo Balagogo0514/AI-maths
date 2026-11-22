@@ -262,7 +262,7 @@ $$(aN)(bN) = (ab)N,$$
 映射 $\varphi : G \to H$ 若滿足 $\varphi(ab) = \varphi(a)\varphi(b)$，稱為**群同態**。此時自動有 $\varphi(e_G) = e_H$、$\varphi(a^{-1}) = \varphi(a)^{-1}$。
 
 - **核**：$\ker \varphi = \{ g \in G : \varphi(g) = e_H \}$，為 $G$ 的正規子群。
-- **像**：$\operatorname{im} \varphi = \varphi(G)$，為 $H$ 的子群。
+- **像**：$\mathrm{im} \varphi = \varphi(G)$，為 $H$ 的子群。
 - $\varphi$ 為單射 $\iff \ker\varphi = \{e\}$。
 - 雙射同態稱為**同構**，記為 $G \cong H$，表示兩群在結構上「完全相同」。
 
@@ -270,7 +270,7 @@ $$(aN)(bN) = (ab)N,$$
 
 **第一同構定理**　設 $\varphi : G \to H$ 為群同態，則
 
-$$G / \ker\varphi \;\cong\; \operatorname{im}\varphi.$$
+$$G / \ker\varphi \;\cong\; \mathrm{im}\varphi.$$
 
 **第二同構定理**　設 $H \le G$、$N \trianglelefteq G$，則 $HN \le G$，$H \cap N \trianglelefteq H$，且
 
@@ -287,7 +287,7 @@ $$(G/N)\,/\,(K/N) \cong G/K.$$
 | 同態 $\varphi$ | 核 | 像 | 結論 |
 |----------------|-----|-----|------|
 | $\det : GL_n(\mathbb{R}) \to \mathbb{R}^\times$ | $SL_n(\mathbb{R})$ | $\mathbb{R}^\times$ | $GL_n / SL_n \cong \mathbb{R}^\times$ |
-| $\operatorname{sgn} : S_n \to \{\pm 1\}$ | $A_n$ | $\{\pm1\}$ | $S_n / A_n \cong \mathbb{Z}_2$ |
+| $\mathrm{sgn} : S_n \to \{\pm 1\}$ | $A_n$ | $\{\pm1\}$ | $S_n / A_n \cong \mathbb{Z}_2$ |
 | $\mathbb{Z} \to \mathbb{Z}_n,\ k \mapsto k \bmod n$ | $n\mathbb{Z}$ | $\mathbb{Z}_n$ | $\mathbb{Z}/n\mathbb{Z} \cong \mathbb{Z}_n$ |
 | $\exp : (\mathbb{R}, +) \to (\mathbb{R}_{>0}, \cdot)$ | $\{0\}$ | $\mathbb{R}_{>0}$ | 同構 |
 | $\mathbb{R} \to S^1,\ t \mapsto e^{2\pi i t}$ | $\mathbb{Z}$ | $S^1$ | $\mathbb{R}/\mathbb{Z} \cong S^1$ |
@@ -307,21 +307,21 @@ $$(G/N)\,/\,(K/N) \cong G/K.$$
 $$\sigma = \begin{pmatrix} 1&2&3&4&5&6 \\ 3&1&2&5&4&6 \end{pmatrix} = (1\ 3\ 2)(4\ 5).$$
 
 - 互不相交的輪換可交換。
-- 輪換型為 $(c_1, c_2, \dots, c_k)$ 的置換，其階為 $\operatorname{lcm}(c_1, \dots, c_k)$。上例階為 $\operatorname{lcm}(3,2) = 6$。
+- 輪換型為 $(c_1, c_2, \dots, c_k)$ 的置換，其階為 $\mathrm{lcm}(c_1, \dots, c_k)$。上例階為 $\mathrm{lcm}(3,2) = 6$。
 - $S_n$ 中的**共軛類**恰由輪換型決定，故共軛類個數為 $n$ 的**分拆數** $p(n)$。
 
 ### 8.3 對換、符號與交代群
 
 - 每個輪換可寫成**對換**（2-輪換）之積：$(a_1\ a_2 \cdots a_k) = (a_1\ a_k)\cdots(a_1\ a_3)(a_1\ a_2)$。
 - 置換寫成對換之積時，對換個數的**奇偶性**唯一。偶數個為**偶置換**，否則為**奇置換**。
-- **符號同態** $\operatorname{sgn} : S_n \to \{\pm 1\}$。
-- **交代群** $A_n = \ker(\operatorname{sgn})$，為所有偶置換，$|A_n| = n!/2$（$n \ge 2$）。
+- **符號同態** $\mathrm{sgn} : S_n \to \{\pm 1\}$。
+- **交代群** $A_n = \ker(\mathrm{sgn})$，為所有偶置換，$|A_n| = n!/2$（$n \ge 2$）。
 
 ### 8.4 凱萊定理
 
 **定理 8.1（Cayley）**　每個群 $G$ 都同構於某個對稱群的子群。特別地，$n$ 階群嵌入 $S_n$。
 
-**證明概要**　對 $g \in G$ 定義左乘映射 $\lambda_g : G \to G,\ x \mapsto gx$，它是 $G$ 上的置換。映射 $g \mapsto \lambda_g$ 為單射群同態，故 $G \cong \{\lambda_g\} \le \operatorname{Sym}(G)$。 $\blacksquare$
+**證明概要**　對 $g \in G$ 定義左乘映射 $\lambda_g : G \to G,\ x \mapsto gx$，它是 $G$ 上的置換。映射 $g \mapsto \lambda_g$ 為單射群同態，故 $G \cong \{\lambda_g\} \le \mathrm{Sym}(G)$。 $\blacksquare$
 
 > 意義：「抽象群」與「置換群」在表達力上等價——研究所有群，等同於研究置換群的子群。
 
@@ -336,17 +336,17 @@ $$\sigma = \begin{pmatrix} 1&2&3&4&5&6 \\ 3&1&2&5&4&6 \end{pmatrix} = (1\ 3\ 2)(
 1. $e \cdot x = x$；
 2. $(gh) \cdot x = g \cdot (h \cdot x)$。
 
-等價地，這是一個同態 $G \to \operatorname{Sym}(X)$。
+等價地，這是一個同態 $G \to \mathrm{Sym}(X)$。
 
 ### 9.2 軌道與穩定子
 
-- **軌道**　$\operatorname{Orb}(x) = G \cdot x = \{ g \cdot x : g \in G \}$。不同軌道構成 $X$ 的一個劃分。
-- **穩定子**　$\operatorname{Stab}(x) = G_x = \{ g \in G : g \cdot x = x \} \le G$。
-- **固定點集**　$\operatorname{Fix}(g) = \{ x \in X : g \cdot x = x \}$。
+- **軌道**　$\mathrm{Orb}(x) = G \cdot x = \{ g \cdot x : g \in G \}$。不同軌道構成 $X$ 的一個劃分。
+- **穩定子**　$\mathrm{Stab}(x) = G_x = \{ g \in G : g \cdot x = x \} \le G$。
+- **固定點集**　$\mathrm{Fix}(g) = \{ x \in X : g \cdot x = x \}$。
 
 **定理 9.1（軌道—穩定子定理）**
 
-$$|\operatorname{Orb}(x)| = [G : \operatorname{Stab}(x)], \qquad\text{故有限群時}\quad |G| = |\operatorname{Orb}(x)| \cdot |\operatorname{Stab}(x)|.$$
+$$|\mathrm{Orb}(x)| = [G : \mathrm{Stab}(x)], \qquad\text{故有限群時}\quad |G| = |\mathrm{Orb}(x)| \cdot |\mathrm{Stab}(x)|.$$
 
 ### 9.3 類方程
 
@@ -367,13 +367,13 @@ $$|G| = |Z(G)| + \sum_{i=1}^{k} [G : C_G(x_i)].$$
 
 **定理 9.3（Burnside）**　有限群 $G$ 作用於有限集 $X$，則軌道個數為
 
-$$|X / G| = \frac{1}{|G|} \sum_{g \in G} |\operatorname{Fix}(g)|.$$
+$$|X / G| = \frac{1}{|G|} \sum_{g \in G} |\mathrm{Fix}(g)|.$$
 
 **例：3 顆珠子、2 種顏色的項鍊（只允許旋轉）**
 
 群 $C_3 = \{e, r, r^2\}$ 作用於 $2^3 = 8$ 種塗色：
 
-| 元素 | $|\operatorname{Fix}|$ | 原因 |
+| 元素 | $|\mathrm{Fix}|$ | 原因 |
 |------|------|------|
 | $e$ | 8 | 全部不變 |
 | $r$ | 2 | 三顆需同色 |
@@ -815,8 +815,8 @@ $(a + I) + (b + I) = (a+b) + I$、$(a + I)(b + I) = ab + I$ 構成環，稱為**
 
 映射 $\varphi : R \to S$ 若保持加法與乘法（且 $\varphi(1) = 1$），稱為**環同態**。
 
-- $\ker\varphi$ 是 $R$ 的理想；$\operatorname{im}\varphi$ 是 $S$ 的子環。
-- **第一同構定理**：$R / \ker\varphi \cong \operatorname{im}\varphi$。
+- $\ker\varphi$ 是 $R$ 的理想；$\mathrm{im}\varphi$ 是 $S$ 的子環。
+- **第一同構定理**：$R / \ker\varphi \cong \mathrm{im}\varphi$。
 - 例：$\mathbb{R}[x] \to \mathbb{C},\ f \mapsto f(i)$ 的核為 $(x^2 + 1)$，故 $\mathbb{R}[x]/(x^2+1) \cong \mathbb{C}$。
 
 ### 15.4 素理想與極大理想
@@ -902,7 +902,7 @@ $(a + I) + (b + I) = (a+b) + I$、$(a + I)(b + I) = ab + I$ 構成環，稱為**
 
 ### 17.4 特徵（Characteristic）
 
-$\operatorname{char} F$ = 使 $\underbrace{1 + \cdots + 1}_{n} = 0$ 的最小正整數 $n$；若不存在則為 $0$。
+$\mathrm{char} F$ = 使 $\underbrace{1 + \cdots + 1}_{n} = 0$ 的最小正整數 $n$；若不存在則為 $0$。
 
 - 域的特徵不是 $0$ 就是**質數**。
 - 特徵 $p$ 的域含 $\mathbb{F}_p$（質子域）；特徵 $0$ 的域含 $\mathbb{Q}$。
@@ -921,7 +921,7 @@ $\operatorname{char} F$ = 使 $\underbrace{1 + \cdots + 1}_{n} = 0$ 的最小正
 
 ### 17.6 分式域與域擴張
 
-- **分式域**：任何整環 $R$ 都可嵌入其**分式域** $\operatorname{Frac}(R)$（如同由 $\mathbb{Z}$ 造出 $\mathbb{Q}$）。例：$\operatorname{Frac}(F[x]) = F(x)$。
+- **分式域**：任何整環 $R$ 都可嵌入其**分式域** $\mathrm{Frac}(R)$（如同由 $\mathbb{Z}$ 造出 $\mathbb{Q}$）。例：$\mathrm{Frac}(F[x]) = F(x)$。
 - **域擴張** $K/F$：$K$ 是含 $F$ 的域。此時 $K$ 自然是 $F$-**向量空間**，維度 $[K : F]$ 稱為擴張次數。
 - **塔定理**：$[L : F] = [L : K][K : F]$。
 - **代數閉域**：每個非常數多項式都有根，例如 $\mathbb{C}$。
@@ -946,9 +946,9 @@ $\operatorname{char} F$ = 使 $\underbrace{1 + \cdots + 1}_{n} = 0$ 的最小正
 
 給定交換群 $M$，則 $R$-模結構與環同態
 
-$$\rho : R \longrightarrow \operatorname{End}(M)$$
+$$\rho : R \longrightarrow \mathrm{End}(M)$$
 
-一一對應，其中 $\operatorname{End}(M)$ 是 $M$ 的群自同態構成的環。即「模 = 環在交換群上的**表示**」，這與「群作用 = 群到對稱群的同態」是同一種想法。
+一一對應，其中 $\mathrm{End}(M)$ 是 $M$ 的群自同態構成的環。即「模 = 環在交換群上的**表示**」，這與「群作用 = 群到對稱群的同態」是同一種想法。
 
 ### 18.3 例子
 
@@ -968,8 +968,8 @@ $$\rho : R \longrightarrow \operatorname{End}(M)$$
 - **子模** $N \le M$：$M$ 的子群且對 $R$ 作用封閉。
 - **商模** $M/N$：以 $r(m + N) = rm + N$ 定義。
 - **模同態** $f : M \to N$：保持加法與純量乘法，$f(rm) = rf(m)$。核是子模，像是子模。
-- **同構定理依然成立**：$M/\ker f \cong \operatorname{im} f$，另有第二、第三同構定理。
-- $\operatorname{Hom}_R(M, N)$ 當 $R$ 交換時是 $R$-模；$\operatorname{End}_R(M)$ 是環。
+- **同構定理依然成立**：$M/\ker f \cong \mathrm{im} f$，另有第二、第三同構定理。
+- $\mathrm{Hom}_R(M, N)$ 當 $R$ 交換時是 $R$-模；$\mathrm{End}_R(M)$ 是環。
 
 > 對照：群 → 正規子群 → 商群；環 → 理想 → 商環；模 → **子模** → 商模。三者的商結構模式完全相同。
 
@@ -1047,9 +1047,9 @@ $$V \;\cong\; F[x]/(f_1) \oplus \cdots \oplus F[x]/(f_k),\qquad f_1 \mid f_2 \mi
 
 | 結構 | 「核」是什麼 | 第一同構定理 |
 |------|--------------|--------------|
-| 群 | 正規子群 $N$ | $G/\ker\varphi \cong \operatorname{im}\varphi$ |
-| 環 | 理想 $I$ | $R/\ker\varphi \cong \operatorname{im}\varphi$ |
-| 模 | 子模 $N$ | $M/\ker f \cong \operatorname{im} f$ |
+| 群 | 正規子群 $N$ | $G/\ker\varphi \cong \mathrm{im}\varphi$ |
+| 環 | 理想 $I$ | $R/\ker\varphi \cong \mathrm{im}\varphi$ |
+| 模 | 子模 $N$ | $M/\ker f \cong \mathrm{im} f$ |
 
 ### 20.3 結構之間的「轉換橋樑」
 
@@ -1060,8 +1060,8 @@ $$V \;\cong\; F[x]/(f_1) \oplus \cdots \oplus F[x]/(f_k),\qquad f_1 \mid f_2 \mi
 | 域 $F$ | 乘法群 $F^\times$ | 取非零元 |
 | 群 $G$、環 $k$ | 群環 $k[G]$ | 以 $G$ 為基的自由 $k$-模，乘法由 $G$ 延伸 |
 | 環 $R$ | 自己是自己的模 | $R$ 作用在 $R$ 上 |
-| 交換群 $A$ | 環 $\operatorname{End}(A)$ | 自同態環 |
-| 整環 $R$ | 域 $\operatorname{Frac}(R)$ | 分式域 |
+| 交換群 $A$ | 環 $\mathrm{End}(A)$ | 自同態環 |
+| 整環 $R$ | 域 $\mathrm{Frac}(R)$ | 分式域 |
 | 環 $R$、極大理想 $\mathfrak{m}$ | 域 $R/\mathfrak{m}$ | 商環 |
 | 域 $F$、不可約多項式 $f$ | 域 $F[x]/(f)$ | 構造擴張 |
 
@@ -1669,7 +1669,7 @@ $$x = \sqrt[3]{-\tfrac q2 + \sqrt{\tfrac{q^2}{4} + \tfrac{p^3}{27}}} + \sqrt[3]{
 | **群**（加法） | $(R, +)$ | $\cong \mathbb{Z}^2$，格點 | 怎麼加？子群、商群有多大？ |
 | **群**（乘法） | 單位群 $R^\times$ | $\{\pm\varepsilon^n\} \cong \mathbb{Z}_2 \times \mathbb{Z}$，$\varepsilon = 1 + \sqrt2$ | 哪些元素可逆？Pell 方程式 |
 | **環** | $(R, +, \cdot)$ | 整環、歐氏整環（故為 PID、UFD） | 怎麼分解？理想與商環長什麼樣？ |
-| **域** | $\operatorname{Frac}(R)$ 與 $R/\mathfrak{m}$ | $\mathbb{Q}(\sqrt2)$；$R/(3) = \mathbb{F}_9$ | 何時可以做除法？ |
+| **域** | $\mathrm{Frac}(R)$ 與 $R/\mathfrak{m}$ | $\mathbb{Q}(\sqrt2)$；$R/(3) = \mathbb{F}_9$ | 何時可以做除法？ |
 | **模** | $R$ 作為 $\mathbb{Z}$-模／$R$-模 | 秩 2 自由 $\mathbb{Z}$-模；乘以 $\sqrt2$ 是矩陣 | 線性代數、行列式、結構定理 |
 | **伽羅瓦群** | $\mathrm{Gal}(\mathbb{Q}(\sqrt2)/\mathbb{Q})$ | $\mathbb{Z}_2$，$\sigma: \sqrt2 \mapsto -\sqrt2$ | 範數、跡、質數如何分裂 |
 
@@ -1761,13 +1761,13 @@ $$\lvert R/(\alpha) \rvert = \lvert N(\alpha) \rvert.$$
 
 $$\sqrt2 \cdot 1 = \sqrt2,\qquad \sqrt2\cdot\sqrt2 = 2 \quad\Longrightarrow\quad M = \begin{pmatrix} 0 & 2 \\ 1 & 0 \end{pmatrix},\qquad M^2 = 2I.$$
 
-於是環同態（第 18.2 節的「模 = 環到 $\operatorname{End}$ 的同態」）
+於是環同態（第 18.2 節的「模 = 環到 $\mathrm{End}$ 的同態」）
 
 $$\rho : \mathbb{Z}[\sqrt2] \to M_2(\mathbb{Z}),\qquad a + b\sqrt2 \;\mapsto\; aI + bM = \begin{pmatrix} a & 2b \\ b & a \end{pmatrix}.$$
 
 這個 $\rho$ 讓 $\mathbb{Z}^2$ 成為 $R$-模。並且
 
-$$\det \rho(\alpha) = a^2 - 2b^2 = N(\alpha),\qquad \operatorname{tr}\rho(\alpha) = 2a = \mathrm{Tr}(\alpha).$$
+$$\det \rho(\alpha) = a^2 - 2b^2 = N(\alpha),\qquad \mathrm{tr}\rho(\alpha) = 2a = \mathrm{Tr}(\alpha).$$
 
 **範數就是行列式，跡就是矩陣的跡**。「乘法」變成「線性變換」，這正是模論的核心思想。
 
@@ -1779,11 +1779,11 @@ $$\det \rho(\alpha) = a^2 - 2b^2 = N(\alpha),\qquad \operatorname{tr}\rho(\alpha
 
 | $\alpha$ | 矩陣 $\rho(\alpha)$ | 標準型 | $R/(\alpha)$ 作為加法群 | 階 $= \lvert N(\alpha)\rvert$ |
 |----------|---------------------|--------|-------------------------|:---:|
-| $2$ | $\begin{pmatrix}2&0\\0&2\end{pmatrix}$ | $\operatorname{diag}(2,2)$ | $\mathbb{Z}_2 \times \mathbb{Z}_2$ | 4 |
-| $4$ | $\begin{pmatrix}4&0\\0&4\end{pmatrix}$ | $\operatorname{diag}(4,4)$ | $\mathbb{Z}_4 \times \mathbb{Z}_4$ | 16 |
-| $3 + \sqrt2$ | $\begin{pmatrix}3&2\\1&3\end{pmatrix}$ | $\operatorname{diag}(1,7)$ | $\mathbb{Z}_7$ | 7 |
-| $4 + \sqrt2$ | $\begin{pmatrix}4&2\\1&4\end{pmatrix}$ | $\operatorname{diag}(1,14)$ | $\mathbb{Z}_{14} \cong \mathbb{Z}_2 \times \mathbb{Z}_7$ | 14 |
-| $2\sqrt2$ | $\begin{pmatrix}0&4\\2&0\end{pmatrix}$ | $\operatorname{diag}(2,4)$ | $\mathbb{Z}_2 \times \mathbb{Z}_4$ | 8 |
+| $2$ | $\begin{pmatrix}2&0\\0&2\end{pmatrix}$ | $\mathrm{diag}(2,2)$ | $\mathbb{Z}_2 \times \mathbb{Z}_2$ | 4 |
+| $4$ | $\begin{pmatrix}4&0\\0&4\end{pmatrix}$ | $\mathrm{diag}(4,4)$ | $\mathbb{Z}_4 \times \mathbb{Z}_4$ | 16 |
+| $3 + \sqrt2$ | $\begin{pmatrix}3&2\\1&3\end{pmatrix}$ | $\mathrm{diag}(1,7)$ | $\mathbb{Z}_7$ | 7 |
+| $4 + \sqrt2$ | $\begin{pmatrix}4&2\\1&4\end{pmatrix}$ | $\mathrm{diag}(1,14)$ | $\mathbb{Z}_{14} \cong \mathbb{Z}_2 \times \mathbb{Z}_7$ | 14 |
+| $2\sqrt2$ | $\begin{pmatrix}0&4\\2&0\end{pmatrix}$ | $\mathrm{diag}(2,4)$ | $\mathbb{Z}_2 \times \mathbb{Z}_4$ | 8 |
 
 > 例如 $R/(2\sqrt2)$ 的階為 8，卻同構於 $\mathbb{Z}_2 \times \mathbb{Z}_4$ 而不是 $\mathbb{Z}_8$——階相同的群未必同構，史密斯標準型能分辨它們。
 
@@ -1804,7 +1804,7 @@ $K = \mathbb{Q}(\sqrt2)$ 是 $x^2 - 2$ 的分裂域，$\mathrm{Gal}(K/\mathbb{Q}
 | 量 | 用 $\sigma$ 表示 | 用模／矩陣表示 | 值 |
 |----|------------------|----------------|----|
 | **範數** | $N(x) = x\,\sigma(x)$ | $\det\rho(x)$ | $a^2 - 2b^2$ |
-| **跡** | $\mathrm{Tr}(x) = x + \sigma(x)$ | $\operatorname{tr}\rho(x)$ | $2a$ |
+| **跡** | $\mathrm{Tr}(x) = x + \sigma(x)$ | $\mathrm{tr}\rho(x)$ | $2a$ |
 | 固定域 | $K^{\langle\sigma\rangle} = \mathbb{Q}$ | — | $\mathbb{Q}$ |
 
 - 基本定理（第 21.6 節）：$\mathbb{Z}_2$ 只有兩個子群，故中間域只有 $\mathbb{Q}$ 與 $K$。
@@ -2106,7 +2106,7 @@ $$\mathrm{Gal}(\mathbb{Q}(\zeta_{13})/\mathbb{Q}) \cong (\mathbb{Z}/13\mathbb{Z}
 | 單位群 | $\mathbb{Z}_2 \times \mathbb{Z}$（無限） | $\mathbb{Z}_2 \times \mathbb{Z}_2$（有限，非循環） |
 | 環的性質 | 整環、歐氏整環、無零因子 | 有零因子、有冪等元與冪零元 |
 | 分解 | 質數分歧、惰性、分裂 | CRT：$\mathbb{Z}_{12} \cong \mathbb{Z}_4 \times \mathbb{Z}_3$ |
-| 域 | $\operatorname{Frac} = \mathbb{Q}(\sqrt2)$、商 $\mathbb{F}_9$ | 商 $\mathbb{F}_2$、$\mathbb{F}_3$；特徵 12 故非域 |
+| 域 | $\mathrm{Frac} = \mathbb{Q}(\sqrt2)$、商 $\mathbb{F}_9$ | 商 $\mathbb{F}_2$、$\mathbb{F}_3$；特徵 12 故非域 |
 | 模 | 秩 2 的自由 $\mathbb{Z}$-模 | 扭模，$\mathbb{Z}_4 \oplus \mathbb{Z}_3$，非自由 |
 | 伽羅瓦群 | $\mathbb{Z}_2 = \langle \sigma \rangle$ | 本身是 $\mathrm{Gal}(\mathbb{F}_{2^{12}}/\mathbb{F}_2) \cong \mathbb{Z}_{12}$ |
 
@@ -2295,11 +2295,11 @@ Bronstein 等人提出的**幾何深度學習（Geometric Deep Learning）**用�
 |------|------|
 | 拉格朗日 | $\|H\|$ 整除 $\|G\|$，且 $\|G\| = [G:H]\|H\|$ |
 | 柯西 | $p \mid \|G\|$ ⟹ 存在 $p$ 階元素 |
-| 第一同構 | $G/\ker\varphi \cong \operatorname{im}\varphi$ |
+| 第一同構 | $G/\ker\varphi \cong \mathrm{im}\varphi$ |
 | 凱萊 | 每個群嵌入某個 $S_n$ |
-| 軌道—穩定子 | $\|\operatorname{Orb}(x)\| = [G : G_x]$ |
+| 軌道—穩定子 | $\|\mathrm{Orb}(x)\| = [G : G_x]$ |
 | 類方程 | $\|G\| = \|Z(G)\| + \sum [G : C_G(x_i)]$ |
-| Burnside 引理 | 軌道數 $= \frac{1}{\|G\|}\sum_g \|\operatorname{Fix}(g)\|$ |
+| Burnside 引理 | 軌道數 $= \frac{1}{\|G\|}\sum_g \|\mathrm{Fix}(g)\|$ |
 | Sylow | 存在、共軛、$n_p \equiv 1 \pmod p$ 且 $n_p \mid m$ |
 | 交換群結構 | 有限生成交換群 $\cong \mathbb{Z}^r \times$ 有限個循環群 |
 | $A_n$ 單 | $n \ge 5$ 時 $A_n$ 為單群 |

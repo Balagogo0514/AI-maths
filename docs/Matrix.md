@@ -943,7 +943,7 @@ $$
 用高斯消去法時，最自然的讀法就是：
 
 $$
-\operatorname{rank}(A)=\text{pivot 的個數}
+\mathrm{rank}(A)=\text{pivot 的個數}
 $$
 
 也等於化成階梯形後的非零列數。
@@ -1137,7 +1137,7 @@ $$
 
 - $A$ 可逆
 - $\det(A)\neq 0$
-- $\operatorname{rank}(A)=n$
+- $\mathrm{rank}(A)=n$
 - $A$ 的欄向量線性獨立
 - $A$ 的列向量線性獨立
 - 對每個 $b$，方程 $Ax=b$ 都有唯一解

@@ -84,7 +84,7 @@ $$
 由質因數分解可直接得到：
 
 - **最大公因數**：$\gcd$ 取各質數的最小次方。
-- **最小公倍數**：$\operatorname{lcm}$ 取各質數的最大次方。
+- **最小公倍數**：$\mathrm{lcm}$ 取各質數的最大次方。
 - **因數個數**：$d(n) = \prod_{i}(a_i + 1)$。
 - **因數和**：$\sigma(n) = \prod_i \dfrac{p_i^{a_i+1}-1}{p_i - 1}$。
 
@@ -141,12 +141,12 @@ $$
 ### 4.1 更好的近似：對數積分
 
 $$
-\operatorname{Li}(x) = \int_2^x \frac{dt}{\ln t}
+\mathrm{Li}(x) = \int_2^x \frac{dt}{\ln t}
 $$
 
-$\operatorname{Li}(x)$ 比 $x/\ln x$ 準得多。數值比較：
+$\mathrm{Li}(x)$ 比 $x/\ln x$ 準得多。數值比較：
 
-| $x$ | $\pi(x)$ | $x/\ln x$ | $\operatorname{Li}(x)$ |
+| $x$ | $\pi(x)$ | $x/\ln x$ | $\mathrm{Li}(x)$ |
 |---|---|---|---|
 | $10^3$ | $168$ | $145$ | $178$ |
 | $10^6$ | $78498$ | $72382$ | $78628$ |
@@ -158,10 +158,10 @@ $\operatorname{Li}(x)$ 比 $x/\ln x$ 準得多。數值比較：
 
 ### 4.2 誤差項與黎曼猜想
 
-PNT 說 $\pi(x) \approx \operatorname{Li}(x)$，但**誤差有多大**才是關鍵。黎曼猜想等價於以下誤差界（對任意 $\varepsilon>0$）：
+PNT 說 $\pi(x) \approx \mathrm{Li}(x)$，但**誤差有多大**才是關鍵。黎曼猜想等價於以下誤差界（對任意 $\varepsilon>0$）：
 
 $$
-|\pi(x) - \operatorname{Li}(x)| = O\!\left(x^{1/2 + \varepsilon}\right)
+|\pi(x) - \mathrm{Li}(x)| = O\!\left(x^{1/2 + \varepsilon}\right)
 $$
 
 也就是說，黎曼猜想是「質數分布盡可能規律」的精確陳述。詳見第 6 節與 `Riemann-Hypothesis.md`。
@@ -209,7 +209,7 @@ $$
 
 ## 6. 黎曼 ζ 函數與黎曼猜想
 
-黎曼 ζ 函數先以級數定義（$\operatorname{Re}(s) > 1$），再**解析延拓**到整個複平面（除 $s=1$ 的單極點）：
+黎曼 ζ 函數先以級數定義（$\mathrm{Re}(s) > 1$），再**解析延拓**到整個複平面（除 $s=1$ 的單極點）：
 
 $$
 \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s} = \prod_{p} \frac{1}{1 - p^{-s}}
@@ -218,9 +218,9 @@ $$
 ### 6.1 零點
 
 - **平凡零點**：$s = -2, -4, -6, \dots$。
-- **非平凡零點**：全部落在**臨界帶** $0 < \operatorname{Re}(s) < 1$ 內。
+- **非平凡零點**：全部落在**臨界帶** $0 < \mathrm{Re}(s) < 1$ 內。
 
-**黎曼猜想（Riemann Hypothesis, 1859）**：所有非平凡零點的實部都等於 $\tfrac{1}{2}$，即落在**臨界線** $\operatorname{Re}(s) = \tfrac12$ 上。
+**黎曼猜想（Riemann Hypothesis, 1859）**：所有非平凡零點的實部都等於 $\tfrac{1}{2}$，即落在**臨界線** $\mathrm{Re}(s) = \tfrac12$ 上。
 
 ### 6.2 為什麼與質數有關
 
@@ -230,7 +230,7 @@ $$
 \psi(x) = x - \sum_{\rho} \frac{x^{\rho}}{\rho} - \ln(2\pi) - \tfrac12\ln(1 - x^{-2})
 $$
 
-其中 $\rho$ 跑遍非平凡零點。每個零點貢獻一個振盪項 $x^{\rho}/\rho$，其大小由 $\operatorname{Re}(\rho)$ 控制。若所有 $\operatorname{Re}(\rho) = \tfrac12$，振盪被壓到 $O(x^{1/2}\ln x)$，質數分布就「盡可能規律」。這就是第 4.2 節誤差界的來源。完整討論見 `Riemann-Hypothesis.md`。
+其中 $\rho$ 跑遍非平凡零點。每個零點貢獻一個振盪項 $x^{\rho}/\rho$，其大小由 $\mathrm{Re}(\rho)$ 控制。若所有 $\mathrm{Re}(\rho) = \tfrac12$，振盪被壓到 $O(x^{1/2}\ln x)$，質數分布就「盡可能規律」。這就是第 4.2 節誤差界的來源。完整討論見 `Riemann-Hypothesis.md`。
 
 ---
 
