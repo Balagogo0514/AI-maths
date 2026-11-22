@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">分支是 Hecke 陪集的元素：挑出一個像</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">Hecke 對應給出全部像；Collatz 用奇偶性只選一個</text>
+<text x="18.0" y="62.0" text-anchor="start" font-size="8" font-weight="700" fill="#0b0b0b">x = 7（奇）：T₆ 的 12 個像 (a·x + b)/d，ad = 6</text>
+<rect x="20.0" y="68.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="38.0" y="78.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">42</text>
+<rect x="60.0" y="68.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="78.0" y="78.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">21/2</text>
+<rect x="100.0" y="68.0" width="36" height="15" rx="4" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="1.4"/>
+<text x="118.0" y="78.5" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">11</text>
+<rect x="140.0" y="68.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="158.0" y="78.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">14/3</text>
+<rect x="180.0" y="68.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="198.0" y="78.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">5</text>
+<rect x="220.0" y="68.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="238.0" y="78.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">16/3</text>
+<rect x="20.0" y="87.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="38.0" y="97.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">7/6</text>
+<rect x="60.0" y="87.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="78.0" y="97.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">4/3</text>
+<rect x="100.0" y="87.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="118.0" y="97.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">3/2</text>
+<rect x="140.0" y="87.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="158.0" y="97.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">5/3</text>
+<rect x="180.0" y="87.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="198.0" y="97.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">11/6</text>
+<rect x="220.0" y="87.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="238.0" y="97.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">2</text>
+<text x="141.0" y="116.0" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">Collatz：T(7) = (3·7+1)/2 = 11（橘）</text>
+<text x="18.0" y="137.0" text-anchor="start" font-size="8" font-weight="700" fill="#0b0b0b">x = 6（偶）：T₂ 的 3 個像</text>
+<rect x="20.0" y="143.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="38.0" y="153.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">12</text>
+<rect x="60.0" y="143.0" width="36" height="15" rx="4" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="1.4"/>
+<text x="78.0" y="153.5" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">3</text>
+<rect x="100.0" y="143.0" width="36" height="15" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.6"/>
+<text x="118.0" y="153.5" text-anchor="middle" font-size="8" font-weight="400" fill="#0b0b0b">7/2</text>
+<text x="141.0" y="175.0" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">Collatz：T(6) = 6/2 = 3（橘）</text>
+<rect x="18" y="186" width="246" height="98" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="199.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">x/2：det 2，(3x+1)/2：det 6，(x−1)/3：det 3（皆本原）</text>
+<text x="141.0" y="212.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">陪集數 3、12、4（= ψ(2)、ψ(6)、ψ(3)）</text>
+<text x="141.0" y="225.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">x &lt; 2000：奇數的 T(x) 都在 T₆ 的像裡，偶數都在 T₂ 的像裡</text>
+<text x="141.0" y="239.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">(x−1)/3 與 (x+2)/3 差一個平移，屬同一個 Γ 陪集（推論）</text>
+<text x="141.0" y="253.0" text-anchor="middle" font-size="8" font-weight="700" fill="#d94040">但任何本原整數矩陣都如此，沒有 Collatz 特有的資訊</text>
+<text x="141.0" y="268.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">近乎定義（已驗證），不是結構性連結</text>
+<text x="141.0" y="279.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">L = U₂ + R 與 U_p 不交換</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">隨機整數序列（N = 60000），(L U_p a)_n 與 (U_p L a)_n 不同的比例</text>
+<line x1="322" y1="150" x2="540" y2="150" stroke="#898781" stroke-width="0.8"/>
+<line x1="322" y1="150" x2="322" y2="58" stroke="#898781" stroke-width="0.8"/>
+<line x1="319" y1="150.0" x2="540" y2="150.0" stroke="#eee" stroke-width="0.6"/>
+<text x="316.0" y="153.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0</text>
+<line x1="319" y1="110.0" x2="540" y2="110.0" stroke="#eee" stroke-width="0.6"/>
+<text x="316.0" y="113.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0.25</text>
+<line x1="319" y1="70.0" x2="540" y2="70.0" stroke="#eee" stroke-width="0.6"/>
+<text x="316.0" y="73.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0.50</text>
+<rect x="332.2" y="74.0" width="14" height="76.0" fill="#2a78d6" opacity="0.85"/>
+<text x="339.2" y="72.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#2a78d6">0.47</text>
+<rect x="352.2" y="74.1" width="14" height="75.9" fill="#eb6834" opacity="0.85"/>
+<text x="359.2" y="72.1" text-anchor="middle" font-size="6.8" font-weight="700" fill="#eb6834">0.47</text>
+<rect x="332.2" y="148.5" width="34" height="1.5" fill="#1baf7a"/>
+<text x="349.2" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=2</text>
+<rect x="386.8" y="124.8" width="14" height="25.2" fill="#2a78d6" opacity="0.85"/>
+<text x="393.8" y="122.8" text-anchor="middle" font-size="6.8" font-weight="700" fill="#2a78d6">0.16</text>
+<rect x="406.8" y="124.9" width="14" height="25.1" fill="#eb6834" opacity="0.85"/>
+<text x="413.8" y="122.9" text-anchor="middle" font-size="6.8" font-weight="700" fill="#eb6834">0.16</text>
+<rect x="386.8" y="148.5" width="34" height="1.5" fill="#1baf7a"/>
+<text x="403.8" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=3</text>
+<rect x="441.2" y="99.7" width="14" height="50.3" fill="#2a78d6" opacity="0.85"/>
+<text x="448.2" y="97.7" text-anchor="middle" font-size="6.8" font-weight="700" fill="#2a78d6">0.31</text>
+<rect x="461.2" y="99.5" width="14" height="50.5" fill="#eb6834" opacity="0.85"/>
+<text x="468.2" y="97.5" text-anchor="middle" font-size="6.8" font-weight="700" fill="#eb6834">0.32</text>
+<rect x="441.2" y="148.5" width="34" height="1.5" fill="#1baf7a"/>
+<text x="458.2" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=5</text>
+<rect x="495.8" y="124.5" width="14" height="25.5" fill="#2a78d6" opacity="0.85"/>
+<text x="502.8" y="122.5" text-anchor="middle" font-size="6.8" font-weight="700" fill="#2a78d6">0.16</text>
+<rect x="495.8" y="148.5" width="34" height="1.5" fill="#1baf7a"/>
+<text x="512.8" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">p=7</text>
+<text x="325.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">藍：L 與 U_p　橘：R 與 U_p　綠線：U_p 與 U_q（比例 0）</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="190.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">U₂U₃ = U₃U₂、U₃U₅ = U₅U₃、U₂U₅ = U₅U₂、…（已驗證）</text>
+<text x="415.0" y="204.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#2a78d6">L 與 U_p：47%、16%、31%、16% 的下標不同（p = 2, 3, 5, 7）</text>
+<text x="415.0" y="217.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">R 與 U_p：47%、16%、32%（p = 2, 3, 5）</text>
+<text x="415.0" y="232.0" text-anchor="middle" font-size="8" font-weight="700" fill="#d94040">Hecke 代數是交換的 ⇒ L 不在其中</text>
+<text x="415.0" y="245.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">原因：R 的平移 n ↦ (n−1)/3 在 q-展開上</text>
+<text x="415.0" y="257.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">不是模形式的運算（推論）</text>
+<text x="415.0" y="271.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">U_p 是 T_p = U_p + p^(k−1) V_p 的一部分（記憶）</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">Dirichlet 級數的角度與小結</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">L = U₂ + R 作用在層級數 F_d(s) 上（§3.14）</text>
+<rect x="566" y="50" width="236" height="56" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="684.0" y="65.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">U₂ 部分：乘以 2^(−s)（Euler 因子 p = 2）</text>
+<text x="684.0" y="78.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">F_(d+1)(s) = 2^(−s) F_d(s) + Σ_(n≡4 mod 6) ((n−1)/3)^(−s)</text>
+<text x="684.0" y="92.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">第二項的平移 n−1 ⇒ Hurwitz zeta，破壞乘性</text>
+<text x="684.0" y="102.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="566" y="114" width="236" height="56" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="128.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">Hecke 本徵形式的 L 函數必須有 Euler 乘積</text>
+<text x="684.0" y="141.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">Collatz 的層級數沒有（steps 不乘性，§3.14、§3.18）</text>
+<text x="684.0" y="154.0" text-anchor="middle" font-size="8" font-weight="700" fill="#d94040">⇒ 與模形式、L 函數無已知關係</text>
+<text x="684.0" y="165.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="566" y="178" width="236" height="106" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="684.0" y="192.0" text-anchor="middle" font-size="8.5" font-weight="700" fill="#0b0b0b">接點小結</text>
+<text x="572.0" y="207.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#0b0b0b">U₂ 是 Hecke 型算子，U_pU_q 交換</text>
+<text x="796.0" y="207.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#1baf7a">已驗證</text>
+<text x="572.0" y="221.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#0b0b0b">完整的 L = U₂ + R 與 U_p 不交換</text>
+<text x="796.0" y="221.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#1baf7a">已驗證</text>
+<text x="572.0" y="235.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#0b0b0b">分支屬於 Hecke 陪集，Collatz 用奇偶性挑一個</text>
+<text x="796.0" y="235.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#d94040">近乎定義</text>
+<text x="572.0" y="249.0" text-anchor="start" font-size="7.2" font-weight="400" fill="#0b0b0b">模形式、L 函數、Euler 乘積</text>
+<text x="796.0" y="249.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#d94040">無已知關係</text>
+<text x="684.0" y="270.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">文獻（只看過標題）：Koopman 算子與 3x+1、de Bruijn 圖</text>
+</svg>
