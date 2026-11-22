@@ -13,7 +13,7 @@ SHA-256 等雜湊函數滿足四個性質：
 | 性質 | 定義 |
 |---|---|
 | **確定性** | 相同輸入必得相同輸出 |
-| **抗碰撞性** | 找到 $H(x) = H(y)$，$x \neq y$ 計算上不可行 |
+| **抗碰撞性** | 找到 $H(x) = H(y)$， $x \neq y$ 計算上不可行 |
 | **單向性** | 已知 $H(x)$ 無法還原 $x$ |
 | **雪崩效應** | 輸入改變一個 bit，輸出完全不同 |
 
@@ -23,10 +23,10 @@ SHA-256 等雜湊函數滿足四個性質：
 
 每位用戶有金鑰對 $(sk, pk)$（私鑰、公鑰）：
 
-- **簽章**：$\sigma = \text{Sign}(sk, m)$（用私鑰對訊息 $m$ 簽名）
-- **驗證**：$\text{Verify}(pk, m, \sigma) \in \{0,1\}$（任何人用公鑰驗證）
+- **簽章**： $\sigma = \text{Sign}(sk, m)$（用私鑰對訊息 $m$ 簽名）
+- **驗證**： $\text{Verify}(pk, m, \sigma) \in \{0,1\}$（任何人用公鑰驗證）
 
-比特幣使用 **ECDSA**（Elliptic Curve Digital Signature Algorithm），基於橢圓曲線 $y^2 = x^3 + 7 \pmod{p}$ 上離散對數問題的困難性。私鑰 $sk$ 是隨機大整數，公鑰 $pk = sk \cdot G$（$G$ 為生成點），從 $pk$ 還原 $sk$ 計算上不可行。
+比特幣使用 **ECDSA**（Elliptic Curve Digital Signature Algorithm），基於橢圓曲線 $y^2 = x^3 + 7 \pmod{p}$ 上離散對數問題的困難性。私鑰 $sk$ 是隨機大整數，公鑰 $pk = sk \cdot G$（ $G$ 為生成點），從 $pk$ 還原 $sk$ 計算上不可行。
 
 ### 1.3 Merkle Tree
 
@@ -163,9 +163,9 @@ $$\sigma' = \Upsilon(\sigma, T) \quad \text{（以太坊狀態轉換函數）}$$
 | 模型 | 查詢目標 | 複雜度 |
 |------|---------|--------|
 | UTXO（比特幣） | UTXO 集合（記憶體 hash 表，~5–8 GB） | $O(1)$ |
-| Account（以太坊） | 狀態樹（Merkle Patricia Trie） | $O(\log n)$，$n$=帳戶數 |
+| Account（以太坊） | 狀態樹（Merkle Patricia Trie） | $O(\log n)$， $n$=帳戶數 |
 
-Merkle Tree 保證：驗證一筆交易只需 $O(\log N)$ 個雜湊值（$N$=區塊內交易數），與鏈長完全無關。
+Merkle Tree 保證：驗證一筆交易只需 $O(\log N)$ 個雜湊值（ $N$=區塊內交易數），與鏈長完全無關。
 
 **核心洞察**：不可篡改性靠 hash 鏈結歷史，驗證新交易靠當前狀態——如同銀行不需重播所有歷史才知道你的餘額。
 
@@ -243,7 +243,7 @@ Vitalik 提出，三者難以同時兼顧：
 
 $$\pi = \text{ZKProve}(\text{state\_before}, \text{transactions}, \text{state\_after})$$
 
-在鏈上只需驗證 $\pi$（$O(1)$ 大小），無需重新執行所有交易，大幅提升吞吐量。
+在鏈上只需驗證 $\pi$（ $O(1)$ 大小），無需重新執行所有交易，大幅提升吞吐量。
 
 ---
 
@@ -253,7 +253,7 @@ $$\pi = \text{ZKProve}(\text{state\_before}, \text{transactions}, \text{state\_a
 
 三個性質：
 - **完整性**：若陳述為真，誠實 Prover 能說服 Verifier
-- **正確性**：若陳述為假，作弊 Prover 成功機率可忽略（$< 2^{-\lambda}$）
+- **正確性**：若陳述為假，作弊 Prover 成功機率可忽略（ $< 2^{-\lambda}$）
 - **零知識性**：Verifier 除「陳述為真」外不獲得額外資訊（模擬論證）
 
 **zk-SNARKs 比較**：
@@ -276,7 +276,7 @@ $$\pi = \text{ZKProve}(\text{state\_before}, \text{transactions}, \text{state\_a
 
 $$x \cdot y = k$$
 
-$x$、$y$ 是兩種代幣儲量，$k$ 為常數。兌換 $\Delta x$ 個 token X，可得：
+$x$、 $y$ 是兩種代幣儲量， $k$ 為常數。兌換 $\Delta x$ 個 token X，可得：
 
 $$\Delta y = \frac{y \cdot \Delta x}{x + \Delta x}$$
 
@@ -286,7 +286,7 @@ $$\Delta y = \frac{y \cdot \Delta x}{x + \Delta x}$$
 
 $$\text{IL}(r) = \frac{2\sqrt{r}}{1+r} - 1$$
 
-$r=4$（價格漲 4 倍）時 IL ≈ −20%；$r=0.25$（跌至 1/4）時 IL ≈ −20%（對稱）。
+$r=4$（價格漲 4 倍）時 IL ≈ −20%； $r=0.25$（跌至 1/4）時 IL ≈ −20%（對稱）。
 
 ![AMM 恆積曲線與無常損失](figures/amm-curve.svg)
 
@@ -315,7 +315,7 @@ Shor 演算法（1994）能在**多項式時間**內解決整數分解與離散�
 
 $$\text{古典計算：} O\!\left(e^{n^{1/3}}\right) \quad \xrightarrow{\text{量子}} \quad O(n^3)$$
 
-ECDSA 的安全性建立在橢圓曲線離散對數問題（ECDLP）的困難性：$pk = sk \cdot G$，從公鑰 $pk$ 反推私鑰 $sk$ 在古典計算上不可行。有了量子電腦，只要拿到公鑰即可算出私鑰，偽造任意簽章。
+ECDSA 的安全性建立在橢圓曲線離散對數問題（ECDLP）的困難性： $pk = sk \cdot G$，從公鑰 $pk$ 反推私鑰 $sk$ 在古典計算上不可行。有了量子電腦，只要拿到公鑰即可算出私鑰，偽造任意簽章。
 
 **各類地址的風險**：
 

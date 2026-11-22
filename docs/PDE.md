@@ -17,7 +17,7 @@ $$\frac{\partial^2 u}{\partial x^2}, \quad \frac{\partial^2 u}{\partial x \parti
 ### 1.2 偏微分方程的階與線性性
 
 - **階（order）**：方程中最高偏導的階數
-- **線性**：$u$ 及其偏導只以一次冪出現，係數可以是自變數的函數
+- **線性**： $u$ 及其偏導只以一次冪出現，係數可以是自變數的函數
 
 $$a(x,t)\frac{\partial u}{\partial t} + b(x,t)\frac{\partial u}{\partial x} = c(x,t)u + d(x,t) \quad \text{（一階線性 PDE）}$$
 
@@ -35,7 +35,7 @@ Laplacian 衡量函數在某點的值與其周圍平均值之差，是 PDE 理�
 
 $$\frac{\partial u}{\partial t} = \alpha \nabla^2 u$$
 
-$u(x,t)$：溫度；$\alpha > 0$：熱擴散率。描述熱能從高溫向低溫**擴散**的過程。
+$u(x,t)$：溫度； $\alpha > 0$：熱擴散率。描述熱能從高溫向低溫**擴散**的過程。
 
 ![熱方程演化](figures/heat-equation.svg)
 
@@ -77,7 +77,7 @@ $$\nabla^2 u = f(x)$$
 
 $$\rho\left(\frac{\partial \mathbf{v}}{\partial t} + \mathbf{v}\cdot\nabla\mathbf{v}\right) = -\nabla p + \mu\nabla^2\mathbf{v} + \mathbf{f}$$
 
-$\mathbf{v}$：流速；$p$：壓力；$\mu$：黏滯係數；$\rho$：密度；$\mathbf{f}$：外力。
+$\mathbf{v}$：流速； $p$：壓力； $\mu$：黏滯係數； $\rho$：密度； $\mathbf{f}$：外力。
 
 搭配**連續方程** $\nabla \cdot \mathbf{v} = 0$（不可壓縮），完整描述黏性流體。其光滑解是否全局存在是**千禧年七大難題**之一。
 
@@ -103,7 +103,7 @@ $\mathbf{v}$：流速；$p$：壓力；$\mu$：黏滯係數；$\rho$：密度；
 
 ### 4.1 分離變數法
 
-假設解可分離：$u(x,t) = X(x) \cdot T(t)$
+假設解可分離： $u(x,t) = X(x) \cdot T(t)$
 
 代入熱方程 $u_t = \alpha u_{xx}$：
 
@@ -148,7 +148,7 @@ $$\int \nabla u \cdot \nabla v\, dx = \int fv\, dx \quad \forall v \in V_h$$
 
 $$dx = f(x,t)\,dt + g(t)\,dW_t$$
 
-其中 $dW_t$ 是維納過程（Brownian motion）的增量，$g(t)$ 控制噪聲強度。
+其中 $dW_t$ 是維納過程（Brownian motion）的增量， $g(t)$ 控制噪聲強度。
 
 SDE 的機率密度 $p(x,t)$ 演化由 **Fokker-Planck 方程**（也稱 Kolmogorov 前向方程）描述：
 
@@ -171,7 +171,7 @@ Stable Diffusion、DDPM 的理論基礎是**隨機熱方程**。
 
 $$dx = -\frac{\beta(t)}{2}x\,dt + \sqrt{\beta(t)}\,dW_t$$
 
-隨 $t \to T$，$x$ 收斂至標準高斯 $\mathcal{N}(0, I)$。機率密度滿足 Fokker-Planck 方程（拋物型 PDE）。
+隨 $t \to T$， $x$ 收斂至標準高斯 $\mathcal{N}(0, I)$。機率密度滿足 Fokker-Planck 方程（拋物型 PDE）。
 
 **逆向過程**（去噪）：Anderson（1982）證明逆向過程同樣是 SDE：
 
@@ -210,7 +210,7 @@ $$\frac{dh}{dt} = f_\theta(h, t), \quad h(0) = h_{\text{input}}$$
 
 $$\frac{\partial H}{\partial t} = \mathcal{F}_\theta(H, \nabla H, \nabla^2 H, t)$$
 
-此為神經網路定義的 PDE，結合卷積（$\nabla^2$）與深度（$t$）兩個維度。
+此為神經網路定義的 PDE，結合卷積（ $\nabla^2$）與深度（ $t$）兩個維度。
 
 ### 6.4 圖神經網路與圖熱擴散
 
@@ -218,9 +218,9 @@ GNN 的訊息傳遞等價於圖上的**熱方程**：
 
 $$\frac{dH}{dt} = -\mathbf{L} H$$
 
-$\mathbf{L} = D - A$ 是**圖拉普拉斯矩陣**（$D$：度數矩陣，$A$：鄰接矩陣）。
+$\mathbf{L} = D - A$ 是**圖拉普拉斯矩陣**（ $D$：度數矩陣， $A$：鄰接矩陣）。
 
-解為 $H(t) = e^{-\mathbf{L}t} H(0)$，$K$ 層 GNN 對應時間步長為 $1/K$ 的離散熱擴散。
+解為 $H(t) = e^{-\mathbf{L}t} H(0)$， $K$ 層 GNN 對應時間步長為 $1/K$ 的離散熱擴散。
 
 - 層數多 → 熱擴散更充分 → **過平滑（over-smoothing）**問題
 - 圖 Transformer 在頻域調控擴散，改善此問題
@@ -243,7 +243,7 @@ Transformer 的 Self-Attention 在序列長度 $N \to \infty$ 時，token 演化
 
 $$\frac{\partial \mu}{\partial t} + \nabla \cdot (\mu V[\mu]) = 0$$
 
-$\mu(x,t)$ 是 token 的概率測度，$V[\mu]$ 是 Attention 誘導的速度場（依賴整體分布 → mean-field 耦合）。此為連續深度 Transformer 的理論基礎（研究前沿，2023–2024）。
+$\mu(x,t)$ 是 token 的概率測度， $V[\mu]$ 是 Attention 誘導的速度場（依賴整體分布 → mean-field 耦合）。此為連續深度 Transformer 的理論基礎（研究前沿，2023–2024）。
 
 ---
 
@@ -288,7 +288,7 @@ def pde_residual(model, x, t, alpha=0.01):
 # 損失 = PDE 殘差² + 初始條件² + 邊界條件²
 ```
 
-自動微分直接計算 $\partial u/\partial t$、$\partial^2 u/\partial x^2$，無需手動差分格點。
+自動微分直接計算 $\partial u/\partial t$、 $\partial^2 u/\partial x^2$，無需手動差分格點。
 
 ---
 

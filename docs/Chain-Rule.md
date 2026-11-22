@@ -10,7 +10,7 @@ $$
 y = f(u), \qquad u = g(x)
 $$
 
-且 $g$ 在 $x$ 可微、$f$ 在 $u = g(x)$ 可微，則複合函數
+且 $g$ 在 $x$ 可微、 $f$ 在 $u = g(x)$ 可微，則複合函數
 
 $$
 y = f(g(x))
@@ -44,7 +44,7 @@ $$
 g(x + \Delta x) = g(x) + g'(x)\Delta x + \varepsilon_1 \Delta x
 $$
 
-其中當 $\Delta x \to 0$ 時，$\varepsilon_1 \to 0$。
+其中當 $\Delta x \to 0$ 時， $\varepsilon_1 \to 0$。
 
 令
 
@@ -65,7 +65,7 @@ f(g(x) + \Delta u) - f(g(x))
 = f'(g(x))\Delta u + \varepsilon_2 \Delta u
 $$
 
-其中當 $\Delta u \to 0$ 時，$\varepsilon_2 \to 0$。
+其中當 $\Delta u \to 0$ 時， $\varepsilon_2 \to 0$。
 
 設
 

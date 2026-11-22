@@ -10,7 +10,7 @@
 
 想生成圖像 = 從真實圖像分布 $p(x)$ 中採樣。
 
-**問題在於**：$p(x)$ 是一個極其複雜的高維分布——
+**問題在於**： $p(x)$ 是一個極其複雜的高維分布——
 
 ```
 圖像空間的維度 = 512 × 512 × 3 = 786,432 維
@@ -84,7 +84,7 @@ Generator 總會找到「欺騙 D 的捷徑」而不是「生成多樣圖像」�
 
 ### 0.2.6 Score Function 為何繞過正規化常數？
 
-學習分布 $p(x)$ 通常需要能量模型：$p(x) = e^{-E_\theta(x)} / Z_\theta$，
+學習分布 $p(x)$ 通常需要能量模型： $p(x) = e^{-E_\theta(x)} / Z_\theta$，
 其中 $Z_\theta = \int e^{-E_\theta(x)} dx$ 在高維中**不可計算**。
 
 但 **Score Function** $s(x) = \nabla_x \log p(x)$ 把 $Z$ 自動消掉：
@@ -95,7 +95,7 @@ $$s(x) = \nabla_x \log \frac{e^{-E(x)}}{Z} = \underbrace{-\nabla_x E(x)}_{\text{
 
 $$\mathcal{L}_{\text{SM}} = \mathbb{E}_{p(x)}\!\left[\text{tr}(\nabla_x s_\theta(x)) + \tfrac{1}{2}\|s_\theta(x)\|^2\right]$$
 
-**問題**：需要計算 Jacobian 的跡，計算量 $O(d)$，$d=786{,}432$ 維時代價巨大。
+**問題**：需要計算 Jacobian 的跡，計算量 $O(d)$， $d=786{,}432$ 維時代價巨大。
 
 **Vincent（2011）Denoising Score Matching 的解法**：加噪聲後 score 有閉合形式：
 
@@ -112,7 +112,7 @@ $$\nabla_{x_t} \log p_\sigma(x_t | x_0) = -\frac{x_t - x_0}{\sigma^2} = -\frac{\
 
 $$\text{高維高斯 } \mathcal{N}(0, I_d) \text{ 的質量集中在半徑} \approx \sqrt{d} \text{ 的球殼上}$$
 
-驗證：$\mathbb{E}[\|x\|^2] = d$，$\text{Var}(\|x\|^2) = 2d$，故 $\|x\| \approx \sqrt{d}$ 以高概率成立。
+驗證： $\mathbb{E}[\|x\|^2] = d$， $\text{Var}(\|x\|^2) = 2d$，故 $\|x\| \approx \sqrt{d}$ 以高概率成立。
 
 **對插值的影響**：
 
@@ -234,7 +234,7 @@ $$q(x_t | x_{t-1}) = \mathcal{N}\!\left(\sqrt{1-\beta_t}\, x_{t-1},\; \beta_t I\
 
 $$x_t = \sqrt{\bar{\alpha}_t}\, x_0 + \sqrt{1 - \bar{\alpha}_t}\, \epsilon, \quad \epsilon \sim \mathcal{N}(0, I)$$
 
-其中 $\bar{\alpha}_t = \prod_{s=1}^t (1 - \beta_s)$，$\beta_t$ 是**噪聲排程（noise schedule）**。
+其中 $\bar{\alpha}_t = \prod_{s=1}^t (1 - \beta_s)$， $\beta_t$ 是**噪聲排程（noise schedule）**。
 
 - $t = 0$：原始資料 $x_0$
 - $t = T$：幾乎純高斯 $x_T \approx \mathcal{N}(0, I)$
@@ -283,7 +283,7 @@ $$dx = \left[f(x,t) - g(t)^2\, \underbrace{\nabla_x \log p_t(x)}_{\text{score fu
 
 $$\mathcal{L}_{\text{SM}} = \mathbb{E}_{t, x_t}\!\left[\|s_\theta(x_t,t) - \nabla_{x_t}\log q(x_t|x_0)\|^2\right]$$
 
-DDPM 是此框架的特例（$f(x,t) = -\frac{1}{2}\beta(t)x$，$g(t) = \sqrt{\beta(t)}$）。
+DDPM 是此框架的特例（ $f(x,t) = -\frac{1}{2}\beta(t)x$， $g(t) = \sqrt{\beta(t)}$）。
 
 ---
 
@@ -335,7 +335,7 @@ $$\epsilon_{\text{guided}} = \epsilon_\theta(x_t, \emptyset) + w \cdot \bigl[\ep
 
 ## 6. Latent Diffusion Model（LDM）
 
-像素空間的擴散計算量巨大（$512\times512 \times 3 = 786432$ 維）。**LDM（Rombach et al., 2022）** 在低維潛在空間做擴散：
+像素空間的擴散計算量巨大（ $512\times512 \times 3 = 786432$ 維）。**LDM（Rombach et al., 2022）** 在低維潛在空間做擴散：
 
 ```
 圖像 ──Encoder──▶ z₀（64×64×4）──加噪──▶ z_T
@@ -366,8 +366,8 @@ $$
 q(x_t | x_{t-1}) = \mathcal{N}\!\left(\sqrt{1-\beta_t}\, x_{t-1},\ \beta_t I\right)
 $$
 
-每步乘以 $\sqrt{1-\beta_t}$（壓縮訊號）並加高斯噪聲，$T$ 步後 $x_T \sim \mathcal{N}(0, I)$。  
-一步採樣公式：$x_t = \sqrt{\bar\alpha_t}\, x_0 + \sqrt{1-\bar\alpha_t}\, \epsilon$，$\epsilon \sim \mathcal{N}(0,I)$。
+每步乘以 $\sqrt{1-\beta_t}$（壓縮訊號）並加高斯噪聲， $T$ 步後 $x_T \sim \mathcal{N}(0, I)$。  
+一步採樣公式： $x_t = \sqrt{\bar\alpha_t}\, x_0 + \sqrt{1-\bar\alpha_t}\, \epsilon$， $\epsilon \sim \mathcal{N}(0,I)$。
 
 **逆向過程（神經網路學習）**：
 
@@ -444,8 +444,8 @@ Encoder 的中間特徵圖透過 Skip Connection 直接傳給對應的 Decoder �
 這正是從模糊到清晰「細節還原」的關鍵機制。
 
 以 U-Net 為骨幹，加入：
-- **時間嵌入**：$t$ 透過 sinusoidal embedding → MLP，以 AdaGN 注入每個 ResBlock
-- **Self-Attention**：在中間層（$16\times16$、$8\times8$）加入
+- **時間嵌入**： $t$ 透過 sinusoidal embedding → MLP，以 AdaGN 注入每個 ResBlock
+- **Self-Attention**：在中間層（ $16\times16$、 $8\times8$）加入
 - **Cross-Attention**：文字/類別條件注入
 
 ![前向逆向過程 · U-Net CNN 骨幹 · 感受野比較](figures/diffusion-cnn.svg)
@@ -457,7 +457,7 @@ Peebles & Xie（2022）以 **純 Transformer 取代 U-Net**，發現 Diffusion M
 **核心設計**：
 
 1. **Patch 化**：Latent $z \in \mathbb{R}^{H \times W \times C}$ 切成 $p \times p$ patch，展開為長度 $(H/p)(W/p)$ 的 token 序列
-2. **時間步嵌入**：$t$ 透過 sinusoidal → MLP，與類別條件合併為 $c$
+2. **時間步嵌入**： $t$ 透過 sinusoidal → MLP，與類別條件合併為 $c$
 3. **adaLN-Zero**（最優條件注入）：
 
 $$
@@ -494,7 +494,7 @@ $$
 
 每個圖像 patch 透過 Attention 加權選取文字資訊，實現**局部語義對齊**。
 
-**U-Net 時代（SD 1/2）**：Cross-Attention 只插入瓶頸層（$16^2$、$8^2$），感受野受限。  
+**U-Net 時代（SD 1/2）**：Cross-Attention 只插入瓶頸層（ $16^2$、 $8^2$），感受野受限。  
 **DiT 時代（SD3/FLUX）**：每層 Transformer Block 皆含 Cross-Attention，全局感受野。  
 **MMDiT（SD3/FLUX.1）**：文字與圖像 token 完全平等，聯合 Self-Attention，取消 Cross-Attention 分界。
 
@@ -595,11 +595,11 @@ OpenAI Sora（2024）推廣 DiT 至影片生成：
 
 | 概念 | 核心要點 |
 |---|---|
-| 前向過程 | 逐步加高斯噪聲，$t$ 步可一次採樣 |
+| 前向過程 | 逐步加高斯噪聲， $t$ 步可一次採樣 |
 | 逆向過程 | 學習 $\epsilon_\theta$ 或 score function，逐步去噪 |
 | 損失函數 | 預測噪聲的 MSE，訓練穩定無對抗 |
 | Score SDE | 連續化統一框架；DDPM 為特例 |
-| CFG | 無需外部分類器的條件引導，$w$ 控制強度 |
+| CFG | 無需外部分類器的條件引導， $w$ 控制強度 |
 | LDM | 在潛在空間擴散，計算量降低 20× |
 | DiT | Transformer 骨幹，更好的 scaling |
 | 加速採樣 | DDIM → DPM-Solver → Consistency Model → Flow Matching |

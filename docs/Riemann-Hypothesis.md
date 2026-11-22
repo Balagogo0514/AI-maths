@@ -214,7 +214,7 @@ $$
 
 它表示不超過 $x$ 的素數有多少個。
 
-十九世紀的數學家發現，$\pi(x)$ 大致接近
+十九世紀的數學家發現， $\pi(x)$ 大致接近
 
 $$
 \mathrm{Li}(x)=\int_2^x \frac{dt}{\log t},
@@ -425,7 +425,7 @@ RH 非常強，但它不是萬能鑰匙。
 |---|---|
 | 素數計數 | $\pi(x)=\mathrm{Li}(x)+O(\sqrt{x}\log x)$（§7） |
 | Mertens 函數 | $M(x)=\sum_{n\le x}\mu(n)=O(x^{1/2+\varepsilon})$ |
-| Robin 不等式 | $n>5040$ 時，$\sigma(n) < e^{\gamma}\,n\ln\ln n$（$\sigma$ 是因數和，$\gamma$ 是 Euler 常數） |
+| Robin 不等式 | $n>5040$ 時， $\sigma(n) < e^{\gamma}\,n\ln\ln n$（ $\sigma$ 是因數和， $\gamma$ 是 Euler 常數） |
 
 Robin 不等式只涉及因數和，完全不需要 zeta 函數就能陳述與檢查。
 
@@ -433,13 +433,13 @@ Robin 不等式只涉及因數和，完全不需要 zeta 函數就能陳述與�
 
 | 檢查 | 結果 |
 |---|---|
-| Robin：$5041\le n\le2\times10^6$ 的 $\sigma(n)/(n\ln\ln n)$ 最大值 | $1.7558$（$n=10080$），低於 $e^{\gamma}=1.7811$ |
-| Robin 的門檻：$3\le n\le5040$ | 有 26 個 $n$ 違反不等式，所以 $n>5040$ 的限制是必要的 |
-| Mertens：$M(10^6)$ | $211$，遠小於 $\sqrt{10^6}=1000$ |
+| Robin： $5041\le n\le2\times10^6$ 的 $\sigma(n)/(n\ln\ln n)$ 最大值 | $1.7558$（ $n=10080$），低於 $e^{\gamma}=1.7811$ |
+| Robin 的門檻： $3\le n\le5040$ | 有 26 個 $n$ 違反不等式，所以 $n>5040$ 的限制是必要的 |
+| Mertens： $M(10^6)$ | $211$，遠小於 $\sqrt{10^6}=1000$ |
 
 ### 14.2 RH 蘊含的條件結果
 
-- **素數誤差的精確界**：RH 蘊含 Schoenfeld 不等式 $\lvert\pi(x)-\mathrm{li}(x)\rvert < \dfrac{\sqrt{x}\,\ln x}{8\pi}$（$x\ge2657$，記憶）。我取樣 $x\in[2657,10^7]$（每隔 997 取一點，加上 $10^6$、$10^7$）檢查，比值 $\lvert\pi-\mathrm{li}\rvert\big/\bigl(\sqrt{x}\ln x/8\pi\bigr)$ 最大為 $0.9645$（在門檻 $x=2657$），全部小於 1（已驗證，只是取樣）。另外 $\mathrm{li}(10^7)-\pi(10^7)=339.4$，遠小於 $\sqrt{10^7}\approx3162$。
+- **素數誤差的精確界**：RH 蘊含 Schoenfeld 不等式 $\lvert\pi(x)-\mathrm{li}(x)\rvert < \dfrac{\sqrt{x}\,\ln x}{8\pi}$（ $x\ge2657$，記憶）。我取樣 $x\in[2657,10^7]$（每隔 997 取一點，加上 $10^6$、 $10^7$）檢查，比值 $\lvert\pi-\mathrm{li}\rvert\big/\bigl(\sqrt{x}\ln x/8\pi\bigr)$ 最大為 $0.9645$（在門檻 $x=2657$），全部小於 1（已驗證，只是取樣）。另外 $\mathrm{li}(10^7)-\pi(10^7)=339.4$，遠小於 $\sqrt{10^7}\approx3162$。
 - **質數間隔**：RH 蘊含 $p_{n+1}-p_n=O(\sqrt{p_n}\log p_n)$（Cramér，記憶）。
 - **確定性質數判定**：GRH 蘊含 Miller 測試只要檢查 $a\le 2\ln^2 n$ 的見證數（Bach，記憶），因此是多項式時間的確定性演算法。實務上不依賴它：64 位元整數用固定的見證數集合，一般情形用 Miller–Rabin，或不依賴 GRH 的 ECPP、AKS。
 - **最小二次非剩餘**：GRH 蘊含它是 $O(\log^2 p)$（記憶），可用於確定性開平方根與尋找原根的演算法（Shoup 等，記憶）。

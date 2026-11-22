@@ -38,7 +38,7 @@ p=0.40  p=0.593（臨界）  p=0.75
 
 $$p_c^{\text{site}} \approx 0.5927, \quad p_c^{\text{bond}} = \frac{1}{2}（精確解）$$
 
-三角格：$p_c^{\text{site}} = \frac{1}{2}$（精確，對偶論證）。
+三角格： $p_c^{\text{site}} = \frac{1}{2}$（精確，對偶論證）。
 
 ![滲流格點示意：p 從 0.3 到 0.9，三個相態](figures/perc-lattice.svg)
 
@@ -106,7 +106,7 @@ $$d_f = d - \beta/\nu, \quad \tau = 1 + d/d_f, \quad 2 - \eta = d_f - (d-2)$$
 這叫做**普適性類（Universality Class）**，同一類中的所有模型在臨界點附近行為相同。
 
 **為什麼普適？** 重整化群（RG）的解釋：
-- 在臨界點，$\xi \to \infty$，系統的長波行為由固定點（Fixed Point）決定
+- 在臨界點， $\xi \to \infty$，系統的長波行為由固定點（Fixed Point）決定
 - 固定點只依賴對稱性和維數，微觀細節是「無關算符」，在 RG 流下趨近於零
 
 ---
@@ -125,7 +125,7 @@ $p_c$ 是 RG 變換的**不穩定固定點**：
 
 $$p' = p_c \quad\text{當}\quad p = p_c$$
 
-在 $p_c$ 附近線性化：$p' - p_c = b^{1/\nu} (p - p_c)$，給出 $\nu = \log b / \log(dR/dp|_{p_c})$。
+在 $p_c$ 附近線性化： $p' - p_c = b^{1/\nu} (p - p_c)$，給出 $\nu = \log b / \log(dR/dp|_{p_c})$。
 
 **直觀**：臨界點的系統在粗粒化後「長得一樣」——自相似。偏離 $p_c$ 後，每次粗粒化都把系統推離臨界點，最終到達 $p=0$ 或 $p=1$ 的穩定固定點。
 
@@ -175,8 +175,8 @@ $$p' = p_c \quad\text{當}\quad p = p_c$$
 
 $$S \xrightarrow{\beta I/N} I \xrightarrow{\gamma} R$$
 
-- $S$（易感）、$I$（感染）、$R$（康復免疫）
-- $\beta$：接觸傳播率，$\gamma$：康復率
+- $S$（易感）、 $I$（感染）、 $R$（康復免疫）
+- $\beta$：接觸傳播率， $\gamma$：康復率
 
 ### 6.2 基本再生數 $R_0$
 
@@ -202,9 +202,9 @@ $$r_\infty = 1 - e^{-R_0 r_\infty}$$
 
 $N$ 個節點，每對之間以概率 $p$ 連邊。
 
-**臨界點**：$p_c = 1/N$（平均度 $\langle k \rangle = 1$）。
+**臨界點**： $p_c = 1/N$（平均度 $\langle k \rangle = 1$）。
 
-當 $\langle k \rangle > 1$（$p > 1/N$），出現大小 $O(N)$ 的**巨大連通分量**（Giant Connected Component，GCC）——這是網路中「湧現」的典型例子。
+當 $\langle k \rangle > 1$（ $p > 1/N$），出現大小 $O(N)$ 的**巨大連通分量**（Giant Connected Component，GCC）——這是網路中「湧現」的典型例子。
 
 ### 7.2 無尺度網路（Scale-Free）
 
@@ -212,7 +212,7 @@ $N$ 個節點，每對之間以概率 $p$ 連邊。
 
 $$p_c = \frac{\langle k \rangle}{\langle k^2 \rangle - \langle k \rangle} \to 0 \quad \text{當 } \langle k^2 \rangle \to \infty$$
 
-**意義**：無尺度網路對隨機故障極為健壯（$p_c \to 0$ 意味著幾乎不會因隨機移除節點而崩潰），但對**定向攻擊**（移除高度節點）極脆弱。
+**意義**：無尺度網路對隨機故障極為健壯（ $p_c \to 0$ 意味著幾乎不會因隨機移除節點而崩潰），但對**定向攻擊**（移除高度節點）極脆弱。
 
 **例子**：網際網路、社交網路、蛋白質交互網路。
 
@@ -221,7 +221,7 @@ $$p_c = \frac{\langle k \rangle}{\langle k^2 \rangle - \langle k \rangle} \to 0 
 | 網路類型 | $p_c$ | 健壯性 |
 |---------|-------|--------|
 | 隨機圖 ER | $1/\langle k \rangle$ | 中等 |
-| 無尺度（$\gamma<3$） | $\approx 0$ | **超健壯（隨機）** |
+| 無尺度（ $\gamma<3$） | $\approx 0$ | **超健壯（隨機）** |
 | 格點（2D） | $0.593$ | 中等 |
 | 樹狀結構 | $1/(\langle k \rangle - 1)$ | 低 |
 
@@ -276,7 +276,7 @@ Bak, Tang & Wiesenfeld（1987）：某些系統**自動演化到臨界態**，�
 | 序參數 $P_\infty \sim (p-p_c)^\beta$ | 任務準確率 $A(N)$ |
 | $p < p_c$：無貫通 | $N < N_c$：接近隨機 |
 | $p > p_c$：巨分量湧現 | $N > N_c$：能力突然湧現 |
-| 有限尺度效應（$\xi \sim L$） | 有限模型大小效應 |
+| 有限尺度效應（ $\xi \sim L$） | 有限模型大小效應 |
 
 ### 9.3 湧現的可能機制
 
@@ -374,7 +374,7 @@ $$P_\infty = p^N \to 0 \quad \text{（有限長度）}$$
 
 ### 10.2 二維鍵滲流精確解
 
-正方格的鍵滲流：$p_c = 1/2$（對偶論證：正方格的對偶格也是正方格，自對偶 $\Rightarrow p_c = 1/2$）。
+正方格的鍵滲流： $p_c = 1/2$（對偶論證：正方格的對偶格也是正方格，自對偶 $\Rightarrow p_c = 1/2$）。
 
 ### 10.3 Bethe 格（無限維極限）
 
@@ -382,7 +382,7 @@ $$P_\infty = p^N \to 0 \quad \text{（有限長度）}$$
 
 $$p_c = \frac{1}{z-1}, \quad P_\infty = \frac{z-1}{z-2}\!\left(p - \frac{1}{z-1}\right) + O\!\left((p-p_c)^2\right)$$
 
-此時 $\beta = 1$（mean-field 值）。**上臨界維數 $d_c = 6$**：$d \geq 6$ 時臨界指數退化為 mean-field 值。
+此時 $\beta = 1$（mean-field 值）。**上臨界維數 $d_c = 6$**： $d \geq 6$ 時臨界指數退化為 mean-field 值。
 
 ---
 
@@ -428,12 +428,12 @@ $$p_q > p_c \quad \text{（量子滲流閾值嚴格高於古典）}$$
 
 ### 12.2 Anderson 局域化——量子版的「不貫通」
 
-電子在無序格點中（$\varepsilon_i$ 隨機），競爭兩種行為：
+電子在無序格點中（ $\varepsilon_i$ 隨機），競爭兩種行為：
 
 | 無序程度 | 波函數行為 | 相 |
 |---|---|---|
-| 弱（$p \to 1$） | $\psi$ 延展全格 | **金屬相**（導電） |
-| 強（$p$ 小） | $\psi \sim e^{-r/\xi}$ 指數衰減 | **絕緣相**（局域化） |
+| 弱（ $p \to 1$） | $\psi$ 延展全格 | **金屬相**（導電） |
+| 強（ $p$ 小） | $\psi \sim e^{-r/\xi}$ 指數衰減 | **絕緣相**（局域化） |
 | 臨界 $p = p_c^{\text{quant}}$ | $\psi \sim r^{-(d-2+\eta)/2}$ | **金屬–絕緣體轉變（MIT）** |
 
 **重要結論**（Abrahams 1979，「大四論文」）：

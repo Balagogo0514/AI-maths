@@ -8,7 +8,7 @@
 
 ### 1.1 問題：直接輸出的計算瓶頸
 
-Transformer 在一個 forward pass 中，每個 token 的計算量約為 $O(d^2)$（$d$ 為 hidden dimension）。對於需要 $k$ 步推理的問題：
+Transformer 在一個 forward pass 中，每個 token 的計算量約為 $O(d^2)$（ $d$ 為 hidden dimension）。對於需要 $k$ 步推理的問題：
 
 - **直接輸出**：等效於 $O(1)$ 層計算，對複雜問題深度不足
 - **生成中間步驟**：每多生成一個 token，就多一次 $O(d^2)$ 計算
@@ -73,7 +73,7 @@ $$\boxed{\texttt{Let's think step by step.}}$$
 
 **步驟**：
 
-1. 用 temperature > 0（如 0.7），對同一問題抽樣 $k$ 條推理鏈（$k = 20 \sim 40$）
+1. 用 temperature > 0（如 0.7），對同一問題抽樣 $k$ 條推理鏈（ $k = 20 \sim 40$）
 2. 收集每條鏈的最終答案
 3. **多數投票**（Majority Vote）取最頻繁的答案
 

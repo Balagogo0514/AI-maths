@@ -10,11 +10,11 @@ $$\boxed{A = U \Sigma V^\top}$$
 
 | 矩陣 | 大小 | 性質 | 意義 |
 |------|------|------|------|
-| $U$ | $m \times m$ | 正交：$U^\top U = I$ | **左奇異向量**（輸出空間的旋轉） |
-| $\Sigma$ | $m \times n$ | 對角，$\sigma_1 \geq \cdots \geq \sigma_r > 0$ | **奇異值**（各方向的縮放量） |
-| $V$ | $n \times n$ | 正交：$V^\top V = I$ | **右奇異向量**（輸入空間的旋轉） |
+| $U$ | $m \times m$ | 正交： $U^\top U = I$ | **左奇異向量**（輸出空間的旋轉） |
+| $\Sigma$ | $m \times n$ | 對角， $\sigma_1 \geq \cdots \geq \sigma_r > 0$ | **奇異值**（各方向的縮放量） |
+| $V$ | $n \times n$ | 正交： $V^\top V = I$ | **右奇異向量**（輸入空間的旋轉） |
 
-其中 $r = \text{rank}(A)$，奇異值按降序排列：$\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r > 0$。
+其中 $r = \text{rank}(A)$，奇異值按降序排列： $\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_r > 0$。
 
 ---
 
@@ -28,7 +28,7 @@ $$x \xrightarrow{V^\top} \text{旋轉} \xrightarrow{\Sigma} \text{各軸縮放} 
 
 ![SVD 幾何直覺：單位圓 → 橢圓](figures/svd-geometry.svg)
 
-**關鍵洞見**：$V$ 的列向量 $v_i$ 是「輸入空間中被最大拉伸的方向」，$U$ 的列向量 $u_i$ 是「輸出空間中被拉伸到的方向」，拉伸倍率為 $\sigma_i$。
+**關鍵洞見**： $V$ 的列向量 $v_i$ 是「輸入空間中被最大拉伸的方向」， $U$ 的列向量 $u_i$ 是「輸出空間中被拉伸到的方向」，拉伸倍率為 $\sigma_i$。
 
 ---
 
@@ -61,13 +61,13 @@ $$A = \sum_{i=1}^{r} \sigma_i \, u_i v_i^\top$$
 
 $$A_k = \sum_{i=1}^{k} \sigma_i \, u_i v_i^\top = U_k \Sigma_k V_k^\top$$
 
-**Eckart-Young 定理（1936）**：在所有秩不超過 $k$ 的矩陣中，$A_k$ 使 Frobenius 範數誤差最小：
+**Eckart-Young 定理（1936）**：在所有秩不超過 $k$ 的矩陣中， $A_k$ 使 Frobenius 範數誤差最小：
 
 $$A_k = \arg\min_{\text{rank}(B)\leq k} \|A - B\|_F, \quad \|A - A_k\|_F = \sqrt{\sigma_{k+1}^2 + \cdots + \sigma_r^2}$$
 
 ![低秩近似：截斷 SVD 的壓縮示意](figures/svd-lowrank.svg)
 
-**壓縮比**：儲存完整 $A$ 需 $mn$ 個數，儲存 $A_k$ 只需 $k(m + n + 1)$ 個數。當 $k \ll \min(m,n)$ 時效果顯著。例：$1000 \times 1000$ 圖片取 $k=50$ → 壓縮 10 倍，視覺品質通常已足夠。
+**壓縮比**：儲存完整 $A$ 需 $mn$ 個數，儲存 $A_k$ 只需 $k(m + n + 1)$ 個數。當 $k \ll \min(m,n)$ 時效果顯著。例： $1000 \times 1000$ 圖片取 $k=50$ → 壓縮 10 倍，視覺品質通常已足夠。
 
 ---
 
@@ -87,7 +87,7 @@ $$A_k = \arg\min_{\text{rank}(B)\leq k} \|A - B\|_F, \quad \|A - A_k\|_F = \sqrt
 
 ## 6. 偽逆與最小二乘
 
-求解超定系統 $Ax \approx b$（$m > n$，方程比未知數多）的最小二乘解：
+求解超定系統 $Ax \approx b$（ $m > n$，方程比未知數多）的最小二乘解：
 
 $$x^* = A^+ b = V \Sigma^+ U^\top b, \quad \Sigma^+_{ii} = \begin{cases} 1/\sigma_i & \sigma_i > 0 \\ 0 & \text{otherwise} \end{cases}$$
 
@@ -99,11 +99,11 @@ $$x^* = A^+ b = V \Sigma^+ U^\top b, \quad \Sigma^+_{ii} = \begin{cases} 1/\sigm
 
 ### 7.1 PCA（主成分分析）
 
-資料矩陣 $X \in \mathbb{R}^{n \times d}$（$n$ 筆樣本，$d$ 維特徵，已中心化），對 $X$ 做 SVD：
+資料矩陣 $X \in \mathbb{R}^{n \times d}$（ $n$ 筆樣本， $d$ 維特徵，已中心化），對 $X$ 做 SVD：
 
 $$X = U \Sigma V^\top \quad \Rightarrow \quad \text{主成分方向} = V \text{ 的列}$$
 
-前 $k$ 個主成分捕捉最大方差，$A_k$ 是在 $k$ 維子空間中對 $X$ 的最佳重建。
+前 $k$ 個主成分捕捉最大方差， $A_k$ 是在 $k$ 維子空間中對 $X$ 的最佳重建。
 
 **變異數解釋比**（explained variance ratio）：
 

@@ -118,7 +118,7 @@ ImageNet 競賽 Top-5 錯誤率：26.2% → **15.3%**，震驚整個計算機視
 
 $$H(x) = F(x) + x$$
 
-若最優解接近恆等映射，$F(x) \to 0$ 比 $H(x) \to x$ 容易學習。
+若最優解接近恆等映射， $F(x) \to 0$ 比 $H(x) \to x$ 容易學習。
 
 **梯度視角**：跳躍連接提供梯度的「高速公路」：
 
@@ -178,7 +178,7 @@ $$\tilde{h}_t = \tanh(W[r_t \odot h_{t-1}, x_t]),\quad h_t = (1-z_t)\odot h_{t-1
 
 ### 5.1 LSTM：長程依賴的解法
 
-標準 RNN 梯度隨時間步指數衰減：$\partial L/\partial h_0 \sim \lambda^T$，$T$ 大時消失或爆炸。
+標準 RNN 梯度隨時間步指數衰減： $\partial L/\partial h_0 \sim \lambda^T$， $T$ 大時消失或爆炸。
 
 **LSTM 門控機制**（Hochreiter & Schmidhuber 1997，主流化於 2014）：
 
@@ -231,22 +231,22 @@ $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\r
 
 **四步計算流程**：
 
-**① 相似度矩陣**：$S = QK^\top \in \mathbb{R}^{n \times n}$，$S_{ij} = q_i \cdot k_j$，越大代表越相關。
+**① 相似度矩陣**： $S = QK^\top \in \mathbb{R}^{n \times n}$， $S_{ij} = q_i \cdot k_j$，越大代表越相關。
 
-**② 縮放（除以 $\sqrt{d_k}$）**：$d_k$ 維向量內積的方差 $= d_k$，不縮放時 softmax 進入飽和區、梯度趨零：
+**② 縮放（除以 $\sqrt{d_k}$）**： $d_k$ 維向量內積的方差 $= d_k$，不縮放時 softmax 進入飽和區、梯度趨零：
 
 $$\text{Var}(q \cdot k) = \sum_{i=1}^{d_k} \text{Var}(q_i k_i) = d_k \quad \Rightarrow \quad \text{std} = \sqrt{d_k}$$
 
-**③ Softmax → 注意力權重**：$A = \text{softmax}(\tilde{S}) \in \mathbb{R}^{n \times n}$，每行和為 1。
+**③ Softmax → 注意力權重**： $A = \text{softmax}(\tilde{S}) \in \mathbb{R}^{n \times n}$，每行和為 1。
 
-**④ 加權聚合**：$\text{Output} = AV$，每個位置的輸出是所有 Value 的加權混合。
+**④ 加權聚合**： $\text{Output} = AV$，每個位置的輸出是所有 Value 的加權混合。
 
 **Q、K、V 的來源**：輸入 $X \in \mathbb{R}^{n \times d}$ 透過三個可學習投影矩陣生成：
 
 $$Q = XW^Q,\quad K = XW^K,\quad V = XW^V \quad (W^Q, W^K \in \mathbb{R}^{d \times d_k},\ W^V \in \mathbb{R}^{d \times d_v})$$
 
 - **Self-Attention**：Q、K、V 皆來自同一序列 $X$，每個位置同時扮演三角色
-- **Cross-Attention**（Encoder-Decoder）：$Q$ 來自解碼器，$K, V$ 來自編碼器輸出
+- **Cross-Attention**（Encoder-Decoder）： $Q$ 來自解碼器， $K, V$ 來自編碼器輸出
 
 #### 6.0.3 Multi-Head Attention：多視角並行
 
@@ -260,7 +260,7 @@ $$\text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h)\
 
 #### 6.0.4 位置編碼（Positional Encoding）
 
-Self-Attention 無順序感知——$A_{ij}$ 只看內容相似度，對位置 1 和位置 100 一視同仁，必須注入位置資訊。
+Self-Attention 無順序感知—— $A_{ij}$ 只看內容相似度，對位置 1 和位置 100 一視同仁，必須注入位置資訊。
 
 **正弦位置編碼（原始 Transformer）**：
 
@@ -280,7 +280,7 @@ $$\tilde{q}_m = q_m e^{im\theta}, \quad \tilde{k}_n = k_n e^{in\theta} \quad \Ri
 | Softmax | $O(n^2)$ | $O(n^2)$ |
 | $AV$ | $O(n^2 d)$ | $O(nd)$ |
 
-**瓶頸**：$O(n^2)$ 空間，$n=100\text{K}$ 時注意力矩陣需 $10^{10}$ 個元素，無法放入 GPU 記憶體。
+**瓶頸**： $O(n^2)$ 空間， $n=100\text{K}$ 時注意力矩陣需 $10^{10}$ 個元素，無法放入 GPU 記憶體。
 
 **Flash Attention（Dao et al. 2022）**：分塊計算（tiling），避免將完整 $n \times n$ 矩陣寫入 HBM：
 - 時間複雜度仍 $O(n^2)$，但 IO 操作大幅減少，速度 2–4×
@@ -317,7 +317,7 @@ $$\tilde{q}_m = q_m e^{im\theta}, \quad \tilde{k}_n = k_n e^{in\theta} \quad \Ri
 
 | 指標 | 標準 Attention | Flash Attention |
 |------|---------------|----------------|
-| HBM 讀寫次數 | $O(n^2)$ | $O(n^2 / M)$（$M$=SRAM 大小） |
+| HBM 讀寫次數 | $O(n^2)$ | $O(n^2 / M)$（ $M$=SRAM 大小） |
 | 空間（HBM） | $O(n^2)$ | $O(n)$ |
 | 實測速度 | 1× | **2–4×**（A100 上） |
 | 長上下文支援 | 受限 | 百萬 token |
@@ -340,14 +340,14 @@ Step t:
   Attention(qₜ, K_cache, V_cache)      ← 只算一行
 ```
 
-**每步計算量**：$O(t \cdot d)$（非 $O(t^2 \cdot d)$），使長序列生成可行。
+**每步計算量**： $O(t \cdot d)$（非 $O(t^2 \cdot d)$），使長序列生成可行。
 
 **KV Cache 記憶體公式**：
 
 $$\text{Mem}_\text{KV} = 2 \times L \times H \times d_k \times n \times \text{bytes}$$
 
-- $L$=層數，$H$=頭數，$d_k$=每頭維度，$n$=序列長度
-- 以 LLaMA-3 70B（$L=80, H=64, d_k=128$，BF16）：每 token 約 **40 KB**，序列 32K → 1.3 GB
+- $L$=層數， $H$=頭數， $d_k$=每頭維度， $n$=序列長度
+- 以 LLaMA-3 70B（ $L=80, H=64, d_k=128$，BF16）：每 token 約 **40 KB**，序列 32K → 1.3 GB
 
 **KV Cache 的瓶頸與解法**：
 
@@ -359,7 +359,7 @@ $$\text{Mem}_\text{KV} = 2 \times L \times H \times d_k \times n \times \text{by
 
 #### 6.0.8 現代注意力變體：GQA / MQA
 
-**核心問題**：$H$ 個頭需要 $H$ 組 K、V，KV Cache 大小 $\propto H$。訓練參數對稱不代表推理必須對稱。
+**核心問題**： $H$ 個頭需要 $H$ 組 K、V，KV Cache 大小 $\propto H$。訓練參數對稱不代表推理必須對稱。
 
 **Multi-Query Attention（MQA，Shazeer 2019）**：所有 Q 頭共享**同一組** K、V：
 
@@ -367,7 +367,7 @@ $$\text{head}_i = \text{Attention}(QW_i^Q,\ K W^K,\ V W^V)$$
 
 KV Cache 縮小 $H$ 倍，但多頭的「多視角」退化。
 
-**Grouped-Query Attention（GQA，Ainslie et al. 2023）**：$H$ 個 Q 頭分成 $G$ 組，每組共享一組 K/V（$G$ 通常 4–8）：
+**Grouped-Query Attention（GQA，Ainslie et al. 2023）**： $H$ 個 Q 頭分成 $G$ 組，每組共享一組 K/V（ $G$ 通常 4–8）：
 
 ```
 H=32 頭，G=8 組：
@@ -379,7 +379,7 @@ V:  [V_1          | V_2          | ... | V_8             ]
 | 方法 | K/V 組數 | KV Cache 大小 | 品質 |
 |------|---------|--------------|------|
 | MHA（Multi-Head） | $H$ | 100% | 最好 |
-| GQA（Grouped-Query） | $G$（$G < H$） | $G/H$（約 25–50%） | ≈MHA |
+| GQA（Grouped-Query） | $G$（ $G < H$） | $G/H$（約 25–50%） | ≈MHA |
 | MQA（Multi-Query） | 1 | $1/H$（約 3%） | 略降 |
 
 **GQA 在現代 LLM 的採用**：LLaMA-3、Mistral、Qwen2、Gemma2 均使用 GQA（通常 $H=32, G=8$ 或 $H=64, G=8$）。GQA 推理速度接近 MQA，品質接近 MHA，是目前的工業標準選擇。
@@ -398,12 +398,12 @@ Transformer 的 Self-Attention 是**集合操作**——把 token 當無序集�
 
 $$PE_{(pos,2i)} = \sin\!\left(\frac{pos}{10000^{2i/d}}\right), \quad PE_{(pos,2i+1)} = \cos\!\left(\frac{pos}{10000^{2i/d}}\right)$$
 
-直接相加：$x'_{pos} = x_{pos} + PE_{pos}$
+直接相加： $x'_{pos} = x_{pos} + PE_{pos}$
 
 | 設計要點 | 說明 |
 |---------|------|
-| 低維（$i$ 小）→ 高頻 | 區分相鄰位置 |
-| 高維（$i$ 大）→ 低頻 | 區分遠距位置 |
+| 低維（ $i$ 小）→ 高頻 | 區分相鄰位置 |
+| 高維（ $i$ 大）→ 低頻 | 區分遠距位置 |
 | 相對位置可推導 | $PE_{pos+k}$ 可由 $PE_{pos}$ 線性變換（三角恆等式） |
 | 無參數、可外推 | 訓練 512 tokens 推論時仍可用更長序列（但效果會下降） |
 
@@ -560,9 +560,9 @@ x ──┬───────────────────────
 
 $$\text{FFN}(x) = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2$$
 
-- $W_1 \in \mathbb{R}^{d_{ff} \times d}$，$W_2 \in \mathbb{R}^{d \times d_{ff}}$
-- 原始論文：$d = 512,\; d_{ff} = 2048$（**4× 擴展比**）
-- 參數量：$2 \times d \times d_{ff}$，約佔整個模型 **2/3** 的參數
+- $W_1 \in \mathbb{R}^{d_{ff} \times d}$， $W_2 \in \mathbb{R}^{d \times d_{ff}}$
+- 原始論文： $d = 512,\; d_{ff} = 2048$（**4× 擴展比**）
+- 參數量： $2 \times d \times d_{ff}$，約佔整個模型 **2/3** 的參數
 - 設計直覺：先投影到高維空間學習豐富非線性組合，再壓縮回 $d$ 維保持殘差維度一致
 
 ---
@@ -572,7 +572,7 @@ $$\text{FFN}(x) = W_2 \cdot \text{ReLU}(W_1 x + b_1) + b_2$$
 | 激活 | 公式 | 採用 |
 |------|------|------|
 | ReLU | $\max(0,x)$ | 原版 Transformer |
-| GELU | $x \cdot \Phi(x)$（$\Phi$ 為正態 CDF） | BERT、GPT-2 |
+| GELU | $x \cdot \Phi(x)$（ $\Phi$ 為正態 CDF） | BERT、GPT-2 |
 | SwiGLU | $\text{Swish}(W_1 x) \odot (W_3 x)$ | LLaMA、Qwen、Gemma |
 | GeGLU | $\text{GELU}(W_1 x) \odot (W_2 x)$ | PaLM |
 
@@ -588,11 +588,11 @@ GLU（Gated Linear Unit）思想：兩個投影——一個做激活、一個做
 
 $$\text{FFN}_{\text{SwiGLU}}(x) = \bigl(\text{Swish}(xW_1) \odot xW_3\bigr)\, W_2, \quad \text{Swish}(x) = x \cdot \sigma(x)$$
 
-現在有**三個矩陣**（$W_1, W_2, W_3$），為保持參數量與 2 矩陣版相同，$d_{ff}$ 縮小：
+現在有**三個矩陣**（ $W_1, W_2, W_3$），為保持參數量與 2 矩陣版相同， $d_{ff}$ 縮小：
 
 $$d_{ff} = \tfrac{2}{3} \times 4d = \tfrac{8d}{3} \approx 2.67d \quad\text{（再取整到 128 的倍數）}$$
 
-LLaMA-3 8B 實際值：$d = 4096,\; d_{ff} = 14336$（$\approx 3.5d$）
+LLaMA-3 8B 實際值： $d = 4096,\; d_{ff} = 14336$（ $\approx 3.5d$）
 
 ---
 
@@ -609,7 +609,7 @@ LLaMA-3 8B 實際值：$d = 4096,\; d_{ff} = 14336$（$\approx 3.5d$）
 
 ---
 
-**參數量分布（LLaMA-3 8B，$L=32$）**
+**參數量分布（LLaMA-3 8B， $L=32$）**
 
 | 部分 | 參數量 | 佔比 |
 |------|--------|------|
@@ -655,7 +655,7 @@ Adam 的一/二階動量估計：
 
 $$m_t = \beta_1 m_{t-1} + (1-\beta_1)g_t, \quad v_t = \beta_2 v_{t-1} + (1-\beta_2)g_t^2$$
 
-偏差修正後更新：$\hat{m}_t = m_t/(1-\beta_1^t)$，$\hat{v}_t = v_t/(1-\beta_2^t)$
+偏差修正後更新： $\hat{m}_t = m_t/(1-\beta_1^t)$， $\hat{v}_t = v_t/(1-\beta_2^t)$
 
 **AdamW**（Loshchilov & Hutter 2017）把 Weight Decay 從梯度中**分離**，直接作用於參數：
 
@@ -679,7 +679,7 @@ $$\text{lr}(t) = \begin{cases} \alpha_{\max} \cdot \dfrac{t}{T_{\text{warm}}} & 
 
 - **Warmup**：前 1–5% 步數線性升到 $\alpha_{\max}$，讓 Adam 動量估計趨穩，防止初期大梯度發散
 - **Cosine Decay**：平滑下降到 $\alpha_{\min} = 0.1 \times \alpha_{\max}$
-- LLaMA-3 70B：$T_{\text{warm}} = 2000$ 步，$T_{\text{total}} = 1\text{M}$ 步
+- LLaMA-3 70B： $T_{\text{warm}} = 2000$ 步， $T_{\text{total}} = 1\text{M}$ 步
 
 ---
 
@@ -717,7 +717,7 @@ $$g \leftarrow g \cdot \min\!\left(1,\; \frac{c}{\|g\|_2}\right), \quad c = 1.0$
 | Pipeline Parallel | 層分段 + Micro-batching | Bubble overhead |
 | **ZeRO-3**（DeepSpeed） | 分片參數+梯度+優化器狀態，動態 All-Gather | 通訊增加 |
 
-**ZeRO 三個階段（$N$ 個 GPU）**：
+**ZeRO 三個階段（ $N$ 個 GPU）**：
 
 | 階段 | 分片內容 | 記憶體節省 |
 |------|---------|-----------|
@@ -731,7 +731,7 @@ $$g \leftarrow g \cdot \min\!\left(1,\; \frac{c}{\|g\|_2}\right), \quad c = 1.0$
 
 正常反向需保留所有前向激活，記憶體 $O(L \cdot n \cdot d)$。Checkpoint 只保留每隔 $k$ 層的激活，反向時重新計算：
 
-- 記憶體：$O(\sqrt{L} \cdot n \cdot d)$（$k=\sqrt{L}$ 最優）
+- 記憶體： $O(\sqrt{L} \cdot n \cdot d)$（ $k=\sqrt{L}$ 最優）
 - 計算成本：約 +33%（多跑一次前向）
 
 現代 LLM 訓練幾乎全部開啟，使 batch size 可以更大。
@@ -765,11 +765,11 @@ for step in range(T_total):
 
 **Kaplan et al. 2020（OpenAI）——幂律關係**
 
-Loss 與 $N$、$D$、$C$ 各自呈幂律：
+Loss 與 $N$、 $D$、 $C$ 各自呈幂律：
 
 $$L(N) \approx \left(\frac{N_c}{N}\right)^{0.076}, \quad L(D) \approx \left(\frac{D_c}{D}\right)^{0.095}, \quad L(C) \approx \left(\frac{C_c}{C}\right)^{0.050}$$
 
-**結論**：增大模型比增加資料更有效（$\alpha_N > \alpha_D$）→ GPT-3（175B）訓練 300B tokens，模型遠比資料「厚」。
+**結論**：增大模型比增加資料更有效（ $\alpha_N > \alpha_D$）→ GPT-3（175B）訓練 300B tokens，模型遠比資料「厚」。
 
 ---
 
@@ -803,7 +803,7 @@ Chinchilla 最優是**訓練時**計算效率最優。但部署時推理成本 $
 推理最優：N 盡量小，D 盡量大（LLaMA 策略）
 ```
 
-LLaMA-3 8B 用 15T tokens 訓練 8B 模型（$D/N = 1875\times$），讓小模型達到接近大模型的性能。
+LLaMA-3 8B 用 15T tokens 訓練 8B 模型（ $D/N = 1875\times$），讓小模型達到接近大模型的性能。
 
 ---
 
@@ -840,7 +840,7 @@ LLaMA-3 8B 用 15T tokens 訓練 8B 模型（$D/N = 1875\times$），讓小模�
 
 $$\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^\top}{\sqrt{d_k}}\right)V$$
 
-- $Q = XW^Q$（Query）、$K = XW^K$（Key）、$V = XW^V$（Value）
+- $Q = XW^Q$（Query）、 $K = XW^K$（Key）、 $V = XW^V$（Value）
 - $\sqrt{d_k}$ 防止內積過大導致 softmax 飽和
 - 任意兩個位置的交互成本 $O(1)$（RNN 需 $O(n)$ 步）
 
@@ -863,7 +863,7 @@ $h$ 個頭從不同子空間捕獲不同類型的依賴關係（句法、語義�
 | 特性 | RNN | Transformer |
 |------|-----|-------------|
 | 並行計算 | 順序依賴，慢 | 完全並行，快 |
-| 長程依賴 | 衰減 | 直接連接，$O(1)$ |
+| 長程依賴 | 衰減 | 直接連接， $O(1)$ |
 | 規模擴展 | 難 | 線性擴展 |
 
 ### 6.4 BERT：雙向預訓練語言模型（Devlin et al. 2018）
@@ -1077,7 +1077,7 @@ FP32 訓練佔記憶體大，改用 **BF16**（Brain Float 16）：
 
 | 格式 | 位元 | 動態範圍 | 精度 |
 |------|------|----------|------|
-| FP32 | 32 | $10^{-38}$–$10^{38}$ | 7 位十進位 |
+| FP32 | 32 | $10^{-38}$– $10^{38}$ | 7 位十進位 |
 | FP16 | 16 | $10^{-5}$–65504 | 3–4 位 |
 | **BF16** | **16** | **同 FP32** | **2–3 位** |
 
@@ -1128,7 +1128,7 @@ Logits → Cross-Entropy Loss
 繼續下一個 step...
 ```
 
-**實際規模（GPT-3 為例）**：300B tokens 語料、batch 3.2M tokens（梯度累積實現）、$\eta_{\max}=6\times10^{-4}$、warmup 375M tokens，訓練數週於數千張 A100。
+**實際規模（GPT-3 為例）**：300B tokens 語料、batch 3.2M tokens（梯度累積實現）、 $\eta_{\max}=6\times10^{-4}$、warmup 375M tokens，訓練數週於數千張 A100。
 
 ---
 
@@ -1209,7 +1209,7 @@ Scaling Law 從「訓練算力」延伸到「推理算力」。
 #### 核心動機
 
 預訓練大模型（如 LLaMA-70B）全量微調需要：
-- FP32 梯度 + AdamW 優化器狀態（$m_t, v_t$）：約 **420 GB**
+- FP32 梯度 + AdamW 優化器狀態（ $m_t, v_t$）：約 **420 GB**
 - 每個任務一份完整模型副本，多任務部署成本爆炸
 
 **LoRA（Hu et al. 2021）的解法**：凍結原始權重，只訓練低秩增量矩陣。
@@ -1224,7 +1224,7 @@ $$W = W_0 + \Delta W = W_0 + BA, \quad B \in \mathbb{R}^{d \times r},\ A \in \ma
 
 $$h = W_0 x + B A x$$
 
-**參數量比較**（$d = k = 4096,\ r = 16$）：
+**參數量比較**（ $d = k = 4096,\ r = 16$）：
 
 | 方法 | 參數量 | 比例 |
 |------|--------|------|
@@ -1243,7 +1243,7 @@ $$A \sim \mathcal{N}(0, \sigma^2), \quad B = 0 \implies \Delta W = BA = 0$$
 
 $$h = W_0 x + \frac{\alpha}{r} B A x$$
 
-無論 $r$ 取多少，$\alpha/r$ 的比值讓更新幅度的量級保持穩定（通常設 $\alpha = r$ 或 $\alpha = 2r$）。
+無論 $r$ 取多少， $\alpha/r$ 的比值讓更新幅度的量級保持穩定（通常設 $\alpha = r$ 或 $\alpha = 2r$）。
 
 #### 套用位置
 
@@ -1273,11 +1273,11 @@ $$W' = W_0 + BA$$
 | 超參數 | 常用值 | 說明 |
 |--------|--------|------|
 | $r$（秩） | 4 / 8 / 16 / 64 | 越大表達能力越強，參數越多 |
-| $\alpha$ | $r$ 或 $2r$ | 控制更新幅度，$\alpha/r$ 是等效 LR 縮放 |
+| $\alpha$ | $r$ 或 $2r$ | 控制更新幅度， $\alpha/r$ 是等效 LR 縮放 |
 | 目標模組 | Q、V 或全部 Attention | 加越多效果越好，訓練成本也越高 |
 | Dropout | 0–0.1 | 防止小秩矩陣過擬合 |
 
-**$r$ 的選擇原則**：通用指令微調（$r=8$–$16$）；特定領域（$r=32$–$64$）；任務越難、訓練資料越少 → 適當增大 $r$。
+**$r$ 的選擇原則**：通用指令微調（ $r=8$– $16$）；特定領域（ $r=32$– $64$）；任務越難、訓練資料越少 → 適當增大 $r$。
 
 #### LoRA 的變體
 
@@ -1323,7 +1323,7 @@ LoRA 增量 B, A（保持 BF16，可訓練）
 
 | 比較 | Dense 模型 | MoE 模型 |
 |------|-----------|---------|
-| 訓練參數 | $N$ | $N \times E$（$E$ 個專家） |
+| 訓練參數 | $N$ | $N \times E$（ $E$ 個專家） |
 | 每次計算（FLOPs） | $\propto N$ | $\propto N \times k/E$（僅激活 $k$ 個） |
 | 推理記憶體 | $\propto N$ | $\propto N \times E$（需載入全部） |
 | 推理延遲 | 基準 | 接近 Dense-$k/E$ 規模 |
@@ -1340,7 +1340,7 @@ $$\text{MoE}(x) = \sum_{i \in \text{Top-}k(g(x))} \tilde{g}_i(x) \cdot \text{Exp
 
 其中 $\tilde{g}_i$ 是只對選中 $k$ 個重新歸一化的路由權重。
 
-**數字例子**（$E=8, k=2$）：
+**數字例子**（ $E=8, k=2$）：
 
 ```
 g(x) = [0.05, 0.03, 0.42, 0.08, 0.31, 0.04, 0.05, 0.02]
@@ -1358,7 +1358,7 @@ $$\mathcal{L}_{\text{aux}} = \alpha \cdot E \cdot \sum_{i=1}^{E} f_i \cdot P_i$$
 
 - $f_i$ = Expert $i$ 實際處理的 token 比例（離散，不可微）
 - $P_i$ = Router 分配給 Expert $i$ 的平均機率（連續，可微）
-- 乘積鼓勵 $f_i \approx 1/E$（均勻分配），$\alpha \approx 10^{-2}$
+- 乘積鼓勵 $f_i \approx 1/E$（均勻分配）， $\alpha \approx 10^{-2}$
 
 **Expert Capacity**（容量上限）：每個 Expert 設最大 token 數 $C = \frac{T}{E} \times \text{capacity\_factor}$，超過則丟棄（capacity factor 通常 1.0–1.25）。
 
@@ -1375,7 +1375,7 @@ $$\mathcal{L}_{\text{aux}} = \alpha \cdot E \cdot \sum_{i=1}^{E} f_i \cdot P_i$$
 
 #### Fine-Grained MoE：DeepSeek-MoE 設計
 
-傳統 MoE 每個 Expert 很大，$k=2$ 只有 $\binom{8}{2}=28$ 種組合。DeepSeek-MoE 拆得更細：
+傳統 MoE 每個 Expert 很大， $k=2$ 只有 $\binom{8}{2}=28$ 種組合。DeepSeek-MoE 拆得更細：
 
 $$\text{MoE}(x) = \underbrace{\sum_{i=1}^{K_s} \text{Expert}_i^{\text{shared}}(x)}_{\text{共享 Expert（每次都激活）}} + \underbrace{\sum_{i \in \text{Top-k}(g)} \tilde{g}_i \cdot \text{Expert}_i^{\text{routing}}(x)}_{\text{路由 Expert（競爭激活）}}$$
 

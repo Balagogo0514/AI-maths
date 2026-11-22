@@ -70,7 +70,7 @@ $$
 
 ![單位圓上角度 θ 對應的點 P=(cosθ, sinθ)，顯示 cos 為橫投影、sin 為縱投影](figures/unit-circle.svg)
 
-*圖：單位圓定義下，$\cos\theta$ 是點 $P$ 在 $x$ 軸的投影，$\sin\theta$ 是在 $y$ 軸的投影。四個特殊點 $(1,0)$、$(0,1)$、$(-1,0)$、$(0,-1)$ 分別對應 $\theta=0,\,\pi/2,\,\pi,\,3\pi/2$。*
+*圖：單位圓定義下， $\cos\theta$ 是點 $P$ 在 $x$ 軸的投影， $\sin\theta$ 是在 $y$ 軸的投影。四個特殊點 $(1,0)$、 $(0,1)$、 $(-1,0)$、 $(0,-1)$ 分別對應 $\theta=0,\,\pi/2,\,\pi,\,3\pi/2$。*
 
 ```tikz {showConsole=false}
 \begin{tikzpicture}[scale=2]
@@ -180,7 +180,7 @@ $$
 \sin(-x)=-\sin x,\qquad \cos(-x)=\cos x.
 $$
 
-因此，$\sin x$ 是奇函數，$\cos x$ 是偶函數。再由 $\tan x=\sin x/\cos x$ 可得
+因此， $\sin x$ 是奇函數， $\cos x$ 是偶函數。再由 $\tan x=\sin x/\cos x$ 可得
 
 $$
 \tan(-x)=-\tan x,
@@ -218,10 +218,10 @@ $$
 
 符號則由象限決定：
 
-- 第一象限：$\sin,\cos,\tan$ 都為正。
-- 第二象限：$\sin$ 正、$\cos$ 負、$\tan$ 負。
-- 第三象限：$\sin,\cos$ 負、$\tan$ 正。
-- 第四象限：$\sin$ 負、$\cos$ 正、$\tan$ 負。
+- 第一象限： $\sin,\cos,\tan$ 都為正。
+- 第二象限： $\sin$ 正、 $\cos$ 負、 $\tan$ 負。
+- 第三象限： $\sin,\cos$ 負、 $\tan$ 正。
+- 第四象限： $\sin$ 負、 $\cos$ 正、 $\tan$ 負。
 
 ### 3.5 圖形直觀
 
@@ -307,7 +307,7 @@ $$
 x^2+y^2=1.
 $$
 
-又由定義 $x=\cos x$、$y=\sin x$，直接代入可得
+又由定義 $x=\cos x$、 $y=\sin x$，直接代入可得
 
 $$
 \cos^2 x+\sin^2 x=1.
@@ -633,7 +633,7 @@ $$
 \end{tikzpicture}
 ```
 
-在等腰三角形 $OAB$ 中，弦 $AB$ 的中點 $M$ 會把頂角 $x$ 平分成兩個 $x/2$，因此 $OMA$ 是關鍵直角三角形。由 $OA=1$、$OM=\cos(x/2)$、$AM=\sin(x/2)$，再配合中點的長度關係，可得到 $\cos^2\frac{x}{2}=\frac{1+\cos x}{2}$ 與 $\sin^2\frac{x}{2}=\frac{1-\cos x}{2}$。
+在等腰三角形 $OAB$ 中，弦 $AB$ 的中點 $M$ 會把頂角 $x$ 平分成兩個 $x/2$，因此 $OMA$ 是關鍵直角三角形。由 $OA=1$、 $OM=\cos(x/2)$、 $AM=\sin(x/2)$，再配合中點的長度關係，可得到 $\cos^2\frac{x}{2}=\frac{1+\cos x}{2}$ 與 $\sin^2\frac{x}{2}=\frac{1-\cos x}{2}$。
 
 若要進一步寫成平方根形式，需注意象限與符號：
 
@@ -1056,7 +1056,7 @@ $$
 
 #### 例 3：一天中的小時編碼
 
-若 $t$ 表示一天中的小時數，$T=24$，則
+若 $t$ 表示一天中的小時數， $T=24$，則
 
 $$
 \phi(t)=\left(\sin\frac{2\pi t}{24},\ \cos\frac{2\pi t}{24}\right).
@@ -1313,26 +1313,26 @@ $$
 - 幾何上，它描述角度、邊比、座標與旋轉。
 - 分析上，它描述週期、波動、相位與頻率。
 
-在理論上，和差角公式是許多公式的樞紐；在應用上，$(\sin\theta,\cos\theta)$、週期編碼與旋轉矩陣則是最常見的實務形式。
+在理論上，和差角公式是許多公式的樞紐；在應用上， $(\sin\theta,\cos\theta)$、週期編碼與旋轉矩陣則是最常見的實務形式。
 
 ### 7.2 常用公式速查表
 
 | 類別 | 公式 |
 |---|---|
-| 基本定義 | $\tan x=\dfrac{\sin x}{\cos x}$，$\cot x=\dfrac{\cos x}{\sin x}$ |
-| 倒數關係 | $\sec x=\dfrac{1}{\cos x}$，$\csc x=\dfrac{1}{\sin x}$ |
+| 基本定義 | $\tan x=\dfrac{\sin x}{\cos x}$， $\cot x=\dfrac{\cos x}{\sin x}$ |
+| 倒數關係 | $\sec x=\dfrac{1}{\cos x}$， $\csc x=\dfrac{1}{\sin x}$ |
 | 畢氏恆等式 | $\sin^2 x+\cos^2 x=1$ |
-| 正切版本 | $1+\tan^2 x=\sec^2 x$，$1+\cot^2 x=\csc^2 x$ |
+| 正切版本 | $1+\tan^2 x=\sec^2 x$， $1+\cot^2 x=\csc^2 x$ |
 | 和角公式 | $\sin(\alpha+\beta)=\sin\alpha\cos\beta+\cos\alpha\sin\beta$ |
 | 和角公式 | $\cos(\alpha+\beta)=\cos\alpha\cos\beta-\sin\alpha\sin\beta$ |
 | 差角公式 | $\sin(\alpha-\beta)=\sin\alpha\cos\beta-\cos\alpha\sin\beta$ |
 | 差角公式 | $\cos(\alpha-\beta)=\cos\alpha\cos\beta+\sin\alpha\sin\beta$ |
 | 倍角公式 | $\sin 2x=2\sin x\cos x$ |
 | 倍角公式 | $\cos 2x=\cos^2 x-\sin^2 x=2\cos^2 x-1=1-2\sin^2 x$ |
-| 半角公式 | $\sin^2\dfrac{x}{2}=\dfrac{1-\cos x}{2}$，$\cos^2\dfrac{x}{2}=\dfrac{1+\cos x}{2}$ |
-| 導數 | $(\sin x)'=\cos x$，$(\cos x)'=-\sin x$，$(\tan x)'=\sec^2 x$ |
-| 反函數導數 | $(\arcsin x)'=\dfrac{1}{\sqrt{1-x^2}}$，$(\arccos x)'=-\dfrac{1}{\sqrt{1-x^2}}$，$(\arctan x)'=\dfrac{1}{1+x^2}$ |
-| 積分 | $\int \sin x\,dx=-\cos x+C$，$\int \cos x\,dx=\sin x+C$ |
-| 反三角積分 | $\int \dfrac{1}{\sqrt{1-x^2}}\,dx=\arcsin x+C=-\arccos x+C$，$\int \dfrac{1}{1+x^2}\,dx=\arctan x+C$ |
+| 半角公式 | $\sin^2\dfrac{x}{2}=\dfrac{1-\cos x}{2}$， $\cos^2\dfrac{x}{2}=\dfrac{1+\cos x}{2}$ |
+| 導數 | $(\sin x)'=\cos x$， $(\cos x)'=-\sin x$， $(\tan x)'=\sec^2 x$ |
+| 反函數導數 | $(\arcsin x)'=\dfrac{1}{\sqrt{1-x^2}}$， $(\arccos x)'=-\dfrac{1}{\sqrt{1-x^2}}$， $(\arctan x)'=\dfrac{1}{1+x^2}$ |
+| 積分 | $\int \sin x\,dx=-\cos x+C$， $\int \cos x\,dx=\sin x+C$ |
+| 反三角積分 | $\int \dfrac{1}{\sqrt{1-x^2}}\,dx=\arcsin x+C=-\arccos x+C$， $\int \dfrac{1}{1+x^2}\,dx=\arctan x+C$ |
 
 若把本篇濃縮成一句話，可以說：三角函數是把「角度」轉成「可運算的座標與訊號」的語言，而這正是它在數學、AI 與工程中持續重要的原因。

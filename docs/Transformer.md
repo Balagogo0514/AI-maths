@@ -37,7 +37,7 @@ $$
 \text{output} = \text{Norm}(x + \text{Sublayer}(x)) \quad \text{（Post-LN，原始）}
 $$
 
-**殘差連接的作用**：梯度可「跳過」子層直接流回，子層只需學「修正量」$\Delta x$，
+**殘差連接的作用**：梯度可「跳過」子層直接流回，子層只需學「修正量」 $\Delta x$，
 而非從零映射 $x \to y$，大幅降低優化難度。
 
 ### 2.1 LayerNorm vs RMSNorm
@@ -82,7 +82,7 @@ $$
 \text{Swish}(z) = z \cdot \sigma(z) \quad \text{（平滑版 ReLU，無死區）}
 $$
 
-閘控機制（$\odot$ 逐元素乘）讓模型動態選擇哪些維度通過，性能明顯優於 ReLU/GELU。
+閘控機制（ $\odot$ 逐元素乘）讓模型動態選擇哪些維度通過，性能明顯優於 ReLU/GELU。
 
 ![FFN 變體、殘差正規化、參數分布](figures/transformer-components.svg)
 
@@ -99,7 +99,7 @@ $$
 
 ## 4. 完整參數量計算
 
-以 GPT-2 small（$L=12$，$d=768$，$H=12$，$d_\text{ff}=3072$，$V=50257$）為例：
+以 GPT-2 small（ $L=12$， $d=768$， $H=12$， $d_\text{ff}=3072$， $V=50257$）為例：
 
 $$
 \underbrace{V \times d}_{\text{Token Emb}} + \underbrace{n_\text{ctx} \times d}_{\text{Pos Emb}} + L \times \underbrace{\left(3d^2 + d^2 + 2d \cdot d_\text{ff}\right)}_{\text{每層 Attn+FFN}}
@@ -125,7 +125,7 @@ $$
 L(N, D) \propto \left(\frac{N_c}{N}\right)^{\alpha_N} + \left(\frac{D_c}{D}\right)^{\alpha_D}
 $$
 
-其中 $\alpha_N \approx 0.073$，$\alpha_D \approx 0.050$（OpenAI 原始估計）。
+其中 $\alpha_N \approx 0.073$， $\alpha_D \approx 0.050$（OpenAI 原始估計）。
 
 **Chinchilla（Hoffmann et al. 2022）**：最優訓練配比為
 
@@ -137,7 +137,7 @@ LLaMA-3 8B 以 15 兆 tokens 訓練（大幅超出 Chinchilla 最優），
 犧牲訓練效率換取推理時的高性能（over-training 策略）。
 
 **深度 vs 寬度**：相同參數量下，增加層數（深度）通常比增加 $d_\text{model}$（寬度）更有效率，
-這也是為什麼大模型傾向於深而窄（例如 GPT-3：96 層，$d=12288$）。
+這也是為什麼大模型傾向於深而窄（例如 GPT-3：96 層， $d=12288$）。
 
 | 模型 | 層數 | d_model | 頭數 | d_ff | 參數 |
 |---|---|---|---|---|---|
@@ -177,7 +177,7 @@ Transformer 的 Attention 形式決定 KV Cache 的使用方式：
 
 - **Decoder-only（Causal）**：每次生成新 token 只需計算新 Q，
   歷史 K/V 已快取 → $O(nd)$ 而非 $O(n^2 d)$
-- **MHA → GQA/MQA**：KV 頭數從 $H$ 減到 $G$（$G \ll H$），
+- **MHA → GQA/MQA**：KV 頭數從 $H$ 減到 $G$（ $G \ll H$），
   KV Cache 縮小 $H/G$ 倍（LLaMA-3 70B：64 Q 頭 / 8 KV 頭 → Cache 縮 8×）
 - **Flash Attention**：Tiling + Online Softmax，
   訓練時 $O(n^2)$ HBM 讀寫降到 $O(n)$，速度快 2–4×
@@ -446,7 +446,7 @@ $$
 h'(t) = A\,h(t) + B\,x(t), \qquad y(t) = C\,h(t)
 $$
 
-- $x(t)$：輸入，$h(t)$：隱狀態（有限大小的「記憶」），$y(t)$：輸出
+- $x(t)$：輸入， $h(t)$：隱狀態（有限大小的「記憶」）， $y(t)$：輸出
 - $A, B, C$：學習到的矩陣
 
 **離散化**（電腦處理序列必須）——以 Zero-Order Hold 引入時間步長 $\Delta$：
@@ -463,7 +463,7 @@ $$
 
 前代 S4 的 $A,B,C$ 是**固定矩陣**，每個 token 被同等對待，無法選擇性記憶。
 
-Mamba 讓 $B_t$、$C_t$、$\Delta_t$ **成為輸入的函數**：
+Mamba 讓 $B_t$、 $C_t$、 $\Delta_t$ **成為輸入的函數**：
 
 $$
 B_t = f_B(x_t), \quad C_t = f_C(x_t), \quad \Delta_t = \text{softplus}(W_\Delta x_t)
@@ -577,7 +577,7 @@ $$
 **優點**：自然處理可變長序列，理論上可記住任意長歷史。
 
 **致命缺陷**：
-- **無法並行**：$h_t$ 依賴 $h_{t-1}$，訓練速度受限
+- **無法並行**： $h_t$ 依賴 $h_{t-1}$，訓練速度受限
 - **梯度消失**：長序列時 $\partial L/\partial h_1 \approx \prod_i (\partial h_i/\partial h_{i-1})$ 指數衰減
 - **資訊瓶頸**：所有歷史壓縮進固定大小 $h_t$，遠距依賴難以保持
 
@@ -647,7 +647,7 @@ $$
 - **ConvNeXt**（2022）：把 ResNet 一步步改成「像 Transformer」（大 kernel 7×7、LayerNorm、GELU、倒置瓶頸）→ 追平 ViT
 
 **Transformer 借鑑 CNN**：
-- **Swin Transformer**：加入局部窗口 Attention，恢復平移不變性，$O(n^2) \to O(n)$
+- **Swin Transformer**：加入局部窗口 Attention，恢復平移不變性， $O(n^2) \to O(n)$
 
 **現代定位**：
 ```
@@ -699,7 +699,7 @@ $$
 
 每個圖像 patch 透過 Attention 加權選取文字 token 的資訊 → 局部語義對齊。
 
-**U-Net 時代**：Cross-Attention 只插入在 $16\times16$、$8\times8$ 的瓶頸層，全局感受野有限。  
+**U-Net 時代**：Cross-Attention 只插入在 $16\times16$、 $8\times8$ 的瓶頸層，全局感受野有限。  
 **DiT 時代**：每個 Transformer Block 都含 Cross-Attention，全局感受野從第一層開始。
 
 ---

@@ -14,7 +14,7 @@ $$
 \text{Attention}(Q,K,V)=\text{softmax}\left(\frac{QK^\top}{\sqrt{d_k}}\right)V
 $$
 
-如果模型正在逐 token 生成，第 $t$ 步只新增一個 token。這時前面 $1 \sim t-1$ 的 token 其實沒有改變，因此它們的 $K$、$V$ 也不會改變。KV cache 就是把這些舊 token 的 $K$、$V$ 保存下來，讓第 $t$ 步只需要為最新 token 計算一次新的 $Q$、$K$、$V$，再把新的 $K$、$V$ 接到快取尾端。
+如果模型正在逐 token 生成，第 $t$ 步只新增一個 token。這時前面 $1 \sim t-1$ 的 token 其實沒有改變，因此它們的 $K$、 $V$ 也不會改變。KV cache 就是把這些舊 token 的 $K$、 $V$ 保存下來，讓第 $t$ 步只需要為最新 token 計算一次新的 $Q$、 $K$、 $V$，再把新的 $K$、 $V$ 接到快取尾端。
 
 ## 1. 為什麼是快取 K 和 V，不是 Q
 
@@ -29,7 +29,7 @@ $$
 \text{Attention}(Q_t, [K_1,\dots,K_t], [V_1,\dots,V_t])
 $$
 
-其中 $[K_1,\dots,K_{t-1}]$ 和 $[V_1,\dots,V_{t-1}]$ 來自 cache，只有 $K_t$、$V_t$ 是本步新算出來的。
+其中 $[K_1,\dots,K_{t-1}]$ 和 $[V_1,\dots,V_{t-1}]$ 來自 cache，只有 $K_t$、 $V_t$ 是本步新算出來的。
 
 ## 2. 沒有 KV Cache 時發生什麼事
 
@@ -412,7 +412,7 @@ $$
 \alpha_{ij} = \frac{\exp(q_i \cdot k_j / \sqrt{d_k})}{\sum_{j'} \exp(q_i \cdot k_{j'} / \sqrt{d_k})}
 $$
 
-最終輸出是 V 的加權和：$o_i = \sum_j \alpha_{ij} \cdot v_j$
+最終輸出是 V 的加權和： $o_i = \sum_j \alpha_{ij} \cdot v_j$
 
 ---
 
@@ -428,7 +428,7 @@ $$
 \text{MultiHead}(Q,K,V) = \text{Concat}(\text{head}_1,\ldots,\text{head}_H)\,W_O
 $$
 
-典型設定：$d_\text{model}=512,\; H=8,\; d_k=d_v=64$（即 $d_\text{model}/H$）
+典型設定： $d_\text{model}=512,\; H=8,\; d_k=d_v=64$（即 $d_\text{model}/H$）
 
 **各頭傾向學什麼**（BERT 可視化研究）：
 
@@ -473,7 +473,7 @@ $$
 \text{PE}(\text{pos},\, 2i+1) = \cos\!\left(\frac{\text{pos}}{10000^{2i/d}}\right)
 $$
 
-每個維度 $i$ 對應一個頻率，從高頻（$i=0$，快速振盪）到低頻（$i=d/2$，緩慢振盪）。
+每個維度 $i$ 對應一個頻率，從高頻（ $i=0$，快速振盪）到低頻（ $i=d/2$，緩慢振盪）。
 任意相對位置 $\Delta = \text{pos}_1 - \text{pos}_2$ 可由固定線性組合表達，
 使模型能泛化到訓練長度以外。
 
@@ -553,7 +553,7 @@ HBM → S = QKᵀ → HBM → P = softmax(S) → HBM → O = PV → HBM
 
 ## 16. 具體數字走一遍
 
-以 **GPT-2 small**（$d=768$，$H=12$，$d_k=64$，$n=1024$）為例：
+以 **GPT-2 small**（ $d=768$， $H=12$， $d_k=64$， $n=1024$）為例：
 
 ```
 輸入：1024 tokens，每個 768 維
@@ -572,4 +572,4 @@ KV Cache（1 層，float32）：
   - 有 Cache：只算新 token 的 Q，與 Cache 中的 K/V 做點積 → O(nd) FLOPs
 ```
 
-**每層節省**：$O(n^2 d) \to O(nd)$，$n$ 越大節省越顯著。
+**每層節省**： $O(n^2 d) \to O(nd)$， $n$ 越大節省越顯著。

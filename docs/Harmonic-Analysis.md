@@ -29,7 +29,7 @@ $f: [-\pi,\pi] \to \mathbb{R}$ 展開：
 
 $$f(x) = \sum_{n=-\infty}^{\infty} c_n \, e^{inx}, \quad c_n = \frac{1}{2\pi}\int_{-\pi}^{\pi} f(x) \, e^{-inx} \, dx$$
 
-$c_n$ 是 $f$ 在頻率 $n$ 的「投影量」，$|c_n|^2$ 是該頻率的功率。
+$c_n$ 是 $f$ 在頻率 $n$ 的「投影量」， $|c_n|^2$ 是該頻率的功率。
 
 ![傅立葉分解：信號 = 多個正弦波疊加](figures/fourier-decomposition.svg)
 
@@ -37,7 +37,7 @@ $c_n$ 是 $f$ 在頻率 $n$ 的「投影量」，$|c_n|^2$ 是該頻率的功率
 
 $$\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) \, e^{-2\pi i \xi x} \, dx, \quad f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi) \, e^{2\pi i \xi x} \, d\xi$$
 
-$\hat{f}(\xi)$ 是**頻域表示**：$|\hat{f}(\xi)|^2$ 是頻率 $\xi$ 的功率密度（功率譜）。
+$\hat{f}(\xi)$ 是**頻域表示**： $|\hat{f}(\xi)|^2$ 是頻率 $\xi$ 的功率密度（功率譜）。
 
 ### 2.3 離散傅立葉變換（DFT）與 FFT
 
@@ -71,13 +71,13 @@ $$\int_{-\infty}^{\infty} |f(x)|^2 \, dx = \int_{-\infty}^{\infty} |\hat{f}(\xi)
 
 $$\widehat{f * g}(\xi) = \hat{f}(\xi) \cdot \hat{g}(\xi)$$
 
-**時域卷積 = 頻域點乘**。CNN 的卷積操作在頻域只是逐元素相乘，這是 FFT 加速卷積（$O(N\log N)$）的理論基礎。
+**時域卷積 = 頻域點乘**。CNN 的卷積操作在頻域只是逐元素相乘，這是 FFT 加速卷積（ $O(N\log N)$）的理論基礎。
 
 ### 3.3 不確定性原理（Heisenberg）
 
 $$\Delta x \cdot \Delta \xi \geq \frac{1}{4\pi}$$
 
-信號在時域越集中（$\Delta x$ 小），頻域就越分散（$\Delta \xi$ 大）。**時間精確與頻率精確不能兼得**——這是所有時頻分析工具設計的根本限制。
+信號在時域越集中（ $\Delta x$ 小），頻域就越分散（ $\Delta \xi$ 大）。**時間精確與頻率精確不能兼得**——這是所有時頻分析工具設計的根本限制。
 
 ### 3.4 Nyquist-Shannon 採樣定理
 
@@ -97,7 +97,7 @@ $$f_s \geq 2 f_{\max} \quad \text{（Nyquist 頻率）}$$
 
 $$\text{STFT}(t, \xi) = \int_{-\infty}^{\infty} f(\tau) \, w(\tau - t) \, e^{-2\pi i \xi \tau} \, d\tau$$
 
-輸出是二維**頻譜圖**（spectrogram）$|\text{STFT}(t,\xi)|^2$，橫軸時間、縱軸頻率。
+輸出是二維**頻譜圖**（spectrogram） $|\text{STFT}(t,\xi)|^2$，橫軸時間、縱軸頻率。
 
 **缺點**：窗大小固定 → 時間解析度與頻率解析度的取捨固定（受不確定性原理約束）。
 
@@ -133,7 +133,7 @@ $$\hat{f} = U^\top f, \quad f = U\hat{f}$$
 
 $$g *_G f = U \, \hat{g}(\Lambda) \, U^\top f$$
 
-**ChebNet**：用 Chebyshev 多項式 $T_k(\tilde{L})$ 近似 $\hat{g}(\Lambda)$，避免完整特徵分解（$O(n^3) \to O(|\mathcal{E}|k)$）。**GCN** 是 $k=1$ 的特殊情形：
+**ChebNet**：用 Chebyshev 多項式 $T_k(\tilde{L})$ 近似 $\hat{g}(\Lambda)$，避免完整特徵分解（ $O(n^3) \to O(|\mathcal{E}|k)$）。**GCN** 是 $k=1$ 的特殊情形：
 
 $$H^{(l+1)} = \sigma\!\left(\tilde{D}^{-1/2}\tilde{A}\tilde{D}^{-1/2} H^{(l)} W^{(l)}\right)$$
 
@@ -145,8 +145,8 @@ $$H^{(l+1)} = \sigma\!\left(\tilde{D}^{-1/2}\tilde{A}\tilde{D}^{-1/2} H^{(l)} W^
 
 $$Y_l^m(\theta,\phi) = \sqrt{\frac{(2l+1)(l-|m|)!}{4\pi(l+|m|)!}} \, P_l^{|m|}(\cos\theta) \, e^{im\phi}$$
 
-$l$：**次數**（頻率），$m$：**階數**（方位）。球諧函數是拉普拉斯方程 $\nabla^2 f = 0$ 在球面上的特徵函數，應用於：
-- 量子力學：原子軌道（$s, p, d, f$ 殼層對應 $l=0,1,2,3$）
+$l$：**次數**（頻率）， $m$：**階數**（方位）。球諧函數是拉普拉斯方程 $\nabla^2 f = 0$ 在球面上的特徵函數，應用於：
+- 量子力學：原子軌道（ $s, p, d, f$ 殼層對應 $l=0,1,2,3$）
 - 3D 形狀分析與等變網路（SE(3)-Transformer）
 - 全球大氣模型、球面 CNN
 
@@ -199,21 +199,21 @@ Multi-head attention 可理解為在不同頻率尺度上的軟查詢：每個�
 
 ### 8.1 掛谷猜想
 
-**定義**：$\mathbb{R}^n$ 中的**掛谷集（Kakeya set）**是一個包含每個方向上至少一條單位線段的集合。
+**定義**： $\mathbb{R}^n$ 中的**掛谷集（Kakeya set）**是一個包含每個方向上至少一條單位線段的集合。
 
-**猜想**：$\mathbb{R}^n$ 中的掛谷集的 Hausdorff 維度 $= n$（體積可以為零，但維度必須最大）。
+**猜想**： $\mathbb{R}^n$ 中的掛谷集的 Hausdorff 維度 $= n$（體積可以為零，但維度必須最大）。
 
 | 維度 | 狀態 |
 |------|------|
 | $\mathbb{R}^2$ | 已解決（維度確實為 2） |
 | $\mathbb{R}^3$ | **Hong Wang & Zahl 2024 年解決！** |
-| $\mathbb{R}^n$，$n \geq 4$ | 仍未解決 |
+| $\mathbb{R}^n$， $n \geq 4$ | 仍未解決 |
 
 ### 8.2 與調和分析的深層連結
 
 表面是幾何問題，本質是「**傅立葉振盪能量如何在不同方向分布**」的問題：
 
-**傅立葉限制猜想（Restriction Conjecture）**：$L^p$ 函數的傅立葉變換限制在球面上，是否有 $L^q$ 估計？
+**傅立葉限制猜想（Restriction Conjecture）**： $L^p$ 函數的傅立葉變換限制在球面上，是否有 $L^q$ 估計？
 
 $$\left\|\hat{f}\big|_{S^{n-1}}\right\|_{L^q(S^{n-1})} \leq C \|f\|_{L^p(\mathbb{R}^n)}$$
 
@@ -249,8 +249,8 @@ Vinogradov 均值（數論）
 
 | 概念 | 核心要點 |
 |------|---------|
-| 傅立葉變換 | 時域 ↔ 頻域；$\hat{f}(\xi)$ 量化頻率成分 |
-| FFT | Cooley-Tukey 分治；$O(N^2) \to O(N\log N)$ |
+| 傅立葉變換 | 時域 ↔ 頻域； $\hat{f}(\xi)$ 量化頻率成分 |
+| FFT | Cooley-Tukey 分治； $O(N^2) \to O(N\log N)$ |
 | Parseval 定理 | 時頻能量守恆；傅立葉為 $L^2$ 酉算子 |
 | 卷積定理 | 時域卷積 = 頻域點乘；CNN 的理論根基 |
 | 不確定性原理 | $\Delta x \cdot \Delta\xi \geq 1/(4\pi)$；時頻不可兼得 |
