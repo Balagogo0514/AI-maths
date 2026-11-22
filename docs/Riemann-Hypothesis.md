@@ -89,8 +89,7 @@ $$
 
 $$
 \prod_{p}\frac{1}{1-p^{-s}}
-=
-\prod_p \left(1+p^{-s}+p^{-2s}+p^{-3s}+\cdots\right).
+= \prod_p \left(1+p^{-s}+p^{-2s}+p^{-3s}+\cdots\right).
 $$
 
 把每個素數的冪次展開後相乘，會得到所有可能的
@@ -127,8 +126,7 @@ zeta 函數滿足一條深刻的函數方程。常見寫法之一是
 
 $$
 \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
-=
-\pi^{-(1-s)/2}\Gamma\left(\frac{1-s}{2}\right)\zeta(1-s).
+= \pi^{-(1-s)/2}\Gamma\left(\frac{1-s}{2}\right)\zeta(1-s).
 $$
 
 這個公式把 $s$ 與 $1-s$ 連在一起，因此它揭示了 zeta 函數對直線
