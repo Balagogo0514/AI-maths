@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">不同請求共用前綴的 block</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">請求的邏輯 block → 物理 block（引用計數）</text>
+<text x="14.0" y="72.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">請求 1</text>
+<rect x="52" y="58" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="64.0" y="71.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S1</text>
+<rect x="79" y="58" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="91.0" y="71.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S2</text>
+<rect x="106" y="58" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="118.0" y="71.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S3</text>
+<rect x="133" y="58" width="24" height="20" rx="3" fill="#eb6834" opacity="0.25" stroke="#eb6834" stroke-width="1"/>
+<text x="145.0" y="71.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">u1</text>
+<text x="14.0" y="100.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">請求 2</text>
+<rect x="52" y="86" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="64.0" y="99.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S1</text>
+<rect x="79" y="86" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="91.0" y="99.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S2</text>
+<rect x="106" y="86" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="118.0" y="99.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S3</text>
+<rect x="133" y="86" width="24" height="20" rx="3" fill="#eb6834" opacity="0.25" stroke="#eb6834" stroke-width="1"/>
+<text x="145.0" y="99.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">u2</text>
+<rect x="160" y="86" width="24" height="20" rx="3" fill="#eb6834" opacity="0.25" stroke="#eb6834" stroke-width="1"/>
+<text x="172.0" y="99.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">u2</text>
+<text x="14.0" y="128.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">請求 3</text>
+<rect x="52" y="114" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="64.0" y="127.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S1</text>
+<rect x="79" y="114" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="91.0" y="127.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S2</text>
+<rect x="106" y="114" width="24" height="20" rx="3" fill="#2a78d6" opacity="0.18" stroke="#2a78d6" stroke-width="1"/>
+<text x="118.0" y="127.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">S3</text>
+<rect x="133" y="114" width="24" height="20" rx="3" fill="#eb6834" opacity="0.25" stroke="#eb6834" stroke-width="1"/>
+<text x="145.0" y="127.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">u3</text>
+<rect x="52" y="160" width="24" height="20" rx="3" fill="#1baf7a" opacity="0.3" stroke="#1baf7a" stroke-width="1.4"/>
+<text x="64.0" y="173.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">P1</text>
+<text x="64.0" y="191.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#1baf7a">ref=3</text>
+<line x1="64.0" y1="78.0" x2="64.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<line x1="64.0" y1="106.0" x2="64.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<line x1="64.0" y1="134.0" x2="64.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<rect x="79" y="160" width="24" height="20" rx="3" fill="#1baf7a" opacity="0.3" stroke="#1baf7a" stroke-width="1.4"/>
+<text x="91.0" y="173.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">P2</text>
+<text x="91.0" y="191.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#1baf7a">ref=3</text>
+<line x1="91.0" y1="78.0" x2="91.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<line x1="91.0" y1="106.0" x2="91.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<line x1="91.0" y1="134.0" x2="91.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<rect x="106" y="160" width="24" height="20" rx="3" fill="#1baf7a" opacity="0.3" stroke="#1baf7a" stroke-width="1.4"/>
+<text x="118.0" y="173.0" text-anchor="middle" font-size="7" font-weight="700" fill="#0b0b0b">P3</text>
+<text x="118.0" y="191.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#1baf7a">ref=3</text>
+<line x1="118.0" y1="78.0" x2="118.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<line x1="118.0" y1="106.0" x2="118.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<line x1="118.0" y1="134.0" x2="118.0" y2="160.0" stroke="#1baf7a" stroke-width="0.7" stroke-dasharray="2,2"/>
+<text x="139.0" y="174.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#1baf7a">← 共享的前綴 block</text>
+<text x="191.0" y="100.0" text-anchor="start" font-size="7" font-weight="700" fill="#eb6834">橘：各自的新內容</text>
+<text x="191.0" y="111.0" text-anchor="start" font-size="7" font-weight="700" fill="#eb6834">（不共享）</text>
+<text x="191.0" y="70.0" text-anchor="start" font-size="7" font-weight="700" fill="#2a78d6">藍：共同前綴 S</text>
+<rect x="18" y="204" width="246" height="80" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="218.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#898781">block 雜湊串接：h1 = H(∅, S1)，h2 = H(h1, S2)，h3 = H(h2, S3)</text>
+<text x="141.0" y="232.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#0b0b0b">前綴相同 ⇒ 雜湊相同 ⇒ 直接重用 P1 P2 P3</text>
+<text x="141.0" y="245.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">第一個不同的 token 之後的 block 都要重算</text>
+<text x="141.0" y="258.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">寫入共享 block 時採 copy-on-write（記憶）</text>
+<text x="141.0" y="271.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">雜湊、block 大小、淘汰策略依實作而定（記憶）</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">為什麼可以重用：前綴的 K 與後綴無關</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">2 層因果 Transformer（隨機權重，d = 16）；只改第 20 個 token</text>
+<line x1="332.0" y1="150.0" x2="540.0" y2="150.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="332.0" y1="150.0" x2="332.0" y2="58.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="329.0" y1="150.0" x2="540.0" y2="150.0" stroke="#eee" stroke-width="0.6"/>
+<text x="326.0" y="153.0" text-anchor="end" font-size="7" font-weight="400" fill="#898781">0</text>
+<line x1="329.0" y1="126.7" x2="540.0" y2="126.7" stroke="#eee" stroke-width="0.6"/>
+<text x="326.0" y="129.7" text-anchor="end" font-size="7" font-weight="400" fill="#898781">10^-2</text>
+<line x1="329.0" y1="103.4" x2="540.0" y2="103.4" stroke="#eee" stroke-width="0.6"/>
+<text x="326.0" y="106.4" text-anchor="end" font-size="7" font-weight="400" fill="#898781">10^-1</text>
+<line x1="329.0" y1="80.1" x2="540.0" y2="80.1" stroke="#eee" stroke-width="0.6"/>
+<text x="326.0" y="83.1" text-anchor="end" font-size="7" font-weight="400" fill="#898781">1</text>
+<polyline points="332.0,150.0 335.9,150.0 339.7,150.0 343.6,150.0 347.4,150.0 351.3,150.0 355.1,150.0 359.0,150.0 362.8,150.0 366.7,150.0 370.5,150.0 374.4,150.0 378.2,150.0 382.1,150.0 385.9,150.0 389.8,150.0 393.6,150.0 397.5,150.0 401.3,150.0 405.2,150.0 409.0,66.7 412.9,111.2 416.7,106.6 420.6,99.7 424.4,97.1 428.3,109.7 432.1,108.1 436.0,109.9 439.9,101.5 443.7,109.3 447.6,98.7 451.4,106.3 455.3,103.3 459.1,113.7 463.0,105.9 466.8,106.5 470.7,112.6 474.5,105.0 478.4,106.9 482.2,114.4 486.1,113.6 489.9,108.8 493.8,103.2 497.6,113.8 501.5,117.2 505.3,113.6 509.2,113.2 513.0,105.5 516.9,109.8 520.7,117.1 524.6,108.7 528.4,110.5 532.3,120.0 536.1,119.6 540.0,115.6" fill="none" stroke="#eb6834" stroke-width="1.7"/>
+<polyline points="332.0,150.0 335.9,150.0 339.7,150.0 343.6,150.0 347.4,150.0 351.3,150.0 355.1,150.0 359.0,150.0 362.8,150.0 366.7,150.0 370.5,150.0 374.4,150.0 378.2,150.0 382.1,150.0 385.9,150.0 389.8,150.0 393.6,150.0 397.5,150.0 401.3,150.0 405.2,150.0 409.0,72.6 412.9,150.0 416.7,150.0 420.6,150.0 424.4,150.0 428.3,150.0 432.1,150.0 436.0,150.0 439.9,150.0 443.7,150.0 447.6,150.0 451.4,150.0 455.3,150.0 459.1,150.0 463.0,150.0 466.8,150.0 470.7,150.0 474.5,150.0 478.4,150.0 482.2,150.0 486.1,150.0 489.9,150.0 493.8,150.0 497.6,150.0 501.5,150.0 505.3,150.0 509.2,150.0 513.0,150.0 516.9,150.0 520.7,150.0 524.6,150.0 528.4,150.0 532.3,150.0 536.1,150.0 540.0,150.0" fill="none" stroke="#2a78d6" stroke-width="1.7"/>
+<line x1="409.0" y1="150.0" x2="409.0" y2="58.0" stroke="#d94040" stroke-width="1.0" stroke-dasharray="3,3"/>
+<text x="412.0" y="68.0" text-anchor="start" font-size="7" font-weight="700" fill="#d94040">改這裡</text>
+<rect x="332" y="60" width="77.0" height="90" fill="#1baf7a" opacity="0.10"/>
+<text x="370.5" y="144.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">前綴：不變，可重用</text>
+<text x="332.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">0</text>
+<text x="409.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">20</text>
+<text x="486.1" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">40</text>
+<text x="540.0" y="160.0" text-anchor="middle" font-size="7" font-weight="400" fill="#898781">54</text>
+<text x="436.0" y="170.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">token 位置</text>
+<text x="324.0" y="56.0" text-anchor="start" font-size="7" font-weight="700" fill="#0b0b0b">橘：第 2 層的 K 變化量　藍：第 1 層　（對數刻度，0 畫在底部）</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="191.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">兩種不同後綴：前綴 K/V 兩層的最大差 = 0.0（已驗證）</text>
+<text x="415.0" y="205.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">位置 &lt; 20：兩層都不變；位置 ≥ 20：第 2 層每個位置都變（≥ 0.019）</text>
+<text x="415.0" y="219.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">第 1 層的 K/V 只取決於自己的 token 與位置，但更深的層會變</text>
+<text x="415.0" y="233.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#eb6834">⇒ 從第一個不同的位置起，整段都要重算</text>
+<text x="415.0" y="247.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#d94040">拿掉 causal mask（雙向）：第 2 層前綴 K 差 2.05，無法重用（§6.2）</text>
+<text x="415.0" y="261.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">小型隨機模型的示範，不是真實 LLM</text>
+<text x="415.0" y="274.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">成本的算術例子（不是實測）</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">2000 token 共用前綴 + 每個請求 100 token 新內容</text>
+<text x="599.0" y="56.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">prefill 要算的 token 數（單一請求）</text>
+<rect x="621" y="82.0" width="46" height="68.0" fill="#eb6834" opacity="0.85"/>
+<text x="644.0" y="79.0" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">2100</text>
+<text x="644.0" y="161.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">無 cache</text>
+<rect x="706" y="146.8" width="46" height="3.2" fill="#1baf7a" opacity="0.85"/>
+<text x="729.0" y="143.8" text-anchor="middle" font-size="8" font-weight="700" fill="#1baf7a">100</text>
+<text x="729.0" y="161.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">命中前綴</text>
+<line x1="596.0" y1="150.0" x2="796.0" y2="150.0" stroke="#898781" stroke-width="0.8"/>
+<rect x="566" y="176" width="236" height="108" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="190.0" text-anchor="middle" font-size="8" font-weight="700" fill="#0b0b0b">省 95% 的 prefill token（2000/2100）</text>
+<text x="684.0" y="203.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">時間省得較少：新 token 仍要讀前綴的 K/V（§12.6）</text>
+<text x="684.0" y="217.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">假設 80 層、8 KV head、d = 128、bf16：</text>
+<text x="684.0" y="229.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#0b0b0b">每 token 327,680 B ≈ 320 KB，2000 token ≈ 0.66 GB</text>
+<text x="684.0" y="243.0" text-anchor="middle" font-size="7.8" font-weight="700" fill="#1baf7a">8 個請求：不共享 5.5 GB，共享約 0.9 GB</text>
+<text x="684.0" y="257.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#d94040">（配置是假設的大模型，不是特定模型的實際值）</text>
+<text x="684.0" y="270.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">只共享「完全相同的前綴」；變動內容放 prompt 最後</text>
+</svg>
