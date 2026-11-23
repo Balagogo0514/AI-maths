@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">Router：每層一個小線性層</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">x → 分數 → 取 top-2 → softmax → 加權合併（算術）</text>
+<rect x="18" y="50" width="246" height="24" rx="4" fill="#2a78d6" opacity="0.08" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="62.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#0b0b0b">分數 = x · W_r（W_r 是 d × E 的矩陣，d=4096、E=8）</text>
+<text x="141.0" y="72.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<line x1="26.0" y1="128.0" x2="222.0" y2="128.0" stroke="#898781" stroke-width="0.6"/>
+<rect x="30.0" y="122.29312752255213" width="20.0" height="5.706872477447879" fill="#898781" opacity="0.5"/>
+<text x="40.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E1</text>
+<rect x="54.0" y="92.91672215819176" width="20.0" height="35.08327784180824" fill="#1baf7a" opacity="0.9"/>
+<text x="64.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E2</text>
+<rect x="78.0" y="103.97332682062408" width="20.0" height="24.02667317937592" fill="#898781" opacity="0.5"/>
+<text x="88.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E3</text>
+<rect x="102.0" y="113.23457294840587" width="20.0" height="14.765427051594129" fill="#898781" opacity="0.5"/>
+<text x="112.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E4</text>
+<rect x="126.0" y="103.82223179185934" width="20.0" height="24.177768208140662" fill="#1baf7a" opacity="0.9"/>
+<text x="136.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E5</text>
+<rect x="150.0" y="128" width="20.0" height="36.0" fill="#898781" opacity="0.5"/>
+<text x="160.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E6</text>
+<rect x="174.0" y="109.75842838726047" width="20.0" height="18.24157161273953" fill="#898781" opacity="0.5"/>
+<text x="184.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E7</text>
+<rect x="198.0" y="106.93491679275763" width="20.0" height="21.06508320724237" fill="#898781" opacity="0.5"/>
+<text x="208.0" y="172.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">E8</text>
+<text x="141.0" y="88.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">8 個專家的分數（綠色 = 被選中）</text>
+<text x="141.0" y="186.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">選中 E2、E5；對這兩個分數做 softmax：</text>
+<text x="141.0" y="199.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#1baf7a">權重 0.892 與 0.108，加總 1（已驗證：單一例子）</text>
+<text x="141.0" y="212.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">若先對全部 8 個做 softmax：這兩個只占 0.821，要另外重新正規化</text>
+<rect x="18" y="222" width="246" height="62" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="141.0" y="236.0" text-anchor="middle" font-size="7.1" font-weight="700" fill="#0b0b0b">Router 參數：每層 32,768、32 層約 1.05 M</text>
+<text x="141.0" y="249.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">占總參數 46.7B 的 0.0022%</text>
+<text x="141.0" y="262.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">計算量占專家的 0.009%（每 token 每層）</text>
+<text x="141.0" y="275.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#d94040">小，但它的決定影響負載、通訊與 decode 讀取</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">top-k 是離散選擇：梯度與翻轉</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">同一個例子（已驗證：單一例子）</text>
+<rect x="290" y="52" width="250" height="56" rx="4" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="415.0" y="66.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#0b0b0b">微調「未被選中」專家的分數 0.001</text>
+<text x="415.0" y="80.0" text-anchor="middle" font-size="7.4" font-weight="700" fill="#1baf7a">輸出變化：0.0（完全沒變）</text>
+<text x="415.0" y="94.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">→ 沒被選中的專家，從 Router 得不到學習訊號</text>
+<rect x="290" y="116" width="250" height="56" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="130.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#0b0b0b">微調「被選中」專家的分數 0.001</text>
+<text x="415.0" y="144.0" text-anchor="middle" font-size="7.4" font-weight="700" fill="#eb6834">輸出變化：約 1.8e-04</text>
+<text x="415.0" y="158.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">→ 梯度只流向被選中的專家</text>
+<rect x="290" y="180" width="250" height="62" rx="4" fill="#d94040" opacity="0.06" stroke="#d94040" stroke-width="0.9"/>
+<text x="415.0" y="194.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#0b0b0b">第 2 名與第 3 名分數只差 0.029</text>
+<text x="415.0" y="207.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">差距一超過 → 被選中的專家換人：</text>
+<text x="415.0" y="220.0" text-anchor="middle" font-size="7.4" font-weight="700" fill="#d94040">{E2, E5} → {E2, E3}</text>
+<text x="415.0" y="233.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#898781">選擇不連續，訓練可能不穩（記憶：常用輔助手段改善）</text>
+<text x="415.0" y="258.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#0b0b0b">路由的方式（記憶）：Token Choice、Expert Choice、</text>
+<text x="415.0" y="270.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#0b0b0b">雜湊路由、共享專家加路由專家</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">Router 崩潰與負載平衡（玩具模擬）</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">最常被用的專家占全部 token 的比例</text>
+<line x1="590.0" y1="156.0" x2="790.0" y2="156.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="590.0" y1="56.0" x2="590.0" y2="156.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="590.0" y1="143.5" x2="790.0" y2="143.5" stroke="#e0e0e0" stroke-width="0.6" stroke-dasharray="2,2"/>
+<text x="587.0" y="146.0" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">0.125</text>
+<line x1="590.0" y1="106.0" x2="790.0" y2="106.0" stroke="#e0e0e0" stroke-width="0.6" stroke-dasharray="2,2"/>
+<text x="587.0" y="108.5" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">0.5</text>
+<line x1="590.0" y1="56.0" x2="790.0" y2="56.0" stroke="#e0e0e0" stroke-width="0.6" stroke-dasharray="2,2"/>
+<text x="587.0" y="58.5" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">1</text>
+<polyline points="590.0,117.0 595.1,87.0 600.3,76.7 605.4,71.5 610.5,68.4 615.6,66.3 620.8,64.9 625.9,63.8 631.0,62.9 636.2,62.2 641.3,61.6 646.4,61.2 651.5,60.8 656.7,60.4 661.8,60.1 666.9,59.9 672.1,59.6 677.2,59.4 682.3,59.3 687.4,59.1 692.6,59.0 697.7,58.8 702.8,58.7 707.9,58.6 713.1,58.5 718.2,58.4 723.3,58.3 728.5,58.2 733.6,58.1 738.7,58.1 743.8,58.0 749.0,57.9 754.1,57.9 759.2,57.8 764.4,57.8 769.5,57.7 774.6,57.7 779.7,57.6 784.9,57.6 790.0,57.5" fill="none" stroke="#d94040" stroke-width="1.8"/>
+<polyline points="590.0,134.0 595.1,132.5 600.3,129.7 605.4,131.2 610.5,131.0 615.6,131.8 620.8,133.3 625.9,134.4 631.0,136.0 636.2,137.4 641.3,138.6 646.4,139.4 651.5,140.3 656.7,141.1 661.8,141.9 666.9,142.3 672.1,142.7 677.2,142.9 682.3,143.2 687.4,143.2 692.6,143.2 697.7,143.2 702.8,143.2 707.9,143.3 713.1,143.2 718.2,143.4 723.3,143.4 728.5,143.4 733.6,143.3 738.7,143.4 743.8,143.4 749.0,143.3 754.1,143.3 759.2,143.3 764.4,143.4 769.5,143.4 774.6,143.4 779.7,143.3 784.9,143.4 790.0,143.4" fill="none" stroke="#1baf7a" stroke-width="1.8"/>
+<text x="690.0" y="167.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">訓練步數 →（4,000 步）</text>
+<text x="788.0" y="68.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#d94040">沒有平衡：98%</text>
+<text x="788.0" y="150.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#1baf7a">加負載偏置：12.6%</text>
+<rect x="566" y="184" width="236" height="100" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="198.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#0b0b0b">回饋迴圈：用得多 → 變強 → 更常被選（記憶）</text>
+<text x="684.0" y="211.0" text-anchor="middle" font-size="6.6" font-weight="400" fill="#0b0b0b">輔助損失 E·Σ f·P：均勻 1.0、輕度偏斜 1.84、崩潰 8.0</text>
+<text x="684.0" y="224.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">（Switch 風格；式子本身是記憶）</text>
+<text x="684.0" y="238.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#0b0b0b">手段：輔助損失、偏置調整、路由雜訊、容量上限</text>
+<text x="684.0" y="253.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#d94040">品質提升與偏置更新規則是我設計的假設，</text>
+<text x="684.0" y="265.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#d94040">不是真實模型的訓練動態</text>
+</svg>
