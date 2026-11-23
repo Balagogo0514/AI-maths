@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">為什麼要平衡：三個層次</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#898781">較重偏斜路由、每卡一個專家（模擬，玩具分佈）</text>
+<rect x="26.0" y="51.815625" width="24.0" height="66.184375" fill="#d94040" opacity="0.85"/>
+<text x="38.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E1</text>
+<text x="38.0" y="48.8" text-anchor="middle" font-size="6.2" font-weight="700" fill="#d94040">2.21</text>
+<rect x="55.0" y="74.995703125" width="24.0" height="43.004296875" fill="#eda100" opacity="0.85"/>
+<text x="67.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E2</text>
+<text x="67.0" y="72.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#eda100">1.43</text>
+<rect x="84.0" y="85.897265625" width="24.0" height="32.102734375" fill="#1baf7a" opacity="0.85"/>
+<text x="96.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E3</text>
+<text x="96.0" y="82.9" text-anchor="middle" font-size="6.2" font-weight="700" fill="#1baf7a">1.07</text>
+<rect x="113.0" y="92.241015625" width="24.0" height="25.758984375" fill="#1baf7a" opacity="0.85"/>
+<text x="125.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E4</text>
+<text x="125.0" y="89.2" text-anchor="middle" font-size="6.2" font-weight="700" fill="#1baf7a">0.86</text>
+<rect x="142.0" y="96.3125" width="24.0" height="21.6875" fill="#1baf7a" opacity="0.85"/>
+<text x="154.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E5</text>
+<text x="154.0" y="93.3" text-anchor="middle" font-size="6.2" font-weight="700" fill="#1baf7a">0.72</text>
+<rect x="171.0" y="98.98515625" width="24.0" height="19.014843749999997" fill="#1baf7a" opacity="0.85"/>
+<text x="183.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E6</text>
+<text x="183.0" y="96.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#1baf7a">0.63</text>
+<rect x="200.0" y="101.090234375" width="24.0" height="16.909765625" fill="#1baf7a" opacity="0.85"/>
+<text x="212.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E7</text>
+<text x="212.0" y="98.1" text-anchor="middle" font-size="6.2" font-weight="700" fill="#1baf7a">0.56</text>
+<rect x="229.0" y="102.6625" width="24.0" height="15.337499999999999" fill="#1baf7a" opacity="0.85"/>
+<text x="241.0" y="128.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#0b0b0b">E8</text>
+<text x="241.0" y="99.7" text-anchor="middle" font-size="6.2" font-weight="700" fill="#1baf7a">0.51</text>
+<line x1="22.0" y1="88.0" x2="258.0" y2="88.0" stroke="#898781" stroke-width="0.9" stroke-dasharray="3,2"/>
+<text x="260.0" y="91.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">平均</text>
+<text x="141.0" y="140.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#d94040">最忙的卡 = 平均的 2.21 倍 → 整體約慢 2.2 倍</text>
+<rect x="18" y="152" width="246" height="23" rx="4" fill="#2a78d6" opacity="0.08" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="24.0" y="162.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#2a78d6">訓練</text>
+<text x="24.0" y="172.0" text-anchor="start" font-size="6.9" font-weight="400" fill="#0b0b0b">少數專家被練好、其餘沒機會（崩潰）</text>
+<rect x="18" y="179" width="246" height="23" rx="4" fill="#eb6834" opacity="0.08" stroke="#eb6834" stroke-width="0.9"/>
+<text x="24.0" y="189.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#eb6834">系統</text>
+<text x="24.0" y="199.0" text-anchor="start" font-size="6.9" font-weight="400" fill="#0b0b0b">最忙那張卡拖慢全體（straggler）</text>
+<rect x="18" y="206" width="246" height="23" rx="4" fill="#d94040" opacity="0.08" stroke="#d94040" stroke-width="0.9"/>
+<text x="24.0" y="216.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#d94040">品質</text>
+<text x="24.0" y="226.0" text-anchor="start" font-size="6.9" font-weight="400" fill="#0b0b0b">超過容量的 token 被丟棄</text>
+<text x="141.0" y="245.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">步驟時間由最忙的卡決定，前提是計算量與</text>
+<text x="141.0" y="257.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">負載成正比（已驗證：模擬；偏斜為假設）</text>
+<text x="141.0" y="275.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">MoE 的省計算，建立在負載大致平均的前提上</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">輔助損失的拉力方向</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">損失 E·Σ f·P：f 為實際使用比例、P 為路由機率</text>
+<text x="415.0" y="53.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#1baf7a">解析梯度與數值微分最大誤差 1.2e-10（已驗證）</text>
+<text x="326.0" y="72.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E1</text>
+<rect x="332.0" y="62" width="27.6" height="12" fill="#898781" opacity="0.5"/>
+<text x="362.6" y="71.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.090</text>
+<text x="450.0" y="72.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">▲ 提高分數</text>
+<text x="510.0" y="72.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">-0.043</text>
+<text x="326.0" y="90.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E2</text>
+<rect x="332.0" y="80" width="20.0" height="12" fill="#898781" opacity="0.5"/>
+<text x="355.0" y="89.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.065</text>
+<text x="450.0" y="90.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">▲ 提高分數</text>
+<text x="510.0" y="90.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">-0.050</text>
+<text x="326.0" y="108.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E3</text>
+<rect x="332.0" y="98" width="45.9" height="12" fill="#898781" opacity="0.5"/>
+<text x="380.9" y="107.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.149</text>
+<text x="450.0" y="108.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#898781">≈ 持平</text>
+<text x="510.0" y="108.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">-0.000</text>
+<text x="326.0" y="126.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E4</text>
+<rect x="332.0" y="116" width="27.1" height="12" fill="#898781" opacity="0.5"/>
+<text x="362.1" y="125.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.088</text>
+<text x="450.0" y="126.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">▲ 提高分數</text>
+<text x="510.0" y="126.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">-0.043</text>
+<text x="326.0" y="144.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E5</text>
+<rect x="332.0" y="134" width="11.5" height="12" fill="#898781" opacity="0.5"/>
+<text x="346.5" y="143.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.037</text>
+<text x="450.0" y="144.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">▲ 提高分數</text>
+<text x="510.0" y="144.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">-0.051</text>
+<text x="326.0" y="162.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E6</text>
+<rect x="332.0" y="152" width="35.3" height="12" fill="#898781" opacity="0.5"/>
+<text x="370.3" y="161.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.115</text>
+<text x="450.0" y="162.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">▲ 提高分數</text>
+<text x="510.0" y="162.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">-0.029</text>
+<text x="326.0" y="180.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E7</text>
+<rect x="332.0" y="170" width="78.0" height="12" fill="#898781" opacity="0.5"/>
+<text x="413.0" y="179.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.253</text>
+<text x="450.0" y="180.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#d94040">▼ 降低分數</text>
+<text x="510.0" y="180.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">+0.153</text>
+<text x="326.0" y="198.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">E8</text>
+<rect x="332.0" y="188" width="62.3" height="12" fill="#898781" opacity="0.5"/>
+<text x="397.3" y="197.5" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">0.203</text>
+<text x="450.0" y="198.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#d94040">▼ 降低分數</text>
+<text x="510.0" y="198.0" text-anchor="start" font-size="6.4" font-weight="400" fill="#898781">+0.064</text>
+<rect x="290" y="212" width="250" height="72" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="415.0" y="226.0" text-anchor="middle" font-size="7.4" font-weight="700" fill="#0b0b0b">忙的專家被壓低、閒的被拉高</text>
+<text x="415.0" y="240.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#0b0b0b">只對路由機率施力，是溫和的拉力、不是硬性規定</text>
+<text x="415.0" y="254.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">係數太大 → 為平衡犧牲品質；太小 → 擋不住崩潰（記憶）</text>
+<text x="415.0" y="268.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#d94040">只驗證了共享偏置這個自由度，非完整網路</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">容量上限與完全平衡的代價</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">較重偏斜：容量倍數 cf 的取捨（模擬）</text>
+<line x1="596.0" y1="134.0" x2="786.0" y2="134.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="596.0" y1="72.0" x2="596.0" y2="134.0" stroke="#898781" stroke-width="0.8"/>
+<polyline points="604.0,80.9 647.5,98.7 691.0,112.0 734.5,127.6 778.0,134.0" fill="none" stroke="#d94040" stroke-width="1.8"/>
+<polyline points="604.0,109.2 647.5,103.0 691.0,96.8 734.5,84.4 778.0,79.3" fill="none" stroke="#2a78d6" stroke-width="1.8"/>
+<text x="604.0" y="144.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">1</text>
+<circle cx="604.0" cy="80.9" r="2.2" fill="#d94040"/><circle cx="604.0" cy="109.2" r="2.2" fill="#2a78d6"/>
+<text x="647.5" y="144.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">1.25</text>
+<circle cx="647.5" cy="98.7" r="2.2" fill="#d94040"/><circle cx="647.5" cy="103.0" r="2.2" fill="#2a78d6"/>
+<text x="691.0" y="144.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">1.5</text>
+<circle cx="691.0" cy="112.0" r="2.2" fill="#d94040"/><circle cx="691.0" cy="96.8" r="2.2" fill="#2a78d6"/>
+<text x="734.5" y="144.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">2</text>
+<circle cx="734.5" cy="127.6" r="2.2" fill="#d94040"/><circle cx="734.5" cy="84.4" r="2.2" fill="#2a78d6"/>
+<text x="778.0" y="144.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">3</text>
+<circle cx="778.0" cy="134.0" r="2.2" fill="#d94040"/><circle cx="778.0" cy="79.3" r="2.2" fill="#2a78d6"/>
+<text x="691.0" y="155.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">容量倍數 cf</text>
+<text x="574.0" y="52.0" text-anchor="start" font-size="6.5" font-weight="700" fill="#d94040">■ 被丟棄 %（1.0→21.4，3.0→0.0）</text>
+<text x="574.0" y="62.0" text-anchor="start" font-size="6.5" font-weight="700" fill="#2a78d6">■ 最忙負載÷平均（上限 cf，最高 2.21）</text>
+<rect x="566" y="170" width="236" height="114" rx="4" fill="#eb6834" opacity="0.06" stroke="#eb6834" stroke-width="0.9"/>
+<text x="684.0" y="184.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#0b0b0b">完全平衡本身有代價（top-1 玩具模型，已驗證：模擬）</text>
+<text x="684.0" y="199.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#eb6834">輕度偏斜：至少 12.5% 的 token 被迫改送（模擬 12.5%）</text>
+<text x="684.0" y="213.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#eb6834">較重偏斜：至少 24.0% 的 token 被迫改送（模擬 23.9%）</text>
+<text x="684.0" y="230.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">= 各專家超出 1/E 的部分加總（與均勻分佈的全變差距離）</text>
+<text x="684.0" y="245.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#0b0b0b">均勻路由下 cf=1.25 幾乎不丟 token → 練得平衡，上限幾乎免費</text>
+<text x="684.0" y="259.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#d94040">真實 top-k 的代價會小很多；只說明結構性取捨</text>
+<text x="684.0" y="273.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+</svg>
