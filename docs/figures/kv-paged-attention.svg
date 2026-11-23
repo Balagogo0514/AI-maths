@@ -1,0 +1,192 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">為什麼要分頁</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">同一塊顯存（36 格）：連續預留 vs 分頁</text>
+<text x="14.0" y="66.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">連續</text>
+<rect x="40.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="46.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="52.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="58.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="64.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.7"/>
+<rect x="70.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.7"/>
+<rect x="76.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.7"/>
+<rect x="82.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.7"/>
+<rect x="88.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.7"/>
+<rect x="94.0" y="56" width="5.4" height="14" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.7"/>
+<rect x="100.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="106.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="112.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="118.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="124.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="130.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.85"/>
+<rect x="136.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.85"/>
+<rect x="142.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.85"/>
+<rect x="148.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="0.7"/>
+<rect x="154.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="0.7"/>
+<rect x="160.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="0.7"/>
+<rect x="166.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="0.7"/>
+<rect x="172.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="0.7"/>
+<rect x="178.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="0.7"/>
+<rect x="184.0" y="56" width="5.4" height="14" fill="#eb6834" opacity="0.22" stroke="#eb6834" stroke-width="0.7"/>
+<rect x="190.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="196.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="202.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="208.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="214.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="220.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="226.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="232.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="238.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="244.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="250.0" y="56" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<text x="40.0" y="81.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#2a78d6">R1 預留 10 格，只用 4</text>
+<text x="130.0" y="81.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#eb6834">R2 預留 10 格，只用 3</text>
+<text x="100.0" y="92.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#d94040">外部碎片 5 格</text>
+<text x="198.0" y="92.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#898781">空 11 格</text>
+<text x="141.0" y="105.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#d94040">新請求要預留 12 格：兩段空位都不夠，雖然共有 16 格空閒</text>
+<text x="14.0" y="140.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">分頁</text>
+<rect x="40.0" y="130" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="46.0" y="130" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="52.0" y="130" width="5.4" height="14" fill="#eb6834" opacity="0.85"/>
+<rect x="58.0" y="130" width="5.4" height="14" fill="#eb6834" opacity="0.85"/>
+<rect x="64.0" y="130" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="70.0" y="130" width="5.4" height="14" fill="#2a78d6" opacity="0.85"/>
+<rect x="76.0" y="130" width="5.4" height="14" fill="#1baf7a" opacity="0.85"/>
+<rect x="82.0" y="130" width="5.4" height="14" fill="#1baf7a" opacity="0.85"/>
+<rect x="88.0" y="130" width="5.4" height="14" fill="#1baf7a" opacity="0.85"/>
+<rect x="94.0" y="130" width="5.4" height="14" fill="#eb6834" opacity="0.85"/>
+<rect x="100.0" y="130" width="5.4" height="14" fill="#eb6834" opacity="0.85"/>
+<rect x="106.0" y="130" width="5.4" height="14" fill="#1baf7a" opacity="0.85"/>
+<rect x="112.0" y="130" width="5.4" height="14" fill="#1baf7a" opacity="0.85"/>
+<rect x="118.0" y="130" width="5.4" height="14" fill="#1baf7a" opacity="0.85"/>
+<rect x="124.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="130.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="136.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="142.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="148.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="154.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="160.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="166.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="172.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="178.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="184.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="190.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="196.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="202.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="208.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="214.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="220.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="226.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="232.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="238.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="244.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<rect x="250.0" y="130" width="5.4" height="14" fill="#f1f1ee" opacity="1.0"/>
+<text x="40.0" y="155.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">R1、R2、新請求 R3 的 block 交錯排列，隨用隨領</text>
+<text x="141.0" y="169.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">不必連續；請求結束就逐個歸還</text>
+<rect x="18" y="176" width="246" height="108" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="190.0" text-anchor="middle" font-size="7.6" font-weight="700" fill="#0b0b0b">三種浪費（連續預留）：</text>
+<text x="141.0" y="203.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">預留未用、預留空間內的空洞、請求進出後的外部碎片</text>
+<text x="141.0" y="217.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#eb6834">玩具模擬：使用率 22.4%（每個請求先留 2048）</text>
+<text x="141.0" y="231.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">分頁（block 16）：只浪費最後一個 block，約 1.6%</text>
+<text x="141.0" y="245.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#d94040">分布是我假設的，不是任何系統的實測（§12.8）</text>
+<text x="141.0" y="259.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">做法借自作業系統的虛擬記憶體分頁（記憶）</text>
+<text x="141.0" y="272.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">block 大小的取捨（玩具模擬）</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">橘：最後一個 block 的浪費（%）　藍：每個請求的 block table 項數</text>
+<line x1="328.0" y1="150.0" x2="520.0" y2="150.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="328.0" y1="150.0" x2="328.0" y2="62.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="520.0" y1="150.0" x2="520.0" y2="62.0" stroke="#898781" stroke-width="0.8"/>
+<line x1="325.0" y1="150.0" x2="520.0" y2="150.0" stroke="#eee" stroke-width="0.6"/>
+<text x="322.0" y="153.0" text-anchor="end" font-size="7" font-weight="400" fill="#eb6834">0</text>
+<line x1="325.0" y1="116.4" x2="520.0" y2="116.4" stroke="#eee" stroke-width="0.6"/>
+<text x="322.0" y="119.4" text-anchor="end" font-size="7" font-weight="400" fill="#eb6834">10</text>
+<line x1="325.0" y1="82.8" x2="520.0" y2="82.8" stroke="#eee" stroke-width="0.6"/>
+<text x="322.0" y="85.8" text-anchor="end" font-size="7" font-weight="400" fill="#eb6834">20</text>
+<text x="526.0" y="143.3" text-anchor="start" font-size="7" font-weight="400" fill="#2a78d6">3</text>
+<text x="526.0" y="111.0" text-anchor="start" font-size="7" font-weight="400" fill="#2a78d6">30</text>
+<text x="526.0" y="78.7" text-anchor="start" font-size="7" font-weight="400" fill="#2a78d6">300</text>
+<polyline points="328.0,150.0 355.4,148.9 382.9,147.4 410.3,144.6 437.7,139.0 465.1,128.4 492.6,109.0 520.0,77.8" fill="none" stroke="#eb6834" stroke-width="1.8"/>
+<polyline points="328.0,69.8 355.4,89.2 382.9,98.8 410.3,108.4 437.7,117.9 465.1,127.2 492.6,136.0 520.0,144.1" fill="none" stroke="#2a78d6" stroke-width="1.8"/>
+<circle cx="328.0" cy="150.0" r="2.4" fill="#eb6834"/><circle cx="328.0" cy="69.8" r="2.4" fill="#2a78d6"/>
+<text x="328.0" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">1</text>
+<circle cx="355.4" cy="148.9" r="2.4" fill="#eb6834"/><circle cx="355.4" cy="89.2" r="2.4" fill="#2a78d6"/>
+<text x="355.4" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">4</text>
+<circle cx="382.9" cy="147.4" r="2.4" fill="#eb6834"/><circle cx="382.9" cy="98.8" r="2.4" fill="#2a78d6"/>
+<text x="382.9" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">8</text>
+<circle cx="410.3" cy="144.6" r="2.4" fill="#eb6834"/><circle cx="410.3" cy="108.4" r="2.4" fill="#2a78d6"/>
+<text x="410.3" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">16</text>
+<circle cx="437.7" cy="139.0" r="2.4" fill="#eb6834"/><circle cx="437.7" cy="117.9" r="2.4" fill="#2a78d6"/>
+<text x="437.7" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">32</text>
+<circle cx="465.1" cy="128.4" r="2.4" fill="#eb6834"/><circle cx="465.1" cy="127.2" r="2.4" fill="#2a78d6"/>
+<text x="465.1" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">64</text>
+<circle cx="492.6" cy="109.0" r="2.4" fill="#eb6834"/><circle cx="492.6" cy="136.0" r="2.4" fill="#2a78d6"/>
+<text x="492.6" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">128</text>
+<circle cx="520.0" cy="77.8" r="2.4" fill="#eb6834"/><circle cx="520.0" cy="144.1" r="2.4" fill="#2a78d6"/>
+<text x="520.0" y="160.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">256</text>
+<line x1="410.3" y1="150.0" x2="410.3" y2="62.0" stroke="#7c56c8" stroke-width="1.0" stroke-dasharray="3,3"/>
+<text x="413.3" y="68.0" text-anchor="start" font-size="7" font-weight="700" fill="#7c56c8">16</text>
+<text x="424.0" y="170.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">block 大小（token）</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="190.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">block 小：浪費少，但 table 與管理成本高</text>
+<text x="415.0" y="204.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">B = 1：浪費 0%，平均 458 項；B = 16：1.6%，29.1 項</text>
+<text x="415.0" y="218.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">block 大：table 小，但最後一個 block 浪費多</text>
+<text x="415.0" y="232.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#eb6834">B = 128：12.2%，4.1 項；B = 256：21.5%，2.3 項</text>
+<text x="415.0" y="246.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">實際系統常用較小的 block（如 16，記憶），要和 kernel</text>
+<text x="415.0" y="258.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">存取效率一起取捨</text>
+<text x="415.0" y="271.0" text-anchor="middle" font-size="7.1" font-weight="700" fill="#d94040">同樣的假設分布（平均總長 458 token），玩具模擬</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">共享前綴 + copy-on-write（玩具）</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">4 條 beam，prompt 100 token，各生成 30 token，block = 16</text>
+<text x="570.0" y="68.0" text-anchor="start" font-size="6.5" font-weight="700" fill="#0b0b0b">beam 1</text>
+<rect x="606" y="56" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="622" y="56" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="638" y="56" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="654" y="56" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="670" y="56" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="686" y="56" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="702" y="56" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="718" y="56" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="734" y="56" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<text x="570.0" y="94.0" text-anchor="start" font-size="6.5" font-weight="700" fill="#0b0b0b">beam 2</text>
+<rect x="606" y="82" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="622" y="82" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="638" y="82" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="654" y="82" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="670" y="82" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="686" y="82" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="702" y="82" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="718" y="82" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="734" y="82" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<text x="570.0" y="120.0" text-anchor="start" font-size="6.5" font-weight="700" fill="#0b0b0b">beam 3</text>
+<rect x="606" y="108" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="622" y="108" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="638" y="108" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="654" y="108" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="670" y="108" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="686" y="108" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="702" y="108" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="718" y="108" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="734" y="108" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<text x="570.0" y="146.0" text-anchor="start" font-size="6.5" font-weight="700" fill="#0b0b0b">beam 4</text>
+<rect x="606" y="134" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="622" y="134" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="638" y="134" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="654" y="134" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="670" y="134" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="686" y="134" width="15" height="18" rx="2" fill="#1baf7a" opacity="0.45" stroke="#1baf7a" stroke-width="0.8"/>
+<rect x="702" y="134" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="718" y="134" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<rect x="734" y="134" width="15" height="18" rx="2" fill="#eb6834" opacity="0.4" stroke="#eb6834" stroke-width="0.8"/>
+<text x="650.0" y="166.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#1baf7a">共享 6 個 block（引用計數 4）</text>
+<text x="726.0" y="166.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#eb6834">各 3 個</text>
+<rect x="566" y="176" width="236" height="108" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="190.0" text-anchor="middle" font-size="8" font-weight="700" fill="#eb6834">不共享：4 × 9 = 36 個 block</text>
+<text x="684.0" y="204.0" text-anchor="middle" font-size="8" font-weight="700" fill="#1baf7a">共享 + copy-on-write：6 + 4 × 3 = 18 個 block</text>
+<text x="684.0" y="218.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">第 7 個 block（prompt 的最後 4 個 token）只填了一部分，</text>
+<text x="684.0" y="230.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">各 beam 要接著寫，所以先複製一份（copy-on-write）</text>
+<text x="684.0" y="244.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">只有填滿的前綴 block 能直接共享（記憶：視實作而定）</text>
+<text x="684.0" y="258.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#d94040">block 數是依這個設定算出來的玩具算術</text>
+<text x="684.0" y="271.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">見 §12.4、§12.7</text>
+</svg>
