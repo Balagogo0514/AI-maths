@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">一百萬 token：三個瓶頸</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">假設 70B 等級 GQA 模型（算術，不是實測）</text>
+<text x="18.0" y="62.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">容量：KV cache（GB）</text>
+<rect x="24" y="68" width="217.8" height="11" fill="#2a78d6" opacity="0.8"/>
+<text x="237.8" y="77.0" text-anchor="end" font-size="7.2" font-weight="700" fill="white">bf16：328 GB</text>
+<rect x="24" y="84" width="108.9" height="11" fill="#1baf7a" opacity="0.8"/>
+<text x="136.9" y="93.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#1baf7a">FP8：164 GB</text>
+<line x1="77.2" y1="64.0" x2="77.2" y2="102.0" stroke="#d94040" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="130.4" y1="64.0" x2="130.4" y2="102.0" stroke="#d94040" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="183.5" y1="64.0" x2="183.5" y2="102.0" stroke="#d94040" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="236.7" y1="64.0" x2="236.7" y2="102.0" stroke="#d94040" stroke-width="0.8" stroke-dasharray="3,3"/>
+<text x="50.6" y="112.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#d94040">80 GB</text>
+<text x="210.1" y="112.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#d94040">5 張 80 GB 才放得下（bf16）</text>
+<text x="18.0" y="130.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">prefill 時間（分鐘，利用率 40%）</text>
+<rect x="24" y="136" width="190.2" height="10" fill="#eb6834" opacity="0.8"/>
+<text x="210.2" y="144.5" text-anchor="end" font-size="7" font-weight="700" fill="white">1 張 GPU：61.1</text>
+<rect x="24" y="150" width="23.8" height="10" fill="#1baf7a" opacity="0.8"/>
+<text x="51.8" y="158.5" text-anchor="start" font-size="7" font-weight="700" fill="#1baf7a">8 張（理想）：7.6</text>
+<text x="18.0" y="176.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">decode 每個 token 讀完整份 cache</text>
+<rect x="18" y="182" width="246" height="14" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="24.0" y="192.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">1 張：0.10 秒　　8 張（分片）：12 ms</text>
+<rect x="18" y="204" width="246" height="80" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="218.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#0b0b0b">attention 的計算量約為線性層的 9.4 倍（與 n² 成正比）</text>
+<text x="141.0" y="231.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">attention 1.3e+18 FLOPs，線性層 1.4e+17 FLOPs</text>
+<text x="141.0" y="244.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">峰值 990 TFLOPs、頻寬 3.35 TB/s 是假設的 GPU 規格</text>
+<text x="141.0" y="257.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#d94040">沒計入權重、通訊與實際利用率的損失</text>
+<text x="141.0" y="270.0" text-anchor="middle" font-size="7.4" font-weight="700" fill="#d94040">容量、prefill 計算、decode 頻寬三個都卡</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">序列（context）parallel：切 token</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">每張 GPU 只存、只算自己那段 K/V；再精確合併</text>
+<rect x="300" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="314.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU1</text>
+<text x="314.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<rect x="330" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="344.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU2</text>
+<text x="344.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<rect x="360" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="374.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU3</text>
+<text x="374.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<rect x="390" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="404.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU4</text>
+<text x="404.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<rect x="420" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="434.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU5</text>
+<text x="434.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<rect x="450" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="464.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU6</text>
+<text x="464.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<rect x="480" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="494.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU7</text>
+<text x="494.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<rect x="510" y="58" width="28" height="30" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="524.0" y="70.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">GPU8</text>
+<text x="524.0" y="81.0" text-anchor="middle" font-size="6.1" font-weight="400" fill="#898781">K/V 段</text>
+<line x1="314.0" y1="88.0" x2="314.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="314.0" y1="102.0" x2="311.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="314.0" y1="102.0" x2="316.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="344.0" y1="88.0" x2="344.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="344.0" y1="102.0" x2="341.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="344.0" y1="102.0" x2="346.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="374.0" y1="88.0" x2="374.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="374.0" y1="102.0" x2="371.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="374.0" y1="102.0" x2="376.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="404.0" y1="88.0" x2="404.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="404.0" y1="102.0" x2="401.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="404.0" y1="102.0" x2="406.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="434.0" y1="88.0" x2="434.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="434.0" y1="102.0" x2="431.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="434.0" y1="102.0" x2="436.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="464.0" y1="88.0" x2="464.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="464.0" y1="102.0" x2="461.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="464.0" y1="102.0" x2="466.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="494.0" y1="88.0" x2="494.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="494.0" y1="102.0" x2="491.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="494.0" y1="102.0" x2="496.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="524.0" y1="88.0" x2="524.0" y2="102.0" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="524.0" y1="102.0" x2="521.7" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<line x1="524.0" y1="102.0" x2="526.3" y2="98.1" stroke="#1baf7a" stroke-width="1.1"/>
+<rect x="300" y="104" width="238" height="16" rx="3" fill="#1baf7a" opacity="0.25" stroke="#1baf7a" stroke-width="1"/>
+<text x="419.0" y="116.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#0b0b0b">各段的 (最大值, softmax 分母, 加權和) → 合併</text>
+<text x="419.0" y="134.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">Ring Attention：K/V 區塊沿環狀傳遞，邊傳邊算（記憶）</text>
+<rect x="290" y="176" width="250" height="108" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="190.0" text-anchor="middle" font-size="7.4" font-weight="700" fill="#0b0b0b">分片後再合併是精確的（已驗證）：4096 個 token、8 段</text>
+<text x="415.0" y="204.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">一次合併 vs 完整 attention：最大差 8.3e-17</text>
+<text x="415.0" y="218.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1baf7a">逐段累加（環狀）vs 完整：最大差 7.3e-17</text>
+<text x="415.0" y="232.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">所以切分不改變數學，只是把一個大 softmax 拆成可平行的小塊</text>
+<text x="415.0" y="246.0" text-anchor="middle" font-size="7.2" font-weight="400" fill="#898781">prefill：n² 的計算分攤；decode：每張卡只讀 1/8 的 cache</text>
+<text x="415.0" y="260.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#d94040">代價：通訊要和計算重疊（記憶）</text>
+<text x="415.0" y="273.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">三種切法：切層、切 head、切 token</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.5" font-weight="400" fill="#898781">把「層 × token」的 KV cache 想成一張網格</text>
+<text x="578.0" y="60.0" text-anchor="start" font-size="6.3" font-weight="400" fill="#898781">層↓　token→</text>
+<rect x="574" y="66" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="586" y="66" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="598" y="66" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="610" y="66" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="574" y="78" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="586" y="78" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="598" y="78" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="610" y="78" width="11" height="11" fill="#eb6834" opacity="0.18"/>
+<rect x="574" y="90" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<rect x="586" y="90" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<rect x="598" y="90" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<rect x="610" y="90" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<rect x="574" y="102" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<rect x="586" y="102" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<rect x="598" y="102" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<rect x="610" y="102" width="11" height="11" fill="#eb6834" opacity="0.43"/>
+<text x="598.0" y="125.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#eb6834">切層（pipeline）</text>
+<rect x="646" y="66" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="658" y="66" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<rect x="670" y="66" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="682" y="66" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<rect x="646" y="78" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="658" y="78" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<rect x="670" y="78" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="682" y="78" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<rect x="646" y="90" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="658" y="90" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<rect x="670" y="90" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="682" y="90" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<rect x="646" y="102" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="658" y="102" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<rect x="670" y="102" width="11" height="11" fill="#2a78d6" opacity="0.18"/>
+<rect x="682" y="102" width="11" height="11" fill="#2a78d6" opacity="0.43"/>
+<text x="670.0" y="125.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#2a78d6">切 head（tensor）</text>
+<rect x="718" y="66" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="730" y="66" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="742" y="66" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<rect x="754" y="66" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<rect x="718" y="78" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="730" y="78" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="742" y="78" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<rect x="754" y="78" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<rect x="718" y="90" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="730" y="90" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="742" y="90" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<rect x="754" y="90" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<rect x="718" y="102" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="730" y="102" width="11" height="11" fill="#1baf7a" opacity="0.18"/>
+<rect x="742" y="102" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<rect x="754" y="102" width="11" height="11" fill="#1baf7a" opacity="0.43"/>
+<text x="742.0" y="125.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#1baf7a">切 token（context）</text>
+<text x="684.0" y="140.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">同色 = 放在同一張卡（示意：每種切成 2 份）</text>
+<rect x="566" y="152" width="236" height="132" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="166.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">Tensor：每層都要通訊，受 KV head 數限制（8 個就最多切 8 份）</text>
+<text x="684.0" y="179.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#0b0b0b">Pipeline：放得下，但 decode 延遲不降（記憶）</text>
+<text x="684.0" y="192.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#1baf7a">Context：長上下文的 cache 與 n² 計算都可分攤</text>
+<text x="684.0" y="206.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">實際系統常混用：節點內 tensor，節點間 pipeline 或 context</text>
+<text x="684.0" y="219.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">另可把 prefill 與 decode 分到不同 GPU 群（記憶）</text>
+<text x="684.0" y="232.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">再配合：GQA、FP8、滑動視窗、前綴共享、分頁、換出</text>
+<text x="684.0" y="246.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">（§7.1、§7.2、§7.3、§12.5、§12.7）</text>
+<text x="684.0" y="260.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#d94040">各系統的實作與通訊細節依印象整理，沒有查證</text>
+<text x="684.0" y="273.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+</svg>

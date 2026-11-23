@@ -446,7 +446,7 @@ $$
 - 真的複製 cache，簡單但耗記憶體
 - 共享 prefix cache，只複製分叉後的新部分，較省記憶體但管理更複雜
 
-同理，很多多輪對話或同 prompt 多採樣場景，也會利用 prefix sharing 減少 prefill 重工。跨不同請求的共享見 §12.7，多請求同時服務時的 cache 管理見 §12.8。
+同理，很多多輪對話或同 prompt 多採樣場景，也會利用 prefix sharing 減少 prefill 重工。跨不同請求的共享見 §12.7，多請求同時服務時的 cache 管理見 §12.8，百萬 token 的多 GPU 協同見 §12.9。
 
 ### 12.5 量化 KV Cache 是常見工程手段
 
@@ -590,6 +590,61 @@ decode 每一步只產生 1 個 token，卻要把整份模型權重讀一遍，�
 | `K/V` 內容 | 各請求獨立（只有相同前綴可共享，§12.7） |
 | 顯存 block 池 | 共用（動態分配與回收） |
 | attention 的讀取範圍 | 各請求只讀自己的 block table |
+
+### 12.9 超長上下文與多 GPU 協同
+
+> 標示「（已驗證）」的，是我用小程式實際檢查過的結果；「（記憶）」是依印象整理、沒有逐條查證的系統做法。下面的數字是算術，模型與 GPU 規格是我假設的：70B 等級、80 層、8 個 KV head、`d_model = 8192`、bf16；GPU 峰值 990 TFLOPs、記憶體頻寬 3.35 TB/s，prefill 利用率取 40%。沒有實測。
+
+**問題有多大**：一百萬個 token 時，單張 GPU 同時卡在三個地方。
+
+| 項目 | 一百萬個 token |
+|---|---|
+| KV cache（GQA、bf16） | 327.7 GB，至少要 5 張 80 GB 的卡（不含權重） |
+| 同上，FP8 | 163.8 GB，約 3 張 |
+| 若是完整 MHA（64 個 KV head） | 2.62 TB |
+| prefill 的 attention 計算量 | 約 1.3e18 FLOPs，是線性層 1.4e17 的 9.4 倍（attention 與 n 的平方成正比） |
+| 單張 GPU 做完 prefill | 約 61 分鐘；8 張理想情況約 7.6 分鐘 |
+| decode 每個 token 要讀完整份 cache | 1 張約 0.10 秒；平均分到 8 張約 12 ms |
+
+三個瓶頸：**容量**（放不下）、**prefill 計算**（n 的平方）、**decode 頻寬**（每步讀整份 cache）。權重、通訊與實際利用率的損失都沒有計入，所以這些時間是下限的粗估。
+
+**切法一：Tensor parallelism（切 head 與隱藏維度，記憶）**：把 attention head 與 FFN 的權重切到多張卡，每張卡負責一部分 head，KV cache 也隨之切開。限制：KV head 只有 8 個時最多切 8 份，再多就要複製 KV head，省不到記憶體；每層都要通訊，通常限制在同一個節點內。
+
+**切法二：Pipeline parallelism（切層，記憶）**：把 80 層分給不同的卡，每張卡只存自己那幾層的 KV cache。主要用來「放得下」與提高吞吐；單個請求仍要依序經過每一段，decode 延遲不會因此下降。
+
+**切法三：序列（context）parallelism，切 token——長上下文的主角（記憶）**：把一百萬個 token 的 `K/V` 切成很多段，每張卡只存、只算自己那一段。常見做法：
+
+- Ring Attention：`K/V` 區塊沿環狀傳遞，每張卡一邊算一邊傳，讓通訊與計算重疊。
+- head 與序列混合（如 DeepSpeed-Ulysses 一類）：用 all-to-all 在「切 token」與「切 head」之間轉換。
+- decode 時的分片 attention（flash-decoding 一類）：每張卡對自己那一段算部分的 softmax，再合併。
+
+**分片後再合併是精確的（已驗證）**：每一段各自算 `(最大值 m, softmax 分母 l, 加權和 o)`，再用最大值對齊後相加，就得到整份 attention 的結果。我用隨機資料驗證（維度 64，4096 個 token，切成 8 段）：
+
+- 一次合併 8 段與一次算完整份的最大差是 `8.3e-17`。
+- 逐段累加（環狀的做法）與完整結果的最大差是 `7.3e-17`。
+
+所以切分不改變數學，只是把一個大的 softmax 拆成可平行的小塊；prefill 時把 n 的平方的計算分攤，decode 時每張卡只讀 1/8 的 cache。代價是通訊必須和計算重疊（記憶）。
+
+**其他手段（記憶）**：
+
+- 把 prefill 與 decode 分到不同的 GPU 群：prefill 吃計算、decode 吃頻寬，瓶頸不同；prefill 完把 KV cache 傳給 decode 的機器。
+- 讓 cache 變小或放到別處：GQA、FP8 量化（§12.5）、滑動視窗（§7.2）、前綴共享（§12.7）、分頁（§7.3），以及把不常用的 KV 換出到 CPU 記憶體或 SSD。
+- 稀疏或選擇性 attention、KV 壓縮、只保留「重要」的 token：這些是研究方向，我沒有查證具體方法。
+- MoE 模型可以再加 expert parallelism。實際系統常混用：節點內 tensor parallel，節點間 pipeline 或 context parallel。
+
+**對照**：
+
+| 切法 | 切什麼 | 主要解決 | 代價 |
+|---|---|---|---|
+| Tensor parallel | head 與隱藏維度 | 單層放不下、算得慢 | 每層都要通訊；受 KV head 數限制 |
+| Pipeline parallel | 層 | 模型與 cache 放不下 | decode 延遲不降；有 pipeline 空泡 |
+| Context（序列）parallel | token | 超長上下文的 cache 與 n 的平方的計算 | 通訊，要和計算重疊 |
+| 拆開 prefill 與 decode | 工作階段 | 兩者瓶頸不同 | 要傳輸 KV cache |
+| 縮小或換出 cache | cache 本身 | 容量 | 品質或延遲的代價 |
+
+![一百萬 token 的上下文：三個瓶頸、序列 parallel 的精確合併、切層／切 head／切 token 三種切法](figures/kv-long-context-multigpu.svg)
+
+**一句話**：百萬 token 時，cache 要幾百 GB、prefill 要 n 的平方的計算；用 tensor 與 pipeline 把模型放下，再用序列 parallel 把 token 切到多張卡上平行算 attention，並盡量把 cache 縮小。
 
 ---
 
