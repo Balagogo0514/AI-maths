@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">兩種路由方向</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.4" font-weight="400" fill="#898781">誰選誰：Token Choice vs Expert Choice</text>
+<text x="70.0" y="54.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#eb6834">Token Choice：token 選專家</text>
+<rect x="18" y="62" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="29.0" y="70.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t1</text>
+<rect x="18" y="77" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="29.0" y="85.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t2</text>
+<rect x="18" y="92" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="29.0" y="100.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t3</text>
+<rect x="18" y="107" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="29.0" y="115.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t4</text>
+<rect x="18" y="122" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="29.0" y="130.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t5</text>
+<rect x="100" y="68" width="22" height="14" rx="4" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="111.0" y="78.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">E1</text>
+<rect x="100" y="90" width="22" height="14" rx="4" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="111.0" y="100.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">E2</text>
+<rect x="100" y="112" width="22" height="14" rx="4" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="111.0" y="122.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">E3</text>
+<line x1="40.0" y1="67.5" x2="100.0" y2="75.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="67.5" x2="100.0" y2="97.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="82.5" x2="100.0" y2="75.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="82.5" x2="100.0" y2="119.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="97.5" x2="100.0" y2="97.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="97.5" x2="100.0" y2="119.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="112.5" x2="100.0" y2="75.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="112.5" x2="100.0" y2="97.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="127.5" x2="100.0" y2="75.0" stroke="#eb6834" stroke-width="0.9"/>
+<line x1="40.0" y1="127.5" x2="100.0" y2="119.0" stroke="#eb6834" stroke-width="0.9"/>
+<text x="18.0" y="146.0" text-anchor="start" font-size="6.7" font-weight="400" fill="#0b0b0b">每個 token 恰好 2 個專家</text>
+<text x="18.0" y="157.0" text-anchor="start" font-size="6.7" font-weight="400" fill="#898781">專家的負載不一定相等</text>
+<text x="198.0" y="54.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#1baf7a">Expert Choice：專家選 token</text>
+<rect x="146" y="62" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="157.0" y="70.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t1</text>
+<rect x="146" y="77" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="157.0" y="85.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t2</text>
+<rect x="146" y="92" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="157.0" y="100.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t3</text>
+<rect x="146" y="107" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="157.0" y="115.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t4</text>
+<rect x="146" y="122" width="22" height="11" rx="4" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="157.0" y="130.5" text-anchor="middle" font-size="6.0" font-weight="700" fill="#0b0b0b">t5</text>
+<rect x="228" y="68" width="22" height="14" rx="4" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="239.0" y="78.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">E1</text>
+<rect x="228" y="90" width="22" height="14" rx="4" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="239.0" y="100.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">E2</text>
+<rect x="228" y="112" width="22" height="14" rx="4" fill="#1baf7a" opacity="0.2" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="239.0" y="122.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">E3</text>
+<line x1="168.0" y1="67.5" x2="228.0" y2="75.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="82.5" x2="228.0" y2="75.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="97.5" x2="228.0" y2="75.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="82.5" x2="228.0" y2="97.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="112.5" x2="228.0" y2="97.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="127.5" x2="228.0" y2="97.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="67.5" x2="228.0" y2="119.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="97.5" x2="228.0" y2="119.0" stroke="#1baf7a" stroke-width="0.9"/>
+<line x1="168.0" y1="112.5" x2="228.0" y2="119.0" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="146.0" y="146.0" text-anchor="start" font-size="6.7" font-weight="400" fill="#0b0b0b">每個專家恰好 C 個 token</text>
+<text x="146.0" y="157.0" text-anchor="start" font-size="6.7" font-weight="400" fill="#898781">token 的專家數不固定</text>
+<text x="141.0" y="172.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">最忙專家的負載 ÷ 平均（8 專家、top-2；模擬）</text>
+<text x="18.0" y="190.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">均勻</text>
+<rect x="48.0" y="180" width="43.1" height="10" fill="#eb6834" opacity="0.85"/>
+<text x="94.1" y="188.5" text-anchor="start" font-size="6.8" font-weight="700" fill="#eb6834">TC 1.08</text>
+<rect x="48.0" y="192" width="40.0" height="10" fill="#1baf7a" opacity="0.85"/>
+<text x="91.0" y="200.5" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">EC 1.00</text>
+<text x="18.0" y="216.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">偏斜</text>
+<rect x="48.0" y="206" width="102.5" height="10" fill="#eb6834" opacity="0.85"/>
+<text x="153.5" y="214.5" text-anchor="start" font-size="6.8" font-weight="700" fill="#eb6834">TC 2.56</text>
+<rect x="48.0" y="218" width="40.0" height="10" fill="#1baf7a" opacity="0.85"/>
+<text x="91.0" y="226.5" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">EC 1.00</text>
+<text x="141.0" y="245.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#0b0b0b">每個專家恰好挑 C 個，不論 Router 分數怎麼偏，負載都是平的</text>
+<text x="141.0" y="258.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#898781">→ 不需輔助損失與容量上限；all-to-all 訊息大小固定（記憶）</text>
+<text x="141.0" y="273.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">C = T·k/E（T 為一起參與選擇的 token 數）</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">代價一：每個 token 的專家數不固定</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#898781">每個 token 收到幾個專家（EC，平均都是 2；模擬）</text>
+<text x="324.0" y="63.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">0 個</text>
+<rect x="330.0" y="52" width="37.4" height="11" fill="#2a78d6" opacity="0.85"/>
+<text x="370.4" y="61.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#2a78d6">均勻 10.0%</text>
+<rect x="330.0" y="65" width="35.5" height="11" fill="#eb6834" opacity="0.85"/>
+<text x="368.5" y="74.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#eb6834">偏斜 9.5%</text>
+<text x="324.0" y="97.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">1 個</text>
+<rect x="330.0" y="86" width="105.5" height="11" fill="#2a78d6" opacity="0.85"/>
+<text x="438.5" y="95.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#2a78d6">均勻 28.1%</text>
+<rect x="330.0" y="99" width="99.6" height="11" fill="#eb6834" opacity="0.85"/>
+<text x="432.6" y="108.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#eb6834">偏斜 26.6%</text>
+<text x="324.0" y="131.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">2 個</text>
+<rect x="330.0" y="120" width="105.8" height="11" fill="#2a78d6" opacity="0.85"/>
+<text x="438.8" y="129.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#2a78d6">均勻 28.2%</text>
+<rect x="330.0" y="133" width="118.3" height="11" fill="#eb6834" opacity="0.85"/>
+<text x="451.3" y="142.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#eb6834">偏斜 31.5%</text>
+<text x="324.0" y="165.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">3+ 個</text>
+<rect x="330.0" y="154" width="126.3" height="11" fill="#2a78d6" opacity="0.85"/>
+<text x="459.3" y="163.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#2a78d6">均勻 33.7%</text>
+<rect x="330.0" y="167" width="121.6" height="11" fill="#eb6834" opacity="0.85"/>
+<text x="454.6" y="176.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#eb6834">偏斜 32.4%</text>
+<text x="415.0" y="194.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#d94040">約一成的 token 一個專家都沒有；有的被 6 個專家選中</text>
+<rect x="290" y="204" width="250" height="80" rx="4" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="415.0" y="218.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#0b0b0b">完全平衡的取捨仍在（top-1 玩具模型，已驗證：模擬）</text>
+<text x="415.0" y="231.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#0b0b0b">沒有專家的 token 18.9%；拿到 2 個以上 17.3%</text>
+<text x="415.0" y="244.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#1baf7a">拿到最適合專家的 token 75.6% ≈ 1 − 全變差距離 75.8%</text>
+<text x="415.0" y="258.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#898781">與 §5.4 的下界一致：換了表現形式，沒有繞開取捨</text>
+<text x="415.0" y="272.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#d94040">沒被選中的 token 走殘差（記憶）；對品質的影響未驗證</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">代價二：token 之間不再獨立</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">只改最後一個 token 的分數（1024 個 token；模擬）</text>
+<rect x="566" y="50" width="236" height="30" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="684.0" y="63.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#eb6834">Token Choice：其他 token 的分配改變 0 個</text>
+<text x="684.0" y="74.0" text-anchor="middle" font-size="6.6" font-weight="400" fill="#898781">（每個 token 只看自己的分數）</text>
+<rect x="566" y="84" width="236" height="30" rx="4" fill="#d94040" opacity="0.07" stroke="#d94040" stroke-width="0.9"/>
+<text x="684.0" y="97.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#d94040">Expert Choice：其他 token 的分配改變 6 個</text>
+<text x="684.0" y="108.0" text-anchor="middle" font-size="6.6" font-weight="400" fill="#898781">（專家要在一批 token 之間比較）</text>
+<rect x="566" y="118" width="236" height="30" rx="4" fill="#7c56c8" opacity="0.07" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="131.0" text-anchor="middle" font-size="6.3" font-weight="700" fill="#0b0b0b">因果性：前 512 個 token 中 36 個，只看前綴與看完整序列的結果不同</text>
+<text x="684.0" y="142.0" text-anchor="middle" font-size="6.6" font-weight="400" fill="#898781">→ 後面的 token 影響前面的分配（資訊洩漏，記憶）</text>
+<text x="684.0" y="160.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">decode：每步每個專家的容量 C = B·k/E</text>
+<text x="598.0" y="175.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">B = 1</text>
+<rect x="604.0" y="166" width="1.2" height="10" fill="#d94040" opacity="0.85"/>
+<text x="608.9" y="174.5" text-anchor="start" font-size="6.6" font-weight="700" fill="#d94040">0.25（不到 1，退化）</text>
+<text x="598.0" y="191.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">B = 4</text>
+<rect x="604.0" y="182" width="3.4" height="10" fill="#1baf7a" opacity="0.85"/>
+<text x="611.4" y="190.5" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">1</text>
+<text x="598.0" y="207.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">B = 8</text>
+<rect x="604.0" y="198" width="6.9" height="10" fill="#1baf7a" opacity="0.85"/>
+<text x="614.9" y="206.5" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">2</text>
+<text x="598.0" y="223.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">B = 32</text>
+<rect x="604.0" y="214" width="27.5" height="10" fill="#1baf7a" opacity="0.85"/>
+<text x="635.5" y="222.5" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">8</text>
+<text x="598.0" y="239.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">B = 128</text>
+<rect x="604.0" y="230" width="110.0" height="10" fill="#1baf7a" opacity="0.85"/>
+<text x="718.0" y="238.5" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">32</text>
+<text x="684.0" y="258.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#d94040">一個請求的結果會受同批其他人影響（記憶）</text>
+<text x="684.0" y="271.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#898781">低延遲自回歸推論較少用，需特別處理（記憶）</text>
+</svg>
