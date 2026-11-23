@@ -822,6 +822,57 @@ HBM → S = QKᵀ → HBM → P = softmax(S) → HBM → O = PV → HBM
 
 **數學結果完全等價**，非近似算法。
 
+### 15.3 KV Cache 與 Flash Attention 的分工
+
+兩者回答不同的問題，互相獨立，也互補：
+
+| | KV Cache | Flash Attention |
+|---|---|---|
+| 解決的問題 | 避免重算舊 token 的 `K/V` | 避免把 $n \times n$ 分數矩陣寫進 HBM |
+| 層次 | 演算法／系統層：存什麼 | kernel 層：怎麼讀寫記憶體 |
+| 省的資源 | 重複的計算（FLOPs） | HBM 讀寫與中間矩陣的顯存 |
+| 結果 | 完全等價 | 完全等價（不是近似） |
+| 對 KV cache 大小 | 它本身就是 KV cache | **不縮小** |
+
+**精確性（已驗證）**：用 numpy 實作分塊的 online softmax（causal， $n=512$、 $d=64$、塊大小 64，從不建出完整 $n \times n$ 矩陣），與標準 attention 比較，最大差異為 5.55e-16，屬浮點誤差。
+
+**Prefill：Flash Attention 的主場（算術已驗證）**
+
+prefill 時 query 長度是 $n$，標準做法要產生 $n \times n$ 分數矩陣。每頭每層、bf16 的大小為：
+
+| 上下文長度 $n$ | 完整分數矩陣 |
+|---|---|
+| 32,768 | 2.1 GB |
+| 131,072 | 34.4 GB |
+| 1,000,000 | 2,000 GB |
+
+長上下文下根本放不下。Flash Attention 不存這個矩陣，附加顯存降到 $O(n)$，長 prompt 的 prefill 才做得到。
+
+**Decode：瓶頸換成讀 KV（算術已驗證）**
+
+decode 時 query 長度為 1，分數只有一列 $T$ 個元素： $T=10^6$ 時只有 2.0 MB（每頭每層）。沒有 $n^2$ 矩陣可省。但每步都要讀完整的 K 與 V；以 $d_{head}=128$、bf16 計，一個 KV head 在一層的 K、V 共 512 MB，是分數列的 256 倍（即 $2d_{head}$ 倍）。所以 decode 受 HBM 頻寬限制，不是受矩陣大小限制。
+
+**Flash-decoding：同一套數學用在 decode（機制已驗證）**
+
+把 KV 沿序列切成多段，各段獨立算出（最大值 $m$、分母 $\ell$、加權和 $o$），再用 online softmax 的合併公式精確合併，提高平行度。驗證： $T=4096$、8 段合併與完整 attention 的最大差為 1.3e-16，與 §12.9 跨 GPU 分片合併是同一個數學。
+
+**記憶（未驗證）**：
+
+- 這種「沿 KV 切分」的 decode kernel 一般稱為 flash-decoding，各推論引擎的實作與命名依印象整理，沒有查證。
+- Paged Attention（§7.3）的 KV 在 HBM 中不連續；我印象中 Flash Attention 系的 kernel 與 FlashInfer 等函式庫支援依 block table 直接讀取分頁的 KV，但沒有在這個環境驗證。
+- 上面複雜度表的 HBM 讀寫 $O(n)$ 是簡化寫法；我記得原論文給的是約 $n^2 d^2 / M$（ $M$ 為 SRAM 大小），仍遠少於標準做法的 $n^2$，但不是嚴格的線性。這個式子未在此驗證。
+
+**四種組合**：
+
+| | 標準 attention | Flash Attention |
+|---|---|---|
+| 無 KV cache | 每步重算全部 `K/V`，並存 $n^2$ 分數 | 顯存省了，仍重算舊 token |
+| 有 KV cache | 不重算，但 prefill 要 $n^2$ 顯存 | 實務組合：兩個都開 |
+
+Flash Attention 不縮小 KV cache。cache 太大要靠 GQA（§7.1）、量化（§12.5）、滑動視窗（§7.2）、分頁（§7.3）、前綴共享（§12.7）與多 GPU 切分（§12.9）。
+
+![KV Cache 與 Flash Attention：prefill 的 n² 矩陣、decode 的 KV 讀取與 flash-decoding、兩個旋鈕的 2x2 分工](figures/kv-flashattention.svg)
+
 ---
 
 ## 16. 具體數字走一遍
