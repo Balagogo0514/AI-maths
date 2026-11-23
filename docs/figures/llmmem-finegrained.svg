@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">做法：切細，但總量不變</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">每個專家切成 m 份，啟用 m×k 個（Mixtral 類設定）</text>
+<text x="18.0" y="58.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">標準（m=1）：8 個大專家，選 2</text>
+<rect x="18" y="63" width="27" height="22" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="49" y="63" width="27" height="22" rx="4" fill="#eb6834" opacity="0.5" stroke="#eb6834" stroke-width="0.9"/>
+<rect x="80" y="63" width="27" height="22" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="111" y="63" width="27" height="22" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="142" y="63" width="27" height="22" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="173" y="63" width="27" height="22" rx="4" fill="#eb6834" opacity="0.5" stroke="#eb6834" stroke-width="0.9"/>
+<rect x="204" y="63" width="27" height="22" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="235" y="63" width="27" height="22" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<text x="18.0" y="98.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">m=4：32 個小專家，選 8（每個為 1/4 大小）</text>
+<rect x="18.0" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="33.4" y="103" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="48.8" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="64.2" y="103" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="79.6" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="95.0" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="110.4" y="103" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="125.8" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="141.2" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="156.6" y="103" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="172.0" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="187.4" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="202.8" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="218.20000000000002" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="233.6" y="103" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="249.0" y="103" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="18.0" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="33.4" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="48.8" y="116" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="64.2" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="79.6" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="95.0" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="110.4" y="116" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="125.8" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="141.2" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="156.6" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="172.0" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="187.4" y="116" width="13" height="11" rx="4" fill="#1baf7a" opacity="0.6" stroke="#1baf7a" stroke-width="0.9"/>
+<rect x="202.8" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="218.20000000000002" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="233.6" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<rect x="249.0" y="116" width="13" height="11" rx="4" fill="#898781" opacity="0.1" stroke="#898781" stroke-width="0.9"/>
+<text x="141.0" y="140.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#0b0b0b">專家總參數 45.10B、啟用 11.27B：切成幾份都一樣（已驗證：算術）</text>
+<text x="18.0" y="156.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">可選的組合數 C(mE, mk)（對數刻度）</text>
+<text x="46.0" y="172.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">m = 1</text>
+<rect x="52.0" y="162" width="14.8" height="13" fill="#1baf7a" opacity="0.85"/>
+<text x="70.8" y="172.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">28</text>
+<text x="46.0" y="194.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">m = 2</text>
+<rect x="52.0" y="184" width="33.3" height="13" fill="#1baf7a" opacity="0.85"/>
+<text x="89.3" y="194.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">1,820</text>
+<text x="46.0" y="216.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">m = 4</text>
+<rect x="52.0" y="206" width="71.7" height="13" fill="#1baf7a" opacity="0.85"/>
+<text x="127.7" y="216.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">10,518,300</text>
+<text x="46.0" y="238.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">m = 8</text>
+<rect x="52.0" y="228" width="150.0" height="13" fill="#1baf7a" opacity="0.85"/>
+<text x="206.0" y="238.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">約 4.9×10^14</text>
+<rect x="18" y="252" width="246" height="32" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="265.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#0b0b0b">不變：專家總參數、啟用參數、decode 讀取的總 bytes</text>
+<text x="141.0" y="277.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">改變：組合數、每個專家的大小、通訊與利用率</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">動機：更貼合需要的知識組合（玩具）</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#898781">64 個技能，每個 token 需要隨機 8 個；專家 = b 個技能的區塊</text>
+<text x="290.0" y="58.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">為涵蓋所有需要的技能，被迫啟用的容量（理想 = 8）</text>
+<text x="330.0" y="77.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">b = 16</text>
+<rect x="336.0" y="66" width="137.2" height="15" fill="#d94040" opacity="0.85"/>
+<text x="477.2" y="77.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#d94040">58.6</text>
+<text x="330.0" y="101.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">b = 8</text>
+<rect x="336.0" y="90" width="101.9" height="15" fill="#d94040" opacity="0.85"/>
+<text x="441.9" y="101.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#d94040">43.5</text>
+<text x="330.0" y="125.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">b = 4</text>
+<rect x="336.0" y="114" width="63.3" height="15" fill="#eb6834" opacity="0.85"/>
+<text x="403.3" y="125.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#eb6834">27.0</text>
+<text x="330.0" y="149.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">b = 2</text>
+<rect x="336.0" y="138" width="35.4" height="15" fill="#eda100" opacity="0.85"/>
+<text x="375.4" y="149.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#eda100">15.1</text>
+<text x="330.0" y="173.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">b = 1</text>
+<rect x="336.0" y="162" width="18.8" height="15" fill="#1baf7a" opacity="0.85"/>
+<text x="358.8" y="173.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#1baf7a">8.0</text>
+<line x1="354.8" y1="62.0" x2="354.8" y2="186.0" stroke="#898781" stroke-width="0.9" stroke-dasharray="3,2"/>
+<text x="354.8" y="197.0" text-anchor="middle" font-size="6.4" font-weight="700" fill="#898781">理想 8</text>
+<rect x="290" y="206" width="250" height="78" rx="4" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="415.0" y="220.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">若啟用預算只有 16 個技能容量：</text>
+<text x="415.0" y="233.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#d94040">b = 16、8、4：能涵蓋全部 8 個技能的機率不到 1%</text>
+<text x="415.0" y="246.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#1baf7a">b = 2、1：機率 1.000（一定涵蓋）</text>
+<text x="415.0" y="260.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#898781">只說明概念；真實模型的知識沒有獨立技能這麼乾淨</text>
+<text x="415.0" y="273.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#d94040">「細粒度提升品質」是記憶中的論點，未驗證</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">代價與取捨</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">all-to-all（每 token 每層，8 張卡，KB）</text>
+<text x="594.0" y="59.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">m=1</text>
+<rect x="600.0" y="50" width="16.2" height="7" fill="#eb6834" opacity="0.85"/>
+<rect x="600.0" y="58" width="16.2" height="7" fill="#1baf7a" opacity="0.85"/>
+<text x="619.2" y="57.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#eb6834">29</text>
+<text x="619.2" y="65.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#1baf7a">29</text>
+<text x="594.0" y="79.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">m=2</text>
+<rect x="600.0" y="70" width="32.4" height="7" fill="#eb6834" opacity="0.85"/>
+<rect x="600.0" y="78" width="29.2" height="7" fill="#1baf7a" opacity="0.85"/>
+<text x="635.4" y="77.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#eb6834">57</text>
+<text x="632.2" y="85.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#1baf7a">52</text>
+<text x="594.0" y="99.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">m=4</text>
+<rect x="600.0" y="90" width="64.8" height="7" fill="#eb6834" opacity="0.85"/>
+<rect x="600.0" y="98" width="45.7" height="7" fill="#1baf7a" opacity="0.85"/>
+<text x="667.8" y="97.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#eb6834">115</text>
+<text x="648.7" y="105.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#1baf7a">81</text>
+<text x="594.0" y="119.0" text-anchor="end" font-size="6.6" font-weight="700" fill="#0b0b0b">m=8</text>
+<rect x="600.0" y="110" width="129.6" height="7" fill="#eb6834" opacity="0.85"/>
+<rect x="600.0" y="118" width="59.3" height="7" fill="#1baf7a" opacity="0.85"/>
+<text x="732.6" y="117.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#eb6834">229</text>
+<text x="662.3" y="125.0" text-anchor="start" font-size="6.0" font-weight="700" fill="#1baf7a">105</text>
+<text x="566.0" y="138.0" text-anchor="start" font-size="6.4" font-weight="700" fill="#eb6834">■ 不合併　</text>
+<text x="620.0" y="138.0" text-anchor="start" font-size="6.4" font-weight="700" fill="#1baf7a">■ 同卡合併（期望值）</text>
+<text x="684.0" y="154.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#0b0b0b">單卡負載：最忙÷平均（256 token／步；均勻路由）</text>
+<rect x="580" y="160" width="46" height="30" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="603.0" y="172.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#898781">m=1</text>
+<text x="603.0" y="185.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">1.170</text>
+<rect x="632" y="160" width="46" height="30" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="655.0" y="172.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#898781">m=2</text>
+<text x="655.0" y="185.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">1.116</text>
+<rect x="684" y="160" width="46" height="30" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="707.0" y="172.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#898781">m=4</text>
+<text x="707.0" y="185.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">1.079</text>
+<rect x="736" y="160" width="46" height="30" rx="4" fill="#1baf7a" opacity="0.1" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="759.0" y="172.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#898781">m=8</text>
+<text x="759.0" y="185.0" text-anchor="middle" font-size="7.2" font-weight="700" fill="#1baf7a">1.056</text>
+<rect x="566" y="198" width="236" height="86" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="211.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#0b0b0b">decode 讀取的專家權重總量不變（均勻路由）</text>
+<text x="684.0" y="223.0" text-anchor="middle" font-size="6.4" font-weight="400" fill="#898781">B=1、8、32：22.5、81.2、90.2 GB（m = 1、2、4 都一樣）</text>
+<text x="684.0" y="236.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#0b0b0b">Router 變大（d×mE）但仍很小；專家矩陣變小，</text>
+<text x="684.0" y="247.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#0b0b0b">利用率可能下降（記憶）</text>
+<text x="684.0" y="261.0" text-anchor="middle" font-size="6.7" font-weight="400" fill="#898781">常搭配 Shared Expert（§5.6，記憶）</text>
+<text x="684.0" y="274.0" text-anchor="middle" font-size="6.6" font-weight="700" fill="#d94040">合併與負載模擬皆為理想化假設</text>
+</svg>
