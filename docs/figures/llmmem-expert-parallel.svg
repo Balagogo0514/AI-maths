@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">專家並行：把專家分給不同 GPU</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">Mixtral 類設定；每個專家 0.35 GB（算術）</text>
+<text x="64.0" y="65.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">EP = 1</text>
+<rect x="70.0" y="54" width="5.2" height="15" fill="#898781" opacity="0.6"/>
+<rect x="75.2" y="54" width="144.9" height="15" fill="#1baf7a" opacity="0.85"/>
+<text x="224.0" y="65.0" text-anchor="start" font-size="7.3" font-weight="700" fill="#1baf7a">93.4 GB</text>
+<text x="64.0" y="89.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">EP = 2</text>
+<rect x="70.0" y="78" width="5.2" height="15" fill="#898781" opacity="0.6"/>
+<rect x="75.2" y="78" width="72.4" height="15" fill="#1baf7a" opacity="0.85"/>
+<text x="151.6" y="89.0" text-anchor="start" font-size="7.3" font-weight="700" fill="#1baf7a">48.3 GB</text>
+<text x="64.0" y="113.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">EP = 4</text>
+<rect x="70.0" y="102" width="5.2" height="15" fill="#898781" opacity="0.6"/>
+<rect x="75.2" y="102" width="36.2" height="15" fill="#1baf7a" opacity="0.85"/>
+<text x="115.4" y="113.0" text-anchor="start" font-size="7.3" font-weight="700" fill="#1baf7a">25.8 GB</text>
+<text x="64.0" y="137.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">EP = 8</text>
+<rect x="70.0" y="126" width="5.2" height="15" fill="#898781" opacity="0.6"/>
+<rect x="75.2" y="126" width="18.1" height="15" fill="#1baf7a" opacity="0.85"/>
+<text x="97.3" y="137.0" text-anchor="start" font-size="7.3" font-weight="700" fill="#1baf7a">14.5 GB</text>
+<text x="70.0" y="158.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#898781">■ 非專家（複製）3.2 GB</text>
+<text x="170.0" y="158.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">■ 專家</text>
+<text x="18.0" y="172.0" text-anchor="start" font-size="6.8" font-weight="400" fill="#898781">每張 GPU 的權重（EP 不超過專家數 8）</text>
+<rect x="18" y="182" width="246" height="102" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="197.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">MoE 是結構，專家並行是放法與執行方式</text>
+<text x="141.0" y="211.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">專家是最自然的切分單位：權重不動，</text>
+<text x="141.0" y="223.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">token 去找專家</text>
+<text x="141.0" y="237.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">一個專家 352 MB；某專家一步要處理約 21,504 個</text>
+<text x="141.0" y="249.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">token 以上，搬權重才比搬 token 便宜（已驗證：算術）</text>
+<text x="141.0" y="264.0" text-anchor="middle" font-size="7.1" font-weight="700" fill="#1baf7a">decode 每步每專家遠少於此 → 搬 token</text>
+<text x="141.0" y="277.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">每層：dispatch → 專家計算 → combine</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">all-to-all：把 token 送到持有專家的 GPU，再收回</text>
+<rect x="300" y="56" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="328.0" y="66.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU1</text>
+<text x="328.0" y="77.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">token 們</text>
+<rect x="300" y="118" width="56" height="26" rx="3" fill="#1baf7a" opacity="0.15" stroke="#1baf7a" stroke-width="0.8"/>
+<text x="328.0" y="128.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">專家 1,2</text>
+<text x="328.0" y="139.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">算前饋</text>
+<rect x="300" y="180" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="328.0" y="190.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU1</text>
+<text x="328.0" y="201.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">加權合併</text>
+<rect x="362" y="56" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="390.0" y="66.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU2</text>
+<text x="390.0" y="77.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">token 們</text>
+<rect x="362" y="118" width="56" height="26" rx="3" fill="#1baf7a" opacity="0.22" stroke="#1baf7a" stroke-width="0.8"/>
+<text x="390.0" y="128.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">專家 3,4</text>
+<text x="390.0" y="139.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">算前饋</text>
+<rect x="362" y="180" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="390.0" y="190.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU2</text>
+<text x="390.0" y="201.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">加權合併</text>
+<rect x="424" y="56" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="452.0" y="66.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU3</text>
+<text x="452.0" y="77.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">token 們</text>
+<rect x="424" y="118" width="56" height="26" rx="3" fill="#1baf7a" opacity="0.15" stroke="#1baf7a" stroke-width="0.8"/>
+<text x="452.0" y="128.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">專家 5,6</text>
+<text x="452.0" y="139.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">算前饋</text>
+<rect x="424" y="180" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.15" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="452.0" y="190.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU3</text>
+<text x="452.0" y="201.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">加權合併</text>
+<rect x="486" y="56" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="514.0" y="66.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU4</text>
+<text x="514.0" y="77.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">token 們</text>
+<rect x="486" y="118" width="56" height="26" rx="3" fill="#1baf7a" opacity="0.22" stroke="#1baf7a" stroke-width="0.8"/>
+<text x="514.0" y="128.0" text-anchor="middle" font-size="6.2" font-weight="700" fill="#0b0b0b">專家 7,8</text>
+<text x="514.0" y="139.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">算前饋</text>
+<rect x="486" y="180" width="56" height="26" rx="3" fill="#2a78d6" opacity="0.22" stroke="#2a78d6" stroke-width="0.8"/>
+<text x="514.0" y="190.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">GPU4</text>
+<text x="514.0" y="201.0" text-anchor="middle" font-size="6.0" font-weight="400" fill="#898781">加權合併</text>
+<line x1="322.0" y1="82.0" x2="322.0" y2="118.0" stroke="#898781" stroke-width="0.9"/>
+<line x1="322.0" y1="144.0" x2="322.0" y2="180.0" stroke="#898781" stroke-width="0.9"/>
+<line x1="326.0" y1="82.0" x2="384.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="384.0" y1="144.0" x2="326.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="330.0" y1="82.0" x2="446.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="446.0" y1="144.0" x2="330.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="334.0" y1="82.0" x2="508.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="508.0" y1="144.0" x2="334.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="384.0" y1="82.0" x2="326.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="326.0" y1="144.0" x2="384.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="388.0" y1="82.0" x2="388.0" y2="118.0" stroke="#898781" stroke-width="0.9"/>
+<line x1="388.0" y1="144.0" x2="388.0" y2="180.0" stroke="#898781" stroke-width="0.9"/>
+<line x1="392.0" y1="82.0" x2="450.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="450.0" y1="144.0" x2="392.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="396.0" y1="82.0" x2="512.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="512.0" y1="144.0" x2="396.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="446.0" y1="82.0" x2="330.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="330.0" y1="144.0" x2="446.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="450.0" y1="82.0" x2="392.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="392.0" y1="144.0" x2="450.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="454.0" y1="82.0" x2="454.0" y2="118.0" stroke="#898781" stroke-width="0.9"/>
+<line x1="454.0" y1="144.0" x2="454.0" y2="180.0" stroke="#898781" stroke-width="0.9"/>
+<line x1="458.0" y1="82.0" x2="516.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="516.0" y1="144.0" x2="458.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="508.0" y1="82.0" x2="334.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="334.0" y1="144.0" x2="508.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="512.0" y1="82.0" x2="396.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="396.0" y1="144.0" x2="512.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="516.0" y1="82.0" x2="458.0" y2="118.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="458.0" y1="144.0" x2="516.0" y2="180.0" stroke="#d94040" stroke-width="0.5"/>
+<line x1="520.0" y1="82.0" x2="520.0" y2="118.0" stroke="#898781" stroke-width="0.9"/>
+<line x1="520.0" y1="144.0" x2="520.0" y2="180.0" stroke="#898781" stroke-width="0.9"/>
+<text x="536.0" y="103.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#d94040">dispatch</text>
+<text x="536.0" y="165.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#d94040">combine</text>
+<rect x="290" y="214" width="250" height="70" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="228.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#0b0b0b">每 token 每層：2·k·d·2 B·(N−1)/N，N=8 時 28,672 B</text>
+<text x="415.0" y="241.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#0b0b0b">32 層共約 0.92 MB；N 增加趨近上限約 1.05 MB</text>
+<text x="415.0" y="254.0" text-anchor="middle" font-size="6.8" font-weight="400" fill="#898781">（已驗證：算術，假設路由均勻、k=2、d=4096）</text>
+<text x="415.0" y="268.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#d94040">跨節點頻寬低很多，常盡量放節點內（記憶）</text>
+<text x="415.0" y="280.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">負載不均：最慢那張卡決定速度</text>
+<text x="684.0" y="42.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">最忙 GPU 的負載 ÷ 平均（8 個專家、top-2；模擬）</text>
+<text x="626.0" y="62.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">均勻 64</text>
+<rect x="632.0" y="52" width="75.2" height="13" fill="#eda100" opacity="0.85"/>
+<text x="711.2" y="62.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#eda100">1.34（丟 1.4%）</text>
+<text x="626.0" y="82.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">均勻 1,024</text>
+<rect x="632.0" y="72" width="60.8" height="13" fill="#1baf7a" opacity="0.85"/>
+<text x="696.8" y="82.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">1.08（丟 0.0%）</text>
+<text x="626.0" y="102.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">均勻 8,192</text>
+<rect x="632.0" y="92" width="57.7" height="13" fill="#1baf7a" opacity="0.85"/>
+<text x="693.7" y="102.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#1baf7a">1.03（丟 0.0%）</text>
+<text x="626.0" y="122.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">輕度偏斜 1,024</text>
+<rect x="632.0" y="112" width="83.6" height="13" fill="#eda100" opacity="0.85"/>
+<text x="719.6" y="122.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#eda100">1.49（丟 5.1%）</text>
+<text x="626.0" y="142.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">較重偏斜 1,024</text>
+<rect x="632.0" y="132" width="123.5" height="13" fill="#eb6834" opacity="0.85"/>
+<text x="759.5" y="142.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#eb6834">2.21（丟 14.2%）</text>
+<text x="626.0" y="162.0" text-anchor="end" font-size="6.8" font-weight="700" fill="#0b0b0b">較重偏斜 8,192</text>
+<rect x="632.0" y="152" width="123.2" height="13" fill="#eb6834" opacity="0.85"/>
+<text x="759.2" y="162.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#eb6834">2.20（丟 14.2%）</text>
+<line x1="688.0" y1="48.0" x2="688.0" y2="172.0" stroke="#898781" stroke-width="0.8" stroke-dasharray="3,2"/>
+<text x="688.0" y="182.0" text-anchor="middle" font-size="6.2" font-weight="400" fill="#898781">1.0 = 完全平衡</text>
+<rect x="566" y="192" width="236" height="92" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="684.0" y="206.0" text-anchor="middle" font-size="6.5" font-weight="700" fill="#0b0b0b">均勻路由：token 越多越平衡；有偏斜則增加 token 也救不了</text>
+<text x="684.0" y="220.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#0b0b0b">對策（記憶）：負載平衡損失、容量上限（丟棄超量 token）、</text>
+<text x="684.0" y="232.0" text-anchor="middle" font-size="6.6" font-weight="400" fill="#0b0b0b">複製熱門專家、動態搬移專家</text>
+<text x="684.0" y="247.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">括號內：容量上限 1.25 倍時被丟棄的 token 比例</text>
+<text x="684.0" y="262.0" text-anchor="middle" font-size="6.7" font-weight="700" fill="#d94040">偏斜程度是我設的玩具分佈，非真實模型</text>
+<text x="684.0" y="276.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+</svg>
