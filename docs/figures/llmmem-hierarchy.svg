@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">階層：越近越快、越小</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">H100 等級規格，全部依印象（未查證）</text>
+<rect x="18" y="52" width="246" height="17" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="24.0" y="64.0" text-anchor="start" font-size="7.3" font-weight="700" fill="#0b0b0b">暫存器</text>
+<text x="258.0" y="64.0" text-anchor="end" font-size="7.0" font-weight="400" fill="#898781">約 33 MB（全晶片）</text>
+<rect x="18" y="72" width="246" height="17" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="24.0" y="84.0" text-anchor="start" font-size="7.3" font-weight="700" fill="#0b0b0b">共享記憶體 SRAM</text>
+<text x="258.0" y="84.0" text-anchor="end" font-size="7.0" font-weight="400" fill="#898781">約 29 MB（全晶片）</text>
+<rect x="18" y="92" width="246" height="17" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="24.0" y="104.0" text-anchor="start" font-size="7.3" font-weight="700" fill="#0b0b0b">L2 快取</text>
+<text x="258.0" y="104.0" text-anchor="end" font-size="7.0" font-weight="400" fill="#898781">約 50 MB</text>
+<text x="141.0" y="120.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#2a78d6">▲ 晶片上：極快，但全部加起來只有幾十 MB</text>
+<text x="18.0" y="140.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">HBM</text>
+<rect x="88.0" y="130" width="120.4" height="13" fill="#1baf7a" opacity="0.85"/>
+<text x="212.4" y="140.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">3.35 TB/s</text>
+<text x="258.0" y="151.0" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">80 GB</text>
+<text x="18.0" y="162.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">NVLink</text>
+<rect x="88.0" y="152" width="94.1" height="13" fill="#2a78d6" opacity="0.85"/>
+<text x="186.1" y="162.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">900 GB/s</text>
+<text x="258.0" y="173.0" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">跨 GPU</text>
+<text x="18.0" y="184.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">CPU DRAM</text>
+<rect x="88.0" y="174" width="77.9" height="13" fill="#eda100" opacity="0.85"/>
+<text x="169.9" y="184.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">400 GB/s</text>
+<text x="258.0" y="195.0" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">數百 GB～TB</text>
+<text x="18.0" y="206.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">PCIe 5 x16</text>
+<rect x="88.0" y="196" width="41.2" height="13" fill="#eb6834" opacity="0.85"/>
+<text x="133.2" y="206.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">64 GB/s</text>
+<text x="258.0" y="217.0" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">（傳輸通道）</text>
+<text x="18.0" y="228.0" text-anchor="start" font-size="7.2" font-weight="700" fill="#0b0b0b">NVMe SSD</text>
+<rect x="88.0" y="218" width="10.7" height="13" fill="#d94040" opacity="0.85"/>
+<text x="102.7" y="228.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">14 GB/s</text>
+<text x="258.0" y="239.0" text-anchor="end" font-size="6.2" font-weight="400" fill="#898781">數 TB</text>
+<text x="141.0" y="284.0" text-anchor="middle" font-size="6.5" font-weight="400" fill="#898781">頻寬為對數刻度；容量標在各列右下</text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">讀完一份 70B 權重（140 GB）要多久</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">算術：140 GB ÷ 頻寬（單一通道，未計重疊）</text>
+<text x="344.0" y="64.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">HBM</text>
+<rect x="350.0" y="54" width="20.7" height="14" fill="#1baf7a" opacity="0.85"/>
+<text x="374.7" y="64.5" text-anchor="start" font-size="7.3" font-weight="700" fill="#1baf7a">42 ms</text>
+<text x="344.0" y="88.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">NVLink</text>
+<rect x="350.0" y="78" width="50.5" height="14" fill="#2a78d6" opacity="0.85"/>
+<text x="404.5" y="88.5" text-anchor="start" font-size="7.3" font-weight="700" fill="#2a78d6">156 ms</text>
+<text x="344.0" y="112.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">CPU DRAM</text>
+<rect x="350.0" y="102" width="68.9" height="14" fill="#eda100" opacity="0.85"/>
+<text x="422.9" y="112.5" text-anchor="start" font-size="7.3" font-weight="700" fill="#eda100">350 ms</text>
+<text x="344.0" y="136.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">PCIe 5 x16</text>
+<rect x="350.0" y="126" width="110.4" height="14" fill="#eb6834" opacity="0.85"/>
+<text x="464.4" y="136.5" text-anchor="start" font-size="7.3" font-weight="700" fill="#eb6834">2.2 秒</text>
+<text x="344.0" y="160.0" text-anchor="end" font-size="7.2" font-weight="700" fill="#0b0b0b">NVMe SSD</text>
+<rect x="350.0" y="150" width="144.8" height="14" fill="#d94040" opacity="0.85"/>
+<text x="498.8" y="160.5" text-anchor="start" font-size="7.3" font-weight="700" fill="#d94040">10.0 秒</text>
+<rect x="290" y="182" width="250" height="102" rx="4" fill="#7c56c8" opacity="0.06" stroke="#7c56c8" stroke-width="0.9"/>
+<text x="415.0" y="197.0" text-anchor="middle" font-size="7.5" font-weight="700" fill="#0b0b0b">decode 速度上限 ≈ 頻寬 ÷ 每步讀的 bytes</text>
+<text x="415.0" y="211.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">8B 模型（bf16 16 GB）放 1 張 HBM：每步 ≥ 4.8 ms</text>
+<text x="415.0" y="224.0" text-anchor="middle" font-size="7.1" font-weight="700" fill="#1baf7a">→ 單一請求最快約 209 token/秒（上限）</text>
+<text x="415.0" y="238.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">權重若放不進 HBM、改放 DRAM 或 SSD，</text>
+<text x="415.0" y="250.0" text-anchor="middle" font-size="7.1" font-weight="400" fill="#0b0b0b">每一步都會被慢一到三個數量級的通道卡住</text>
+<text x="415.0" y="266.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#d94040">上限不含 KV 讀取、通訊、kernel 效率</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">各種資料通常住在哪一層</text>
+<rect x="566" y="40" width="236" height="21" rx="4" fill="#2a78d6" opacity="0.09" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="572.0" y="49.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">矩陣乘的 tile</text>
+<text x="572.0" y="58.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#2a78d6">暫存器／SRAM</text>
+<rect x="566" y="65" width="236" height="21" rx="4" fill="#2a78d6" opacity="0.09" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="572.0" y="74.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">attention 分數塊（Flash）</text>
+<text x="572.0" y="83.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#2a78d6">SRAM</text>
+<rect x="566" y="90" width="236" height="21" rx="4" fill="#1baf7a" opacity="0.09" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="572.0" y="99.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">權重</text>
+<text x="572.0" y="108.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">HBM</text>
+<rect x="566" y="115" width="236" height="21" rx="4" fill="#1baf7a" opacity="0.09" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="572.0" y="124.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">KV cache</text>
+<text x="572.0" y="133.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">HBM（冷的換出 DRAM／SSD）</text>
+<rect x="566" y="140" width="236" height="21" rx="4" fill="#1baf7a" opacity="0.09" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="572.0" y="149.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">啟動值（訓練）</text>
+<text x="572.0" y="158.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#1baf7a">HBM</text>
+<rect x="566" y="165" width="236" height="21" rx="4" fill="#eda100" opacity="0.09" stroke="#eda100" stroke-width="0.9"/>
+<text x="572.0" y="174.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">優化器狀態（訓練）</text>
+<text x="572.0" y="183.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#eda100">HBM，或卸載到 DRAM／SSD</text>
+<rect x="566" y="190" width="236" height="21" rx="4" fill="#eb6834" opacity="0.09" stroke="#eb6834" stroke-width="0.9"/>
+<text x="572.0" y="199.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">梯度同步、張量並行</text>
+<text x="572.0" y="208.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#eb6834">NVLink／網路</text>
+<rect x="566" y="215" width="236" height="21" rx="4" fill="#d94040" opacity="0.09" stroke="#d94040" stroke-width="0.9"/>
+<text x="572.0" y="224.0" text-anchor="start" font-size="7.0" font-weight="700" fill="#0b0b0b">檢查點</text>
+<text x="572.0" y="233.0" text-anchor="start" font-size="6.6" font-weight="700" fill="#d94040">SSD／網路儲存</text>
+<text x="684.0" y="258.0" text-anchor="middle" font-size="7.3" font-weight="700" fill="#0b0b0b">原則：資料盡量留在近的層級，少跑遠路</text>
+<text x="684.0" y="272.0" text-anchor="middle" font-size="6.9" font-weight="400" fill="#898781">Flash Attention、分頁、量化、切分的共同出發點</text>
+</svg>

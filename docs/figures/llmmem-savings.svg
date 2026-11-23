@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" font-family="system-ui,sans-serif">
+<rect width="820" height="300" fill="#fcfcfb" rx="10"/>
+<rect x="10" y="10" width="262" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="141.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">推論：權重與 KV</text>
+<text x="141.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">留下的比例（相對 bf16、MHA 基準）</text>
+<text x="18.0" y="58.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">權重</text>
+<text x="78.0" y="72.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">bf16</text>
+<rect x="84.0" y="62" width="130.0" height="14" fill="#1baf7a" opacity="0.85"/>
+<text x="218.0" y="72.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#1baf7a">140 GB</text>
+<text x="78.0" y="94.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">FP8</text>
+<rect x="84.0" y="84" width="65.0" height="14" fill="#1baf7a" opacity="0.85"/>
+<text x="153.0" y="94.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#1baf7a">70 GB</text>
+<text x="78.0" y="116.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">int4</text>
+<rect x="84.0" y="106" width="32.5" height="14" fill="#1baf7a" opacity="0.85"/>
+<text x="120.5" y="116.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#1baf7a">35 GB</text>
+<text x="18.0" y="142.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">KV cache</text>
+<text x="78.0" y="156.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">MHA 64 頭</text>
+<rect x="84.0" y="146" width="130.0" height="14" fill="#2a78d6" opacity="0.85"/>
+<text x="218.0" y="156.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#2a78d6">100%</text>
+<text x="78.0" y="178.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">GQA 8 組</text>
+<rect x="84.0" y="168" width="16.2" height="14" fill="#2a78d6" opacity="0.85"/>
+<text x="104.2" y="178.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#2a78d6">12.5%</text>
+<text x="78.0" y="200.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">GQA＋FP8</text>
+<rect x="84.0" y="190" width="8.1" height="14" fill="#2a78d6" opacity="0.85"/>
+<text x="96.1" y="200.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#2a78d6">6.25%</text>
+<rect x="18" y="224" width="246" height="60" rx="4" fill="#2a78d6" opacity="0.06" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="141.0" y="238.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">GQA 的比例是 8 / 64（已驗證：每 token</text>
+<text x="141.0" y="250.0" text-anchor="middle" font-size="7.0" font-weight="700" fill="#0b0b0b">2.62 MB → 0.33 MB）；量化可能損失品質（記憶）</text>
+<text x="141.0" y="264.0" text-anchor="middle" font-size="7.0" font-weight="400" fill="#898781">Paged Attention 不改大小，只減少碎片浪費</text>
+<text x="141.0" y="276.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<rect x="282" y="10" width="266" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="415.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">訓練：狀態與啟動值</text>
+<text x="415.0" y="42.0" text-anchor="middle" font-size="7.3" font-weight="400" fill="#898781">留下的比例</text>
+<text x="290.0" y="58.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">模型狀態 1.12 TB</text>
+<text x="344.0" y="72.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">不切分</text>
+<rect x="350.0" y="62" width="130.0" height="14" fill="#eb6834" opacity="0.85"/>
+<text x="484.0" y="72.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#eb6834">1.12 TB</text>
+<text x="344.0" y="94.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">ZeRO-3 64 張</text>
+<rect x="350.0" y="84" width="2.0" height="14" fill="#1baf7a" opacity="0.85"/>
+<text x="356.0" y="94.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#1baf7a">17.5 GB／張</text>
+<text x="290.0" y="120.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">啟動值（70B、s=4096、b=1，記憶的估算式）</text>
+<text x="344.0" y="136.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">不省</text>
+<rect x="350.0" y="126" width="130.0" height="14" fill="#eb6834" opacity="0.85"/>
+<text x="484.0" y="136.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#eb6834">91 GB</text>
+<text x="344.0" y="158.0" text-anchor="end" font-size="7.0" font-weight="700" fill="#0b0b0b">checkpoint</text>
+<rect x="350.0" y="148" width="7.6" height="14" fill="#1baf7a" opacity="0.85"/>
+<text x="361.6" y="158.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#1baf7a">5.4 GB＋一層</text>
+<text x="290.0" y="180.0" text-anchor="start" font-size="7.4" font-weight="700" fill="#0b0b0b">attention 分數（每層、64 頭、bf16）</text>
+<rect x="350.0" y="186" width="130.0" height="14" fill="#eb6834" opacity="0.85"/>
+<text x="484.0" y="196.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#eb6834">2.1 GB</text>
+<rect x="350.0" y="208" width="4.0" height="14" fill="#1baf7a" opacity="0.85"/>
+<text x="358.0" y="218.5" text-anchor="start" font-size="7.0" font-weight="700" fill="#1baf7a">Flash Attention：不存整個 n×n，改 O(n)</text>
+<rect x="290" y="232" width="250" height="52" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="415.0" y="247.0" text-anchor="middle" font-size="7.1" font-weight="700" fill="#0b0b0b">checkpoint 以額外重算換記憶體</text>
+<text x="415.0" y="260.0" text-anchor="middle" font-size="7.1" font-weight="700" fill="#0b0b0b">ZeRO 以額外通訊換記憶體</text>
+<text x="415.0" y="274.0" text-anchor="middle" font-size="6.8" font-weight="700" fill="#d94040">啟動值估算式依實作差異大，未在此驗證</text>
+<rect x="558" y="10" width="252" height="280" fill="white" rx="8" stroke="#e0e0e0" stroke-width="1"/>
+<text x="684.0" y="27" text-anchor="middle" font-size="11" font-weight="700" fill="#0b0b0b">各手段省什麼、付什麼</text>
+<text x="566.0" y="44.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#898781">手段</text>
+<text x="650.0" y="44.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#898781">省什麼</text>
+<text x="730.0" y="44.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#898781">代價</text>
+<rect x="564" y="50" width="240" height="21" rx="4" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="568.0" y="64.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">權重量化</text>
+<text x="650.0" y="63.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">權重</text>
+<text x="650.0" y="70.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="64.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">可能損失品質</text>
+<rect x="564" y="74" width="240" height="21" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="568.0" y="88.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">GQA／MQA</text>
+<text x="650.0" y="87.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">KV（每 token）</text>
+<text x="650.0" y="94.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="88.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">模型架構要訓練時決定</text>
+<rect x="564" y="98" width="240" height="21" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="568.0" y="112.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">KV 量化</text>
+<text x="650.0" y="111.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">KV</text>
+<text x="650.0" y="118.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="112.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">可能損失品質</text>
+<rect x="564" y="122" width="240" height="21" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="568.0" y="136.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">滑動視窗／稀疏</text>
+<text x="650.0" y="135.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">KV（保留的 token 數）</text>
+<text x="650.0" y="142.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="136.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">遠處資訊可能丟失</text>
+<rect x="564" y="146" width="240" height="21" rx="4" fill="#2a78d6" opacity="0.07" stroke="#2a78d6" stroke-width="0.9"/>
+<text x="568.0" y="160.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">Paged Attention</text>
+<text x="650.0" y="159.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">KV 的碎片浪費</text>
+<text x="650.0" y="166.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="160.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">kernel 較複雜</text>
+<rect x="564" y="170" width="240" height="21" rx="4" fill="#1baf7a" opacity="0.07" stroke="#1baf7a" stroke-width="0.9"/>
+<text x="568.0" y="184.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">Flash Attention</text>
+<text x="650.0" y="183.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">attention 的中間矩陣</text>
+<text x="650.0" y="190.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="184.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">幾乎無（精確）</text>
+<rect x="564" y="194" width="240" height="21" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="568.0" y="208.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">ZeRO／FSDP</text>
+<text x="650.0" y="207.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">訓練狀態</text>
+<text x="650.0" y="214.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="208.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">額外通訊</text>
+<rect x="564" y="218" width="240" height="21" rx="4" fill="#eb6834" opacity="0.07" stroke="#eb6834" stroke-width="0.9"/>
+<text x="568.0" y="232.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">Activation checkpoint</text>
+<text x="650.0" y="231.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">啟動值</text>
+<text x="650.0" y="238.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="232.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">額外重算</text>
+<rect x="564" y="242" width="240" height="21" rx="4" fill="#d94040" opacity="0.07" stroke="#d94040" stroke-width="0.9"/>
+<text x="568.0" y="256.0" text-anchor="start" font-size="6.8" font-weight="700" fill="#0b0b0b">卸載到 DRAM／SSD</text>
+<text x="650.0" y="255.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#0b0b0b">冷資料</text>
+<text x="650.0" y="262.0" text-anchor="start" font-size="6" font-weight="400" fill="#898781"></text>
+<text x="730.0" y="256.0" text-anchor="start" font-size="6.2" font-weight="400" fill="#898781">頻寬低一到三個數量級</text>
+<text x="684.0" y="283.0" text-anchor="middle" font-size="6.9" font-weight="700" fill="#d94040">各手段可疊加；品質影響要另外評估</text>
+</svg>

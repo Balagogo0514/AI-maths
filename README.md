@@ -2,7 +2,7 @@
 
 AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、微積分與分析、線性代數與幾何，以及數論與計算理論。全部以繁體中文撰寫，並含 LaTeX 公式（在 GitHub 上會自動渲染）。
 
-> 共 39 篇筆記。點標題即可開啟對應筆記。
+> 共 40 篇筆記。點標題即可開啟對應筆記。
 
 ## 深度學習核心
 
@@ -13,6 +13,7 @@ AI 所需數學的中文筆記集，涵蓋深度學習核心、機率統計、�
 | [梯度下降](docs/Gradient-Descent.md) | LLM 的優化核心，與反向傳播、殘差連接的交互作用 |
 | [損失函數](docs/Loss-Function.md) | MSE、交叉熵等：衡量預測與目標的差距並提供梯度 |
 | [KV Cache 與 Attention 機制](docs/KV-Cache.md) | Scaled Dot-Product Attention（Q/K/V、√dₖ 縮放）、Multi-Head、三種 Attention 形式、位置編碼（Sinusoidal/RoPE/ALiBi）、Flash Attention（Tiling + Online Softmax）；KV Cache 原理（Prefill/Decode）、MHA/MQA/GQA、Paged Attention、量化 KV Cache、跨請求的 prefix caching、多請求同時服務時的 cache 管理、KV cache 的記憶體帳、Paged Attention、超長上下文與多 GPU 協同、KV Cache 與 Flash Attention 的分工、HBM 的容量與頻寬及儲存層級（含示意圖）|
+| [LLM 的記憶體配置與使用](docs/LLM-Memory.md) | 權重、KV cache、啟動值、訓練狀態四類資料；容量／頻寬／延遲；記憶體階層（暫存器、SRAM、HBM、NVLink、DRAM、SSD）；推論與訓練的記憶體組成（70B：140 GB 權重、每參數 16 B 的訓練狀態）；ZeRO 切分；省記憶體手段（量化、GQA、Flash Attention、checkpointing）；單卡預算規劃（含示意圖）|
 | [擴散模型](docs/Diffusion-Model.md) | DDPM 前向/逆向數學、Score SDE、DDIM、CFG、LDM；**DiT**（Patch 化、adaLN-Zero、Scaling Law FID ∝ GFLOPs⁻ᵅ）、**Cross-Attention 文字條件注入**（Q=圖像/K,V=文字）、**Sora 時空 Patch**、**MMDiT/SD3/FLUX**；骨幹演進時間線；Flow Matching；圖像/音訊/蛋白質/分子生成應用 |
 | [深度學習演化史](docs/Deep-Learning-History.md) | 八個演化波次（1943–今）：感知機 → 反向傳播 → CNN → ResNet → Seq2Seq → Transformer → 大模型 → 多模態/推理模型；涵蓋 RNN/LSTM/BERT/GPT、Encoder vs Decoder、Transformer 訓練細節（AdamW、Warmup+Cosine LR、BF16 混合精度、ZeRO 分散式並行）；含七張圖示 |
 | [Transformer 架構](docs/Transformer.md) | Encoder-Decoder 全局結構、殘差連接（Pre/Post-LN）、RMSNorm、FFN/SwiGLU、Scaling Law（Chinchilla D*=20N）、MoE；**BERT**（雙向 Attention、MLM/NSP、RoBERTa/ELECTRA 等後繼）；**GPT 系列**（Causal LM、ICL、InstructGPT RLHF 三階段、GPT-4 多模態）；**Mamba/SSM**（選擇性狀態空間、並行 Scan、Mamba-2）；**Transformer vs CNN/RNN**；**DiT/Diffusion**（骨幹框架分離、Cross-Attention 條件注入、adaLN-Zero、Scaling Law、Sora 時空 Patch、MMDiT）|

@@ -719,6 +719,8 @@ decode 每產生一個 token，要讀整份權重，再加上批次中每個請�
 
 ![HBM 對 KV cache 的影響：容量、每個 decode 步的頻寬分配、離開 HBM 後的讀取時間](figures/kv-hbm-tiers.svg)
 
+各種記憶體（含訓練時的梯度、優化器狀態、啟動值）的整體配置見 `LLM-Memory.md`。
+
 **標註**：
 
 - **已驗證（算術）**：上述 GB、ms、token 數與倍率，都是依假設的規格計算。
